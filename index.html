@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D9RC732XCJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-D9RC732XCJ');
-</script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LeonicAURA – Online Deutsch lernen</title>
@@ -111,14 +100,17 @@
       top: 64px;
       left: 0;
       right: 0;
-      background: rgba(15,15,18,0.95);
-      backdrop-filter: blur(6px);
+      background: rgba(15,15,18,0.98);
+      backdrop-filter: blur(20px) saturate(180%);
       transform: translateY(-100%);
       transition: transform 0.4s ease;
       display: flex;
       flex-direction: column;
       padding: 20px;
       gap: 16px;
+      z-index: 99;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .mobile-nav.open { transform: translateY(0); }
     .mobile-nav a {
@@ -126,6 +118,16 @@
       text-decoration: none;
       font-weight: 600;
       font-size: 16px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.3s ease;
+    }
+    .mobile-nav a:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(var(--color-accent),0.4);
+      transform: translateX(8px);
     }
     @media (max-width: 768px) {
       nav { display: none; }
@@ -208,6 +210,22 @@
       font-size: clamp(16px, 2.2vw, 22px);
       opacity: 0.85;
       margin-bottom: 1.2em;
+    }
+    /* Text reveal animation for leads */
+    .lead.animating {
+      opacity: 1;
+    }
+    .lead.animating span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: revealChar 0.4s ease forwards;
+    }
+    @keyframes revealChar {
+      to {
+        opacity: 0.85;
+        transform: translateY(0);
+      }
     }
     /* Hero */
     #hero {
@@ -485,10 +503,29 @@
     .about-photo img {
       width: 100%;
       height: auto;
-      border-radius: 50%;
+      border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
       border: 4px solid rgba(255,255,255,0.1);
       display: block;
       z-index: 1;
+      animation: morphBlob 8s ease-in-out infinite;
+      transition: transform 0.3s ease;
+    }
+    .about-photo img:hover {
+      transform: scale(1.05);
+    }
+    @keyframes morphBlob {
+      0%, 100% {
+        border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+      }
+      25% {
+        border-radius: 48% 52% 68% 32% / 42% 61% 39% 58%;
+      }
+      50% {
+        border-radius: 40% 60% 42% 58% / 65% 38% 62% 35%;
+      }
+      75% {
+        border-radius: 58% 42% 55% 45% / 48% 70% 30% 52%;
+      }
     }
     .about-photo .wing {
       position: absolute;
@@ -543,9 +580,13 @@
     }
     #about-canvas {
       position: absolute;
-      inset: 0;
-      width: 100%;
+      /* Full-width starfield centered relative to viewport */
+      top: 0;
+      bottom: 0;
+      width: 100vw;
       height: 100%;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: -1;
       pointer-events: none;
     }
@@ -686,7 +727,7 @@
       text-decoration: none;
     }
     footer a:hover { text-decoration: underline; }
-    /* Fade-in effect */
+    /* Fade-in effect with stagger */
     .reveal {
       opacity: 0;
       transform: translateY(40px);
@@ -696,6 +737,210 @@
       opacity: 1;
       transform: translateY(0);
     }
+    /* Staggered animations for grid items */
+    .benefit-item,
+    .pricing-card,
+    .step-item,
+    .service-item,
+    .testimonial-card {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .benefit-item.visible,
+    .pricing-card.visible,
+    .step-item.visible,
+    .service-item.visible,
+    .testimonial-card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 24px;
+      margin-top: 2em;
+    }
+    .testimonial-card {
+      padding: 28px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      font-size: 120px;
+      font-family: 'Lora', serif;
+      color: rgba(var(--color-accent),0.08);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .testimonial-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(var(--color-warm),0.08), transparent 40%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(var(--color-cool),0.3);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(var(--color-accent),0.15);
+    }
+    .testimonial-card:hover::after {
+      opacity: 1;
+    }
+    .testimonial-text {
+      font-size: 15px;
+      line-height: 1.6;
+      opacity: 0.9;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(var(--color-warm),0.3), rgba(var(--color-cool),0.3));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+    .testimonial-info {
+      flex: 1;
+    }
+    .testimonial-name {
+      font-weight: 700;
+      font-size: 16px;
+      color: rgba(var(--color-accent),1);
+      margin-bottom: 2px;
+    }
+    .testimonial-level {
+      font-size: 13px;
+      opacity: 0.7;
+    }
+    .testimonial-stars {
+      margin-top: 12px;
+      color: rgba(var(--color-accent),0.9);
+      font-size: 16px;
+      letter-spacing: 2px;
+    }
+    /* Floating letters background */
+    .floating-letters {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .floating-letter {
+      position: absolute;
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: 80px;
+      opacity: 0.03;
+      animation: floatLetter 20s ease-in-out infinite;
+      color: rgba(var(--color-warm),1);
+    }
+    .floating-letter:nth-child(even) {
+      color: rgba(var(--color-cool),1);
+      animation-duration: 25s;
+    }
+    @keyframes floatLetter {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      25% {
+        transform: translate(30px, -40px) rotate(5deg);
+      }
+      50% {
+        transform: translate(-20px, -80px) rotate(-3deg);
+      }
+      75% {
+        transform: translate(40px, -40px) rotate(4deg);
+      }
+    }
+    /* Scroll down arrow */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      cursor: pointer;
+      opacity: 0;
+      animation: fadeInScroll 1s ease 2s forwards;
+    }
+    @keyframes fadeInScroll {
+      to { opacity: 1; }
+    }
+    .scroll-arrow {
+      width: 30px;
+      height: 50px;
+      border: 2px solid rgba(var(--color-accent),0.6);
+      border-radius: 25px;
+      position: relative;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    .scroll-arrow::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 6px;
+      background: rgba(var(--color-accent),1);
+      border-radius: 50%;
+      animation: scroll 2s ease-in-out infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes scroll {
+      0% { opacity: 0; top: 8px; }
+      30% { opacity: 1; }
+      60% { opacity: 1; }
+      100% { opacity: 0; top: 30px; }
+    }
+    .scroll-indicator:hover .scroll-arrow {
+      border-color: rgba(var(--color-accent),1);
+      box-shadow: 0 0 20px rgba(var(--color-accent),0.4);
+    }
+    /* Particle cat container */
+    .particle-cat-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 2em auto;
+      pointer-events: none;
+    }
+    .particle-cat {
+      position: absolute;
+      inset: 0;
+      opacity: 0.85;
+    }
     /* Ensure the intro section (tagline) sits directly beneath the hero without a separating line
        and uses the same dark background as the body. */
     #intro {
@@ -703,7 +948,94 @@
       background: var(--bg);
     }
     /* Remove old morph animation keyframes (no longer used) */
+    /* Improve link readability in dark sections */
+    .contact-info a,
+    .fallback a,
+    .legal-section a,
+    .privacy-note a,
+    .consent a {
+      /* Use a lighter tone for links to improve readability on dark backgrounds */
+      color: #ffb3d6;
+      text-decoration: underline;
+    }
+    /* Preserve light link color on visited links to avoid dark blue/purple defaults */
+    .contact-info a:visited,
+    .fallback a:visited,
+    .legal-section a:visited,
+    .privacy-note a:visited,
+    .consent a:visited {
+      color: #ffb3d6;
+    }
+    .contact-info a:hover,
+    .fallback a:hover,
+    .legal-section a:hover,
+    .privacy-note a:hover,
+    .consent a:hover {
+      color: #ffa6c8;
+    }
+    /* Style consent checkbox inline with its text */
+    .contact-form label.consent {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+    /* Contact form field layout */
+    .field {
+      margin-bottom: 1em;
+    }
+    .field label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+    .field small.err {
+      font-size: 13px;
+    }
+    /* Alerts and error styles for contact form */
+    .alert {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+    .alert.ok {
+      background: #0f5132;
+      color: #d1f1e0;
+      border: 1px solid #0c4128;
+    }
+    .alert.err {
+      background: #5c1a1a;
+      color: #ffdede;
+      border: 1px solid #4a1212;
+    }
+    .err {
+      color: #ffb4b4;
+      margin-top: 4px;
+      display: block;
+    }
+    .err[hidden] {
+      display: none;
+    }
+    button[disabled] {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
   </style>
+  <!-- Structured data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Leon Erdeg",
+    "url": "https://leonicaura.de",
+    "image": "Leon.jpg",
+    "jobTitle": "Deutsch-Coach (A1–C1)",
+    "knowsLanguage": ["de","mk","sr","bs","hr"],
+    "sameAs": []
+  }
+  </script>
 </head>
 <body>
   <header id="site-header">
@@ -711,6 +1043,7 @@
     <nav aria-label="Hauptnavigation">
       <a href="#hero">Startseite</a>
       <a href="#about">Über&nbsp;mich</a>
+      <a href="#testimonials">Bewertungen</a>
       <a href="#preise">Preise</a>
       <a href="#gruppen">Gruppen</a>
       <a href="#ablauf">Ablauf</a>
@@ -730,6 +1063,7 @@
   <div class="mobile-nav" id="mobileNav" aria-label="Mobiles Menü">
     <a href="#hero">Startseite</a>
     <a href="#about">Über&nbsp;mich</a>
+    <a href="#testimonials">Bewertungen</a>
     <a href="#preise">Preise</a>
     <a href="#gruppen">Gruppen</a>
     <a href="#ablauf">Ablauf</a>
@@ -753,6 +1087,10 @@
         <!-- Central brand name for the exploding letters; use normal characters -->
         <h1 class="explosion-title">LeonicAURA</h1>
       </div>
+      <!-- Scroll down indicator -->
+      <a href="#intro" class="scroll-indicator" aria-label="Nach unten scrollen">
+        <div class="scroll-arrow"></div>
+      </a>
     </section>
 
     <!-- Intro Section: tagline and call-to-action -->
@@ -796,6 +1134,88 @@
           </span>
           <div class="benefit-title">Motivierend</div>
           <div class="benefit-desc">Persönliches Feedback, klare Erklärungen und sichtbarer Fortschritt.</div>
+        </div>
+      </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section reveal" data-title="Bewertungen" style="position:relative; overflow:hidden;">
+      <div class="floating-letters" aria-hidden="true">
+        <div class="floating-letter" style="top:10%; left:5%;">D</div>
+        <div class="floating-letter" style="top:15%; right:8%;">e</div>
+        <div class="floating-letter" style="top:60%; left:12%;">u</div>
+        <div class="floating-letter" style="top:70%; right:15%;">t</div>
+        <div class="floating-letter" style="top:40%; left:85%;">s</div>
+        <div class="floating-letter" style="top:25%; left:50%;">c</div>
+        <div class="floating-letter" style="top:80%; left:45%;">h</div>
+      </div>
+      <div class="section-title"><span>Bewertungen</span>Was meine Schüler sagen</div>
+      <p class="lead">Echte Erfahrungen von Lernenden, die ihren Weg mit LeonicAURA gegangen sind.</p>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-text">„Leon hat mir geholfen, mein Deutsch für die B2-Prüfung vorzubereiten. Seine Erklärungen sind klar und er ist immer geduldig. Ich habe die Prüfung beim ersten Versuch bestanden!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">M</div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Marija</div>
+              <div class="testimonial-level">B2 Schülerin · Serbien</div>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">„Der Unterricht ist flexibel und macht Spaß. Leon passt sich meinem Tempo an und ich fühle mich nie unter Druck. Mein Sprechen hat sich deutlich verbessert!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">D</div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Dragan</div>
+              <div class="testimonial-level">A2 Schüler · Bosnien</div>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">„Ich lerne seit 3 Monaten bei Leon und sehe große Fortschritte. Die Materialien sind gut strukturiert und die Hausaufgaben helfen mir, alles zu festigen. Sehr empfehlenswert!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">A</div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Ana</div>
+              <div class="testimonial-level">B1 Schülerin · Kroatien</div>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">„Leon ist nicht nur ein Lehrer, sondern auch ein Motivator. Er versteht die Herausforderungen von Balkan-Lernenden und macht den Unterricht lebendig. Top!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">N</div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Nikola</div>
+              <div class="testimonial-level">C1 Schüler · Serbien</div>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">„Endlich verstehe ich die deutsche Grammatik! Leon erklärt alles Schritt für Schritt und gibt praktische Beispiele. Der Preis ist auch sehr fair."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">J</div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Jelena</div>
+              <div class="testimonial-level">A1 Schülerin · Montenegro</div>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">„Die Online-Stunden sind super organisiert. Leon ist pünktlich, professionell und macht jeden Unterricht interessant. Ich freue mich jede Woche auf die Stunden!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">S</div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Stefan</div>
+              <div class="testimonial-level">B1 Schüler · Nordmazedonien</div>
+            </div>
+          </div>
+          <div class="testimonial-stars">★★★★★</div>
         </div>
       </div>
     </section>
@@ -897,6 +1317,10 @@
     <section id="leistungen" class="section reveal" data-title="Leistungen">
       <div class="section-title"><span>Was du bekommst</span>Dein Lernpaket</div>
       <p class="lead">Alles, was du brauchst, um erfolgreich Deutsch zu lernen.</p>
+      <!-- Spielende Particle-Katze -->
+      <div class="particle-cat-container">
+        <canvas id="catPlaying" class="particle-cat" width="200" height="200"></canvas>
+      </div>
       <div class="services-grid">
         <div class="service-item">
           <div class="service-title">60‑Minuten‑Einheiten</div>
@@ -928,6 +1352,10 @@
     <section id="faq" class="section reveal" data-title="FAQ">
       <div class="section-title"><span>FAQ</span>Häufige Fragen</div>
       <p class="lead">Hier findest du Antworten auf oft gestellte Fragen.</p>
+      <!-- Sitzende Particle-Katze -->
+      <div class="particle-cat-container">
+        <canvas id="catSitting" class="particle-cat" width="200" height="200"></canvas>
+      </div>
       <div class="faq">
         <details>
           <summary>Wie lange dauert eine Unterrichtseinheit?</summary>
@@ -955,27 +1383,36 @@
     <section id="kontakt" class="section reveal" data-title="Kontakt">
       <div class="section-title"><span>Kontakt</span>Schreib mir</div>
       <p class="lead">Ich freue mich darauf, von dir zu hören! Du erreichst mich wochentags abends und am Wochenende.</p>
-      <form class="contact-form" id="contactForm" action="https://formspree.io/f/xeorpljq" method="POST">
-        <!-- Honeypot field to prevent spam bots -->
-        <input type="text" name="_honey" style="display:none">
-        <div>
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/xeorpljq" method="POST" novalidate>
+        <div class="field">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+          <small class="err" id="err-name" hidden>Bitte deinen Namen angeben.</small>
         </div>
-        <div>
+        <div class="field">
           <label for="email">E‑Mail</label>
-          <input type="email" id="email" name="email" required>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+          <small class="err" id="err-email" hidden>Bitte eine gültige E‑Mail angeben.</small>
         </div>
-        <div>
+        <div class="field">
           <label for="message">Nachricht</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
+          <textarea id="message" name="message" rows="5" minlength="20" required></textarea>
+          <small class="err" id="err-message" hidden>Mindestens 20 Zeichen, bitte.</small>
         </div>
-        <button type="submit" class="btn btn-primary" aria-label="Nachricht senden">Nachricht senden</button>
-        <p class="privacy-note" style="font-size:13px; opacity:0.7; margin-top:6px;">
-          Mit dem Absenden erklärst du dich mit der Verarbeitung deiner Daten gemäß Datenschutz einverstanden.
-          Bei WhatsApp gelten die Datenschutzrichtlinien von WhatsApp.
+        <label class="consent">
+          <input id="consent" name="consent" type="checkbox" required>
+          Ich stimme der Verarbeitung meiner Daten gemäß <a href="#datenschutz">Datenschutzhinweisen</a> zu.
+        </label>
+        <small class="err" id="err-consent" hidden>Bitte Einverständnis bestätigen.</small>
+        <!-- Honeypot + Zeitfalle -->
+        <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;">
+        <input type="hidden" name="startedAt" id="startedAt">
+        <button type="submit" id="sendBtn" class="btn btn-primary" aria-label="Nachricht senden">Nachricht senden</button>
+        <div id="formAlert" class="alert" role="status" aria-live="polite" hidden></div>
+        <p class="fallback" style="font-size:13px; opacity:0.7; margin-top:6px;">
+          Alternativ: <a href="https://wa.me/4917663005489" target="_blank" rel="noopener">WhatsApp</a> ·
+          <a href="mailto:infoleonicaura@gmail.com">E‑Mail</a>
         </p>
-        <div id="formMessage" class="form-message" aria-live="polite" style="margin-top:10px; font-size:15px;"></div>
       </form>
       <div class="contact-info">
         <p><strong>E‑Mail:</strong> <a href="mailto:infoleonicaura@gmail.com">infoleonicaura@gmail.com</a></p>
@@ -1039,6 +1476,14 @@
         burger.setAttribute('aria-expanded', 'false');
       });
     });
+    // Close mobile navigation when switching from mobile to desktop width
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && mobileNav.classList.contains('open')) {
+        mobileNav.classList.remove('open');
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      }
+    });
     // Intersection Observer for reveal animation
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -1049,6 +1494,53 @@
       });
     }, { threshold: 0.25 });
     document.querySelectorAll('.reveal').forEach(section => observer.observe(section));
+
+    // Staggered animation for grid items
+    const staggerObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const items = entry.target.querySelectorAll('.benefit-item, .pricing-card, .step-item, .service-item, .testimonial-card');
+          items.forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.add('visible');
+            }, index * 120); // 120ms delay between each item
+          });
+          staggerObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    
+    // Observe sections that contain grid items
+    document.querySelectorAll('#nutzen, #testimonials, #preise, #ablauf, #leistungen').forEach(section => {
+      staggerObserver.observe(section);
+    });
+
+    // Text reveal animation for lead paragraphs
+    const textRevealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const lead = entry.target;
+          const text = lead.textContent;
+          lead.textContent = '';
+          lead.classList.add('animating');
+          
+          // Split text into characters
+          text.split('').forEach((char, index) => {
+            const span = document.createElement('span');
+            span.textContent = char === ' ' ? '\u00A0' : char; // preserve spaces
+            span.style.animationDelay = `${index * 0.02}s`;
+            lead.appendChild(span);
+          });
+          
+          textRevealObserver.unobserve(lead);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    // Observe all lead paragraphs
+    document.querySelectorAll('.lead').forEach(lead => {
+      textRevealObserver.observe(lead);
+    });
 
     // Hero tagline animation and letter nebula
     (function(){
@@ -1548,7 +2040,7 @@
       const ctx = cv.getContext('2d', { alpha:true });
       const DPR = window.devicePixelRatio || 1;
       let stars = [], sprites = [];
-      const STAR_DENSITY = 0.002;
+      const STAR_DENSITY = 0.0015;
       const DEPTH_LAYERS = 4;
       const TWINKLE_STRENGTH = 0.5;
       const DRIFT = -0.03;
@@ -1652,52 +2144,391 @@
       resize();
       frame(0);
     })();
+    // Utility functions for contact form feedback
+    function showAlert(msg, ok = true) {
+      const alertBox = document.getElementById('formAlert');
+      if (!alertBox) return;
+      alertBox.hidden = false;
+      alertBox.textContent = msg;
+      alertBox.className = 'alert ' + (ok ? 'ok' : 'err');
+      if (alertBox.focus) {
+        alertBox.focus();
+      }
+    }
+    function setErr(id, on) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.hidden = !on;
+      }
+    }
     // Handle contact form submission to Formspree
     function handleSubmit(ev){
       ev.preventDefault();
       const form = document.getElementById('contactForm');
-      const messageEl = document.getElementById('formMessage');
-      const formData = new FormData(form);
-      // reset message
-      if(messageEl) messageEl.textContent = '';
-      // simple validation
-      const name = formData.get('name')?.trim();
-      const email = formData.get('email')?.trim();
-      const message = formData.get('message')?.trim();
-      if(!name || !email || !message) {
-        if(messageEl) messageEl.textContent = 'Bitte alle Felder ausfüllen.';
-        return false;
+      const btn = document.getElementById('sendBtn');
+      const startedAt = document.getElementById('startedAt');
+      // gather field values
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+      const consent = form.consent.checked;
+      // retrieve honeypot value safely
+      const honeypotField = form.querySelector('input[name="website"]');
+      const honeypot = honeypotField ? honeypotField.value.trim() : '';
+      const timeDelta = Date.now() - (parseInt(startedAt.value, 10) || 0);
+      // simple regex for email
+      const emailValid = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+      let valid = true;
+      // show/hide error messages
+      setErr('err-name', !name);
+      setErr('err-email', !emailValid);
+      setErr('err-message', message.length < 20);
+      setErr('err-consent', !consent);
+      if (!name || !emailValid || message.length < 20 || !consent) valid = false;
+      // spam checks
+      if (honeypot) valid = false;
+      if (timeDelta < 3000) valid = false;
+      if (!valid) {
+        showAlert('Bitte die rot markierten Felder korrigieren.', false);
+        return;
       }
+      // prepare to send
+      btn.disabled = true;
+      const prevText = btn.textContent;
+      btn.textContent = 'Sende…';
+      const formData = new FormData(form);
+      formData.append('consentVersion','v1-2025-10-14');
       fetch(form.action, {
         method: 'POST',
         body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      }).then(response => {
-        if(response.ok){
-          if(messageEl) messageEl.textContent = `Vielen Dank für deine Nachricht, ${name}! Ich werde mich bald bei dir melden.`;
+        headers: { 'Accept': 'application/json' }
+      }).then(res => {
+        if (res.ok) {
+          showAlert('✓ Danke! Deine Nachricht wurde erfolgreich gesendet. Ich melde mich bald.', true);
           form.reset();
+          // reset timer for next submission
+          if (startedAt) startedAt.value = Date.now();
         } else {
-          response.json().then(data => {
-            if(messageEl) messageEl.textContent = (data.error || 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.');
-          }).catch(() => {
-            if(messageEl) messageEl.textContent = 'Es ist ein Fehler aufgetreten. Bitte versuche es später erneut.';
-          });
+          showAlert('⚠️ Senden fehlgeschlagen. Bitte später erneut versuchen oder per WhatsApp/E‑Mail schreiben.', false);
         }
       }).catch(() => {
-        if(messageEl) messageEl.textContent = 'Es ist ein Netzwerkfehler aufgetreten. Bitte versuche es später erneut.';
+        showAlert('⚠️ Netzwerkfehler. Bitte später erneut versuchen.', false);
+      }).finally(() => {
+        btn.disabled = false;
+        btn.textContent = prevText;
       });
-      return false;
+      return;
     }
 
     // Attach submit handler on DOM load
     document.addEventListener('DOMContentLoaded', () => {
       const form = document.getElementById('contactForm');
-      if(form){
+      if (form) {
+        // initialize timestamp for spam protection
+        const startedAtField = document.getElementById('startedAt');
+        if (startedAtField) {
+          startedAtField.value = Date.now();
+        }
         form.addEventListener('submit', handleSubmit);
       }
+      
+      // Mouse tracking for testimonial cards glow effect
+      document.querySelectorAll('.testimonial-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          card.style.setProperty('--mouse-x', `${x}%`);
+          card.style.setProperty('--mouse-y', `${y}%`);
+        });
+      });
+      
+      // Subtle parallax effect on scroll (nur für floating letters)
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const scrolled = window.scrollY;
+            
+            // Floating letters parallax (nur diese bewegen sich)
+            document.querySelectorAll('.floating-letter').forEach((letter, index) => {
+              const speed = 0.2 + (index % 4) * 0.15;
+              const offset = scrolled * speed * 0.05;
+              letter.style.transform = `translateY(${-offset}px)`;
+            });
+            
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
     });
+  </script>
+
+  <!-- Particle Cat Animations -->
+  <script>
+    (function() {
+      // Playing Cat Animation
+      const playingCanvas = document.getElementById('catPlaying');
+      if (!playingCanvas) return;
+      
+      const playCtx = playingCanvas.getContext('2d');
+      const particles = [];
+      
+      // Katzen-Form (spielend) - vereinfachte Koordinaten
+      const catShape = [
+        // Körper
+        {x: 100, y: 120, group: 'body'},
+        {x: 90, y: 115, group: 'body'},
+        {x: 110, y: 115, group: 'body'},
+        {x: 85, y: 125, group: 'body'},
+        {x: 115, y: 125, group: 'body'},
+        {x: 80, y: 130, group: 'body'},
+        {x: 120, y: 130, group: 'body'},
+        // Kopf
+        {x: 100, y: 90, group: 'head'},
+        {x: 95, y: 85, group: 'head'},
+        {x: 105, y: 85, group: 'head'},
+        {x: 90, y: 95, group: 'head'},
+        {x: 110, y: 95, group: 'head'},
+        // Ohren
+        {x: 85, y: 75, group: 'ear'},
+        {x: 115, y: 75, group: 'ear'},
+        {x: 88, y: 78, group: 'ear'},
+        {x: 112, y: 78, group: 'ear'},
+        // Augen
+        {x: 95, y: 88, group: 'eye'},
+        {x: 105, y: 88, group: 'eye'},
+        // Schwanz (bewegt sich)
+        {x: 130, y: 110, group: 'tail'},
+        {x: 140, y: 100, group: 'tail'},
+        {x: 145, y: 90, group: 'tail'},
+        {x: 148, y: 80, group: 'tail'},
+        // Pfoten
+        {x: 85, y: 140, group: 'paw'},
+        {x: 95, y: 142, group: 'paw'},
+        {x: 105, y: 142, group: 'paw'},
+        {x: 115, y: 140, group: 'paw'},
+        // Spielzeug (Ball)
+        {x: 60, y: 120, group: 'toy'},
+        {x: 65, y: 118, group: 'toy'},
+        {x: 65, y: 122, group: 'toy'},
+        {x: 55, y: 120, group: 'toy'}
+      ];
+      
+      // Erstelle Partikel
+      catShape.forEach(point => {
+        particles.push({
+          x: point.x,
+          y: point.y,
+          targetX: point.x,
+          targetY: point.y,
+          baseX: point.x,
+          baseY: point.y,
+          vx: 0,
+          vy: 0,
+          group: point.group,
+          size: point.group === 'eye' ? 2.5 : (point.group === 'toy' ? 2 : 1.8),
+          color: point.group === 'toy' ? '255,140,180' : (point.group === 'eye' ? '255,255,255' : '232,214,188')
+        });
+      });
+      
+      let time = 0;
+      function animatePlaying() {
+        playCtx.clearRect(0, 0, 200, 200);
+        time += 0.02;
+        
+        particles.forEach((p, i) => {
+          // Animationen basierend auf Gruppen
+          if (p.group === 'tail') {
+            p.targetX = p.baseX + Math.sin(time * 3 + i * 0.3) * 8;
+            p.targetY = p.baseY + Math.cos(time * 2 + i * 0.3) * 6;
+          } else if (p.group === 'paw') {
+            p.targetY = p.baseY + Math.sin(time * 2 + i) * 3;
+          } else if (p.group === 'toy') {
+            p.targetX = p.baseX + Math.cos(time * 1.5) * 15;
+            p.targetY = p.baseY + Math.sin(time * 2) * 10;
+          } else if (p.group === 'ear') {
+            p.targetX = p.baseX + Math.sin(time + i) * 2;
+          } else {
+            p.targetX = p.baseX + Math.sin(time + i * 0.5) * 1;
+            p.targetY = p.baseY + Math.cos(time + i * 0.5) * 1;
+          }
+          
+          // Smooth movement
+          p.vx += (p.targetX - p.x) * 0.1;
+          p.vy += (p.targetY - p.y) * 0.1;
+          p.vx *= 0.85;
+          p.vy *= 0.85;
+          p.x += p.vx;
+          p.y += p.vy;
+          
+          // Draw
+          playCtx.beginPath();
+          playCtx.fillStyle = `rgba(${p.color}, 0.8)`;
+          playCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          playCtx.fill();
+          
+          // Glow
+          if (p.group === 'eye' || p.group === 'toy') {
+            playCtx.beginPath();
+            playCtx.fillStyle = `rgba(${p.color}, 0.3)`;
+            playCtx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
+            playCtx.fill();
+          }
+        });
+        
+        requestAnimationFrame(animatePlaying);
+      }
+      
+      // Starte Animation wenn sichtbar
+      const playObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animatePlaying();
+            playObserver.unobserve(entry.target);
+          }
+        });
+      });
+      if (playingCanvas) playObserver.observe(playingCanvas);
+      
+      // Sitting Cat Animation
+      const sittingCanvas = document.getElementById('catSitting');
+      if (!sittingCanvas) return;
+      
+      const sitCtx = sittingCanvas.getContext('2d');
+      const sitParticles = [];
+      
+      // Sitzende Katzen-Form
+      const sitShape = [
+        // Körper (sitzend)
+        {x: 100, y: 130, group: 'body'},
+        {x: 90, y: 125, group: 'body'},
+        {x: 110, y: 125, group: 'body'},
+        {x: 85, y: 135, group: 'body'},
+        {x: 115, y: 135, group: 'body'},
+        {x: 80, y: 145, group: 'body'},
+        {x: 120, y: 145, group: 'body'},
+        {x: 85, y: 155, group: 'body'},
+        {x: 115, y: 155, group: 'body'},
+        // Kopf
+        {x: 100, y: 100, group: 'head'},
+        {x: 95, y: 95, group: 'head'},
+        {x: 105, y: 95, group: 'head'},
+        {x: 90, y: 105, group: 'head'},
+        {x: 110, y: 105, group: 'head'},
+        {x: 92, y: 110, group: 'head'},
+        {x: 108, y: 110, group: 'head'},
+        // Ohren
+        {x: 88, y: 82, group: 'ear'},
+        {x: 112, y: 82, group: 'ear'},
+        {x: 85, y: 88, group: 'ear'},
+        {x: 115, y: 88, group: 'ear'},
+        // Augen (blinzeln)
+        {x: 95, y: 98, group: 'eye'},
+        {x: 105, y: 98, group: 'eye'},
+        // Schnurrhaare
+        {x: 75, y: 105, group: 'whisker'},
+        {x: 70, y: 106, group: 'whisker'},
+        {x: 125, y: 105, group: 'whisker'},
+        {x: 130, y: 106, group: 'whisker'},
+        // Schwanz (gewickelt)
+        {x: 125, y: 145, group: 'tail'},
+        {x: 135, y: 140, group: 'tail'},
+        {x: 140, y: 135, group: 'tail'},
+        {x: 142, y: 145, group: 'tail'},
+        {x: 138, y: 150, group: 'tail'},
+        // Pfoten (sitzend)
+        {x: 88, y: 160, group: 'paw'},
+        {x: 112, y: 160, group: 'paw'},
+        {x: 92, y: 163, group: 'paw'},
+        {x: 108, y: 163, group: 'paw'}
+      ];
+      
+      sitShape.forEach(point => {
+        sitParticles.push({
+          x: point.x,
+          y: point.y,
+          targetX: point.x,
+          targetY: point.y,
+          baseX: point.x,
+          baseY: point.y,
+          vx: 0,
+          vy: 0,
+          group: point.group,
+          size: point.group === 'eye' ? 2.5 : (point.group === 'whisker' ? 1.2 : 1.8),
+          color: point.group === 'eye' ? '255,255,255' : (point.group === 'whisker' ? '200,200,200' : '168,195,255'),
+          blinkTimer: Math.random() * 200
+        });
+      });
+      
+      let sitTime = 0;
+      function animateSitting() {
+        sitCtx.clearRect(0, 0, 200, 200);
+        sitTime += 0.015;
+        
+        sitParticles.forEach((p, i) => {
+          // Sanfte Atmung
+          if (p.group === 'body') {
+            p.targetY = p.baseY + Math.sin(sitTime * 2 + i * 0.2) * 1.5;
+          } else if (p.group === 'head') {
+            p.targetY = p.baseY + Math.sin(sitTime * 2) * 2;
+          } else if (p.group === 'ear') {
+            p.targetX = p.baseX + Math.sin(sitTime + i) * 1;
+            p.targetY = p.baseY + Math.sin(sitTime * 2) * 2;
+          } else if (p.group === 'tail') {
+            p.targetX = p.baseX + Math.sin(sitTime * 1.5 + i * 0.5) * 3;
+            p.targetY = p.baseY + Math.cos(sitTime * 1.5 + i * 0.5) * 2;
+          } else if (p.group === 'eye') {
+            // Blinzeln
+            p.blinkTimer++;
+            if (p.blinkTimer > 180 && p.blinkTimer < 190) {
+              p.size = 0.5; // Augen zu
+            } else {
+              p.size = 2.5; // Augen auf
+            }
+            if (p.blinkTimer > 200) p.blinkTimer = 0;
+          } else if (p.group === 'whisker') {
+            p.targetX = p.baseX + Math.sin(sitTime * 3 + i) * 2;
+          }
+          
+          // Smooth movement
+          p.vx += (p.targetX - p.x) * 0.08;
+          p.vy += (p.targetY - p.y) * 0.08;
+          p.vx *= 0.88;
+          p.vy *= 0.88;
+          p.x += p.vx;
+          p.y += p.vy;
+          
+          // Draw
+          sitCtx.beginPath();
+          sitCtx.fillStyle = `rgba(${p.color}, 0.8)`;
+          sitCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          sitCtx.fill();
+          
+          // Glow für Augen
+          if (p.group === 'eye' && p.size > 1) {
+            sitCtx.beginPath();
+            sitCtx.fillStyle = `rgba(${p.color}, 0.3)`;
+            sitCtx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
+            sitCtx.fill();
+          }
+        });
+        
+        requestAnimationFrame(animateSitting);
+      }
+      
+      // Starte Animation wenn sichtbar
+      const sitObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateSitting();
+            sitObserver.unobserve(entry.target);
+          }
+        });
+      });
+      if (sittingCanvas) sitObserver.observe(sittingCanvas);
+    })();
   </script>
 
   <!-- 3D tilt effect for the LeonicAURA title and page reload fix -->
