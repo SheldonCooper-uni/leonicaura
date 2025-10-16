@@ -1165,6 +1165,74 @@
       background: linear-gradient(180deg, rgba(var(--color-accent),0.22), rgba(var(--color-cool),0.15));
       border-color: rgba(var(--color-cool),0.4);
     }
+
+    /*
+     * Mobile optimisations for the Kontakt section
+     *
+     * On small screens the default form styling results in overly tall
+     * inputs and generous vertical padding, which makes the contact
+     * section appear disproportionately long. To improve the user
+     * experience on phones we tighten up the vertical spacing and
+     * reduce the size of form controls while maintaining readability.
+     */
+    @media (max-width: 600px) {
+      /* Reduce top/bottom padding so the section consumes less vertical space */
+      #kontakt.section {
+        padding: 32px 5vw;
+      }
+
+      /* Shrink the contact heading and adjust spacing */
+      #kontakt .section-title {
+        font-size: clamp(22px, 6vw, 30px);
+        margin-bottom: 0.4em;
+      }
+
+      /* Reduce lead paragraph size and spacing */
+      #kontakt .lead {
+        font-size: 15px;
+        margin-bottom: 0.8em;
+        line-height: 1.4;
+      }
+
+      /* Make the form grid more compact */
+      #kontakt .contact-form {
+        gap: 10px;
+        max-width: 100%;
+      }
+      /* Reduce the bottom margin for each field wrapper */
+      #kontakt .field {
+        margin-bottom: 8px;
+      }
+
+      /* Smaller paddings and font sizes for inputs and textarea */
+      #kontakt .contact-form input,
+      #kontakt .contact-form textarea {
+        padding: 10px 12px;
+        font-size: 15px;
+        border-radius: 8px;
+      }
+
+      /* Limit the height of the message textarea regardless of rows */
+      #kontakt #message {
+        height: 110px;
+        max-height: 140px;
+      }
+
+      /* Compact styling for the submit button */
+      #kontakt .btn,
+      #kontakt #sendBtn {
+        padding: 10px 14px;
+        font-size: 15px;
+        border-radius: 10px;
+      }
+
+      /* Reduce spacing and font size of the contact info below the form */
+      #kontakt .contact-info {
+        margin-top: 12px;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+    }
   </style>
   <!-- Structured data for SEO -->
   <script type="application/ld+json">
