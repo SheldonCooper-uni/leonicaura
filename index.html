@@ -1078,6 +1078,18 @@
     .field {
       margin-bottom: 1em;
     }
+
+    /* Mobile optimization for contact form */
+    @media (max-width: 600px) {
+      /* Ensure the contact form doesn't overflow horizontally on small screens */
+      .contact-form {
+        max-width: 100%;
+      }
+      /* Allow the consent label to wrap within the available width */
+      .contact-form label.consent {
+        width: 100%;
+      }
+    }
     .field label {
       display: block;
       margin-bottom: 4px;
@@ -1166,8 +1178,6 @@
     "knowsLanguage": ["de","mk","sr","bs","hr"],
     "sameAs": []
   }
-    <link rel="icon" type="image/png" href="/favicon.png">
-<meta name="theme-color" content="#0f0f12">
   </script>
 </head>
 <body>
