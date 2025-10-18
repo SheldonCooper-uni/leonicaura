@@ -1315,41 +1315,6 @@
       transform: translateY(0) scale(1);
     }
     
-    /* Booking section mit KALENDER */
-    .booking-embed {
-      margin: 2em 0;
-      border-radius: 16px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      min-height: 600px;
-    }
-    
-    .booking-embed iframe {
-      width: 100%;
-      min-height: 600px;
-      border: none;
-    }
-    
-    .booking-note {
-      margin-top: 1em;
-      padding: 12px 16px;
-      background: rgba(var(--color-cool),0.1);
-      border-left: 3px solid rgba(var(--color-cool),0.5);
-      border-radius: 8px;
-      font-size: 14px;
-      opacity: 0.9;
-    }
-    
-    /* PREMIUM KALENDER STYLES */
-    #calendar-widget {
-      background: linear-gradient(135deg, rgba(var(--color-warm),0.05), rgba(var(--color-cool),0.05));
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 24px;
-      padding: 32px;
-      margin: 2em 0;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    }
     
     /* lux-trace + bubble-hover */
     .lux-trace { 
@@ -1414,8 +1379,54 @@
       
       .logo::after {
         right: -24px;
-      }
-    }
+      /* === MOBILE WIDTH FIX — REPLACE === */
+html, body {
+  width: 100%;
+  overflow-x: hidden !important;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img, video, canvas, svg {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+/* clip mögliche Übeltäter */
+.section,
+header,
+footer,
+.mobile-nav,
+.nebula-wrap,
+.nebula-parent,
+.floating-letters,  /* <- Container (wichtig) */
+.floating-letter,   /* einzelne Buchstaben */
+#leonic {
+  overflow-x: hidden !important; /* Fallback für Safari */
+  max-width: 100% !important;
+}
+
+/* kleine Screens */
+@media (max-width: 600px) {
+  .benefit-grid,
+  .pricing-grid,
+  .steps-grid,
+  .services-grid,
+  .course-grid,
+  .resources-grid,
+  .testimonials-grid,
+  .hours-grid {
+    overflow-x: hidden !important;
+  }
+
+  .about-photo {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+  }
+}
   </style>
 </head>
 <body>
@@ -1473,8 +1484,8 @@
 
     <!-- Intro Section -->
     <section id="intro" class="section reveal" data-title="Einleitung">
-      <h2 id="hero-headline"><span class="static">Deutsch</span><span class="dynamic">, das wirklich bleibt</span></h2>
-      <p class="subtitle">Individualisierter Online-Unterricht · Индивидуални онлајн часови</p>
+      <h2 id="hero-headline"><span class="static">Deutsch</span><span class="dynamic">, das </span></h2><span class="dynamic">wirklich bleibt</span></h2>
+      <p class="subtitle">Individualisierter Online-Unterricht · Individualni online časovi</p>
       <div class="cta-buttons">
         <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Probestunde buchen">Probestunde 16 € buchen</a>
         <a href="#preise" class="btn btn-secondary lux-trace bubble-hover" aria-label="Preise ansehen">Preise ansehen</a>
@@ -1878,19 +1889,6 @@
       </div>
     </section>
     
-    <!-- Buchen Section mit PREMIUM KALENDER -->
-    <section id="buchen" class="section reveal" data-title="Buchen">
-      <h2 class="section-title"><span>Jetzt</span>Termin buchen</h2>
-      <p class="lead">Wähle einen passenden Termin für deine erste Stunde.</p>
-      
-      <!-- PREMIUM KALENDER WIDGET -->
-      <div id="calendar-widget"></div>
-      
-      <div class="booking-note">
-        <strong>Hinweis:</strong> Nach dem Klick auf einen Termin wirst du zu WhatsApp weitergeleitet, um die Buchung zu bestätigen.
-      </div>
-    </section>
-    
     <!-- Kontakt Section -->
     <section id="kontakt" class="section reveal" data-title="Kontakt">
       <h2 class="section-title"><span>Kontakt</span>Schreib mir</h2>
@@ -1920,6 +1918,7 @@
         <p><strong>Alternative Kontaktmöglichkeiten:</strong></p>
         <p>📱 WhatsApp: <a href="https://wa.me/4917663005489" target="_blank">+49 176 63005489</a></p>
         <p>📧 E‑Mail: <a href="mailto:leon@leonicaura.de">leon@leonicaura.de</a></p>
+        <p>📸 Instagram: <a href="https://www.instagram.com/aicreativebitch" target="_blank" rel="noopener">@aicreativebitch</a></p>
       </div>
     </section>
     
@@ -2120,382 +2119,6 @@
       //   body: JSON.stringify(data)
       // });
     });
-    
-    // ====================================
-    // PREMIUM KALENDER - IMPLEMENTATION
-    // ====================================
-    
-    (function() {
-      const WA_PHONE = '4917663005489';
-      const TZ = 'Europe/Berlin';
-      const HOLD_MINUTES = 15;
-      
-      const SCHEDULE = {
-        1: [17,18,19,20,21,22], // Mo
-        2: [17,18,19,20,21,22], // Di
-        3: [17,18,19,20,21,22], // Mi
-        4: [17,18,19,20,21,22], // Do
-        5: [15,16,17,18,19,20,21,22], // Fr
-        6: [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22], // Sa
-        0: [6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]  // So
-      };
-      
-      const EXCEPTIONS = {};
-      
-      let selectedDuration = 60;
-      let currentView = 'week';
-      let weekOffset = 0;
-      
-      const container = document.getElementById('calendar-widget');
-      if (!container) return;
-      
-      // Create calendar HTML
-      container.innerHTML = `
-        <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:16px;">
-            <div style="display:flex;gap:8px;align-items:center;">
-              <button class="btn btn-secondary" data-nav="-1" style="padding:8px 16px;min-height:auto;">← Zurück</button>
-              <button class="btn btn-secondary" data-nav="0" style="padding:8px 16px;min-height:auto;">Heute</button>
-              <button class="btn btn-secondary" data-nav="1" style="padding:8px 16px;min-height:auto;">Vor →</button>
-            </div>
-            <div id="cal-title" style="font-weight:700;font-size:18px;color:rgba(var(--color-accent),1);"></div>
-            <div style="display:flex;gap:8px;">
-              <button class="btn btn-secondary active" data-view="week" style="padding:8px 16px;min-height:auto;">Woche</button>
-              <button class="btn btn-secondary" data-view="month" style="padding:8px 16px;min-height:auto;">Monat</button>
-            </div>
-          </div>
-          <div id="cal-content"></div>
-        </div>
-      `;
-      
-      // Helper functions
-      const load = () => JSON.parse(localStorage.getItem('cal_bookings') || '{}');
-      const save = (db) => localStorage.setItem('cal_bookings', JSON.stringify(db));
-      
-      const cleanup = () => {
-        const db = load();
-        const now = Date.now();
-        Object.keys(db).forEach(key => {
-          const rec = db[key];
-          if (rec.status === 'held' && rec.held_until <= now) {
-            delete db[key];
-          }
-        });
-        save(db);
-        return db;
-      };
-      
-      const ymd = (d) => d.toISOString().split('T')[0];
-      const dowNum = (d) => d.getDay();
-      const hoursForDow = (dow) => SCHEDULE[dow] || [];
-      
-      const isPastSlot = (date, hour) => {
-        const slot = new Date(date);
-        slot.setHours(hour, 0, 0, 0);
-        return slot < new Date();
-      };
-      
-      const deDate = (d) => {
-        const days = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
-        const months = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
-        return `${days[d.getDay()]}, ${d.getDate()}. ${months[d.getMonth()]} ${d.getFullYear()}`;
-      };
-      
-      // Render week view
-      const renderWeek = () => {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        
-        const monday = new Date(today);
-        monday.setDate(monday.getDate() - monday.getDay() + 1 + weekOffset * 7);
-        
-        const title = document.getElementById('cal-title');
-        const content = document.getElementById('cal-content');
-        
-        const endDay = new Date(monday);
-        endDay.setDate(endDay.getDate() + 6);
-        
-        title.textContent = `${deDate(monday)} – ${deDate(endDay)}`;
-        
-        const weekEl = document.createElement('div');
-        weekEl.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;';
-        
-        const db = cleanup();
-        
-        for (let i = 0; i < 7; i++) {
-          const d = new Date(monday);
-          d.setDate(d.getDate() + i);
-          
-          const dayEl = document.createElement('div');
-          dayEl.style.cssText = 'background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px;transition:all 0.3s ease;';
-          dayEl.addEventListener('mouseenter', () => {
-            dayEl.style.background = 'rgba(255,255,255,0.08)';
-            dayEl.style.borderColor = 'rgba(var(--color-accent),0.3)';
-            dayEl.style.transform = 'translateY(-2px)';
-          });
-          dayEl.addEventListener('mouseleave', () => {
-            dayEl.style.background = 'rgba(255,255,255,0.04)';
-            dayEl.style.borderColor = 'rgba(255,255,255,0.1)';
-            dayEl.style.transform = 'translateY(0)';
-          });
-          
-          const dayName = document.createElement('div');
-          dayName.style.cssText = 'font-weight:700;font-size:16px;color:rgba(var(--color-accent),1);margin-bottom:8px;';
-          dayName.textContent = deDate(d).split(',')[0];
-          dayEl.appendChild(dayName);
-          
-          const dayDate = document.createElement('div');
-          dayDate.style.cssText = 'font-size:13px;opacity:0.7;margin-bottom:12px;';
-          dayDate.textContent = `${d.getDate()}. ${['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'][d.getMonth()]}`;
-          dayEl.appendChild(dayDate);
-          
-          const dnum = dowNum(d);
-          const baseHours = hoursForDow(dnum);
-          const ex = EXCEPTIONS[ymd(d)] || [];
-          const hours = baseHours.filter(h => !ex.includes(h) && !isPastSlot(d, h));
-          
-          const slotsEl = document.createElement('div');
-          slotsEl.style.cssText = 'display:flex;flex-direction:column;gap:6px;';
-          
-          hours.forEach(h => {
-            const key = `${ymd(d)}_${h}`;
-            const rec = db[key];
-            
-            if (!rec || (rec.status === 'held' && rec.held_until <= Date.now())) {
-              const slotEl = document.createElement('a');
-              slotEl.href = '#';
-              slotEl.style.cssText = 'background:linear-gradient(135deg,rgba(var(--color-accent),0.15),rgba(var(--color-cool),0.12));border:1px solid rgba(var(--color-accent),0.3);border-radius:8px;padding:8px 12px;font-size:13px;font-weight:600;text-align:center;cursor:pointer;transition:all 0.2s ease;color:#fff;text-decoration:none;display:block;';
-              slotEl.textContent = String(h).padStart(2, '0') + ':00';
-              slotEl.dataset.ymd = ymd(d);
-              slotEl.dataset.hour = h;
-              
-              slotEl.addEventListener('mouseenter', () => {
-                slotEl.style.background = 'linear-gradient(135deg,rgba(var(--color-accent),0.3),rgba(var(--color-cool),0.2))';
-                slotEl.style.borderColor = 'rgba(var(--color-accent),0.5)';
-                slotEl.style.transform = 'scale(1.05)';
-              });
-              slotEl.addEventListener('mouseleave', () => {
-                slotEl.style.background = 'linear-gradient(135deg,rgba(var(--color-accent),0.15),rgba(var(--color-cool),0.12))';
-                slotEl.style.borderColor = 'rgba(var(--color-accent),0.3)';
-                slotEl.style.transform = 'scale(1)';
-              });
-              
-              slotEl.addEventListener('click', (e) => {
-                e.preventDefault();
-                handleSlotClick(slotEl, d);
-              });
-              
-              slotsEl.appendChild(slotEl);
-            }
-          });
-          
-          if (hours.length === 0) {
-            const noSlots = document.createElement('div');
-            noSlots.style.cssText = 'opacity:0.5;font-size:12px;text-align:center;';
-            noSlots.textContent = 'Keine Slots';
-            slotsEl.appendChild(noSlots);
-          }
-          
-          dayEl.appendChild(slotsEl);
-          weekEl.appendChild(dayEl);
-        }
-        
-        content.innerHTML = '';
-        content.appendChild(weekEl);
-      };
-      
-      // Render month view
-      const renderMonth = () => {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        
-        const displayDate = new Date(today);
-        displayDate.setMonth(displayDate.getMonth() + weekOffset);
-        displayDate.setDate(1);
-        
-        const title = document.getElementById('cal-title');
-        const content = document.getElementById('cal-content');
-        
-        const months = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
-        title.textContent = `${months[displayDate.getMonth()]} ${displayDate.getFullYear()}`;
-        
-        const monthEl = document.createElement('div');
-        monthEl.style.cssText = 'display:grid;grid-template-columns:repeat(7,1fr);gap:8px;';
-        
-        ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'].forEach(day => {
-          const header = document.createElement('div');
-          header.style.cssText = 'text-align:center;font-weight:700;padding:8px;color:rgba(var(--color-cool),1);';
-          header.textContent = day;
-          monthEl.appendChild(header);
-        });
-        
-        const firstDay = new Date(displayDate.getFullYear(), displayDate.getMonth(), 1);
-        const lastDay = new Date(displayDate.getFullYear(), displayDate.getMonth() + 1, 0);
-        
-        let dayOfWeek = firstDay.getDay();
-        if (dayOfWeek === 0) dayOfWeek = 7;
-        dayOfWeek -= 1;
-        
-        for (let i = 0; i < dayOfWeek; i++) {
-          const emptyEl = document.createElement('div');
-          monthEl.appendChild(emptyEl);
-        }
-        
-        const db = cleanup();
-        
-        for (let day = 1; day <= lastDay.getDate(); day++) {
-          const d = new Date(displayDate.getFullYear(), displayDate.getMonth(), day);
-          const dayEl = document.createElement('div');
-          dayEl.style.cssText = 'background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px;min-height:80px;transition:all 0.3s ease;';
-          
-          if (ymd(d) === ymd(today)) {
-            dayEl.style.borderColor = 'rgba(var(--color-accent),0.5)';
-            dayEl.style.background = 'rgba(var(--color-accent),0.08)';
-          }
-          
-          dayEl.addEventListener('mouseenter', () => {
-            dayEl.style.background = 'rgba(255,255,255,0.08)';
-            dayEl.style.borderColor = 'rgba(var(--color-accent),0.3)';
-          });
-          dayEl.addEventListener('mouseleave', () => {
-            if (ymd(d) === ymd(today)) {
-              dayEl.style.background = 'rgba(var(--color-accent),0.08)';
-              dayEl.style.borderColor = 'rgba(var(--color-accent),0.5)';
-            } else {
-              dayEl.style.background = 'rgba(255,255,255,0.04)';
-              dayEl.style.borderColor = 'rgba(255,255,255,0.1)';
-            }
-          });
-          
-          const numberEl = document.createElement('div');
-          numberEl.style.cssText = 'font-weight:700;margin-bottom:4px;';
-          numberEl.textContent = day;
-          dayEl.appendChild(numberEl);
-          
-          const dnum = dowNum(d);
-          const baseHours = hoursForDow(dnum);
-          const ex = EXCEPTIONS[ymd(d)] || [];
-          const hours = baseHours.filter(h => !ex.includes(h) && !isPastSlot(d, h));
-          
-          if (hours.length > 0) {
-            const slotsEl = document.createElement('div');
-            slotsEl.style.cssText = 'font-size:10px;opacity:0.8;';
-            
-            const displayCount = Math.min(3, hours.length);
-            for (let i = 0; i < displayCount; i++) {
-              const h = hours[i];
-              const key = `${ymd(d)}_${h}`;
-              const rec = db[key];
-              
-              if (!rec || (rec.status === 'held' && rec.held_until <= Date.now())) {
-                const slotSpan = document.createElement('div');
-                slotSpan.style.cssText = 'background:rgba(var(--color-accent),0.2);padding:2px 4px;border-radius:4px;margin:2px 0;';
-                slotSpan.textContent = String(h).padStart(2, '0') + ':00';
-                slotsEl.appendChild(slotSpan);
-              }
-            }
-            
-            if (hours.length > displayCount) {
-              const more = document.createElement('div');
-              more.style.cssText = 'opacity:0.6;margin-top:2px;';
-              more.textContent = `+${hours.length - displayCount} mehr`;
-              slotsEl.appendChild(more);
-            }
-            
-            dayEl.appendChild(slotsEl);
-          }
-          
-          monthEl.appendChild(dayEl);
-        }
-        
-        content.innerHTML = '';
-        content.appendChild(monthEl);
-      };
-      
-      // Render
-      const render = () => {
-        if (currentView === 'week') {
-          renderWeek();
-        } else {
-          renderMonth();
-        }
-      };
-      
-      // Handle slot click
-      const handleSlotClick = (slotEl, date) => {
-        const key = `${slotEl.dataset.ymd}_${slotEl.dataset.hour}`;
-        const db2 = load();
-        
-        if (db2[key] && (db2[key].status === 'confirmed' || 
-            (db2[key].status === 'held' && db2[key].held_until > Date.now()))) {
-          alert('❌ Dieser Slot ist bereits belegt');
-          render();
-          return;
-        }
-        
-        const id = Date.now().toString();
-        const held_until = Date.now() + HOLD_MINUTES * 60 * 1000;
-        
-        db2[key] = {
-          id,
-          ymd: slotEl.dataset.ymd,
-          hour: Number(slotEl.dataset.hour),
-          status: 'held',
-          held_until,
-          created_at: Date.now(),
-          duration: selectedDuration
-        };
-        
-        save(db2);
-        render();
-        
-        const msg = encodeURIComponent(
-          `Hallo Leon, ich möchte einen Termin buchen:\n\n` +
-          `📅 Datum: ${deDate(date)}\n` +
-          `⏰ Zeit: ${String(slotEl.dataset.hour).padStart(2, '0')}:00 Uhr\n` +
-          `⏱️ Dauer: ${selectedDuration} Minuten\n\n` +
-          `Name:\nLevel:\nThema:`
-        );
-        
-        const url = `https://wa.me/${WA_PHONE}?text=${msg}`;
-        window.open(url, '_blank', 'noopener');
-      };
-      
-      // Event listeners
-      container.querySelectorAll('[data-nav]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const nav = Number(btn.dataset.nav);
-          if (nav === 0) {
-            weekOffset = 0;
-          } else {
-            weekOffset += nav;
-          }
-          render();
-        });
-      });
-      
-      container.querySelectorAll('[data-view]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          container.querySelectorAll('[data-view]').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          currentView = btn.dataset.view;
-          weekOffset = 0;
-          render();
-        });
-      });
-      
-      // Cleanup interval
-      setInterval(() => {
-        const before = JSON.stringify(load());
-        cleanup();
-        if (before !== JSON.stringify(load())) {
-          render();
-        }
-      }, 30000);
-      
-      // Initial render
-      render();
-    })();
   </script>
 </body>
 </html>
