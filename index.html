@@ -1467,86 +1467,53 @@ footer,
   overflow-wrap: anywhere;
   word-break: break-word;
 }
-        /* === GOLDENER, ANIMIERTER RAHMEN FÜR DAS ABOUT-FOTO === */
-
-/* Container übernimmt die gleiche "Blob"-Form wie das Bild,
-   damit der Rahmen exakt mitmorpht */
-.about-photo.gold-frame {
-  position: relative;
-  display: inline-block;
+ /* === Goldener, animierter Rahmen fürs About-Foto === */
+.about-photo.gold-frame{
+  /* gleiche Form/Animation wie das Bild, damit der Rand mitmorpht */
   border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
   animation: morphBlob 8s ease-in-out infinite;
 }
 
-/* Bild: Standardrahmen aus, damit nur der goldene Rand sichtbar ist */
-.about-photo.gold-frame img {
-  border-color: transparent !important;
-  z-index: 1;
-  position: relative;
-}
-
-/* Goldener Rand (Conic-Gradient), der ständig "läuft" */
-.about-photo.gold-frame::before {
-  content: "";
-  position: absolute;
-  inset: -6px;                 /* Randstärke */
-  border-radius: inherit;
-  padding: 3px;                 /* Dicke des Rahmens */
-  background: conic-gradient(
-    from 0deg,
-    #f7d98b, #f0b567, #f7d98b
-  );
-  /* Nur den Rand zeigen (Loch in der Mitte) */
+.about-photo.gold-frame::before{
+  content:"";
+  position:absolute;
+  inset:-6px;              /* Randstärke nach außen */
+  border-radius:inherit;
+  padding:3px;             /* Dicke des goldenen Rings */
+  background:conic-gradient(#f7d98b,#f0b567,#f7d98b);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
-  mask-composite: exclude;
-
-  box-shadow: 0 10px 28px rgba(247,217,139,.22);
-  animation: goldSweep 4s linear infinite;
-  pointer-events: none;
+  mask-composite: exclude; /* zeigt nur den Rahmen */
+  box-shadow:0 10px 28px rgba(247,217,139,.22);
+  pointer-events:none;
+  animation:goldSweep 4s linear infinite;
 }
 
-/* "Blitz"-Sweep (helle Linie), die diagonal über den Rahmen fährt */
-.about-photo.gold-frame::after {
-  content: "";
-  position: absolute;
-  inset: -8px;
-  border-radius: inherit;
-  background: linear-gradient(115deg,
-    transparent 35%,
-    rgba(255,255,255,.9) 50%,
-    transparent 65%
-  );
-  filter: blur(2px);
-  opacity: 0;
-  pointer-events: none;
-  animation: bolt 3.6s ease-in-out infinite;
+.about-photo.gold-frame::after{
+  content:"";
+  position:absolute;
+  inset:-8px;
+  border-radius:inherit;
+  background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.9) 50%,transparent 65%);
+  filter:blur(2px);
+  opacity:0;
+  pointer-events:none;
+  animation:bolt 3.6s ease-in-out infinite;
 }
 
-/* Conic-Gradient dreht sich (goldener Rand "läuft") */
-@keyframes goldSweep {
-  to {
-    background: conic-gradient(
-      from 360deg,
-      #f7d98b, #f0b567, #f7d98b
-    );
-  }
+/* Dreh-Animation des conic-Verlaufs */
+@keyframes goldSweep{
+  to{ background:conic-gradient(from 360deg,#f7d98b,#f0b567,#f7d98b); }
 }
 
-/* Der "Blitz" fährt kurz durch und verschwindet */
-@keyframes bolt {
-  0%   { opacity: 0; transform: translateX(-120%) rotate(8deg); }
-  8%   { opacity: .85; }
-  20%  { opacity: 0;  transform: translateX(120%)  rotate(8deg); }
-  100% { opacity: 0;  transform: translateX(120%)  rotate(8deg); }
+/* kurzer „Blitz“, der über den Rand wischt */
+@keyframes bolt{
+  0%   { opacity:0; transform:translateX(-120%) rotate(8deg); }
+  8%   { opacity:.85; }
+  20%  { opacity:0;  transform:translateX(120%)  rotate(8deg); }
+  100% { opacity:0;  transform:translateX(120%)  rotate(8deg); }
 }
 
-/* Optional: nur bei Hover animieren (statt immer)
-.about-photo.gold-frame::before { animation-play-state: paused; }
-.about-photo.gold-frame::after  { animation-play-state: paused; }
-.about-photo.gold-frame:hover::before,
-.about-photo.gold-frame:hover::after { animation-play-state: running; }
-*/
   </style>
 </head>
 <body>
