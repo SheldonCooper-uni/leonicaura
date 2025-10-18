@@ -1182,17 +1182,24 @@
       cursor: not-allowed;
     }
     
-    .contact-form label.consent {
-      display: flex;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 8px;
-      width: max-content;
-      justify-self: start;
-      font-size: 14px;
-      margin-top: 8px;
-      margin-left: 0;
-    }
+    /* fix: consent-zeile bricht um, kein overflow */
+.contact-form label.consent{
+  display: grid;
+  grid-template-columns: auto 1fr; /* ☑ | Text */
+  align-items: start;
+  gap: 8px;
+  width: 100%;           /* vorher: max-content  ← Problem */
+  max-width: 100%;
+  font-size: 14px;
+  margin-top: 8px;
+  margin-left: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+.contact-form label.consent > input[type="checkbox"]{ grid-column: 1; margin-top: 2px; }
+.contact-form label.consent > span{ grid-column: 2; display: block; }
     
     .contact-form label.consent input[type="checkbox"] {
       margin-left: 0;
