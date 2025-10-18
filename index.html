@@ -1484,7 +1484,10 @@ footer,
 
     <!-- Intro Section -->
     <section id="intro" class="section reveal" data-title="Einleitung">
-      <h2 id="hero-headline"><span class="static">Deutsch</span><span class="dynamic">, das </span></h2><span class="dynamic">wirklich bleibt</span></h2>
+     <h2 id="hero-headline">
+  <span class="static">Deutsch</span><span class="dynamic">, das wirklich bleibt</span>
+</h2>
+
       <p class="subtitle">Individualisierter Online-Unterricht · Individualni online časovi</p>
       <div class="cta-buttons">
         <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Probestunde buchen">Probestunde 16 € buchen</a>
@@ -1957,7 +1960,7 @@ footer,
       
       <p><strong>Kontakt:</strong><br>
       Telefon: +49 176 63005489<br>
-      E‑Mail: leon@leonicaura.de</p>
+      E‑Mail: infoleonicaura@gmail.com</p>
       
       <h3>Haftungsausschluss</h3>
       
@@ -2119,6 +2122,39 @@ footer,
       //   body: JSON.stringify(data)
       // });
     });
+    <script>
+  // --- Routing-Fix für alle Buttons/Links ---
+  (function () {
+    // 1) Alles, was explizit auf #buchen zeigt -> #kontakt
+    document.querySelectorAll('a[href="#buchen"]').forEach(a => {
+      a.setAttribute('href', '#kontakt');
+      // aria-labels hübsch halten
+      const l = a.getAttribute('aria-label') || '';
+      if (l.toLowerCase().includes('buchen')) a.setAttribute('aria-label', l.replace(/buchen/i, 'Kontakt'));
+    });
+
+    // 2) Alle Button-Links anhand des Textes routen
+    document.querySelectorAll('a.btn, nav a, .mobile-nav a').forEach(a => {
+      const txt = (a.textContent || '').toLowerCase();
+
+      // „buchen“ -> Kontakt
+      if (txt.includes('buchen')) {
+        a.setAttribute('href', '#kontakt');
+      }
+
+      // „preis“/„preise“/„preisliste“ -> Preise
+      if (/(preis|preise|preisliste)/i.test(a.textContent || '')) {
+        a.setAttribute('href', '#preise');
+      }
+    });
+
+    // 3) Safety: Falls irgendwo noch ein leeres/„#“-Link ist, schick’s zu Kontakt
+    document.querySelectorAll('a[href="#"], a:not([href])').forEach(a => {
+      a.setAttribute('href', '#kontakt');
+    });
+  })();
+</script>
+
   </script>
 </body>
 </html>
