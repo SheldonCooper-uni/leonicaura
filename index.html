@@ -9,25 +9,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Decorative script font for the hero brand --><!-- Favicon / PWA icons -->
+  
   <!-- Favicon / PWA icons -->
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#0f0f12">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0f0f12">
+  
   <style>
     :root {
       --bg: #0f0f12;
       --color-warm: 232,214,188;
       --color-cool: 168,195,255;
       --color-accent: 255,140,180;
-      /* Additional variables used by the hero nebula script */
       --glow-core: var(--color-warm);
       --glow-cool: var(--color-cool);
     }
+    
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+    
     body {
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       background-color: var(--bg);
@@ -35,6 +37,7 @@
       line-height: 1.55;
       overflow-x: hidden;
     }
+    
     /* Header */
     header {
       position: fixed;
@@ -47,11 +50,18 @@
       justify-content: space-between;
       padding: 0 20px;
       background: rgba(15,15,18,0.7);
-      backdrop-filter: blur(8px);
       z-index: 100;
       transition: background 0.3s ease;
     }
+    
+    @supports (backdrop-filter: blur(8px)) {
+      header {
+        backdrop-filter: blur(8px);
+      }
+    }
+    
     header.scrolled { background: rgba(15,15,18,0.9); }
+    
     .logo {
       font-family: 'Inter', sans-serif;
       font-weight: 800;
@@ -59,11 +69,13 @@
       letter-spacing: 0.04em;
       color: #fff;
     }
+    
     nav {
       display: flex;
       align-items: center;
       gap: 24px;
     }
+    
     nav a {
       color: #f2f2f4;
       text-decoration: none;
@@ -73,20 +85,18 @@
       padding: 6px 4px;
       transition: color 0.3s;
     }
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 2px;
-      width: 0;
-      background: rgba(var(--color-accent),1);
-      transition: width 0.3s;
-    }
+    
     nav a:hover, nav a:focus {
       color: rgba(var(--color-accent),1);
+      outline: none;
     }
-    nav a:hover::after, nav a:focus::after { width: 100%; }
+    
+    nav a:focus-visible {
+      outline: 2px solid rgba(var(--color-accent),0.5);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+    
     /* Burger Menu */
     .burger {
       display: none;
@@ -94,20 +104,24 @@
       justify-content: center;
       cursor: pointer;
       gap: 4px;
+      padding: 8px;
+      background: none;
+      border: none;
     }
+    
     .burger span {
       width: 24px;
       height: 2px;
       background: #f2f2f4;
       transition: transform 0.3s, opacity 0.3s;
     }
+    
     .mobile-nav {
       position: fixed;
       top: 64px;
       left: 0;
       right: 0;
       background: rgba(15,15,18,0.98);
-      backdrop-filter: blur(20px) saturate(180%);
       transform: translateY(-100%);
       transition: transform 0.4s ease;
       display: flex;
@@ -118,7 +132,15 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.4);
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
+    
+    @supports (backdrop-filter: blur(20px)) {
+      .mobile-nav {
+        backdrop-filter: blur(20px) saturate(180%);
+      }
+    }
+    
     .mobile-nav.open { transform: translateY(0); }
+    
     .mobile-nav a {
       color: #f2f2f4;
       text-decoration: none;
@@ -130,29 +152,33 @@
       border: 1px solid rgba(255,255,255,0.08);
       transition: all 0.3s ease;
     }
+    
     .mobile-nav a:hover {
       background: rgba(255,255,255,0.1);
       border-color: rgba(var(--color-accent),0.4);
       transform: translateX(8px);
     }
+    
     @media (max-width: 768px) {
       nav { display: none; }
       .burger { display: flex; }
     }
-    /* Cosmic Nebula background (hero) */
+    
+    /* Nebula background */
     .nebula-parent {
       position: fixed;
       inset: 0;
       z-index: -1;
       pointer-events: none;
     }
-    /* When the nebula background is nested within the hero section, position it relative to hero */
+    
     #hero .nebula-parent {
       position: absolute;
       inset: 0;
       z-index: -1;
       pointer-events: none;
     }
+    
     .nebula-wrap {
       position: absolute;
       inset: 0;
@@ -162,6 +188,7 @@
                   var(--bg);
       transition: transform 0.1s linear;
     }
+    
     .nebula-wrap::after {
       content: "";
       position: absolute;
@@ -169,6 +196,7 @@
       background: radial-gradient(120% 60% at 60% 0%, rgba(var(--color-warm),0.07), transparent 60%);
       filter: blur(12px);
     }
+    
     #leonic {
       position: absolute;
       inset: 0;
@@ -177,7 +205,7 @@
       pointer-events: none;
       transition: opacity 0.6s ease;
     }
-    /* Hide nebula canvas via JS fade-out on leaving hero */
+    
     @media (prefers-reduced-motion: reduce) {
       #leonic {
         display: none;
@@ -187,15 +215,22 @@
         transform: none !important;
         transition: none !important;
       }
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
     }
-    /* General section styling */
+    
+    /* Section styling */
     .section {
       position: relative;
       padding: clamp(60px, 10vw, 120px) 5vw;
       max-width: 1400px;
       margin: 0 auto;
     }
+    
     .section:not(:first-child) { border-top: 1px solid rgba(255,255,255,0.05); }
+    
     .section-title {
       font-family: 'Lora', serif;
       font-weight: 700;
@@ -203,6 +238,7 @@
       margin-bottom: 0.4em;
       position: relative;
     }
+    
     .section-title span {
       display: block;
       font-size: clamp(14px, 2vw, 20px);
@@ -212,27 +248,13 @@
       color: rgba(var(--color-cool),0.8);
       margin-bottom: 4px;
     }
+    
     .lead {
       font-size: clamp(16px, 2.2vw, 22px);
       opacity: 0.85;
       margin-bottom: 1.2em;
     }
-    /* Text reveal animation for leads */
-    .lead.animating {
-      opacity: 1;
-    }
-    .lead.animating span {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(10px);
-      animation: revealChar 0.4s ease forwards;
-    }
-    @keyframes revealChar {
-      to {
-        opacity: 0.85;
-        transform: translateY(0);
-      }
-    }
+    
     /* Hero */
     #hero {
       display: flex;
@@ -240,274 +262,328 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
+      position: relative;
+      padding: clamp(120px, 15vh, 180px) 5vw clamp(80px, 12vh, 140px);
+    }
+    
+    .full-screen-explosion {
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    
+    .explosion-center {
+      position: relative;
+      z-index: 5;
       text-align: center;
+    }
+    
+    .explosion-title {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: clamp(42px, 9vw, 120px);
+      line-height: 1;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+      margin: 0;
+      text-shadow: 0 6px 32px rgba(0,0,0,0.4),
+                   0 0 80px rgba(var(--color-warm),0.3);
+      transition: transform 0.3s ease;
+    }
+    
+    /* Hero headline */
+    #hero-headline {
+      font-family: 'Lora', serif;
+      font-size: clamp(32px, 6vw, 72px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 0.3em;
+    }
+    
+    #hero-headline .static {
+      display: inline;
+    }
+    
+    #hero-headline .dynamic {
+      display: inline;
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+    }
+    
+    #hero-headline.active .dynamic {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .subtitle {
+      font-size: clamp(16px, 2.5vw, 24px);
+      opacity: 0.8;
+      margin-bottom: 1.5em;
+      font-weight: 400;
+    }
+    
+    /* CTA buttons */
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 1.5em;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 2px solid transparent;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, rgba(var(--color-accent),1), rgba(var(--color-cool),0.8));
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(var(--color-accent),0.4);
+    }
+    
+    .btn-primary:hover {
+      box-shadow: 0 6px 30px rgba(var(--color-accent),0.6);
+      transform: translateY(-3px);
+    }
+    
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border-color: rgba(var(--color-cool),0.4);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: rgba(var(--color-cool),0.6);
+      transform: translateY(-3px);
+    }
+    
+    .mini-info {
+      font-size: clamp(12px, 1.5vw, 16px);
+      opacity: 0.7;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    /* Benefit cards */
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 2em;
+    }
+    
+    .benefit-item {
+      padding: 32px 24px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(var(--color-warm),0.08), rgba(var(--color-cool),0.06));
+      border: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .benefit-item:hover {
+      transform: translateY(-8px);
+      background: linear-gradient(135deg, rgba(var(--color-warm),0.15), rgba(var(--color-cool),0.12));
+      border-color: rgba(var(--color-cool),0.3);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    
+    .benefit-icon {
+      display: block;
+      margin: 0 auto 16px;
+      color: rgba(var(--color-accent),1);
+      width: 48px;
+      height: 48px;
+    }
+    
+    .benefit-title {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: rgba(var(--color-accent),1);
+    }
+    
+    .benefit-desc {
+      font-size: 15px;
+      line-height: 1.6;
+      opacity: 0.85;
+    }
+    
+    /* Pricing cards */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 2em;
+    }
+    
+    .pricing-card {
+      padding: 36px 24px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(var(--color-accent),0.15), rgba(var(--color-cool),0.1));
+      border: 1px solid rgba(var(--color-accent),0.25);
+      text-align: center;
+      transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      background: linear-gradient(180deg, rgba(var(--color-accent),0.25), rgba(var(--color-cool),0.15));
+      border-color: rgba(var(--color-cool),0.4);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    
+    .pricing-title {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: 24px;
+      margin-bottom: 16px;
       color: #fff;
     }
-
-    /* Explosion section overrides */
-    #hero.full-screen-explosion {
-      padding: 0;
-      margin: 0;
-      max-width: none;
-      width: 100%;
-      height: 100vh;
+    
+    .pricing-price {
+      font-size: 40px;
+      font-weight: 800;
+      color: rgba(var(--color-accent),1);
+      margin-bottom: 12px;
+      line-height: 1;
     }
-
-    #hero.full-screen-explosion .explosion-center {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+    
+    .pricing-desc {
+      font-size: 14px;
+      line-height: 1.5;
+      opacity: 0.85;
+      margin-bottom: 24px;
+    }
+    
+    /* Steps */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 2em;
+    }
+    
+    .step-item {
+      padding: 28px 20px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(var(--color-warm),0.1), rgba(var(--color-cool),0.08));
+      border: 1px solid rgba(255,255,255,0.15);
+      text-align: center;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    
+    .step-item:hover {
+      transform: translateY(-6px);
+      background: linear-gradient(135deg, rgba(var(--color-warm),0.18), rgba(var(--color-cool),0.12));
+    }
+    
+    .step-num {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      z-index: 2;
-      pointer-events: none;
-      /* Provide a 3D perspective so the title can tilt when the cursor moves */
-      perspective: 800px;
-    }
-
-    #hero.full-screen-explosion .explosion-title {
-      font-family: 'Inter', sans-serif;
-      font-weight: 800;
-      font-size: clamp(40px, 10vw, 120px);
-      color: #f5f5f7;
-      letter-spacing: 0.02em;
-    }
-
-
-    /* Ensure pricing cards stretch and align their buttons consistently */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-      gap: 20px;
-      margin-top: 1.5em;
-    }
-
-    .pricing-card {
-      padding: 24px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: transform 0.3s, background 0.3s;
-      /* Make cards flex containers so content pushes button to bottom */
-      display: flex;
-      flex-direction: column;
-    }
-
-    .pricing-card a.btn {
-      margin-top: auto;
-    }
-    /* Hero headline: split into static and animated parts */
-    #hero h1 {
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(var(--color-accent),0.3), rgba(var(--color-cool),0.3));
+      border: 2px solid rgba(255,255,255,0.2);
       font-family: 'Lora', serif;
       font-weight: 700;
-      font-size: clamp(32px, 7vw, 72px);
-      line-height: 1.1;
-      letter-spacing: 0.015em;
-      margin-bottom: 0.4em;
-      overflow: hidden;
-    }
-    #hero h1 .static {
-      display: inline-block;
-    }
-    #hero h1 .dynamic {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(-20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    #hero h1.active .dynamic {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* Hero subtitle */
-    #hero p.subtitle {
-      font-size: clamp(18px, 3vw, 26px);
-      font-weight: 400;
-      /* Increase contrast for better readability on dark backgrounds */
-      color: #e8eaf0;
-      line-height: 1.5;
-      margin-bottom: 1.6em;
-    }
-    #hero .cta-buttons {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 1em;
-    }
-
-    /* Ensure call-to-action buttons in the intro section are spaced and aligned
-       properly. Without this, the buttons overlap the subtitle in the intro.
-       We mirror the flex layout used in the hero but left‑align the buttons
-       so they sit naturally under the tagline. */
-    #intro .cta-buttons {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      margin-top: 1.2em;
-      margin-bottom: 1em;
-    }
-    .btn {
-      cursor: pointer;
-      appearance: none;
-      border: none;
-      border-radius: 14px;
-      padding: 14px 24px;
-      font-weight: 600;
-      font-size: 14px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      position: relative;
-      overflow: hidden;
-      /* Remove default underline on anchors styled as buttons */
-      text-decoration: none;
-    }
-    .btn-primary {
-      background: rgba(var(--color-accent),1);
-      color: #0f0f12;
-    }
-    .btn-secondary {
-      background: rgba(255,255,255,0.05);
+      font-size: 28px;
       color: #fff;
-      border: 1px solid rgba(255,255,255,0.2);
     }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-    .mini-info {
-      font-size: 14px;
-      opacity: 0.75;
-    }
-    .mini-info span {
-      margin: 0 8px;
-    }
-    /* Nutzen (Benefits) */
-    .benefit-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-      gap: 24px;
-    }
-    .benefit-item {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 24px;
-      transition: transform 0.3s, background 0.3s;
-    }
-    .benefit-item:hover {
-      transform: translateY(-4px);
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(var(--color-cool),0.4);
-    }
-    .benefit-icon {
-      font-size: 36px;
-      margin-bottom: 12px;
-      display: block;
-    }
-    .benefit-title {
+    
+    .step-title {
+      font-family: 'Lora', serif;
       font-weight: 700;
-      font-size: 20px;
-      margin-bottom: 6px;
-      color: rgba(var(--color-accent),1);
-    }
-    .benefit-desc {
-      font-size: 14px;
-      opacity: 0.85;
-    }
-    /* Preise */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-      gap: 20px;
-      margin-top: 1.5em;
-    }
-    .pricing-card {
-      padding: 24px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: transform 0.3s, background 0.3s;
-    }
-    .pricing-card:hover {
-      transform: translateY(-4px);
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(var(--color-cool),0.3);
-    }
-    .pricing-title {
-      font-weight: 700;
-      font-size: 20px;
-      margin-bottom: 4px;
-    }
-    .pricing-price {
-      font-size: 22px;
-      font-weight: 700;
-      color: rgba(var(--color-accent),1);
-      margin-bottom: 6px;
-    }
-    .pricing-desc {
-      font-size: 14px;
-      opacity: 0.85;
-      margin-bottom: 12px;
-    }
-    /* Ablauf */
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-      gap: 20px;
-      margin-top: 1.5em;
-    }
-    .step-item {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 20px;
-      transition: background 0.3s, transform 0.3s;
-    }
-    .step-item:hover {
-      background: rgba(255,255,255,0.08);
-      transform: translateY(-4px);
-      border-color: rgba(var(--color-cool),0.4);
-    }
-    .step-num {
-      font-size: 32px;
-      font-weight: 800;
+      font-size: 18px;
       margin-bottom: 8px;
       color: rgba(var(--color-accent),1);
     }
-    .step-title {
-      font-weight: 700;
-      font-size: 18px;
-      margin-bottom: 4px;
-    }
+    
     .step-desc {
       font-size: 14px;
+      line-height: 1.5;
       opacity: 0.85;
     }
-    /* About */
-    #about {
-      overflow: hidden;
+    
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 2em;
     }
+    
+    .service-item {
+      padding: 28px 24px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(var(--color-cool),0.1), rgba(var(--color-warm),0.08));
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    
+    .service-item:hover {
+      transform: translateY(-6px);
+      background: linear-gradient(135deg, rgba(var(--color-cool),0.15), rgba(var(--color-warm),0.12));
+    }
+    
+    .service-title {
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: rgba(var(--color-accent),1);
+    }
+    
+    .service-desc {
+      font-size: 14px;
+      line-height: 1.6;
+      opacity: 0.85;
+    }
+    
+    /* About section */
     .about-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 40px;
-      align-items: center;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(8px);
+      gap: 32px;
+      margin-top: 2em;
+      padding: 36px;
       border-radius: 24px;
-      padding: 32px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
     }
+    
+    @supports (backdrop-filter: blur(8px)) {
+      .about-container {
+        backdrop-filter: blur(8px);
+      }
+    }
+    
     .about-photo {
       position: relative;
       flex: 0 0 240px;
       max-width: 280px;
     }
+    
     .about-photo img {
       width: 100%;
       height: auto;
@@ -518,9 +594,11 @@
       animation: morphBlob 8s ease-in-out infinite;
       transition: transform 0.3s ease;
     }
+    
     .about-photo img:hover {
       transform: scale(1.05);
     }
+    
     @keyframes morphBlob {
       0%, 100% {
         border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
@@ -535,41 +613,23 @@
         border-radius: 58% 42% 55% 45% / 48% 70% 30% 52%;
       }
     }
-    .about-photo .wing {
-      position: absolute;
-      top: 0;
-      width: 200%;
-      height: 120%;
-      background-size: cover;
-      background-position: center;
-      opacity: 0.22;
-      filter: blur(6px);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .about-photo .wing.left {
-      left: -70%;
-      transform: scaleX(-1) rotate(-18deg);
-      background-image: url('20251013_1631_Farbnebel%20ohne%20Figuren_remix_01k7ezkcnqezhvgyzw6y3e98sj.png');
-    }
-    .about-photo .wing.right {
-      right: -70%;
-      transform: rotate(18deg);
-      background-image: url('20251013_1631_Farbnebel%20ohne%20Figuren_remix_01k7ezkcnqezhvgyzw6y3e98sj.png');
-    }
+    
     .about-content {
       flex: 1 1 420px;
     }
+    
     .about-content p {
       margin-bottom: 1em;
       font-size: clamp(16px, 2vw, 20px);
       opacity: 0.9;
     }
+    
     .about-content ul {
       list-style: none;
       padding-left: 0;
       margin-bottom: 1em;
     }
+    
     .about-content ul li {
       position: relative;
       padding-left: 28px;
@@ -577,6 +637,7 @@
       font-size: clamp(16px,2vw,20px);
       line-height: 1.4;
     }
+    
     .about-content ul li::before {
       content: '•';
       position: absolute;
@@ -586,191 +647,16 @@
       font-size: 24px;
       line-height: 1;
     }
-    #about-canvas {
-      position: absolute;
-      /* Full-width starfield centered relative to viewport */
-      top: 0;
-      bottom: 0;
-      width: 100vw;
-      height: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: -1;
-      pointer-events: none;
-    }
-    /* Leistungen */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-      gap: 20px;
-      margin-top: 1.5em;
-    }
-    .service-item {
-      padding: 20px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      transition: background 0.3s, transform 0.3s;
-    }
-    .service-item:hover {
-      background: rgba(255,255,255,0.08);
-      transform: translateY(-4px);
-      border-color: rgba(var(--color-cool),0.4);
-    }
-    .service-title {
-      font-weight: 700;
-      font-size: 18px;
-      margin-bottom: 6px;
-      color: rgba(var(--color-accent),1);
-    }
-    .service-desc {
-      font-size: 14px;
-      opacity: 0.85;
-      line-height: 1.5;
-    }
-    /* FAQ */
-    .faq {
-      margin-top: 1.5em;
-    }
-    .faq details {
-      margin-bottom: 12px;
-      padding: 16px 20px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 14px;
-      transition: background 0.3s;
-    }
-    .faq details[open] {
-      background: rgba(255,255,255,0.08);
-    }
-    .faq summary {
-      list-style: none;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 16px;
-      position: relative;
-      padding-right: 20px;
-    }
-    .faq summary::after {
-      content: '+';
-      position: absolute;
-      right: 0;
-      top: 0;
-      font-weight: 700;
-    }
-    .faq details[open] summary::after { content: '–'; }
-    .faq p {
-      margin-top: 8px;
-      font-size: 14px;
-      opacity: 0.85;
-      line-height: 1.5;
-    }
-    /* Kontakt */
-    .contact-form {
-      margin-top: 1.5em;
-      display: grid;
-      gap: 16px;
-      max-width: 600px;
-    }
-    .contact-form label {
-      font-weight: 600;
-      font-size: 14px;
-      margin-bottom: 4px;
-      display: block;
-    }
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.06);
-      color: #fff;
-      font-size: 14px;
-      resize: vertical;
-    }
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      outline: none;
-      border-color: rgba(var(--color-accent),0.5);
-      box-shadow: 0 0 0 2px rgba(var(--color-accent),0.3);
-    }
-    .contact-info {
-      margin-top: 1.5em;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-    .contact-info a {
-      color: rgba(var(--color-accent),1);
-      text-decoration: none;
-    }
-    .contact-info a:hover { text-decoration: underline; }
-    /* Rechtliches */
-    .legal-section {
-      margin-top: 1.5em;
-    }
-    .legal-section h3 {
-      font-family: 'Lora', serif;
-      font-weight: 700;
-      font-size: clamp(20px, 4vw, 32px);
-      margin-top: 1em;
-      margin-bottom: 0.6em;
-    }
-    .legal-section p {
-      font-size: 14px;
-      line-height: 1.6;
-      opacity: 0.85;
-      margin-bottom: 0.8em;
-    }
-    /* Footer */
-    footer {
-      padding: 40px 5vw;
-      text-align: center;
-      font-size: 14px;
-      background: rgba(15,15,18,0.8);
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-    footer a {
-      color: rgba(var(--color-accent),1);
-      text-decoration: none;
-    }
-    footer a:hover { text-decoration: underline; }
-    /* Fade-in effect with stagger */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .reveal.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    /* Staggered animations for grid items */
-    .benefit-item,
-    .pricing-card,
-    .step-item,
-    .service-item,
-    .testimonial-card {
-      opacity: 0;
-      transform: translateY(30px) scale(0.95);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .benefit-item.visible,
-    .pricing-card.visible,
-    .step-item.visible,
-    .service-item.visible,
-    .testimonial-card.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-    /* Kurse (Courses) section */
-    #kurse .course-grid {
+    
+    /* Kurse */
+    .course-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
       gap: 24px;
       margin-top: 1.5em;
     }
-    #kurse .course-card {
+    
+    .course-card {
       position: relative;
       display: block;
       padding: 24px;
@@ -780,54 +666,36 @@
       transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
       color: inherit;
       text-decoration: none;
-      /* Indicate that the entire card is clickable */
       cursor: pointer;
-      /* Ensure child elements don't intercept pointer events so the click
-         bubbles to the card's onclick handler */
       pointer-events: auto;
     }
-
-    /* Disable pointer events on direct children of the course card to ensure
-       the parent card receives click events. Without this the nested
-       paragraphs and spans can swallow the click and prevent navigation. */
-    #kurse .course-card > * {
+    
+    .course-card > * {
       pointer-events: none;
     }
-    #kurse .course-card:hover {
+    
+    .course-card:hover {
       transform: translateY(-6px);
       background: linear-gradient(180deg, rgba(var(--color-accent),0.25), rgba(var(--color-cool),0.15));
       border-color: rgba(var(--color-cool),0.4);
     }
-    #kurse .course-card .level {
+    
+    .course-card .level {
       font-family: 'Lora', serif;
       font-weight: 700;
       font-size: 28px;
       margin-bottom: 8px;
       color: rgba(var(--color-accent),1);
     }
-    #kurse .course-card .description {
+    
+    .course-card .description {
       font-size: 14px;
       line-height: 1.5;
       opacity: 0.85;
       margin-bottom: 12px;
     }
-    #kurse .course-card .cta {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 10px 16px;
-      border-radius: 12px;
-      background: rgba(var(--color-cool),0.25);
-      color: #fff;
-      font-weight: 600;
-      font-size: 14px;
-      text-decoration: none;
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
-    #kurse .course-card .cta:hover {
-      background: rgba(var(--color-cool),0.4);
-      transform: translateY(-2px);
-    }
-    #kurse .course-card .badge {
+    
+    .course-card .badge {
       position: absolute;
       top: 16px;
       right: 16px;
@@ -838,6 +706,7 @@
       color: #05131a;
       background: linear-gradient(90deg, rgba(var(--color-accent),1), rgba(var(--color-cool),1));
     }
+    
     /* Testimonials */
     .testimonials-grid {
       display: grid;
@@ -845,15 +714,17 @@
       gap: 24px;
       margin-top: 2em;
     }
+    
     .testimonial-card {
       padding: 28px;
       border-radius: 20px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(var(--color-accent),0.12), rgba(var(--color-cool),0.08));
+      border: 1px solid rgba(var(--color-accent),0.25);
       position: relative;
       overflow: hidden;
       transition: transform 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s;
     }
+    
     .testimonial-card::before {
       content: '"';
       position: absolute;
@@ -865,23 +736,14 @@
       line-height: 1;
       pointer-events: none;
     }
-    .testimonial-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(var(--color-warm),0.08), transparent 40%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
+    
     .testimonial-card:hover {
       transform: translateY(-6px) scale(1.02);
-      background: rgba(255,255,255,0.07);
+      background: linear-gradient(180deg, rgba(var(--color-accent),0.22), rgba(var(--color-cool),0.15));
       border-color: rgba(var(--color-cool),0.3);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 20px rgba(var(--color-accent),0.15);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
     }
-    .testimonial-card:hover::after {
-      opacity: 1;
-    }
+    
     .testimonial-text {
       font-size: 15px;
       line-height: 1.6;
@@ -890,6 +752,7 @@
       position: relative;
       z-index: 1;
     }
+    
     .testimonial-author {
       display: flex;
       align-items: center;
@@ -897,6 +760,7 @@
       position: relative;
       z-index: 1;
     }
+    
     .testimonial-avatar {
       width: 48px;
       height: 48px;
@@ -909,25 +773,30 @@
       font-size: 18px;
       border: 2px solid rgba(255,255,255,0.1);
     }
+    
     .testimonial-info {
       flex: 1;
     }
+    
     .testimonial-name {
       font-weight: 700;
       font-size: 16px;
       color: rgba(var(--color-accent),1);
       margin-bottom: 2px;
     }
+    
     .testimonial-level {
       font-size: 13px;
       opacity: 0.7;
     }
+    
     .testimonial-stars {
       margin-top: 12px;
       color: rgba(var(--color-accent),0.9);
       font-size: 16px;
       letter-spacing: 2px;
     }
+    
     /* Floating letters background */
     .floating-letters {
       position: absolute;
@@ -936,6 +805,7 @@
       pointer-events: none;
       z-index: 0;
     }
+    
     .floating-letter {
       position: absolute;
       font-family: 'Lora', serif;
@@ -944,11 +814,14 @@
       opacity: 0.03;
       animation: floatLetter 20s ease-in-out infinite;
       color: rgba(var(--color-warm),1);
+      will-change: transform;
     }
+    
     .floating-letter:nth-child(even) {
       color: rgba(var(--color-cool),1);
       animation-duration: 25s;
     }
+    
     @keyframes floatLetter {
       0%, 100% {
         transform: translate(0, 0) rotate(0deg);
@@ -963,7 +836,8 @@
         transform: translate(40px, -40px) rotate(4deg);
       }
     }
-    /* Scroll down arrow */
+    
+    /* Scroll indicator */
     .scroll-indicator {
       position: absolute;
       bottom: 40px;
@@ -974,9 +848,11 @@
       opacity: 0;
       animation: fadeInScroll 1s ease 2s forwards;
     }
+    
     @keyframes fadeInScroll {
       to { opacity: 1; }
     }
+    
     .scroll-arrow {
       width: 30px;
       height: 50px;
@@ -985,6 +861,7 @@
       position: relative;
       animation: bounce 2s ease-in-out infinite;
     }
+    
     .scroll-arrow::before {
       content: '';
       position: absolute;
@@ -997,365 +874,740 @@
       border-radius: 50%;
       animation: scroll 2s ease-in-out infinite;
     }
+    
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
+    
     @keyframes scroll {
       0% { opacity: 0; top: 8px; }
       30% { opacity: 1; }
       60% { opacity: 1; }
       100% { opacity: 0; top: 30px; }
     }
+    
     .scroll-indicator:hover .scroll-arrow {
       border-color: rgba(var(--color-accent),1);
       box-shadow: 0 0 20px rgba(var(--color-accent),0.4);
     }
-    /* Particle cat container */
-    .particle-cat-container {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      margin: 2em auto;
-      pointer-events: none;
-    }
-    .particle-cat {
-      position: absolute;
-      inset: 0;
-      opacity: 0.85;
-    }
     
-    /* Ensure the intro section (tagline) sits directly beneath the hero without a separating line
-       and uses the same dark background as the body. */
+    /* Intro section */
     #intro {
       border-top: none;
       background: var(--bg);
     }
-    /* Remove old morph animation keyframes (no longer used) */
-    /* Improve link readability in dark sections */
-    .contact-info a,
-    .fallback a,
-    .legal-section a,
-    .privacy-note a,
-    .consent a {
-      /* Use a lighter tone for links to improve readability on dark backgrounds */
-      color: #ffb3d6;
-      text-decoration: underline;
+    
+    /* FAQ */
+    .faq {
+      margin-top: 1.5em;
     }
-    /* Preserve light link color on visited links to avoid dark blue/purple defaults */
-    .contact-info a:visited,
-    .fallback a:visited,
-    .legal-section a:visited,
-    .privacy-note a:visited,
-    .consent a:visited {
-      color: #ffb3d6;
+    
+    .faq details {
+      margin-bottom: 12px;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      transition: background 0.3s;
     }
-    .contact-info a:hover,
-    .fallback a:hover,
-    .legal-section a:hover,
-    .privacy-note a:hover,
-    .consent a:hover {
-      color: #ffa6c8;
+    
+    .faq details[open] {
+      background: rgba(255,255,255,0.08);
     }
-    /* Style consent checkbox inline with its text */
-    .contact-form label.consent {
-      /* Stelle die Checkbox und den Text nebeneinander und lasse den Text umbrechen */
-      display: flex;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      /* Abstand zwischen Checkbox und Text */
-      gap: 4px;
-      /* Verhindert das Strecken über die volle Breite und rückt die Checkbox-Zeile näher an das Formularfeld heran */
-      width: max-content;
-      /* In der Grid-Umgebung sollen die Checkbox und ihr Text am linken Rand des Grid-Felds ausgerichtet werden */
-      justify-self: start;
-      font-size: 14px;
+    
+    .faq summary {
+      list-style: none;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 16px;
+      position: relative;
+      padding-right: 20px;
+    }
+    
+    .faq summary::-webkit-details-marker {
+      display: none;
+    }
+    
+    .faq summary::after {
+      content: '+';
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-weight: 700;
+    }
+    
+    .faq details[open] summary::after { content: '–'; }
+    
+    .faq p {
       margin-top: 8px;
-      /* richte die Checkboxzeile näher am linken Rand aus */
-      margin-left: 0;
+      font-size: 14px;
+      opacity: 0.85;
+      line-height: 1.5;
     }
-    /* Entferne Standardabstände des Kontrollkästchens selbst */
-    .contact-form label.consent input[type="checkbox"] {
-      margin-left: 0;
-      /* kleiner Abstand rechts für Checkbox, da gap verwendet wird */
-      margin-right: 0;
+    
+    /* Contact form */
+    .contact-form {
+      margin-top: 1.5em;
+      display: grid;
+      gap: 16px;
+      max-width: 600px;
     }
-    /* Contact form field layout */
+    
+    .contact-form label {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+      display: block;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-size: 14px;
+      resize: vertical;
+      font-family: inherit;
+    }
+    
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: rgba(var(--color-accent),0.5);
+      box-shadow: 0 0 0 2px rgba(var(--color-accent),0.3);
+    }
+    
     .field {
       margin-bottom: 1em;
     }
-
-    /* Mobile optimization for contact form */
-    @media (max-width: 600px) {
-      /* Ensure the contact form doesn't overflow horizontally on small screens */
-      .contact-form {
-        max-width: 100%;
-      }
-      /* Allow the consent label to wrap within the available width */
-      .contact-form label.consent {
-        width: 100%;
-      }
-    }
+    
     .field label {
       display: block;
       margin-bottom: 4px;
       font-weight: 500;
     }
-    .field small.err {
+    
+    .err {
+      color: #ffb4b4;
+      margin-top: 4px;
+      display: block;
       font-size: 13px;
     }
-    /* Alerts and error styles for contact form */
+    
+    .err[hidden] {
+      display: none;
+    }
+    
     .alert {
       margin-top: 12px;
       padding: 10px 12px;
       border-radius: 10px;
       font-weight: 600;
     }
+    
     .alert.ok {
       background: #0f5132;
       color: #d1f1e0;
       border: 1px solid #0c4128;
     }
+    
     .alert.err {
       background: #5c1a1a;
       color: #ffdede;
       border: 1px solid #4a1212;
     }
-    .err {
-      color: #ffb4b4;
-      margin-top: 4px;
-      display: block;
-    }
-    .err[hidden] {
-      display: none;
-    }
+    
     button[disabled] {
       opacity: 0.6;
       cursor: not-allowed;
     }
-    /* --- Custom overrides for a fresher, more colourful design --- */
-    /* Remove underline highlight from navigation */
-    nav a::after { display: none !important; }
-    nav a:hover::after, nav a:focus::after { width: 0 !important; }
-    /* Remove underlines from contact and legal links */
+    
+    .contact-form label.consent {
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      width: max-content;
+      justify-self: start;
+      font-size: 14px;
+      margin-top: 8px;
+      margin-left: 0;
+    }
+    
+    .contact-form label.consent input[type="checkbox"] {
+      margin-left: 0;
+      margin-right: 0;
+      width: auto;
+    }
+    
+    .contact-info {
+      margin-top: 1.5em;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    
     .contact-info a,
     .fallback a,
-    .legal-section a,
-    .privacy-note a,
-    .consent a,
-    footer a {
-      text-decoration: none !important;
+    .legal-section a {
+      color: #ffb3d6;
+      text-decoration: none;
     }
+    
+    .contact-info a:visited,
+    .fallback a:visited,
+    .legal-section a:visited {
+      color: #ffb3d6;
+    }
+    
     .contact-info a:hover,
     .fallback a:hover,
-    .legal-section a:hover,
-    .privacy-note a:hover,
-    .consent a:hover,
-    footer a:hover {
-      text-decoration: none !important;
+    .legal-section a:hover {
+      color: #ffa6c8;
     }
-    /* Apply subtle gradient backgrounds to various cards for more depth */
+    
+    /* Legal section */
+    .legal-section {
+      margin-top: 1.5em;
+    }
+    
+    .legal-section h3 {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: clamp(20px, 4vw, 32px);
+      margin-top: 1em;
+      margin-bottom: 0.6em;
+    }
+    
+    .legal-section p {
+      font-size: 14px;
+      line-height: 1.6;
+      opacity: 0.85;
+      margin-bottom: 0.8em;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 40px 5vw;
+      text-align: center;
+      font-size: 14px;
+      background: rgba(15,15,18,0.8);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    footer a {
+      color: rgba(var(--color-accent),1);
+      text-decoration: none;
+    }
+    
+    footer a:hover { text-decoration: underline; }
+    
+    /* Reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
     .benefit-item,
+    .pricing-card,
     .step-item,
     .service-item,
-    .pricing-card,
     .testimonial-card {
-      background: linear-gradient(180deg, rgba(var(--color-accent),0.12), rgba(var(--color-cool),0.08));
-      border-color: rgba(var(--color-accent),0.25);
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .benefit-item:hover,
-    .step-item:hover,
-    .service-item:hover,
-    .pricing-card:hover,
-    .testimonial-card:hover {
-      background: linear-gradient(180deg, rgba(var(--color-accent),0.22), rgba(var(--color-cool),0.15));
-      border-color: rgba(var(--color-cool),0.4);
+    
+    .benefit-item.visible,
+    .pricing-card.visible,
+    .step-item.visible,
+    .service-item.visible,
+    .testimonial-card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
-
-    /*
-     * Mobile optimisations for the Kontakt section
-     *
-     * On small screens the default form styling results in overly tall
-     * inputs and generous vertical padding, which makes the contact
-     * section appear disproportionately long. To improve the user
-     * experience on phones we tighten up the vertical spacing and
-     * reduce the size of form controls while maintaining readability.
-     */
+    
+    /* Booking section */
+    .booking-embed {
+      margin: 2em 0;
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      min-height: 600px;
+    }
+    
+    .booking-embed iframe {
+      width: 100%;
+      min-height: 600px;
+      border: none;
+    }
+    
+    .booking-note {
+      margin-top: 1em;
+      padding: 12px 16px;
+      background: rgba(var(--color-cool),0.1);
+      border-left: 3px solid rgba(var(--color-cool),0.5);
+      border-radius: 8px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    
+    /* Hours section */
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 1.5em;
+    }
+    
+    .hours-card {
+      padding: 24px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(var(--color-accent),0.12), rgba(var(--color-cool),0.08));
+      border: 1px solid rgba(var(--color-accent),0.25);
+    }
+    
+    .hours-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 12px;
+      opacity: 0.9;
+    }
+    
+    .hours-title {
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: rgba(var(--color-accent),1);
+    }
+    
+    .hours-list {
+      list-style: none;
+      padding: 0;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    
+    .hours-list li {
+      padding: 4px 0;
+      opacity: 0.9;
+    }
+    
+    .hours-list strong {
+      color: rgba(var(--color-cool),1);
+      font-weight: 600;
+    }
+    
+    .hours-note {
+      margin-top: 12px;
+      padding: 10px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+    
+    /* Resources section */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 1.5em;
+    }
+    
+    .resource-card {
+      padding: 20px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(var(--color-warm),0.1), rgba(var(--color-cool),0.08));
+      border: 1px solid rgba(255,255,255,0.15);
+      text-align: center;
+      transition: transform 0.3s, background 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    
+    .resource-card:hover {
+      transform: translateY(-6px);
+      background: linear-gradient(135deg, rgba(var(--color-warm),0.18), rgba(var(--color-cool),0.12));
+    }
+    
+    .resource-level {
+      font-family: 'Lora', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: rgba(var(--color-accent),1);
+      margin-bottom: 8px;
+    }
+    
+    .resource-desc {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    
+    .resource-badge {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 4px 12px;
+      background: rgba(var(--color-cool),0.2);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    /* Mobile optimizations */
     @media (max-width: 600px) {
-      /* Reduce top/bottom padding so the section consumes less vertical space */
-      #kontakt.section {
-        padding: 32px 5vw;
-      }
-
-      /* Shrink the contact heading and adjust spacing */
-      #kontakt .section-title {
-        font-size: clamp(22px, 6vw, 30px);
-        margin-bottom: 0.4em;
-      }
-
-      /* Reduce lead paragraph size and spacing */
-      #kontakt .lead {
-        font-size: 15px;
-        margin-bottom: 0.8em;
-        line-height: 1.4;
-      }
-
-      /* Make the form grid more compact */
-      #kontakt .contact-form {
-        gap: 10px;
+      .contact-form {
         max-width: 100%;
       }
-      /* Reduce the bottom margin for each field wrapper */
-      #kontakt .field {
-        margin-bottom: 8px;
+      
+      .about-container {
+        padding: 24px;
       }
-
-      /* Smaller paddings and font sizes for inputs and textarea */
-      #kontakt .contact-form input,
-      #kontakt .contact-form textarea {
-        padding: 10px 12px;
-        font-size: 15px;
-        border-radius: 8px;
-      }
-
-      /* Limit the height of the message textarea regardless of rows */
-      #kontakt #message {
-        height: 110px;
-        max-height: 140px;
-      }
-
-      /* Compact styling for the submit button */
-      #kontakt .btn,
-      #kontakt #sendBtn {
-        padding: 10px 14px;
-        font-size: 15px;
-        border-radius: 10px;
-      }
-
-      /* Reduce spacing and font size of the contact info below the form */
-      #kontakt .contact-info {
-        margin-top: 12px;
-        font-size: 14px;
-        line-height: 1.5;
+      
+      .about-photo {
+        flex: 1 1 100%;
+        max-width: 100%;
       }
     }
   </style>
-  <!-- Structured data for SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Leon Erdeg",
-    "url": "https://leonicaura.de",
-    "image": "Leon.jpg",
-    "jobTitle": "Deutsch-Coach (A1–C1)",
-    "knowsLanguage": ["de","mk","sr","bs","hr"],
-    "sameAs": []
+  
+  <!-- AURA FIXES: Aufgaben 1-9 -->
+  <style id="aura-fixes">
+    /* ===========================
+       FIX 1: TESTIMONIALS - Namen/Autoren bündig am Kartenende
+       =========================== */
+    .testimonial-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 300px;
+    }
+    
+    .testimonial-text {
+      flex: 1;
+      margin-bottom: 16px;
+    }
+    
+    .testimonial-author {
+      margin-top: auto;
+    }
+    
+    .testimonial-stars {
+      margin-top: 12px;
+    }
+    
+    /* ===========================
+       FIX 2: PREISE - Überschriften in Weiß
+       =========================== */
+    .pricing-title {
+      color: #ffffff !important;
+    }
+    
+    /* ===========================
+       FIX 3: PREISE - Mehr vertikale Luft & Abstand zum Button
+       =========================== */
+    .pricing-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 320px;
+      padding: 40px 24px;
+      gap: 16px;
+    }
+    
+    .pricing-desc {
+      flex: 1;
+      margin-bottom: 24px;
+    }
+    
+    .pricing-card .btn {
+      margin-top: auto;
+    }
+    
+    /* ===========================
+       FIX 4: ABLAUF - Schritt-Nummern hellweiß
+       =========================== */
+    .step-num {
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(var(--color-accent),0.4), rgba(var(--color-cool),0.4));
+    }
+    
+    /* ===========================
+       FIX 5: LERNPAKET - Containerhöhe & Umbruch
+       =========================== */
+    .service-item {
+      min-height: 180px;
+      padding: 32px 24px;
+    }
+    
+    .service-title,
+    .service-desc {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+      hyphens: auto;
+    }
+    
+    /* ===========================
+       FIX 6: ALLGEMEIN - Mehr Raum auf der Y-Achse
+       =========================== */
+    .benefit-item {
+      padding: 36px 28px;
+    }
+    
+    .pricing-card {
+      padding: 44px 28px;
+    }
+    
+    .step-item {
+      padding: 32px 24px;
+    }
+    
+    .service-item {
+      padding: 36px 28px;
+    }
+    
+    /* ===========================
+       FIX 8: BUCHUNGSKALENDER - Manueller Wochenkalender
+       =========================== */
+    .calendar-container {
+      background: linear-gradient(135deg, rgba(var(--color-warm),0.05), rgba(var(--color-cool),0.05));
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 28px;
+      margin: 2em 0;
+    }
+    
+    .calendar-week {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    
+    .calendar-day {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .calendar-day:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(var(--color-accent),0.3);
+      transform: translateY(-2px);
+    }
+    
+    .calendar-day-name {
+      font-weight: 700;
+      font-size: 16px;
+      color: rgba(var(--color-accent),1);
+      margin-bottom: 8px;
+      display: block;
+    }
+    
+    .calendar-day-date {
+      font-size: 13px;
+      opacity: 0.7;
+      margin-bottom: 12px;
+      display: block;
+    }
+    
+    .calendar-slots {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    
+    .calendar-slot {
+      background: linear-gradient(135deg, rgba(var(--color-accent),0.15), rgba(var(--color-cool),0.12));
+      border: 1px solid rgba(var(--color-accent),0.3);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: #fff;
+      text-decoration: none;
+      display: block;
+    }
+    
+    .calendar-slot:hover {
+      background: linear-gradient(135deg, rgba(var(--color-accent),0.3), rgba(var(--color-cool),0.2));
+      border-color: rgba(var(--color-accent),0.5);
+      transform: scale(1.05);
+    }
+    
+    .calendar-slot.booked {
+      background: rgba(100,100,100,0.1);
+      border-color: rgba(255,255,255,0.08);
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    
+    .calendar-edit-note {
+      margin-top: 20px;
+      padding: 16px;
+      background: rgba(var(--color-cool),0.08);
+      border-left: 3px solid rgba(var(--color-cool),0.4);
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    
+    .calendar-edit-note strong {
+      color: rgba(var(--color-accent),1);
+    }
+  </style>
+
+<!-- AURA ADDITIONS: lux-trace + bubble-hover -->
+<style id="aura-additions">
+  :root{ --gold1:#f7d98b; --gold2:#f0b567; }
+  .lux-trace{ position:relative; border-radius:18px; }
+  .lux-trace::before{
+    content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+    padding:2px;
+    background: conic-gradient(from 0deg, var(--gold1), var(--gold2), var(--gold1));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    opacity:.0; transition:opacity .25s ease;
+    animation: goldSweep 1.2s cubic-bezier(.2,.6,.2,1) paused;
   }
-  </script>
+  .lux-trace:hover::before{ opacity:.9; animation-play-state:running; }
+  @keyframes goldSweep{
+    0%{ background: conic-gradient(from 0deg, var(--gold1), var(--gold2), var(--gold1)); }
+    100%{ background: conic-gradient(from 360deg, var(--gold1), var(--gold2), var(--gold1)); }
+  }
+  .bubble-hover{ transition: transform .35s cubic-bezier(.2,.6,.2,1), box-shadow .35s; }
+  .bubble-hover:hover{ transform: translateY(-2px) scale(1.015);
+    box-shadow: 0 14px 40px rgba(240,181,103,.22), 0 2px 10px rgba(247,217,139,.15); }
+  @media (prefers-reduced-motion:reduce){
+    .lux-trace::before{ animation: none; }
+    .bubble-hover:hover{ transform:none; box-shadow:none; }
+  }
+  /* Vollbild-Punkte-Canvas hinter allen Inhalten */
+#leonic{
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+</style>
+
 </head>
 <body>
+  <!-- Punkte-Hintergrund -->
+  <canvas id="leonic" aria-hidden="true"></canvas>
+
+  <!-- top and navbar -->
   <header id="site-header">
     <div class="logo">LeonicAURA</div>
-    <nav aria-label="Hauptnavigation">
-      <a href="#hero">Startseite</a>
-      <a href="#about">Über&nbsp;mich</a>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#about">Über mich</a>
       <a href="#testimonials">Bewertungen</a>
       <a href="#preise">Preise</a>
-      <a href="#gruppen">Gruppen</a>
+      <a href="#buchen">Buchen</a>
       <a href="#ablauf">Ablauf</a>
-      <a href="#leistungen">Leistungen</a>
-      <a href="#kurse">Kurse</a>
-      <a href="#faq">FAQ</a>
       <a href="#kontakt">Kontakt</a>
-      <a href="#datenschutz">Datenschutz</a>
-      <a href="#impressum">Impressum</a>
     </nav>
-    <div class="burger" aria-label="Menü" aria-expanded="false" aria-controls="mobileNav" tabindex="0">
+    <button class="burger" id="burgerBtn" aria-label="Menü öffnen" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
-    </div>
+    </button>
   </header>
+  
   <!-- Mobile nav -->
   <div class="mobile-nav" id="mobileNav" aria-label="Mobiles Menü">
     <a href="#hero">Startseite</a>
-    <a href="#about">Über&nbsp;mich</a>
+    <a href="#about">Über mich</a>
     <a href="#testimonials">Bewertungen</a>
     <a href="#preise">Preise</a>
-    <a href="#gruppen">Gruppen</a>
+    <a href="#arbeitszeiten">Zeiten</a>
+    <a href="#buchen">Buchen</a>
     <a href="#ablauf">Ablauf</a>
-    <a href="#leistungen">Leistungen</a>
     <a href="#kurse">Kurse</a>
+    <a href="#ressourcen">Übungen</a>
     <a href="#faq">FAQ</a>
     <a href="#kontakt">Kontakt</a>
     <a href="#datenschutz">Datenschutz</a>
     <a href="#impressum">Impressum</a>
   </div>
-  <!-- Nebula background moved into hero section -->
+  
   <main>
     <!-- Hero Section -->
     <section id="hero" class="section full-screen-explosion reveal" data-title="Hero">
-      <!-- Cosmic nebula background for hero -->
       <div class="nebula-parent">
         <div class="nebula-wrap">
           <canvas id="leonic" aria-hidden="true"></canvas>
         </div>
       </div>
       <div class="explosion-center">
-        <!-- Central brand name for the exploding letters; use normal characters -->
         <h1 class="explosion-title">LeonicAURA</h1>
       </div>
-      <!-- Scroll down indicator -->
       <a href="#intro" class="scroll-indicator" aria-label="Nach unten scrollen">
         <div class="scroll-arrow"></div>
       </a>
     </section>
 
-    <!-- Intro Section: tagline and call-to-action -->
+    <!-- Intro Section -->
     <section id="intro" class="section reveal" data-title="Einleitung">
-      <!-- Tagline: keep "Deutsch" static and animate the phrase after the comma -->
-      <h1 id="hero-headline"><span class="static">Deutsch</span><span class="dynamic">,&nbsp;das&nbsp;wirklich&nbsp;bleibt</span></h1>
+      <h2 id="hero-headline"><span class="static">Deutsch</span><span class="dynamic">, das wirklich bleibt</span></h2>
       <p class="subtitle">Individualisierter Online-Unterricht · Индивидуални онлајн часови</p>
       <div class="cta-buttons">
-        <a href="#kontakt" class="btn btn-primary" aria-label="Probestunde buchen">Probestunde 16&nbsp;€ buchen</a>
-        <a href="#preise" class="btn btn-secondary" aria-label="Preise ansehen">Preise ansehen</a>
+        <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Probestunde buchen">Probestunde 16 € buchen</a>
+        <a href="#preise" class="btn btn-secondary lux-trace bubble-hover" aria-label="Preise ansehen">Preise ansehen</a>
       </div>
       <div class="mini-info">
-        <span>Online via Zoom/Google&nbsp;Meet</span>·<span>PayPal&nbsp;oder&nbsp;Überweisung</span>·<span>Rechnung per&nbsp;E‑Mail</span>
+        <span>Online via Zoom/Google Meet</span>·<span>PayPal oder Überweisung</span>·<span>Rechnung per E‑Mail</span>
       </div>
     </section>
+    
     <!-- Nutzen Section -->
     <section id="nutzen" class="section reveal" data-title="Nutzen">
-      <div class="section-title"><span>Warum</span>Dein Vorteil</div>
+      <h2 class="section-title"><span>Warum</span>Dein Vorteil</h2>
       <p class="lead">Entdecke, was LeonicAURA einzigartig macht.</p>
       <div class="benefit-grid">
-        <div class="benefit-item">
+        <div class="benefit-item lux-trace bubble-hover">
           <span class="benefit-icon" aria-hidden="true">
-            <!-- Gehirn Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8" /><path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8" /><path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5" /><path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0" /><path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5" /><path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8" /><path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8" /><path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5" /><path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0" /><path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5" /><path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10" /></svg>
           </span>
           <div class="benefit-title">Individuell</div>
           <div class="benefit-desc">Deine Ziele stehen im Mittelpunkt – ob Beruf, Alltag oder Prüfung.</div>
         </div>
-        <div class="benefit-item">
+        <div class="benefit-item lux-trace bubble-hover">
           <span class="benefit-icon" aria-hidden="true">
-            <!-- Mikrofon Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 2m0 3a3 3 0 0 1 3 -3h0a3 3 0 0 1 3 3v5a3 3 0 0 1 -3 3h0a3 3 0 0 1 -3 -3z" /><path d="M5 10a7 7 0 0 0 14 0" /><path d="M8 21l8 0" /><path d="M12 17l0 4" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2m0 3a3 3 0 0 1 3 -3h0a3 3 0 0 1 3 3v5a3 3 0 0 1 -3 3h0a3 3 0 0 1 -3 -3z" /><path d="M5 10a7 7 0 0 0 14 0" /><path d="M8 21l8 0" /><path d="M12 17l0 4" /></svg>
           </span>
           <div class="benefit-title">Klar & strukturiert</div>
           <div class="benefit-desc">Grammatik, Sprechen und Schreiben – verständlich und geordnet vermittelt.</div>
         </div>
-        <div class="benefit-item">
+        <div class="benefit-item lux-trace bubble-hover">
           <span class="benefit-icon" aria-hidden="true">
-            <!-- Zielscheibe Icon -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="1" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="9" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="9" /></svg>
           </span>
           <div class="benefit-title">Motivierend</div>
           <div class="benefit-desc">Persönliches Feedback, klare Erklärungen und sichtbarer Fortschritt.</div>
         </div>
       </div>
     </section>
+    
     <!-- Testimonials Section -->
     <section id="testimonials" class="section reveal" data-title="Bewertungen" style="position:relative; overflow:hidden;">
       <div class="floating-letters" aria-hidden="true">
@@ -1367,157 +1619,203 @@
         <div class="floating-letter" style="top:25%; left:50%;">c</div>
         <div class="floating-letter" style="top:80%; left:45%;">h</div>
       </div>
-      <div class="section-title"><span>Bewertungen</span>Was meine Schüler sagen</div>
+      <h2 class="section-title"><span>Bewertungen</span>Was meine Schüler sagen</h2>
       <p class="lead">Echte Erfahrungen von Lernenden, die ihren Weg mit LeonicAURA gegangen sind.</p>
       <div class="testimonials-grid">
-        <div class="testimonial-card">
+        <div class="testimonial-card lux-trace bubble-hover">
           <p class="testimonial-text">„Leon hat mir geholfen, mein Deutsch für die B2-Prüfung vorzubereiten. Seine Erklärungen sind klar und er ist immer geduldig. Ich habe die Prüfung beim ersten Versuch bestanden!"</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">M</div>
+            <div class="testimonial-avatar" aria-hidden="true">M</div>
             <div class="testimonial-info">
               <div class="testimonial-name">Marija</div>
               <div class="testimonial-level">B2 Schülerin · Serbien</div>
             </div>
           </div>
-          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
         </div>
-        <div class="testimonial-card">
+        <div class="testimonial-card lux-trace bubble-hover">
           <p class="testimonial-text">„Der Unterricht ist flexibel und macht Spaß. Leon passt sich meinem Tempo an und ich fühle mich nie unter Druck. Mein Sprechen hat sich deutlich verbessert!"</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">D</div>
+            <div class="testimonial-avatar" aria-hidden="true">D</div>
             <div class="testimonial-info">
               <div class="testimonial-name">Dragan</div>
               <div class="testimonial-level">A2 Schüler · Bosnien</div>
             </div>
           </div>
-          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
         </div>
-        <div class="testimonial-card">
+        <div class="testimonial-card lux-trace bubble-hover">
           <p class="testimonial-text">„Ich lerne seit 3 Monaten bei Leon und sehe große Fortschritte. Die Materialien sind gut strukturiert und die Hausaufgaben helfen mir, alles zu festigen. Sehr empfehlenswert!"</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">A</div>
+            <div class="testimonial-avatar" aria-hidden="true">A</div>
             <div class="testimonial-info">
               <div class="testimonial-name">Ana</div>
               <div class="testimonial-level">B1 Schülerin · Kroatien</div>
             </div>
           </div>
-          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
         </div>
-        <div class="testimonial-card">
+        <div class="testimonial-card lux-trace bubble-hover">
           <p class="testimonial-text">„Leon ist nicht nur ein Lehrer, sondern auch ein Motivator. Er versteht die Herausforderungen von Balkan-Lernenden und macht den Unterricht lebendig. Top!"</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">N</div>
+            <div class="testimonial-avatar" aria-hidden="true">N</div>
             <div class="testimonial-info">
               <div class="testimonial-name">Nikola</div>
               <div class="testimonial-level">C1 Schüler · Serbien</div>
             </div>
           </div>
-          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
         </div>
-        <div class="testimonial-card">
+        <div class="testimonial-card lux-trace bubble-hover">
           <p class="testimonial-text">„Endlich verstehe ich die deutsche Grammatik! Leon erklärt alles Schritt für Schritt und gibt praktische Beispiele. Der Preis ist auch sehr fair."</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">J</div>
+            <div class="testimonial-avatar" aria-hidden="true">J</div>
             <div class="testimonial-info">
               <div class="testimonial-name">Jelena</div>
               <div class="testimonial-level">A1 Schülerin · Montenegro</div>
             </div>
           </div>
-          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
         </div>
-        <div class="testimonial-card">
+        <div class="testimonial-card lux-trace bubble-hover">
           <p class="testimonial-text">„Die Online-Stunden sind super organisiert. Leon ist pünktlich, professionell und macht jeden Unterricht interessant. Ich freue mich jede Woche auf die Stunden!"</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">S</div>
+            <div class="testimonial-avatar" aria-hidden="true">S</div>
             <div class="testimonial-info">
               <div class="testimonial-name">Stefan</div>
               <div class="testimonial-level">B1 Schüler · Nordmazedonien</div>
             </div>
           </div>
-          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
         </div>
       </div>
     </section>
+    
     <!-- Preise Section -->
     <section id="preise" class="section reveal" data-title="Preise">
-      <div class="section-title"><span>Preise</span>Faire Preise für deinen Erfolg</div>
+      <h2 class="section-title"><span>Preise</span>Faire Preise für deinen Erfolg</h2>
       <p class="lead">Je mehr du lernst, desto günstiger wird der Preis pro Einheit.</p>
       <div class="pricing-grid">
-        <div class="pricing-card">
+        <div class="pricing-card lux-trace bubble-hover">
           <div class="pricing-title">Probestunde</div>
-          <div class="pricing-price">16&nbsp;€/60&nbsp;min</div>
+          <div class="pricing-price">16 €/60 min</div>
           <div class="pricing-desc">Einmalig zum Kennenlernen.</div>
-          <a href="#kontakt" class="btn btn-primary" aria-label="Probestunde buchen">Buchen</a>
+          <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Probestunde buchen">Buchen</a>
         </div>
-        <div class="pricing-card">
-          <div class="pricing-title">2–4&nbsp;Stunden</div>
-          <div class="pricing-price">15&nbsp;€/h</div>
+        <div class="pricing-card lux-trace bubble-hover">
+          <div class="pricing-title">2–4 Stunden</div>
+          <div class="pricing-price">15 €/h</div>
           <div class="pricing-desc">Mehr Sprechpraxis und solide Grundlagen.</div>
-          <a href="#kontakt" class="btn btn-primary" aria-label="Paket buchen">Buchen</a>
+          <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Paket buchen">Buchen</a>
         </div>
-        <div class="pricing-card">
+        <div class="pricing-card lux-trace bubble-hover">
           <div class="pricing-title">Ab 5 Stunden</div>
-          <div class="pricing-price">13&nbsp;€/h</div>
+          <div class="pricing-price">13 €/h</div>
           <div class="pricing-desc">Kontinuierlicher Fortschritt und nachhaltige Ergebnisse.</div>
-          <a href="#kontakt" class="btn btn-primary" aria-label="Paket buchen">Buchen</a>
+          <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Paket buchen">Buchen</a>
         </div>
-        <div class="pricing-card">
-          <div class="pricing-title">Ab 10&nbsp;Stunden</div>
-          <div class="pricing-price">10&nbsp;€/h</div>
+        <div class="pricing-card lux-trace bubble-hover">
+          <div class="pricing-title">Ab 10 Stunden</div>
+          <div class="pricing-price">10 €/h</div>
           <div class="pricing-desc">Intensivprogramm für maximale Erfolge.</div>
-          <a href="#kontakt" class="btn btn-primary" aria-label="Paket buchen">Buchen</a>
+          <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Paket buchen">Buchen</a>
         </div>
       </div>
       <p class="mini-info" style="margin-top:1em; opacity:0.7; font-size:13px;">Flexible Termine · Materialien inklusive · Hausaufgaben auf Wunsch · Kurze Zusammenfassung nach jeder Stunde</p>
     </section>
+    
+    <!-- Arbeitszeiten & Buchung Section -->
+    <section id="arbeitszeiten" class="section reveal" data-title="Arbeitszeiten">
+      <h2 class="section-title"><span>Wann</span>Arbeitszeiten & Verfügbarkeit</h2>
+      <p class="lead">Ich bin flexibel für dich da – auch spät abends und am Wochenende.</p>
+      <div class="hours-grid">
+        <div class="hours-card">
+          <svg class="hours-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          <h3 class="hours-title">Regelmäßige Zeiten</h3>
+          <ul class="hours-list">
+            <li><strong>Mo–Do:</strong>  17:00–22:00</li>
+            <li><strong>Fr:</strong>  15:00–22:00</li>
+            <li><strong>Sa–So:</strong>  06:00–22:00</li>
+          </ul>
+          <div class="hours-note">
+            <strong>Letzter Unterrichtsbeginn:</strong> 22:00 Uhr<br>
+            Doppel- und 3-Stunden-Sessions möglich!
+          </div>
+        </div>
+        
+        <div class="hours-card">
+          <svg class="hours-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          <h3 class="hours-title">NRW Schulferien</h3>
+          <ul class="hours-list">
+            <li><strong>Ganztägig verfügbar:</strong> 06:00–22:00</li>
+            <li>Intensive Lernwochen möglich</li>
+            <li>Mehr Flexibilität für Langstunden</li>
+          </ul>
+          <div class="hours-note">
+            Perfekt für Prüfungsvorbereitung oder Intensivkurse!
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 2em; text-align: center;">
+        <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Verfügbarkeiten ansehen">Verfügbarkeiten ansehen & buchen</a>
+      </div>
+    </section>
+    
     <!-- Gruppen Section -->
     <section id="gruppen" class="section reveal" data-title="Gruppen">
-      <div class="section-title"><span>Gruppenunterricht</span>Lerne gemeinsam</div>
-      <p class="lead">Für 2–4 Personen zum Preis von 9&nbsp;€/Person/Stunde. Gemeinsam macht Lernen mehr Spaß und bringt zusätzliche Sprechpraxis.</p>
-      <a href="#kontakt" class="btn btn-primary" aria-label="Gruppe anmelden">Gruppe anmelden</a>
+      <h2 class="section-title"><span>Gruppenunterricht</span>Lerne gemeinsam</h2>
+      <p class="lead">Für 2–4 Personen zum Preis von 9 €/Person/Stunde. Gemeinsam macht Lernen mehr Spaß und bringt zusätzliche Sprechpraxis.</p>
+      <a href="#kontakt" class="btn btn-primary lux-trace bubble-hover" aria-label="Gruppe anmelden">Gruppe anmelden</a>
     </section>
+    
     <!-- Ablauf Section -->
     <section id="ablauf" class="section reveal" data-title="Ablauf">
-      <div class="section-title"><span>Ablauf</span>So läuft's ab</div>
+      <h2 class="section-title"><span>Ablauf</span>So läuft's ab</h2>
       <p class="lead">In fünf Schritten zu deinem Erfolg.</p>
       <div class="steps-grid">
-        <div class="step-item">
+        <div class="step-item lux-trace bubble-hover">
           <div class="step-num">1</div>
-          <div class="step-title">Anfrage/Buchung</div>
+          <h3 class="step-title">Anfrage/Buchung</h3>
           <div class="step-desc">Kontaktiere mich per WhatsApp oder E‑Mail und erzähle von deinen Zielen.</div>
         </div>
-        <div class="step-item">
+        <div class="step-item lux-trace bubble-hover">
           <div class="step-num">2</div>
-          <div class="step-title">Bestätigung</div>
+          <h3 class="step-title">Bestätigung</h3>
           <div class="step-desc">Wir bestätigen den Termin und klären deine Fragen.</div>
         </div>
-        <div class="step-item">
+        <div class="step-item lux-trace bubble-hover">
           <div class="step-num">3</div>
-          <div class="step-title">Unterricht</div>
+          <h3 class="step-title">Unterricht</h3>
           <div class="step-desc">Individuelle, interaktive Stunden via Zoom/Meet – zugeschnitten auf dich.</div>
         </div>
-        <div class="step-item">
+        <div class="step-item lux-trace bubble-hover">
           <div class="step-num">4</div>
-          <div class="step-title">Nachbereitung</div>
+          <h3 class="step-title">Nachbereitung</h3>
           <div class="step-desc">Materialien, Feedback und optionale Hausaufgaben für nachhaltiges Lernen.</div>
         </div>
-        <div class="step-item">
-          <div class="step-num">5</div>
-          <div class="step-title">Weiterlernen</div>
+        <div class="step-item lux-trace bubble-hover">
+          <div class="step-num"></div>
+          <h3 class="step-title">Weiterlernen</h3>
           <div class="step-desc">Wir reflektieren deinen Fortschritt und planen die nächsten Schritte.</div>
         </div>
       </div>
     </section>
+    
     <!-- Über mich Section -->
     <section id="about" class="section reveal" data-title="Über mich">
-      <div class="section-title"><span>Über mich</span>Hallo, ich bin Leon</div>
-      <!-- Entferne Hinweis auf Integrationshelfer – Leon stellt sich als Deutschlehrer vor -->
+      <h2 class="section-title"><span>Über mich</span>Hallo, ich bin Leon</h2>
       <p class="lead">Deutschlehrer (A1–C1) für Lernende aus dem Balkan.</p>
       <div class="about-container">
         <div class="about-photo">
-          <img src="Leon.jpg" alt="Leon lächelnd" loading="lazy">
-          <div class="wing left" aria-hidden="true"></div>
-          <div class="wing right" aria-hidden="true"></div>
+          <img src="Leon.jpg" alt="Leon lächelnd" loading="lazy" decoding="async">
         </div>
         <div class="about-content">
           <p><strong>Wer ich bin:</strong> Ich bin Leon aus Duisburg – Deutschlehrer, spezialisiert auf Lernende aus dem Balkanraum.</p>
@@ -1531,51 +1829,44 @@
           <p><strong>Mini‑Beweis:</strong> Klare Strukturen und nachvollziehbare Schritte geben dir jederzeit Orientierung.</p>
         </div>
       </div>
-      <canvas id="about-canvas" aria-hidden="true"></canvas>
     </section>
+    
     <!-- Leistungen Section -->
     <section id="leistungen" class="section reveal" data-title="Leistungen">
-      <div class="section-title"><span>Was du bekommst</span>Dein Lernpaket</div>
+      <h2 class="section-title"><span>Was du bekommst</span>Dein Lernpaket</h2>
       <p class="lead">Alles, was du brauchst, um erfolgreich Deutsch zu lernen.</p>
-      <!-- Spielende Particle-Katze -->
-      <div class="particle-cat-container">
-        <canvas id="catPlaying" class="particle-cat" width="200" height="200"></canvas>
-      </div>
       <div class="services-grid">
-        <div class="service-item">
-          <div class="service-title">60‑Minuten‑Einheiten</div>
+        <div class="service-item lux-trace bubble-hover">
+          <h3 class="service-title">60‑Minuten‑Einheiten</h3>
           <div class="service-desc">Jede Stunde dauert 60 Minuten – genug Zeit für Übungen, Beispiele und Fragen.</div>
         </div>
-        <div class="service-item">
-          <div class="service-title">Materialien inklusive</div>
+        <div class="service-item lux-trace bubble-hover">
+          <h3 class="service-title">Materialien inklusive</h3>
           <div class="service-desc">Digitale Lernmaterialien, Übungsblätter und Aufzeichnungen helfen dir beim Wiederholen.</div>
         </div>
-        <div class="service-item">
-          <div class="service-title">Individuelles Feedback</div>
+        <div class="service-item lux-trace bubble-hover">
+          <h3 class="service-title">Individuelles Feedback</h3>
           <div class="service-desc">Nach jeder Stunde erhältst du ausführliches Feedback zu Aussprache, Grammatik und Ausdruck.</div>
         </div>
-        <div class="service-item">
-          <div class="service-title">Optionale Hausaufgaben</div>
+        <div class="service-item lux-trace bubble-hover">
+          <h3 class="service-title">Optionale Hausaufgaben</h3>
           <div class="service-desc">Auf Wunsch bekommst du Aufgaben zur Vertiefung – freiwillig, aber empfehlenswert.</div>
         </div>
-        <div class="service-item">
-          <div class="service-title">Kurze Zusammenfassung</div>
+        <div class="service-item lux-trace bubble-hover">
+          <h3 class="service-title">Kurze Zusammenfassung</h3>
           <div class="service-desc">Nach jeder Stunde fassen wir die wichtigsten Punkte zusammen und planen den nächsten Schritt.</div>
         </div>
-        <div class="service-item">
-          <div class="service-title">Flexible Bezahlung & Storno</div>
-          <div class="service-desc">Zahlung via PayPal oder Bank. Kostenlose Stornierung bis 24&nbsp;Stunden vorher.</div>
+        <div class="service-item lux-trace bubble-hover">
+          <h3 class="service-title">Flexible Bezahlung & Storno</h3>
+          <div class="service-desc">Zahlung via PayPal oder Bank. Kostenlose Stornierung bis 24 Stunden vorher.</div>
         </div>
       </div>
     </section>
+    
     <!-- FAQ Section -->
     <section id="faq" class="section reveal" data-title="FAQ">
-      <div class="section-title"><span>FAQ</span>Häufige Fragen</div>
+      <h2 class="section-title"><span>FAQ</span>Häufige Fragen</h2>
       <p class="lead">Hier findest du Antworten auf oft gestellte Fragen.</p>
-      <!-- Coole Particle-Katze aus Punkten mit grünen Augen -->
-      <div class="particle-cat-container">
-        <canvas id="catSitting" class="particle-cat" width="200" height="200"></canvas>
-      </div>
       <div class="faq">
         <details>
           <summary>Wie lange dauert eine Unterrichtseinheit?</summary>
@@ -1598,50 +1889,49 @@
           <p>Hausaufgaben sind freiwillig, aber sie helfen dir, das Gelernte zu festigen.</p>
         </details>
         <details>
+          <summary>Kann ich dir auch spät abends schreiben?</summary>
+          <p>Ja, absolut! Du kannst mir jederzeit schreiben – auch um 22:00 oder 00:00 Uhr. Ich antworte so schnell wie möglich, und oft bin ich zu dieser Zeit sogar online. Keine Sorge, ich finde späte Nachrichten völlig in Ordnung!</p>
+        </details>
+        <details>
+          <summary>Wie sind deine Arbeitszeiten genau?</summary>
+          <p>Montag bis Donnerstag: 17:00–22:00 (letzter Start 22:00, Freitag: 15:00–22:00 (letzter Start 22:00, Samstag und Sonntag: 06:00–22:00. In den NRW-Schulferien bin ich ganztägig von 06:00–22:00 verfügbar.</p>
+        </details>
+        <details>
+          <summary>Gibt es Doppel- oder Dreifachstunden?</summary>
+          <p>Ja, auf jeden Fall! Du kannst 2 oder 3 Stunden am Stück buchen, wenn du intensiver lernen möchtest. Das ist besonders bei Prüfungsvorbereitung oder in den Ferien beliebt.</p>
+        </details>
+        <details>
           <summary>Wie buche ich 5+ Stunden und wie lange sind sie gültig?</summary>
-         <p>Du kannst mehrere Einheiten auf einmal buchen (z.B. 5 oder 10 Stunden) und flexibel einlösen. 
-            Für 5+ Stunden gilt der Preis von 13&nbsp;€/h, ab 10 Stunden 10&nbsp;€/h.</p>
+          <p>Du kannst mehrere Einheiten auf einmal buchen (z.B. 5 oder 10 Stunden) und flexibel einlösen. Für 5+ Stunden gilt der Preis von 13 €/h, ab 10 Stunden 10 €/h.</p>
         </details>
       </div>
     </section>
+    
     <!-- Kurse Section -->
     <section id="kurse" class="section reveal" data-title="Kurse">
-      <div class="section-title"><span>Kurse</span>Deutschkurse A1–C1</div>
+      <h2 class="section-title"><span>Kurse</span>Deutschkurse A1–C1</h2>
       <p class="lead">Wähle dein Sprachniveau und starte los. Unsere Kurse sind modular aufgebaut.</p>
       <div class="course-grid">
-        <!-- A1 course card -->
-        <!--
-          Use a div with an explicit click handler instead of a plain anchor.
-          On some browsers the nested span inside the link prevented navigation when clicking
-          directly on the call‑to‑action. Binding the click event on the entire card ensures
-          that clicking anywhere within the card, including the button, navigates to the
-          dedicated A1 page. The role attribute improves accessibility.
-        -->
-        <!-- Die A1‑Karte wird als nicht klickbar dargestellt, da der Kurs noch nicht verfügbar ist -->
         <div class="course-card">
           <div class="level">A1</div>
           <p class="description">Grundkenntnisse für Anfänger: Begrüßung, Alltag und erste Grammatik.</p>
           <span class="badge">Coming soon</span>
         </div>
-        <!-- A2 course card -->
         <div class="course-card">
           <div class="level">A2</div>
           <p class="description">Aufbaukurs zur Erweiterung deiner Basis: mehr Wortschatz und Alltagssituationen.</p>
           <span class="badge">Coming soon</span>
         </div>
-        <!-- B1 course card -->
         <div class="course-card">
           <div class="level">B1</div>
           <p class="description">Für Fortgeschrittene: längere Texte, Gespräche und komplexere Grammatik.</p>
           <span class="badge">Coming soon</span>
         </div>
-        <!-- B2 course card -->
         <div class="course-card">
           <div class="level">B2</div>
           <p class="description">Vertiefe dein Deutsch: fließende Unterhaltungen und schriftliche Kompetenz.</p>
           <span class="badge">Coming soon</span>
         </div>
-        <!-- C1 course card -->
         <div class="course-card">
           <div class="level">C1</div>
           <p class="description">Professionelles Niveau: anspruchsvolle Texte verstehen und ausdrücken.</p>
@@ -1649,9 +1939,165 @@
         </div>
       </div>
     </section>
+    
+    <!-- Ressourcen Section -->
+    <section id="ressourcen" class="section reveal" data-title="Ressourcen">
+      <h2 class="section-title"><span>Kostenlos</span>Übungen & Texte</h2>
+      <p class="lead">Ergänzende Materialien für alle Niveaustufen – bald verfügbar!</p>
+      <div class="resources-grid">
+        <a href="#" class="resource-card" onclick="event.preventDefault(); alert('A1-Ressourcen kommen bald!');">
+          <div class="resource-level">A1</div>
+          <div class="resource-desc">Grundlagen & erste Schritte</div>
+          <span class="resource-badge">Bald verfügbar</span>
+        </a>
+        <a href="#" class="resource-card" onclick="event.preventDefault(); alert('A2-Ressourcen kommen bald!');">
+          <div class="resource-level">A2</div>
+          <div class="resource-desc">Aufbau & Festigung</div>
+          <span class="resource-badge">Bald verfügbar</span>
+        </a>
+        <a href="#" class="resource-card" onclick="event.preventDefault(); alert('B1-Ressourcen kommen bald!');">
+          <div class="resource-level">B1</div>
+          <div class="resource-desc">Mittelstufe & Praxis</div>
+          <span class="resource-badge">Bald verfügbar</span>
+        </a>
+        <a href="#" class="resource-card" onclick="event.preventDefault(); alert('B2-Ressourcen kommen bald!');">
+          <div class="resource-level">B2</div>
+          <div class="resource-desc">Vertiefung & Prüfung</div>
+          <span class="resource-badge">Bald verfügbar</span>
+        </a>
+        <a href="#" class="resource-card" onclick="event.preventDefault(); alert('C1-Ressourcen kommen bald!');">
+          <div class="resource-level">C1</div>
+          <div class="resource-desc">Fortgeschritten & Perfektion</div>
+          <span class="resource-badge">Bald verfügbar</span>
+        </a>
+      </div>
+    </section>
+    
+    <!-- Buchen Section mit MANUELLEM KALENDER -->
+    <section id="buchen" class="section reveal" data-title="Buchen">
+      <h2 class="section-title"><span>Jetzt</span>Termin buchen</h2>
+      <p class="lead">Wähle einen passenden Termin für deine erste Stunde.</p>
+      
+      <!-- MANUELLER WOCHENKALENDER -->
+      <!--
+        ANLEITUNG ZUM BEARBEITEN:
+        
+        1. Um Zeiten zu ÄNDERN:
+           - Ändere die Uhrzeiten in den <span>-Tags (z.B. von "18:00" zu "19:00")
+        
+        2. Um Termine zu LÖSCHEN:
+           - Lösche die gesamte Zeile mit <a class="calendar-slot">...</a>
+        
+        3. Um Termine HINZUZUFÜGEN:
+           - Kopiere eine bestehende Zeile und ändere die Uhrzeit
+        
+        4. Um Termine als GEBUCHT zu markieren:
+           - Füge die Klasse "booked" hinzu: <a class="calendar-slot booked">
+        
+        5. Um Tage zu ÄNDERN:
+           - Ändere das Datum in <span class="calendar-day-date">
+        
+        TIPP: Aktualisiere diesen Kalender jede Woche mit deinen echten Verfügbarkeiten!
+      -->
+      
+      <div class="calendar-container">
+        <div class="calendar-week">
+          <!-- MONTAG -->
+          <div class="calendar-day">
+            <span class="calendar-day-name">Montag</span>
+            <span class="calendar-day-date">21. Okt</span>
+            <div class="calendar-slots">
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Montag%20um%2017:00%20buchen" class="calendar-slot" target="_blank">17:00</a>
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Montag%20um%2018:00%20buchen" class="calendar-slot" target="_blank">18:00</a>
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Montag%20um%2020:00%20buchen" class="calendar-slot" target="_blank">20:00</a>
+            </div>
+          </div>
+          
+          <!-- DIENSTAG -->
+          <div class="calendar-day">
+            <span class="calendar-day-name">Dienstag</span>
+            <span class="calendar-day-date">22. Okt</span>
+            <div class="calendar-slots">
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Dienstag%20um%2019:00%20buchen" class="calendar-slot" target="_blank">19:00</a>
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Dienstag%20um%2021:00%20buchen" class="calendar-slot" target="_blank">21:00</a>
+            </div>
+          </div>
+          
+          <!-- MITTWOCH -->
+          <div class="calendar-day">
+            <span class="calendar-day-name">Mittwoch</span>
+            <span class="calendar-day-date">23. Okt</span>
+            <div class="calendar-slots">
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Mittwoch%20um%2018:00%20buchen" class="calendar-slot" target="_blank">18:00</a>
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Mittwoch%20um%2022:00%20buchen" class="calendar-slot" target="_blank">22:00</a>
+            </div>
+          </div>
+          
+          <!-- DONNERSTAG -->
+          <div class="calendar-day">
+            <span class="calendar-day-name">Donnerstag</span>
+            <span class="calendar-day-date">24. Okt</span>
+            <div class="calendar-slots">
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Donnerstag%20um%2017:00%20buchen" class="calendar-slot" target="_blank">17:00</a>
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Donnerstag%20um%2019:00%20buchen" class="calendar-slot" target="_blank">19:00</a>
+              </div>
+          </div>
+          
+          <!-- FREITAG -->
+          <div class="calendar-day">
+            <span class="calendar-day-name">Freitag</span>
+            <span class="calendar-day-date">25. Okt</span>
+            <div class="calendar-slots">
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Freitag%20um%2017:00%20buchen" class="calendar-slot" target="_blank">17:00</a>
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Freitag%20um%2019:00%20buchen" class="calendar-slot" target="_blank">19:00</a>
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Freitag%20um%2021:00%20buchen" class="calendar-slot" target="_blank">21:00</a>
+            </div>
+          </div>
+          
+          <!-- SAMSTAG -->
+          <div class="calendar-day">
+            <span class="calendar-day-name">Samstag</span>
+            <span class="calendar-day-date">26. Okt</span>
+            <div class="calendar-slots">
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Samstag%20um%2008:00%20buchen" class="calendar-slot" target="_blank">08:00</a>
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Samstag%20um%2010:00%20buchen" class="calendar-slot" target="_blank">10:00</a>
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Samstag%20um%2014:00%20buchen" class="calendar-slot" target="_blank">14:00</a>
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Samstag%20um%2018:00%20buchen" class="calendar-slot" target="_blank">18:00</a>
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Samstag%20um%2020:00%20buchen" class="calendar-slot" target="_blank">20:00</a>
+            </div>
+          </div>
+          
+          <!-- SONNTAG -->
+          <div class="calendar-day">
+            <span class="calendar-day-name">Sonntag</span>
+            <span class="calendar-day-date">27. Okt</span>
+            <div class="calendar-slots">
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Sonntag%20um%2009:00%20buchen" class="calendar-slot" target="_blank">09:00</a>
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Sonntag%20um%2012:00%20buchen" class="calendar-slot" target="_blank">12:00</a>
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Sonntag%20um%2016:00%20buchen" class="calendar-slot" target="_blank">16:00</a>
+              <a href="https://wa.me/4917663005489?text=Hallo,%20ich%20möchte%20einen%20Termin%20am%20Sonntag%20um%2019:00%20buchen" class="calendar-slot" target="_blank">19:00</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="calendar-edit-note">
+          <strong>📝 Wähle Monat, Tag und volle Stunde (z. B. 17:00).:</strong><br>
+          1. Öffne die HTML-Datei in einem Texteditor<br>
+          2. Suche nach dem Kommentar "MANUELLER WOCHENKALENDER"<br>
+          3. Ändere die Uhrzeiten, Tage oder lösche gebuchte Termine<br>
+          4. Um einen Termin als "gebucht" zu markieren, füge die Klasse "booked" hinzu<br>
+          5. Speichere die Datei und lade sie auf deinen Server hoch
+        </div>
+      </div>
+      
+      <div class="booking-note">
+        <strong>Hinweis:</strong> Klicke auf einen freien Termin, um per WhatsApp zu buchen. Ich bestätige dir dann den Termin und sende dir den Zoom/Meet-Link. Alle Zeitangaben sind in deutscher Zeit (CET/CEST).
+      </div>
+    </section>
+    
     <!-- Kontakt Section -->
     <section id="kontakt" class="section reveal" data-title="Kontakt">
-      <div class="section-title"><span>Kontakt</span>Schreib mir</div>
+      <h2 class="section-title"><span>Kontakt</span>Schreib mir</h2>
       <p class="lead">Ich freue mich darauf, von dir zu hören! Du erreichst mich wochentags abends und am Wochenende.</p>
       <form class="contact-form" id="contactForm" action="https://formspree.io/f/xeorpljq" method="POST" novalidate>
         <div class="field">
@@ -1671,74 +2117,84 @@
         </div>
         <label class="consent">
           <input id="consent" name="consent" type="checkbox" required>
-          <!-- Pack den gesamten Erklärungstext in einen separaten Span, damit er als ein Flex‑Item behandelt wird -->
           <span>Ich stimme der Verarbeitung meiner Daten gemäß <a href="#datenschutz">Datenschutzhinweisen</a> zu.</span>
         </label>
         <small class="err" id="err-consent" hidden>Bitte Einverständnis bestätigen.</small>
+        
         <!-- Honeypot + Zeitfalle -->
         <input type="text" name="website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;">
         <input type="hidden" name="startedAt" id="startedAt">
-        <button type="submit" id="sendBtn" class="btn btn-primary" aria-label="Nachricht senden">Nachricht senden</button>
+        
+        <button type="submit" id="sendBtn" class="btn btn-primary lux-trace bubble-hover" aria-label="Nachricht senden">Nachricht senden</button>
         <div id="formAlert" class="alert" role="status" aria-live="polite" hidden></div>
+        
         <p class="fallback" style="font-size:13px; opacity:0.7; margin-top:6px;">
           Alternativ: <a href="https://wa.me/4917663005489" target="_blank" rel="noopener">WhatsApp</a> ·
           <a href="mailto:infoleonicaura@gmail.com">E‑Mail</a>
         </p>
       </form>
+      
       <div class="contact-info">
         <p><strong>E‑Mail:</strong> <a href="mailto:infoleonicaura@gmail.com">infoleonicaura@gmail.com</a></p>
-        <p><strong>WhatsApp:</strong> <a href="https://wa.me/4917663005489" target="_blank" rel="noopener">+49&nbsp;176&nbsp;63005489</a></p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/4917663005489" target="_blank" rel="noopener">+49 176 63005489</a></p>
         <p><strong>Instagram:</strong> <a href="https://www.instagram.com/AICreativeBitch" target="_blank" rel="noopener">@AICreativeBitch</a></p>
       </div>
     </section>
-    <!-- Rechtliches Section -->
+    
+    <!-- Datenschutz Section -->
     <section id="datenschutz" class="section reveal" data-title="Datenschutz">
-      <div class="section-title"><span>Rechtliches</span>Datenschutz</div>
+      <h2 class="section-title"><span>Rechtliches</span>Datenschutz</h2>
       <p class="lead">Deine Daten sind bei mir sicher. Hier erfährst du, welche Informationen ich erhebe und wofür sie genutzt werden.</p>
       <div class="legal-section">
         <h3>1. Verantwortlicher</h3>
         <p>Verantwortlich für die Datenverarbeitung ist Leon (LeonicAURA), Duisburg, Deutschland. Kontakt siehe Impressum.</p>
+        
         <h3>2. Zweck der Datenverarbeitung</h3>
         <p>Ich verarbeite personenbezogene Daten ausschließlich zur Terminvereinbarung, Durchführung des Unterrichts und zur Abrechnung. Deine Daten werden nicht an Dritte weitergegeben und nur so lange gespeichert, wie dies zur Erfüllung des genannten Zwecks erforderlich ist.</p>
+        
         <h3>3. Rechte der Betroffenen</h3>
         <p>Du hast das Recht auf Auskunft, Berichtigung, Löschung sowie Einschränkung der Verarbeitung deiner Daten. Du kannst der Verarbeitung jederzeit widersprechen. Schreibe mir dazu einfach eine Nachricht.</p>
       </div>
     </section>
+    
+    <!-- Impressum Section -->
     <section id="impressum" class="section reveal" data-title="Impressum">
-      <div class="section-title"><span>Rechtliches</span>Impressum</div>
+      <h2 class="section-title"><span>Rechtliches</span>Impressum</h2>
       <p class="lead">Angaben gemäß § 5 TMG.</p>
       <div class="legal-section">
         <h3>LeonicAURA – Leon</h3>
         <p>Duisburg, Deutschland</p>
         <p>E‑Mail: <a href="mailto:infoleonicaura@gmail.com">infoleonicaura@gmail.com</a></p>
         <p>Tel.: <a href="tel:+4917663005489">+49 176 63005489</a></p>
-        <!-- Hinweis zur Umsatzsteuer entfällt, da nicht angegeben werden soll -->
       </div>
     </section>
   </main>
+  
   <footer>
     <p>© 2025 LeonicAURA – Online Deutsch lernen. Alle Rechte vorbehalten.</p>
     <p><a href="#impressum">Impressum</a> · <a href="#datenschutz">Datenschutz</a> · <a href="#kontakt">Kontakt</a></p>
-    <p style="margin-top: 1em; font-size: 14px; opacity: 0.7;">
-      Demnächst veröffentliche ich hier ein paar kleine Code‑Demos und Beispiele, die zeigen, wie die Interaktionen gedacht sind (Buchstaben‑Universum, Mikro‑Effekte, Timing).
-    </p>
   </footer>
+  
   <script>
-    // Handle header background on scroll
+    // Performance-optimized animations with IntersectionObserver
+    const REDUCED_MOTION = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    // Header scroll effect
     const headerEl = document.getElementById('site-header');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) headerEl.classList.add('scrolled');
       else headerEl.classList.remove('scrolled');
-    });
+    }, { passive: true });
+    
     // Burger menu toggle
     const burger = document.querySelector('.burger');
     const mobileNav = document.getElementById('mobileNav');
     burger.addEventListener('click', () => {
       const isOpen = mobileNav.classList.toggle('open');
       burger.classList.toggle('open');
-      // update aria-expanded for accessibility
       burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
+    
     // Close mobile nav on link click
     mobileNav.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
@@ -1747,441 +2203,232 @@
         burger.setAttribute('aria-expanded', 'false');
       });
     });
-    // Close mobile navigation when switching from mobile to desktop width
+    
+    // Close mobile navigation when switching to desktop width
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768 && mobileNav.classList.contains('open')) {
         mobileNav.classList.remove('open');
         burger.classList.remove('open');
         burger.setAttribute('aria-expanded', 'false');
       }
-    });
+    }, { passive: true });
+    
     // Intersection Observer for reveal animation
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          observer.unobserve(entry.target);
-        }
+    if (!REDUCED_MOTION) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.25, rootMargin: '0px 0px -50px 0px' });
+      
+      document.querySelectorAll('.reveal').forEach(section => observer.observe(section));
+      
+      // Staggered animation for grid items
+      const staggerObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const items = entry.target.querySelectorAll('.benefit-item, .pricing-card, .step-item, .service-item, .testimonial-card');
+            items.forEach((item, index) => {
+              setTimeout(() => {
+                item.classList.add('visible');
+              }, index * 100);
+            });
+            staggerObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+      
+      document.querySelectorAll('#nutzen, #testimonials, #preise, #ablauf, #leistungen').forEach(section => {
+        staggerObserver.observe(section);
       });
-    }, { threshold: 0.25 });
-    document.querySelectorAll('.reveal').forEach(section => observer.observe(section));
-
-    // Staggered animation for grid items
-    const staggerObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const items = entry.target.querySelectorAll('.benefit-item, .pricing-card, .step-item, .service-item, .testimonial-card');
-          items.forEach((item, index) => {
-            setTimeout(() => {
-              item.classList.add('visible');
-            }, index * 120); // 120ms delay between each item
-          });
-          staggerObserver.unobserve(entry.target);
-        }
+    } else {
+      // Skip animations for reduced motion
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
+      document.querySelectorAll('.benefit-item, .pricing-card, .step-item, .service-item, .testimonial-card').forEach(el => {
+        el.classList.add('visible');
       });
-    }, { threshold: 0.15 });
+    }
     
-    // Observe sections that contain grid items
-    document.querySelectorAll('#nutzen, #testimonials, #preise, #ablauf, #leistungen').forEach(section => {
-      staggerObserver.observe(section);
-    });
-
-    // Text reveal animation for lead paragraphs
-    const textRevealObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const lead = entry.target;
-          const text = lead.textContent;
-          lead.textContent = '';
-          lead.classList.add('animating');
-          
-          // Split text into characters
-          text.split('').forEach((char, index) => {
-            const span = document.createElement('span');
-            span.textContent = char === ' ' ? '\u00A0' : char; // preserve spaces
-            span.style.animationDelay = `${index * 0.02}s`;
-            lead.appendChild(span);
-          });
-          
-          textRevealObserver.unobserve(lead);
-        }
-      });
-    }, { threshold: 0.5 });
-    
-    // Observe all lead paragraphs
-    document.querySelectorAll('.lead').forEach(lead => {
-      textRevealObserver.observe(lead);
-    });
-
-    // Hero tagline animation and letter nebula
+    // Hero tagline animation
     (function(){
       const heroSection = document.getElementById('intro');
       const headline = document.getElementById('hero-headline');
       let firstScroll = false;
+      
       function playTagline(){
         if(headline) headline.classList.add('active');
       }
+      
       function resetTagline(){
         if(headline) headline.classList.remove('active');
       }
-      // Play tagline on load
+      
       document.addEventListener('DOMContentLoaded', () => {
         setTimeout(playTagline, 100);
       });
-      // Detect first scroll to pause tagline
+      
       window.addEventListener('scroll', () => {
         const y = window.scrollY;
         if(!firstScroll && y > 20){
           firstScroll = true;
           resetTagline();
         }
-        // If returning near top after first scroll, reactivate tagline
         if(firstScroll && y < 40){
           playTagline();
         }
       }, { passive: true });
-      // Reactivate tagline when hero enters again
-      const tagObs = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting){
-            // Always ensure dynamic text appears when hero is visible
-            if(firstScroll) playTagline();
-          } else {
-            resetTagline();
-          }
-        });
-      }, { threshold: 0.2 });
-      if(heroSection) tagObs.observe(heroSection);
+      
+      if (!REDUCED_MOTION) {
+        const tagObs = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if(entry.isIntersecting){
+              if(firstScroll) playTagline();
+            } else {
+              resetTagline();
+            }
+          });
+        }, { threshold: 0.2 });
+        if(heroSection) tagObs.observe(heroSection);
+      }
     })();
-    /*
-     * LeonicAURA – Smooth Exploding Letter Nebula (center-start)
-     * This script renders a field of letters that coalesce into the word "LeonicAURA"
-     * and then explode outward, drifting gently until they regroup again. Each
-     * character has its own inertia and can be influenced by pointer movements
-     * and clicks. The colours are derived from the warm and cool accent variables
-     * defined on the :root. Reduced motion users see a static frame.
-     */
+    
+    // Optimized exploding letter nebula
     (function(){
-      const cvs = document.getElementById('leonic'); if(!cvs) return;
-      const ctx = cvs.getContext('2d', { alpha:true });
+      if (REDUCED_MOTION) return;
+      
+      const cvs = document.getElementById('leonic');
+      if(!cvs) return;
+      
+      const ctx = cvs.getContext('2d', { alpha:true, desynchronized: true });
       const DPR = 1;
-      const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
+      
       const COL_WARM = getCSS('--glow-core') || '232,214,188';
       const COL_COOL = getCSS('--glow-cool') || '168,195,255';
       const rgba = (rgb,a)=>`rgba(${rgb},${a})`;
-      // Display the brand name in the explosion using normal letters (no special characters)
       const WORD = 'LeonicAURA';
-      const FONT = 'Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif';
-      /*
-       * Particle counts tweaked to improve performance
-       * Reducing the number of base letters and stars per pixel
-       * dramatically lightens the computational load, especially on
-       * older or slower devices. These values still produce a nice
-       * effect but with far fewer draw calls per frame.
-       */
-      let LETTERS_BASE = 180;
-      let STARS_PER_PX = 0.00005;
-      // Further reduce counts on narrow/mobile screens
-      const isMobileView = window.innerWidth <= 600;
-      if(isMobileView){
-        LETTERS_BASE = 120;
-        STARS_PER_PX = 0.00003;
+      
+      function getCSS(v){
+        const st = getComputedStyle(document.documentElement);
+        const val = st.getPropertyValue(v).trim();
+        if(!val) return null;
+        const m = val.match(/var\(--([^)]+)\)/);
+        if(m){
+          const vn='--'+m[1];
+          return getComputedStyle(document.documentElement).getPropertyValue(vn).trim();
+        }
+        return val;
       }
-      // Duration of the explosion phase in milliseconds. 15s makes the letters drift
-      // outward for longer before regrouping.
-      const T_EXPLODE = 15000;
-      const T_DRIFT   = 3000;
-      const T_GATHER  = 3800;
-      const T_HOLD    = 1200;
-      const PAUSE_BETWEEN = [1200, 2400];
-      const BASE_DRIFT   = 0.05;
-      const SPIN_JITTER  = 0.002;
-      const ORBIT_R      = 140;
-      // Lower probability of comets to reduce occasional spikes
-      const COMET_PROB   = 0.001;
-      const MAX_COMETS   = 1;
-
-      let W=0, H=0, stars=[], letters=[], comets=[];
-      let wordPoints=[], wordCenter={x:0,y:0};
-      let phase = 'assemble';
-      let phaseEnd = 0, nextPauseAt = 0;
-      let pointer = { x:0, y:0, active:false };
-      const off = document.createElement('canvas');
-      const octx = off.getContext('2d');
-      const ro = new ResizeObserver(resize);
-      ro.observe(cvs.parentElement || cvs);
-      resize();
-      // Immediately trigger the explosion on page load so the animation starts at once
-      startExplosion();
-      if(!REDUCED) raf(draw); else drawStatic();
+      
+      let W=0, H=0;
       function resize(){
-        const r = cvs.getBoundingClientRect();
-        W = Math.max(1, Math.floor(r.width * DPR));
-        H = Math.max(1, Math.floor(r.height * DPR));
-        cvs.width = W; cvs.height = H;
-        const area = W*H;
-        const starCount   = clamp(Math.floor(area*STARS_PER_PX), 150, 700);
-        const letterCount = clamp(Math.floor(LETTERS_BASE * (area/(1280*720))), 180, 360);
-        // Sterne
-        stars = Array.from({length:starCount}, ()=>({
-          x:rand(0,W), y:rand(0,H),
-          r:rand(0.6,1.6),
-          a:rand(0.35,0.85),
-          tw:rand(0.002,0.006) * (Math.random()<.5?-1:1),
-          vx:rand(-0.02,0.02), vy:rand(-0.02,0.02),
-          warm: Math.random() < 0.7
-        }));
-        // Letters
-        const charset = "AaÄäÖöÜüß BbCcČĆĆçDdĐđEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsŠšTtUuVvWwXxYyZzŽž";
-        letters = Array.from({length:letterCount}, ()=>({
-          ch: pick(charset),
-          x:0, y:0,
-          z: rand(0.6, 1.8),
-          vx:0, vy:0,
-          a:rand(0.35,0.85),
-          pulse:rand(0.002,0.004)*(Math.random()<.5?-1:1),
-          size:rand(12,18),
-          baseSize:null,
-          spin:(Math.random()<.5?-1:1)*rand(0, SPIN_JITTER),
-          tx:null, ty:null, tStart:0, tDur:0
-        }));
-        letters.forEach(l=>{ l.baseSize = l.size; });
-        wordPoints = sampleWordPoints(WORD);
-        wordCenter = centroid(wordPoints);
-        const picks = pickTargets(wordPoints, letters.length);
-        letters.forEach((l, i)=>{
-          const p = picks[i % picks.length];
-          l.x = p.x + rand(-2,2);
-          l.y = p.y + rand(-2,2);
-          l.vx = 0; l.vy = 0;
-          l.tx = null; l.ty = null; l.tDur = 0;
-        });
-        phase = 'hold';
-        phaseEnd = performance.now() + T_HOLD;
-        nextPauseAt = 0;
+        const w = cvs.parentElement.clientWidth, h = cvs.parentElement.clientHeight;
+        cvs.width = W = w * DPR;
+        cvs.height = H = h * DPR;
+        cvs.style.width = w+'px';
+        cvs.style.height = h+'px';
       }
-      function drawStatic(){
-        ctx.clearRect(0,0,W,H);
-        drawStars();
-        drawLetters();
+      resize();
+      window.addEventListener('resize', resize, {passive:true});
+      
+      const fSize = Math.min(W,H)*0.11;
+      ctx.font = `700 ${fSize}px 'Lora', serif`;
+      ctx.textBaseline = 'middle';
+      ctx.textAlign = 'center';
+      
+      let letters = [];
+      for(let i=0; i<WORD.length; i++){
+        const ch = WORD.charAt(i);
+        const x = W/2 + (i - WORD.length/2 + 0.5)*fSize*0.6;
+        const y = H/2;
+        const z = 0.7 + Math.random()*0.3;
+        letters.push({ch, x, y, vx:0, vy:0, z, ox:x, oy:y});
       }
-      function draw(){
-        // Skip drawing when the tab is hidden to save resources
-        if(document.hidden){
-          requestAnimationFrame(draw);
-          return;
-        }
-        ctx.clearRect(0,0,W,H);
-        drawStars();
-        updateLetters();
-        drawLetters();
-        updateComets();
-        const tNow = performance.now();
-        if(phase==='assemble' && tNow>=phaseEnd){ phase='hold'; phaseEnd = tNow + T_HOLD; }
-        else if(phase==='hold' && tNow>=phaseEnd){ startExplosion(); }
-        else if(phase==='explode' && tNow>=phaseEnd){ phase='drift'; phaseEnd = tNow + T_DRIFT; }
-        else if(phase==='drift' && tNow>=phaseEnd){ startGather(); }
-        else if(phase==='gather' && tNow>=phaseEnd){
-          phase='hold'; phaseEnd = tNow + T_HOLD;
-          nextPauseAt = Date.now() + randInt(PAUSE_BETWEEN[0], PAUSE_BETWEEN[1]);
-        } else if(phase==='hold' && Date.now()>=nextPauseAt){ startExplosion(); }
-        raf(draw);
-      }
-      function drawStars(){
-        for(const s of stars){
-          s.a += s.tw; if(s.a < .25 || s.a > .95) s.tw *= -1;
-          s.x += s.vx + (pointer.active ? (pointer.x - W*.5)*0.000006 : 0);
-          s.y += s.vy + (pointer.active ? (pointer.y - H*.5)*0.000006 : 0);
-          wrap(s,5);
-          ctx.beginPath();
-          ctx.fillStyle = rgba(s.warm?COL_WARM:COL_COOL, s.a*0.6);
-          ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
-          ctx.fill();
-        }
-      }
-      function updateComets(){
-        if(Math.random()<COMET_PROB && comets.length<MAX_COMETS && !REDUCED) spawnComet();
-        if(!comets.length) return;
-        comets = comets.filter(c=>{
-          c.age += 16; const p = 1 - c.age/c.life; if(p<=0) return false;
-          c.x += c.vx; c.y += c.vy;
-          const L=24*p, ang=Math.atan2(c.vy,c.vx);
-          ctx.save(); ctx.translate(c.x,c.y); ctx.rotate(ang);
-          const grad = ctx.createLinearGradient(0,0,L,0);
-          grad.addColorStop(0, rgba(c.col,0));
-          grad.addColorStop(0.25, rgba(c.col, 0.35*p));
-          grad.addColorStop(1, rgba(c.col, 0.02));
-          ctx.strokeStyle=grad; ctx.lineWidth=Math.max(1,1.6*p);
-          ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(L,0); ctx.stroke();
-          ctx.restore(); return true;
-        });
-      }
-      function spawnComet(){
-        const left = Math.random()<.5;
-        comets.push({
-          x:left?W+40:-40, y:rand(H*.15,H*.85),
-          vx:(left?-1:1)*rand(.9,1.4), vy:rand(-.15,.15),
-          life:randInt(480,760), age:0, col: (Math.random()<.7?COL_WARM:COL_COOL)
-        });
-      }
-      function updateLetters(){
-        const ORBIT_R_PX = ORBIT_R;
-        for(const l of letters){
-          l.a += l.pulse; if(l.a<.28 || l.a>.9) l.pulse *= -1;
-          if(phase==='assemble' || (phase==='gather' && l.tx!=null)){
-            const t = clamp((performance.now()-l.tStart)/l.tDur, 0, 1);
-            const e = phase==='assemble' ? easeOutCubic(t) : easeInCubic(t);
-            l.x = mix(l.x, l.tx, e*0.08 + 0.02);
-            l.y = mix(l.y, l.ty, e*0.08 + 0.02);
-          } else if(phase==='explode' || phase==='drift'){
-            if(pointer.active){
-              const dx = l.x - pointer.x, dy = l.y - pointer.y;
-              const d  = Math.hypot(dx,dy);
-              if(d < ORBIT_R_PX){
-                const n = d===0 ? {x:0,y:0} : {x:dx/d, y:dy/d};
-                const t = {x:-n.y, y:n.x};
-                const near = 1 - (d/ORBIT_R_PX);
-                /*
-                 * Increase the tangential and radial forces when the pointer
-                 * approaches a letter so that characters orbit the pointer
-                 * more vigorously.  The tangential component (t) makes the
-                 * letters circulate around the cursor, while the radial
-                 * component (n) pushes them away slightly to avoid collapsing
-                 * into the centre.  Higher coefficients amplify these effects
-                 * to create a more dynamic orbiting behaviour.
-                 */
-                const swirlStrength = 0.10; // was 0.05
-                const repelStrength = 0.010; // was 0.006
-                l.vx += t.x * swirlStrength * near;
-                l.vy += t.y * swirlStrength * near;
-                // Apply a radial repelling force to keep letters moving while orbiting
-                l.vx += -n.x * repelStrength * near * 8;
-                l.vy += -n.y * repelStrength * near * 8;
-              }
-            }
-            l.x += l.vx; l.y += l.vy;
-            l.vx *= 0.992; l.vy *= 0.992;
-          } else if(phase==='hold'){
-            l.x += Math.sin(performance.now()/800 + l.x*0.002)*0.06;
-            l.y += Math.cos(performance.now()/900 + l.y*0.002)*0.06;
-          }
-          if(phase==='explode' || phase==='drift'){
-            l.vx += Math.sin(l.y*0.001)*l.spin;
-            l.vy += Math.cos(l.x*0.001)*l.spin;
-          }
-          wrap(l, 12);
-        }
-      }
-      function drawLetters(){
-        ctx.textAlign='center'; ctx.textBaseline='middle';
-        // cosmic lines: connect some letters randomly for a constellation effect
-        // Draw fewer connecting lines between letters for a lighter constellation effect
-        const lineCount = Math.floor(letters.length * 0.02);
-        for(let i=0; i<lineCount; i++){
-          const a = letters[(Math.random()*letters.length)|0];
-          const b = letters[(Math.random()*letters.length)|0];
-          ctx.strokeStyle = rgba(COL_COOL, 0.05);
-          ctx.lineWidth = 0.7;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-        for(const l of letters){
-          const size = Math.round(l.size * l.z);
-          const warm = l.z > 1.1;
-          const col  = warm?COL_WARM:COL_COOL;
-          ctx.globalAlpha = 0.12 * l.a;
-          ctx.font = `${size+4}px ${FONT}`;
-          ctx.fillStyle = rgba(col, 1);
-          ctx.fillText(l.ch, l.x, l.y);
-          ctx.globalAlpha = l.a * 0.95;
-          ctx.font = `${size}px ${FONT}`;
-          ctx.fillStyle = rgba(col, 1);
-          ctx.fillText(l.ch, l.x, l.y);
-          ctx.globalAlpha = 1;
-        }
-      }
-      function startExplosion(){
-        phase = 'explode';
-        letters.forEach(l=>{
-          // Increase the random offset so letters spread further apart on explosion
-          const dx = (l.x - wordCenter.x) + rand(-100,100);
-          const dy = (l.y - wordCenter.y) + rand(-100,100);
-          const dist = Math.hypot(dx,dy) || 1;
-          const nx = dx/dist, ny = dy/dist;
-          /*
-           * Assign a speed to each letter with greater variability.  Base speeds range
-           * from 0.8 to 3.5 and are multiplied by an additional random factor
-           * between 0.5 and 1.5 so that some letters move slower and others
-           * much faster. Larger letters (higher l.z) still move slightly quicker.
-           */
-          // Increase the base speed range to give the explosion more power. A higher
-          // minimum and maximum speed means letters launch further and faster.
-          const baseSpeed = rand(1.2, 4.5);
-          const variation = rand(0.5, 1.5);
-          const s = baseSpeed * variation * l.z;
-          l.vx = nx * s;
-          l.vy = ny * s;
-          l.tx = l.ty = null;
-          l.tDur = 0;
-        });
-        phaseEnd = performance.now() + T_EXPLODE;
-      }
+      
+      let gatherTime = 0;
+      let gatherActive = false;
+      
       function startGather(){
-        phase = 'gather';
-        const picks = pickTargets(wordPoints, letters.length);
-        const now = performance.now();
-        letters.forEach((l,i)=>{
-          const p = picks[i % picks.length];
-          l.tx = p.x; l.ty = p.y;
-          l.tStart = now + Math.random()*180;
-          l.tDur = T_GATHER;
-        });
-        phaseEnd = performance.now() + T_GATHER + 50;
+        gatherTime = Date.now();
+        gatherActive = true;
       }
-      function sampleWordPoints(word){
-        const tarW = Math.min(W*0.74, 980);
-        const fs   = Math.max(56, Math.min(168, tarW/(word.length*0.52)));
-        const pad  = Math.floor(fs*0.6);
-        off.width  = Math.ceil(tarW + 2*pad);
-        off.height = Math.ceil(fs*2.2 + 2*pad);
-        octx.clearRect(0,0,off.width,off.height);
-        octx.fillStyle = '#fff';
-        octx.textAlign = 'center';
-        octx.textBaseline = 'middle';
-        octx.font = `800 ${fs}px ${FONT}`;
-        octx.fillText(word, off.width/2, off.height/2);
-        const img = octx.getImageData(0,0,off.width,off.height).data;
-        const step = Math.max(3, Math.round(fs/12));
-        const pts=[];
-        for(let y=0;y<off.height;y+=step){
-          for(let x=0;x<off.width;x+=step){
-            if(img[(y*off.width + x)*4 + 3] > 90) pts.push({x,y});
+      
+      startGather();
+      
+      const pointer = {x: W/2, y: H/2, active: false};
+      
+      let lastFrame = Date.now();
+      function loop(){
+        requestAnimationFrame(loop);
+        const now = Date.now();
+        const dt = Math.min((now - lastFrame)/1000, 0.05);
+        lastFrame = now;
+        
+        const fadeMs = 2000;
+        const gather = gatherActive ? Math.min((now - gatherTime)/fadeMs, 1) : 0;
+        const gathering = gather < 1;
+        
+        ctx.clearRect(0,0,W,H);
+        
+        let pointerPull = 0;
+        if(pointer.active){
+          letters.forEach(l=>{
+            const dx = pointer.x - l.x, dy = pointer.y - l.y;
+            const d = Math.hypot(dx,dy);
+            if(d<200 && d>0.1){
+              const f = (1 - d/200)*0.015;
+              l.vx += (dx/d)*f;
+              l.vy += (dy/d)*f;
+            }
+          });
+          pointerPull = 0.3;
+        }
+        
+        letters.forEach(l=>{
+          if(gathering){
+            const dx = l.ox - l.x, dy = l.oy - l.y;
+            const d = Math.hypot(dx,dy);
+            if(d>1){
+              const speed = 0.08 * gather;
+              l.vx += (dx/d)*speed;
+              l.vy += (dy/d)*speed;
+            }
+          } else {
+            l.vx += (Math.random()-0.5)*0.02;
+            l.vy += (Math.random()-0.5)*0.02;
+            const dx = l.x - W/2, dy = l.y - H/2;
+            const d = Math.hypot(dx,dy);
+            if(d>20){
+              l.vx -= (dx/d)*0.002;
+              l.vy -= (dy/d)*0.002;
+            }
           }
+          
+          l.vx *= (0.92 - pointerPull);
+          l.vy *= (0.92 - pointerPull);
+          l.x += l.vx * l.z * 300 * dt;
+          l.y += l.vy * l.z * 300 * dt;
+          
+          wrap(l, 50);
+          
+          const alpha = 0.5 + 0.4*l.z;
+          ctx.save();
+          ctx.globalAlpha = alpha;
+          ctx.fillStyle = (l.z>0.85) ? rgba(COL_WARM,1) : rgba(COL_COOL,0.9);
+          ctx.shadowColor = (l.z>0.85) ? rgba(COL_WARM,0.4) : rgba(COL_COOL,0.3);
+          ctx.shadowBlur = 10*l.z;
+          ctx.fillText(l.ch, l.x, l.y);
+          ctx.restore();
+        });
+        
+        if(gathering && gather>=1){
+          gatherActive = false;
         }
-        const ox = Math.round((W - off.width)/2 + 0.02*W);
-        const oy = Math.round((H - off.height)/2);
-        return pts.map(p=>({x: ox+p.x, y: oy+p.y}));
       }
-      function pickTargets(points, count){
-        const out=[]; const step=Math.max(1, Math.floor(points.length/count));
-        for(let i=0;i<count;i++){
-          const idx = Math.min(points.length-1, i*step + Math.floor(Math.random()*step));
-          out.push(points[idx]);
-        }
-        return out;
-      }
-      function centroid(pts){ let sx=0, sy=0; for(const p of pts){ sx+=p.x; sy+=p.y } return {x:sx/pts.length, y:sy/pts.length}; }
-      function getCSS(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || '255,255,255'; }
-      function pick(str){ return str[Math.floor(Math.random()*str.length)] }
-      function rand(a,b){ return Math.random()*(b-a)+a }
-      function randInt(a,b){ return Math.floor(rand(a,b)) }
-      function clamp(v,a,b){ return Math.max(a, Math.min(b, v)) }
-      function mix(a,b,t){ return a + (b-a)*t }
-      function easeOutCubic(t){ return 1 - Math.pow(1-t,3) }
-      function easeInCubic(t){ return t*t*t }
+      loop();
+      
       function wrap(o, pad){
         const P = pad||0;
         if(o.x < -P) o.x = W + P;
@@ -2189,109 +2436,105 @@
         if(o.y < -P) o.y = H + P;
         if(o.y > H + P) o.y = -P;
       }
-      function raf(fn){ requestAnimationFrame(fn); }
-      // Pointer-Interaktion (Orbit)
+      
+      // Pointer interaction
       window.addEventListener('pointermove', e=>{
         const r = cvs.getBoundingClientRect();
         pointer.x = (e.clientX - r.left);
         pointer.y = (e.clientY - r.top);
         pointer.active = true;
       }, {passive:true});
+      
       window.addEventListener('pointerdown', e=>{
         const r = cvs.getBoundingClientRect();
         const cx = (e.clientX - r.left);
         const cy = (e.clientY - r.top);
-        const rad = 200;
+        const rad = 180;
+        
         for(const l of letters){
           const dx = l.x - cx, dy = l.y - cy;
           const d  = Math.hypot(dx,dy);
           if(d < rad){
             const n = d===0 ? {x:0,y:0} : {x:dx/d, y:dy/d};
-            const power = 2.2 * (1 - d/rad) * (0.7 + 0.6*l.z);
+            const power = 2.0 * (1 - d/rad) * (0.7 + 0.5*l.z);
             l.vx += n.x * power;
             l.vy += n.y * power;
           }
         }
       }, {passive:true});
-      // Export helpers to fade nebula in/out
+      
+      // Export helpers
       window.leonic = window.leonic || {};
       window.leonic.exit = function(dir='left'){
         try{
-          const title = document.querySelector('.leonic-title');
-          if(title){
-            title.style.transition = 'transform .7s cubic-bezier(.2,.8,.2,1), opacity .5s';
-            const t = {left:'translateX(-80px)', right:'translateX(80px)', up:'translateY(-60px)', down:'translateY(60px)'}[dir] || 'translateX(-80px)';
-            title.style.transform = t;
-            title.style.opacity = '0';
-          }
           const np = document.querySelector('.nebula-parent');
           if(np){
-            np.style.transition = 'opacity .9s ease, filter .9s ease';
-            np.style.opacity = '0.18';
-            np.style.filter = 'saturate(115%) blur(0.2px)';
+            np.style.transition = 'opacity .8s ease, filter .8s ease';
+            np.style.opacity = '0.2';
+            np.style.filter = 'saturate(110%) blur(0.2px)';
           }
           if(Array.isArray(letters)){
             const kx = dir==='right'?1:dir==='left'?-1:0;
             const ky = dir==='down'?1:dir==='up'?-1:0;
             letters.forEach(l=>{
-              const base = 2.4*l.z;
-              l.vx += (kx!==0 ? base*kx : (Math.random()>.5?1:-1)*base*0.6) + (Math.random()-0.5)*0.6;
-              l.vy += (ky!==0 ? base*0.6*ky : (Math.random()-0.5)*1.0);
+              const base = 2.2*l.z;
+              l.vx += (kx!==0 ? base*kx : (Math.random()>.5?1:-1)*base*0.5) + (Math.random()-0.5)*0.5;
+              l.vy += (ky!==0 ? base*0.5*ky : (Math.random()-0.5)*0.8);
             });
           }
         }catch(e){ console.warn('leonic.exit:', e); }
       };
+      
       window.leonic.restore = function(){
         try{
-          const title = document.querySelector('.leonic-title');
-          if(title){ title.style.opacity=''; title.style.transform=''; }
           const np = document.querySelector('.nebula-parent');
           if(np){ np.style.opacity=''; np.style.filter=''; }
           if(typeof startGather==='function') startGather();
         }catch(e){ console.warn('leonic.restore:', e); }
       };
     })();
-    // Toggle hero nebula visibility based on hero section visibility
+    
+    // Toggle nebula visibility
     (function(){
+      if (REDUCED_MOTION) return;
+      
       const heroSection = document.getElementById('hero');
       const nebula = document.querySelector('.nebula-parent');
       if(!heroSection || !nebula || !window.leonic) return;
+      
       const leonicCanvas = document.getElementById('leonic');
+      
       const obs = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if(entry.isIntersecting) {
-            // Show nebula fully when hero is visible
             if(leonicCanvas){
-              leonicCanvas.style.transition = 'opacity 0.7s ease';
+              leonicCanvas.style.transition = 'opacity 0.6s ease';
               leonicCanvas.style.opacity = '1';
               leonicCanvas.style.display = 'block';
             }
             if(nebula){
-              nebula.style.transition = 'opacity 0.7s ease, filter 0.7s ease';
+              nebula.style.transition = 'opacity 0.6s ease, filter 0.6s ease';
               nebula.style.opacity = '1';
               nebula.style.filter = '';
             }
             if(window.leonic && typeof window.leonic.restore === 'function') window.leonic.restore();
           } else {
-            // Fade nebula out when leaving hero
             if(leonicCanvas){
-              leonicCanvas.style.transition = 'opacity 0.7s ease';
+              leonicCanvas.style.transition = 'opacity 0.6s ease';
               leonicCanvas.style.opacity = '0';
-              // hide completely after fade
-              setTimeout(() => { leonicCanvas.style.display = 'none'; }, 700);
+              setTimeout(() => { leonicCanvas.style.display = 'none'; }, 600);
             }
             if(nebula){
-              nebula.style.transition = 'opacity 0.7s ease, filter 0.7s ease';
+              nebula.style.transition = 'opacity 0.6s ease, filter 0.6s ease';
               nebula.style.opacity = '0';
               nebula.style.filter = 'blur(2px)';
             }
-            // do not trigger nebula exit animation on leaving hero; simply fade out via CSS
           }
         });
       }, { threshold: 0.1 });
+      
       obs.observe(heroSection);
-
-      // Fallback: hide nebula when scrolled far past hero to ensure other sections stay calm
+      
       window.addEventListener('scroll', () => {
         const y = window.scrollY;
         const heroHeight = heroSection ? heroSection.offsetHeight : 0;
@@ -2304,544 +2547,33 @@
         }
       }, { passive: true });
     })();
-    // Starfield for about section
+    
+    // 3D tilt effect for title
     (function(){
-      const cv = document.getElementById('about-canvas');
-      if(!cv) return;
-      const ctx = cv.getContext('2d', { alpha:true });
-      const DPR = window.devicePixelRatio || 1;
-      let stars = [], sprites = [];
-      const STAR_DENSITY = 0.0015;
-      const DEPTH_LAYERS = 4;
-      const TWINKLE_STRENGTH = 0.5;
-      const DRIFT = -0.03;
-      const GLOW_CHANCE = 0.008;
-      const CLICK_SPARKS = 16;
-      const COLORS = [ [240,245,255],[210,225,255],[190,205,255],[205,195,245] ];
-      function rnd(a,b){ return a + Math.random()*(b-a); }
-      function pick(arr){ return arr[(Math.random()*arr.length)|0]; }
-      function resize(){
-        cv.width = Math.max(1, cv.clientWidth * DPR);
-        cv.height = Math.max(1, cv.clientHeight * DPR);
-        ctx.setTransform(DPR,0,0,DPR,0,0);
-        initStars();
-      }
-      new ResizeObserver(resize).observe(cv);
-      function initStars(){
-        const count = Math.floor(cv.clientWidth * cv.clientHeight * STAR_DENSITY);
-        stars = [];
-        for(let i=0;i<count;i++){
-          const z = (Math.random()*DEPTH_LAYERS)|0;
-          const d = (z+1)/DEPTH_LAYERS;
-          const c = pick(COLORS);
-          stars.push({
-            x: Math.random()*cv.clientWidth,
-            y: Math.random()*cv.clientHeight,
-            r: rnd(0.5,1.6) * (0.6 + d),
-            spd: (0.02 + d*0.12),
-            tw: Math.random()*Math.PI*2,
-            twr: rnd(0.008,0.016),
-            c
-          });
-        }
-      }
-      function spawnGlow(){
-        const side = Math.random()<0.5 ? 'left' : 'right';
-        const x = side==='left' ? -80 : cv.clientWidth+80;
-        const y = rnd(cv.clientHeight*0.2, cv.clientHeight*0.8);
-        const ang = side==='left' ? rnd(-0.25,-0.05) : rnd(Math.PI+0.05, Math.PI+0.25);
-        sprites.push({ kind:'glow', x, y, vx: Math.cos(ang)*0.9, vy: Math.sin(ang)*0.3, life: 1.0, fade: 0.005, size: rnd(80,140) });
-      }
-      cv.addEventListener('pointerdown', e => {
-        const rect = cv.getBoundingClientRect();
-        const x = (e.clientX - rect.left);
-        const y = (e.clientY - rect.top);
-        for(let i=0;i<CLICK_SPARKS;i++){
-          const a = rnd(0,Math.PI*2), s = rnd(0.4,1.2);
-          sprites.push({ kind:'spark', x, y, vx: Math.cos(a)*s, vy: Math.sin(a)*s, life: 1.0, fade: rnd(0.02,0.035), size: rnd(1.5,2.8) });
-        }
-      });
-      let last=0, acc=0;
-      function frame(ts){
-        if(!last) last = ts;
-        const dt = Math.min(33, ts-last);
-        last = ts;
-        acc += dt;
-        ctx.clearRect(0,0,cv.clientWidth,cv.clientHeight);
-        stars.forEach(s => {
-          s.y += (DRIFT - s.spd*0.6) * (dt/16);
-          if(s.y < -6){ s.y = cv.clientHeight + rnd(0,20); s.x = Math.random()*cv.clientWidth; }
-          s.tw += s.twr * (dt/16);
-          const tw = 0.6 + (Math.sin(s.tw)*0.5 + 0.5) * TWINKLE_STRENGTH;
-          const [r,g,b] = s.c;
-          ctx.beginPath();
-          ctx.fillStyle = `rgba(${r},${g},${b},${0.55*tw})`;
-          ctx.arc(s.x, s.y, s.r*tw, 0, Math.PI*2);
-          ctx.fill();
-          if(tw>0.95){
-            const grd = ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.r*6);
-            grd.addColorStop(0, `rgba(${r},${g},${b},0.10)`);
-            grd.addColorStop(1, `rgba(${r},${g},${b},0)`);
-            ctx.fillStyle = grd;
-            ctx.beginPath();
-            ctx.arc(s.x, s.y, s.r*6, 0, Math.PI*2);
-            ctx.fill();
-          }
-        });
-        if(acc>1000 && Math.random()<GLOW_CHANCE){ spawnGlow(); acc=0; }
-        for(let i=sprites.length-1;i>=0;i--){
-          const sp = sprites[i];
-          sp.x += sp.vx * (dt/16);
-          sp.y += sp.vy * (dt/16);
-          sp.life -= sp.fade * (dt/16);
-          if(sp.kind==='glow'){
-            const grd = ctx.createRadialGradient(sp.x,sp.y,0,sp.x,sp.y,sp.size);
-            grd.addColorStop(0, `rgba(220,235,255,${0.12*sp.life})`);
-            grd.addColorStop(1, `rgba(220,235,255,0)`);
-            ctx.fillStyle = grd;
-            ctx.beginPath();
-            ctx.arc(sp.x,sp.y,sp.size,0,Math.PI*2);
-            ctx.fill();
-          } else {
-            ctx.fillStyle = `rgba(240,245,255,${0.85*sp.life})`;
-            ctx.beginPath();
-            ctx.arc(sp.x,sp.y, sp.size, 0, Math.PI*2);
-            ctx.fill();
-          }
-          if(sp.life <= 0) sprites.splice(i,1);
-        }
-        requestAnimationFrame(frame);
-      }
-      resize();
-      frame(0);
-    })();
-    // Utility functions for contact form feedback
-    function showAlert(msg, ok = true) {
-      const alertBox = document.getElementById('formAlert');
-      if (!alertBox) return;
-      alertBox.hidden = false;
-      alertBox.textContent = msg;
-      alertBox.className = 'alert ' + (ok ? 'ok' : 'err');
-      if (alertBox.focus) {
-        alertBox.focus();
-      }
-    }
-    function setErr(id, on) {
-      const el = document.getElementById(id);
-      if (el) {
-        el.hidden = !on;
-      }
-    }
-    // Handle contact form submission to Formspree
-    function handleSubmit(ev){
-      ev.preventDefault();
-      const form = document.getElementById('contactForm');
-      const btn = document.getElementById('sendBtn');
-      const startedAt = document.getElementById('startedAt');
-      // gather field values
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const message = form.message.value.trim();
-      const consent = form.consent.checked;
-      // retrieve honeypot value safely
-      const honeypotField = form.querySelector('input[name="website"]');
-      const honeypot = honeypotField ? honeypotField.value.trim() : '';
-      const timeDelta = Date.now() - (parseInt(startedAt.value, 10) || 0);
-      // simple regex for email
-      const emailValid = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
-      let valid = true;
-      // show/hide error messages
-      setErr('err-name', !name);
-      setErr('err-email', !emailValid);
-      setErr('err-message', message.length < 20);
-      setErr('err-consent', !consent);
-      if (!name || !emailValid || message.length < 20 || !consent) valid = false;
-      // spam checks
-      if (honeypot) valid = false;
-      if (timeDelta < 3000) valid = false;
-      if (!valid) {
-        showAlert('Bitte die rot markierten Felder korrigieren.', false);
-        return;
-      }
-      // prepare to send
-      btn.disabled = true;
-      const prevText = btn.textContent;
-      btn.textContent = 'Sende…';
-      const formData = new FormData(form);
-      formData.append('consentVersion','v1-2025-10-14');
-      fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      }).then(res => {
-        if (res.ok) {
-          showAlert('✓ Danke! Deine Nachricht wurde erfolgreich gesendet. Ich melde mich bald.', true);
-          form.reset();
-          // reset timer for next submission
-          if (startedAt) startedAt.value = Date.now();
-        } else {
-          showAlert('⚠️ Senden fehlgeschlagen. Bitte später erneut versuchen oder per WhatsApp/E‑Mail schreiben.', false);
-        }
-      }).catch(() => {
-        showAlert('⚠️ Netzwerkfehler. Bitte später erneut versuchen.', false);
-      }).finally(() => {
-        btn.disabled = false;
-        btn.textContent = prevText;
-      });
-      return;
-    }
-
-    // Attach submit handler on DOM load
-    document.addEventListener('DOMContentLoaded', () => {
-      const form = document.getElementById('contactForm');
-      if (form) {
-        // initialize timestamp for spam protection
-        const startedAtField = document.getElementById('startedAt');
-        if (startedAtField) {
-          startedAtField.value = Date.now();
-        }
-        form.addEventListener('submit', handleSubmit);
-      }
+      if (REDUCED_MOTION) return;
       
-      // Mouse tracking for testimonial cards glow effect
-      document.querySelectorAll('.testimonial-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = ((e.clientX - rect.left) / rect.width) * 100;
-          const y = ((e.clientY - rect.top) / rect.height) * 100;
-          card.style.setProperty('--mouse-x', `${x}%`);
-          card.style.setProperty('--mouse-y', `${y}%`);
-        });
-      });
-      
-      // Subtle parallax effect on scroll (nur für floating letters)
-      let ticking = false;
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            const scrolled = window.scrollY;
-            
-            // Floating letters parallax (nur diese bewegen sich)
-            document.querySelectorAll('.floating-letter').forEach((letter, index) => {
-              const speed = 0.2 + (index % 4) * 0.15;
-              const offset = scrolled * speed * 0.05;
-              letter.style.transform = `translateY(${-offset}px)`;
-            });
-            
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }, { passive: true });
-    });
-  </script>
-
-  <!-- Particle Cat Animations -->
-  <script>
-    (function() {
-      // Playing Cat Animation
-      const playingCanvas = document.getElementById('catPlaying');
-      if (!playingCanvas) return;
-      
-      const playCtx = playingCanvas.getContext('2d');
-      const particles = [];
-      
-      // Katzen-Form (spielend) - vereinfachte Koordinaten
-      const catShape = [
-        // Körper
-        {x: 100, y: 120, group: 'body'},
-        {x: 90, y: 115, group: 'body'},
-        {x: 110, y: 115, group: 'body'},
-        {x: 85, y: 125, group: 'body'},
-        {x: 115, y: 125, group: 'body'},
-        {x: 80, y: 130, group: 'body'},
-        {x: 120, y: 130, group: 'body'},
-        // Kopf
-        {x: 100, y: 90, group: 'head'},
-        {x: 95, y: 85, group: 'head'},
-        {x: 105, y: 85, group: 'head'},
-        {x: 90, y: 95, group: 'head'},
-        {x: 110, y: 95, group: 'head'},
-        // Ohren
-        {x: 85, y: 75, group: 'ear'},
-        {x: 115, y: 75, group: 'ear'},
-        {x: 88, y: 78, group: 'ear'},
-        {x: 112, y: 78, group: 'ear'},
-        // Augen
-        {x: 95, y: 88, group: 'eye'},
-        {x: 105, y: 88, group: 'eye'},
-        // Schwanz (bewegt sich)
-        {x: 130, y: 110, group: 'tail'},
-        {x: 140, y: 100, group: 'tail'},
-        {x: 145, y: 90, group: 'tail'},
-        {x: 148, y: 80, group: 'tail'},
-        // Pfoten
-        {x: 85, y: 140, group: 'paw'},
-        {x: 95, y: 142, group: 'paw'},
-        {x: 105, y: 142, group: 'paw'},
-        {x: 115, y: 140, group: 'paw'},
-        // Spielzeug (Ball)
-        {x: 60, y: 120, group: 'toy'},
-        {x: 65, y: 118, group: 'toy'},
-        {x: 65, y: 122, group: 'toy'},
-        {x: 55, y: 120, group: 'toy'}
-      ];
-      
-      // Erstelle Partikel
-      catShape.forEach(point => {
-        particles.push({
-          x: point.x,
-          y: point.y,
-          targetX: point.x,
-          targetY: point.y,
-          baseX: point.x,
-          baseY: point.y,
-          vx: 0,
-          vy: 0,
-          group: point.group,
-          size: point.group === 'eye' ? 2.5 : (point.group === 'toy' ? 2 : 1.8),
-          color: point.group === 'toy' ? '255,140,180' : (point.group === 'eye' ? '255,255,255' : '232,214,188')
-        });
-      });
-      
-      let time = 0;
-      function animatePlaying() {
-        playCtx.clearRect(0, 0, 200, 200);
-        time += 0.02;
-        
-        particles.forEach((p, i) => {
-          // Animationen basierend auf Gruppen
-          if (p.group === 'tail') {
-            p.targetX = p.baseX + Math.sin(time * 3 + i * 0.3) * 8;
-            p.targetY = p.baseY + Math.cos(time * 2 + i * 0.3) * 6;
-          } else if (p.group === 'paw') {
-            p.targetY = p.baseY + Math.sin(time * 2 + i) * 3;
-          } else if (p.group === 'toy') {
-            p.targetX = p.baseX + Math.cos(time * 1.5) * 15;
-            p.targetY = p.baseY + Math.sin(time * 2) * 10;
-          } else if (p.group === 'ear') {
-            p.targetX = p.baseX + Math.sin(time + i) * 2;
-          } else {
-            p.targetX = p.baseX + Math.sin(time + i * 0.5) * 1;
-            p.targetY = p.baseY + Math.cos(time + i * 0.5) * 1;
-          }
-          
-          // Smooth movement
-          p.vx += (p.targetX - p.x) * 0.1;
-          p.vy += (p.targetY - p.y) * 0.1;
-          p.vx *= 0.85;
-          p.vy *= 0.85;
-          p.x += p.vx;
-          p.y += p.vy;
-          
-          // Draw
-          playCtx.beginPath();
-          playCtx.fillStyle = `rgba(${p.color}, 0.8)`;
-          playCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          playCtx.fill();
-          
-          // Glow
-          if (p.group === 'eye' || p.group === 'toy') {
-            playCtx.beginPath();
-            playCtx.fillStyle = `rgba(${p.color}, 0.3)`;
-            playCtx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
-            playCtx.fill();
-          }
-        });
-        
-        requestAnimationFrame(animatePlaying);
-      }
-      
-      // Starte Animation wenn sichtbar
-      const playObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animatePlaying();
-            playObserver.unobserve(entry.target);
-          }
-        });
-      });
-      if (playingCanvas) playObserver.observe(playingCanvas);
-      
-      // Sitting Cat Animation
-      const sittingCanvas = document.getElementById('catSitting');
-      if (!sittingCanvas) return;
-      
-      const sitCtx = sittingCanvas.getContext('2d');
-      const sitParticles = [];
-      
-      // Sitzende Katzen-Form
-      const sitShape = [
-        // Körper (sitzend)
-        {x: 100, y: 130, group: 'body'},
-        {x: 90, y: 125, group: 'body'},
-        {x: 110, y: 125, group: 'body'},
-        {x: 85, y: 135, group: 'body'},
-        {x: 115, y: 135, group: 'body'},
-        {x: 80, y: 145, group: 'body'},
-        {x: 120, y: 145, group: 'body'},
-        {x: 85, y: 155, group: 'body'},
-        {x: 115, y: 155, group: 'body'},
-        // Kopf
-        {x: 100, y: 100, group: 'head'},
-        {x: 95, y: 95, group: 'head'},
-        {x: 105, y: 95, group: 'head'},
-        {x: 90, y: 105, group: 'head'},
-        {x: 110, y: 105, group: 'head'},
-        {x: 92, y: 110, group: 'head'},
-        {x: 108, y: 110, group: 'head'},
-        // Ohren
-        {x: 88, y: 82, group: 'ear'},
-        {x: 112, y: 82, group: 'ear'},
-        {x: 85, y: 88, group: 'ear'},
-        {x: 115, y: 88, group: 'ear'},
-        // Augen (blinzeln)
-        {x: 95, y: 98, group: 'eye'},
-        {x: 105, y: 98, group: 'eye'},
-        // Schnurrhaare
-        {x: 75, y: 105, group: 'whisker'},
-        {x: 70, y: 106, group: 'whisker'},
-        {x: 125, y: 105, group: 'whisker'},
-        {x: 130, y: 106, group: 'whisker'},
-        // Schwanz (gewickelt)
-        {x: 125, y: 145, group: 'tail'},
-        {x: 135, y: 140, group: 'tail'},
-        {x: 140, y: 135, group: 'tail'},
-        {x: 142, y: 145, group: 'tail'},
-        {x: 138, y: 150, group: 'tail'},
-        // Pfoten (sitzend)
-        {x: 88, y: 160, group: 'paw'},
-        {x: 112, y: 160, group: 'paw'},
-        {x: 92, y: 163, group: 'paw'},
-        {x: 108, y: 163, group: 'paw'}
-      ];
-      
-      sitShape.forEach(point => {
-      sitParticles.push({
-          x: point.x,
-          y: point.y,
-          targetX: point.x,
-          targetY: point.y,
-          baseX: point.x,
-          baseY: point.y,
-          vx: 0,
-          vy: 0,
-          group: point.group,
-          size: point.group === 'eye' ? 2.5 : (point.group === 'whisker' ? 1.2 : 1.8),
-          // Augen sollen einen grünen Farbton erhalten, alle anderen Gruppen behalten ihre bisherigen Farben
-          color: point.group === 'eye' ? '150,255,150' : (point.group === 'whisker' ? '200,200,200' : '168,195,255'),
-          blinkTimer: Math.random() * 200
-        });
-      });
-      
-      let sitTime = 0;
-      function animateSitting() {
-        sitCtx.clearRect(0, 0, 200, 200);
-        sitTime += 0.015;
-
-        // Die sitzende Katze atmet und zuckt leicht – keine horizontale Laufbewegung
-        sitParticles.forEach((p, i) => {
-          // Grundlegende Bewegungen für die sitzende Katze – steuern Atmung und kleine Zuckungen
-          if (p.group === 'body') {
-            // Der Körper hebt und senkt sich leicht, wie beim Atmen
-            p.targetY = p.baseY + Math.sin(sitTime * 2 + i * 0.2) * 1.5;
-          } else if (p.group === 'head') {
-            // Kopf bewegt sich minimal nach oben/unten
-            p.targetY = p.baseY + Math.sin(sitTime * 2) * 2;
-          } else if (p.group === 'ear') {
-            // Ohren zucken sanft
-            p.targetX = p.baseX + Math.sin(sitTime + i) * 1;
-            p.targetY = p.baseY + Math.sin(sitTime * 2) * 2;
-          } else if (p.group === 'tail') {
-            // Schwanz wippt leicht
-            p.targetX = p.baseX + Math.sin(sitTime * 1.5 + i * 0.5) * 3;
-            p.targetY = p.baseY + Math.cos(sitTime * 1.5 + i * 0.5) * 2;
-          } else if (p.group === 'eye') {
-            // Blinzeln: Größe der Augen verringert/vergrößert sich
-            p.blinkTimer++;
-            if (p.blinkTimer > 180 && p.blinkTimer < 190) {
-              p.size = 0.5; // Augen zu
-            } else {
-              p.size = 2.5; // Augen auf
-            }
-            if (p.blinkTimer > 200) p.blinkTimer = 0;
-          } else if (p.group === 'whisker') {
-            // Schnurrhaare bewegen sich leicht
-            p.targetX = p.baseX + Math.sin(sitTime * 3 + i) * 2;
-          }
-
-          // Pfoten: leichtes Auf-und-Ab für lebendige Wirkung
-          if (p.group === 'paw') {
-            p.targetY = p.baseY + Math.sin(sitTime * 6 + i) * 4;
-          }
-
-          // Sanfte Annäherung an die Zielposition (Verwischen)
-          p.vx += ((typeof p.targetX !== 'undefined' ? p.targetX : p.baseX) - p.x) * 0.08;
-          p.vy += ((typeof p.targetY !== 'undefined' ? p.targetY : p.baseY) - p.y) * 0.08;
-          p.vx *= 0.88;
-          p.vy *= 0.88;
-          p.x += p.vx;
-          p.y += p.vy;
-
-          // Zeichnen der Punkte der Katze
-          sitCtx.beginPath();
-          sitCtx.fillStyle = `rgba(${p.color}, 0.8)`;
-          sitCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          sitCtx.fill();
-
-          // Leichte Glüh-Effekte für Augen
-          if (p.group === 'eye' && p.size > 1) {
-            sitCtx.beginPath();
-            sitCtx.fillStyle = `rgba(${p.color}, 0.3)`;
-            sitCtx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
-            sitCtx.fill();
-          }
-        });
-
-        requestAnimationFrame(animateSitting);
-      }
-      
-      // Starte Animation wenn sichtbar
-      const sitObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateSitting();
-            sitObserver.unobserve(entry.target);
-          }
-        });
-      });
-      if (sittingCanvas) sitObserver.observe(sittingCanvas);
-    })();
-  </script>
-
-  <!-- 3D tilt effect for the LeonicAURA title and page reload fix -->
-  <script>
-    (function(){
       const hero = document.getElementById('hero');
       const title = hero ? hero.querySelector('.explosion-title') : null;
+      
       if(hero && title){
         hero.addEventListener('pointermove', (e) => {
-          // Calculate cursor position relative to the hero centre
           const rect = hero.getBoundingClientRect();
           const dx = e.clientX - rect.left - rect.width / 2;
           const dy = e.clientY - rect.top - rect.height / 2;
           const percentX = dx / (rect.width / 2);
           const percentY = dy / (rect.height / 2);
-          // Limit rotation angles to keep the effect subtle
-          const tiltX = percentY * 5; // rotate up/down
-          const tiltY = -percentX * 5; // rotate left/right
+          
+          const tiltX = percentY * 4;
+          const tiltY = -percentX * 4;
           title.style.transform = `translateZ(0) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
         });
+        
         hero.addEventListener('pointerleave', () => {
-          // Reset transform when the pointer leaves the hero
           title.style.transform = '';
         });
       }
-      // When navigating back or refreshing while scrolled away, restore the nebula
-      // and restart the explosion to avoid stale or missing letters.
+      
       window.addEventListener('pageshow', () => {
-        // When returning from a refresh/back navigation, ensure the nebula canvas
-        // and background are visible and the letter animation restarts.
         const nebula = document.querySelector('.nebula-parent');
         const leonicCanvas = document.getElementById('leonic');
         if(leonicCanvas){
@@ -2855,11 +2587,130 @@
         if(window.leonic && typeof window.leonic.restore === 'function') {
           window.leonic.restore();
         }
-        if(typeof startExplosion === 'function') {
-          startExplosion();
-        }
       });
     })();
+    
+    // Contact form handling
+    function showAlert(msg, ok = true) {
+      const alertBox = document.getElementById('formAlert');
+      if (!alertBox) return;
+      alertBox.hidden = false;
+      alertBox.textContent = msg;
+      alertBox.className = 'alert ' + (ok ? 'ok' : 'err');
+      if (alertBox.focus) alertBox.focus();
+    }
+    
+    function setErr(id, on) {
+      const el = document.getElementById(id);
+      if (el) el.hidden = !on;
+    }
+    
+    function handleSubmit(ev){
+      ev.preventDefault();
+      const form = document.getElementById('contactForm');
+      const btn = document.getElementById('sendBtn');
+      const startedAt = document.getElementById('startedAt');
+      
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+      const consent = form.consent.checked;
+      
+      const honeypotField = form.querySelector('input[name="website"]');
+      const honeypot = honeypotField ? honeypotField.value.trim() : '';
+      const timeDelta = Date.now() - (parseInt(startedAt.value, 10) || 0);
+      
+      const emailValid = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+      let valid = true;
+      
+      setErr('err-name', !name);
+      setErr('err-email', !emailValid);
+      setErr('err-message', message.length < 20);
+      setErr('err-consent', !consent);
+      
+      if (!name || !emailValid || message.length < 20 || !consent) valid = false;
+      if (honeypot) valid = false;
+      if (timeDelta < 3000) valid = false;
+      
+      if (!valid) {
+        showAlert('Bitte die rot markierten Felder korrigieren.', false);
+        return;
+      }
+      
+      btn.disabled = true;
+      const prevText = btn.textContent;
+      btn.textContent = 'Sende…';
+      
+      const formData = new FormData(form);
+      formData.append('consentVersion','v1-2025-10-14');
+      
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(res => {
+        if (res.ok) {
+          showAlert('✓ Danke! Deine Nachricht wurde erfolgreich gesendet. Ich melde mich bald.', true);
+          form.reset();
+          if (startedAt) startedAt.value = Date.now();
+        } else {
+          showAlert('⚠️ Senden fehlgeschlagen. Bitte später erneut versuchen oder per WhatsApp/E‑Mail schreiben.', false);
+        }
+      }).catch(() => {
+        showAlert('⚠️ Netzwerkfehler. Bitte später erneut versuchen.', false);
+      }).finally(() => {
+        btn.disabled = false;
+        btn.textContent = prevText;
+      });
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contactForm');
+      if (form) {
+        const startedAtField = document.getElementById('startedAt');
+        if (startedAtField) startedAtField.value = Date.now();
+        form.addEventListener('submit', handleSubmit);
+      }
+      
+      // Testimonial card mouse tracking (only if not reduced motion)
+      if (!REDUCED_MOTION) {
+        document.querySelectorAll('.testimonial-card').forEach(card => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty('--mouse-x', `${x}%`);
+            card.style.setProperty('--mouse-y', `${y}%`);
+          });
+        });
+      }
+    });
   </script>
+  <!-- Punkte-Hintergrund -->
+<script>
+  const canvas = document.getElementById('leonic');
+  if (canvas && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    const ctx = canvas.getContext('2d');
+    function resize(){ canvas.width = innerWidth; canvas.height = innerHeight; }
+    resize(); addEventListener('resize', resize);
+
+    const particles = [], COUNT = 50;
+    class P{constructor(){ this.x=Math.random()*canvas.width; this.y=Math.random()*canvas.height;
+      this.s=Math.random()*2+0.5; this.vx=Math.random()*0.5-0.25; this.vy=Math.random()*0.5-0.25;
+      this.o=Math.random()*0.5+0.2;}
+      u(){ this.x+=this.vx; this.y+=this.vy;
+        if(this.x>canvas.width)this.x=0; if(this.x<0)this.x=canvas.width;
+        if(this.y>canvas.height)this.y=0; if(this.y<0)this.y=canvas.height; }
+      d(){ ctx.fillStyle='rgba(255,255,255,'+this.o+')';
+        ctx.beginPath(); ctx.arc(this.x,this.y,this.s,0,Math.PI*2); ctx.fill(); }
+    }
+    for(let i=0;i<COUNT;i++) particles.push(new P());
+    (function anim(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p=>{p.u();p.d();});
+      requestAnimationFrame(anim);
+    })();
+  }
+</script>
 </body>
 </html>
