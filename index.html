@@ -2711,6 +2711,27 @@
       requestAnimationFrame(anim);
     })();
   }
+  <script>
+  const canvas = document.getElementById('leonic');
+  if (canvas && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    const ctx = canvas.getContext('2d');
+    function resize(){ canvas.width = innerWidth; canvas.height = innerHeight; }
+    resize(); addEventListener('resize', resize);
+
+    const particles = [], COUNT = 50; // <— hier änderst du später die Dichte
+    class P{constructor(){ this.x=Math.random()*canvas.width; this.y=Math.random()*canvas.height;
+      this.s=Math.random()*2+0.5; this.vx=Math.random()*0.5-0.25; this.vy=Math.random()*0.5-0.25;
+      this.o=Math.random()*0.5+0.2;}
+      u(){ this.x+=this.vx; this.y+=this.vy;
+        if(this.x>canvas.width)this.x=0; if(this.x<0)this.x=canvas.width;
+        if(this.y>canvas.height)this.y=0; if(this.y<0)this.y=canvas.height; }
+      d(){ ctx.fillStyle='rgba(255,255,255,'+this.o+')';
+        ctx.beginPath(); ctx.arc(this.x,this.y,this.s,0,Math.PI*2); ctx.fill(); }
+    }
+    for(let i=0;i<COUNT;i++) particles.push(new P());
+    (function anim(){ ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p=>{p.u();p.d();}); requestAnimationFrame(anim); })();
+  }
 </script>
 </body>
 </html>
