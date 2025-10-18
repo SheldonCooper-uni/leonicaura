@@ -1427,6 +1427,39 @@ footer,
     max-width: 100% !important;
   }
 }
+        /* Fix: Consent-Zeile im Kontaktformular bricht korrekt um (kein Overflow) */
+.contact-form { 
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.contact-form label.consent{
+  display: grid !important;           /* statt flex */
+  grid-template-columns: auto 1fr;    /* Checkbox | Text */
+  align-items: start;
+  gap: 8px;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 8px 0 0 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* Kind-Positionierung im Grid */
+.contact-form label.consent > input[type="checkbox"]{
+  grid-column: 1;
+}
+.contact-form label.consent > *:not(input){
+  grid-column: 2;
+}
+
+/* Link darf umbrechen */
+.contact-form label.consent a{
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
   </style>
 </head>
 <body>
