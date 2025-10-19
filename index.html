@@ -770,22 +770,62 @@
       flex: 0 0 240px;
       max-width: 280px;
     }
-    
-    .about-photo img {
+   .photo-frame {
+      position: relative;
+      border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+      animation: morphBlob 8s ease-in-out infinite;
+      background:
+        linear-gradient(var(--bg), var(--bg)) padding-box,
+        linear-gradient(135deg, rgba(var(--color-warm),0.1), rgba(247,217,139,0.7), rgba(255,234,167,0.95)) border-box;
+      border: 3px solid transparent;
+      overflow: hidden;
+      box-shadow: 0 18px 45px rgba(247,217,139,0.18);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      isolation: isolate;
+      margin: 0 auto;
+    }
+
+    .photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 3px;
+      background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,0.8) 50%, transparent 65%);
+      background-size: 220% 220%;
+      animation: frameSweep 3.8s linear infinite;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      opacity: 0.85;
+      box-sizing: border-box;
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask-composite: exclude;
+    }
+
+    .photo-frame:hover {
+      transform: scale(1.03);
+      box-shadow: 0 22px 55px rgba(247,217,139,0.24);
+    }
+
+    .photo-frame img {
       width: 100%;
       height: auto;
-      border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
-      border: 4px solid rgba(255,255,255,0.1);
       display: block;
-      z-index: 1;
+      border-radius: inherit;
       animation: morphBlob 8s ease-in-out infinite;
       transition: transform 0.3s ease;
     }
-    
-    .about-photo img:hover {
+
+    .photo-frame img:hover {
       transform: scale(1.05);
     }
     
+    @keyframes frameSweep {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
     @keyframes morphBlob {
       0%, 100% { border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%; }
       25% { border-radius: 48% 52% 68% 32% / 42% 58% 42% 58%; }
@@ -964,6 +1004,22 @@
       border-radius: 20px;
       font-size: 12px;
       font-weight: 600;
+    }
+
+     .resource-message {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 14px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      color: rgba(255,255,255,0.75);
+      min-height: 1.2em;
+    }
+
+    .resource-message.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     .resource-message {
       margin-top: 16px;
@@ -1382,6 +1438,9 @@
     @media (prefers-reduced-motion:reduce) {
       .lux-trace::before { animation: none; }
       .bubble-hover:hover { transform: none; box-shadow: none; }
+      .photo-frame,
+      .photo-frame img { animation: none; }
+      .photo-frame::after { animation: none; opacity: 0; }
     }
     
     /* Mobile optimizations */
@@ -1768,7 +1827,9 @@ img, video, canvas, svg {
       <p class="lead">Deutschlehrer (A1–C1) für Lernende aus dem Balkan.</p>
       <div class="about-container">
         <div class="about-photo">
-          <img src="Leon.jpg" alt="Leon lächelnd" loading="lazy" decoding="async">
+          <div class="photo-frame">
+            <img src="Leon.jpg" alt="Leon lächelnd" loading="lazy" decoding="async">
+          </div>
         </div>
         <div class="about-content">
           <p><strong>Wer ich bin:</strong> Ich bin Leon aus Duisburg – Deutschlehrer, spezialisiert auf Lernende aus dem Balkanraum.</p>
@@ -2034,7 +2095,7 @@ Stand: Oktober 2025</p>
       <p><strong>Kontakt:</strong><br>
       Telefon: +49 176 63005489<br>
       E‑Mail: infoleonicaura@gmail.com (allgemein)<br>
-      E-Mail: infoleonicaura@gmail.com (Datenschutz/Anfragen)
+      E-Mail: leon.erdeg1307@gmail.com (Datenschutz/Anfragen)
 
       <strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</strong>
       Leon E., [Adresse wie oben]</p>
