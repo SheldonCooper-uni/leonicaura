@@ -395,19 +395,27 @@
       justify-content: center;
       position: relative;
       overflow: hidden;
+      isolation: isolate;
+    }
+
+ button {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
     }
     
     /* Shimmer-Effekt für alle Buttons */
-    .btn::before {
+    .btn::after,
+    button::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.6s ease;
+      inset: -140% 0;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.05) 35%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.05) 65%, transparent 100%);
+      transform: translateX(-130%);
+      transition: transform 0.6s ease;
+      pointer-events: none;
       z-index: 1;
+      mix-blend-mode: screen;
     }
     
     .btn:hover::before {
@@ -525,6 +533,56 @@
       background: linear-gradient(180deg, rgba(var(--color-accent),0.25), rgba(var(--color-cool),0.15));
       border-color: rgba(var(--color-cool),0.4);
       box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+     /* Booking options */
+    .booking-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 2.5em;
+    }
+
+    .booking-option {
+      padding: 36px 28px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(160deg, rgba(var(--color-warm),0.12), rgba(var(--color-cool),0.08));
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .booking-option:hover {
+      transform: translateY(-8px);
+      border-color: rgba(var(--color-accent),0.35);
+      box-shadow: 0 14px 44px rgba(0,0,0,0.35);
+    }
+
+    .booking-option h3 {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: rgba(var(--color-accent),1);
+    }
+
+    .booking-option p {
+      font-size: 15px;
+      line-height: 1.6;
+      opacity: 0.85;
+    }
+
+    .booking-option .btn {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
+    .booking-note {
+      margin-top: 2em;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.6;
+      opacity: 0.8;
     }
     
     .pricing-title {
@@ -1469,7 +1527,8 @@
       .course-grid,
       .resources-grid,
       .testimonials-grid,
-      .hours-grid {
+      .hours-grid,
+      .booking-grid {
         overflow-x: hidden !important;
       }
     }
@@ -1781,6 +1840,34 @@ img, video, canvas, svg {
       </div>
     </section>
     
+ <!-- Buchung Section -->
+    <section id="buchen" class="section reveal" data-title="Buchen">
+      <h2 class="section-title"><span>Buche</span>Deine nächste Stunde</h2>
+      <p class="lead">Wähle den Weg, der für dich am bequemsten ist – ich melde mich schnellstmöglich bei dir.</p>
+
+      <div class="booking-grid">
+        <div class="booking-option lux-trace bubble-hover">
+          <h3>WhatsApp</h3>
+          <p>Sende mir eine Nachricht mit deinem Wunschtermin und deinem Ziel. Ich bestätige dir den Termin oder schlage Alternativen vor.</p>
+          <a class="btn btn-primary" href="https://wa.me/4917663005489?text=Hallo%20Leon%2C%20ich%20m%C3%B6chte%20eine%20Deutschstunde%20buchen." target="_blank" rel="noopener">Über WhatsApp anfragen</a>
+        </div>
+
+        <div class="booking-option lux-trace bubble-hover">
+          <h3>E‑Mail</h3>
+          <p>Teile mir kurz deinen Namen, dein Niveau und deine Wunschzeiten mit. Ich antworte dir mit allen weiteren Schritten.</p>
+          <a class="btn btn-secondary" href="mailto:infoleonicaura@gmail.com?subject=Deutschunterricht%20buchen&body=Hallo%20Leon%2C%20ich%20m%C3%B6chte%20eine%20Stunde%20buchen.%20Mein%20Niveau%20ist...">E‑Mail schreiben</a>
+        </div>
+
+        <div class="booking-option lux-trace bubble-hover">
+          <h3>Kontaktformular</h3>
+          <p>Nutze das Formular für strukturierte Anfragen oder wenn du mehr Details teilen möchtest. Ich melde mich per E‑Mail bei dir.</p>
+          <a class="btn btn-primary" href="#kontakt">Zum Kontaktformular</a>
+        </div>
+      </div>
+
+      <p class="booking-note">Du bist dir noch unsicher? Starte mit einer Probestunde oder buche ein Paket, um langfristig zu planen – ich helfe dir bei der Auswahl.</p>
+    </section>
+    
     <!-- Gruppen Section -->
     <section id="gruppen" class="section reveal" data-title="Gruppen">
       <h2 class="section-title"><span>Gruppenunterricht</span>Lerne gemeinsam</h2>
@@ -2032,7 +2119,7 @@ img, video, canvas, svg {
       <p>Leon E.<br>
       [Straße und Hausnummer – folgt]<br>
       E‑Mail: leon.erdeg1307@gmail.com<br>
-      infoleonicaura@gmail.com</p>
+      E-Mail: infoleonicaura@gmail.com</p>
       
       <h3>2. Zwecke, Kategorien von Daten und Quellen</h3>
       <h4>2.1 Aufruf der Website / Server-Logs</h4>
