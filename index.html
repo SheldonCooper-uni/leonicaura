@@ -910,6 +910,10 @@
       display: block;
       position: relative;
       overflow: hidden;
+      width: 100%;
+      cursor: pointer;
+      font: inherit;
+      background-clip: padding-box;
     }
     
     /* Shimmer-Effekt für Resource Cards */
@@ -924,15 +928,19 @@
       transition: left 0.6s ease;
     }
     
-    .resource-card:hover::before {
+    .resource-card:is(:hover, :focus-visible)::before {
       left: 100%;
     }
     
-    .resource-card:hover {
+    .resource-card:is(:hover, :focus-visible) {
       transform: translateY(-8px);
       background: linear-gradient(135deg, rgba(var(--color-warm),0.18), rgba(var(--color-cool),0.15));
       border-color: rgba(var(--color-cool),0.3);
       box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .resource-card:focus-visible {
+      outline: 2px solid rgba(var(--color-accent),0.5);
+      outline-offset: 4px;
     }
     
     .resource-level {
@@ -957,7 +965,21 @@
       font-size: 12px;
       font-weight: 600;
     }
-    
+    .resource-message {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 14px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      color: rgba(255,255,255,0.75);
+      min-height: 1.2em;
+    }
+
+    .resource-message.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
     /* Hours section */
     .hours-grid {
       display: grid;
@@ -1392,7 +1414,19 @@
         overflow-x: hidden !important;
       }
     }
-
+ @media (hover: none) and (pointer: coarse) {
+      a,
+      button,
+      summary,
+      .bubble-hover,
+      .mobile-nav a,
+      .course-card,
+      .resource-card,
+      .hours-card {
+        touch-action: pan-y;
+      }
+    }
+    
     /* === MOBILE WIDTH FIX — REPLACE === */
     html, body {
       width: 100%;
@@ -1864,32 +1898,33 @@ img, video, canvas, svg {
       <h2 class="section-title"><span>Kostenlos</span>Übungen & Texte</h2>
       <p class="lead">Ergänzende Materialien für alle Niveaustufen – bald verfügbar!</p>
       <div class="resources-grid">
-        <a href="#" class="resource-card" onclick="event.preventDefault(); alert('A1-Ressourcen kommen bald!');">
+        <button type="button" class="resource-card" data-message="A1-Ressourcen kommen bald!">
           <div class="resource-level">A1</div>
           <div class="resource-desc">Grundlagen & erste Schritte</div>
           <span class="resource-badge">Bald verfügbar</span>
-        </a>
-        <a href="#" class="resource-card" onclick="event.preventDefault(); alert('A2-Ressourcen kommen bald!');">
+        </button>
+        <button type="button" class="resource-card" data-message="A2-Ressourcen kommen bald!">
           <div class="resource-level">A2</div>
           <div class="resource-desc">Aufbau & Festigung</div>
           <span class="resource-badge">Bald verfügbar</span>
-        </a>
-        <a href="#" class="resource-card" onclick="event.preventDefault(); alert('B1-Ressourcen kommen bald!');">
+        </button>
+        <button type="button" class="resource-card" data-message="B1-Ressourcen kommen bald!">
           <div class="resource-level">B1</div>
           <div class="resource-desc">Mittelstufe & Praxis</div>
           <span class="resource-badge">Bald verfügbar</span>
-        </a>
-        <a href="#" class="resource-card" onclick="event.preventDefault(); alert('B2-Ressourcen kommen bald!');">
+       </button>
+        <button type="button" class="resource-card" data-message="B2-Ressourcen kommen bald!">
           <div class="resource-level">B2</div>
           <div class="resource-desc">Vertiefung & Prüfung</div>
           <span class="resource-badge">Bald verfügbar</span>
-        </a>
-        <a href="#" class="resource-card" onclick="event.preventDefault(); alert('C1-Ressourcen kommen bald!');">
+        </button>
+        <button type="button" class="resource-card" data-message="C1-Ressourcen kommen bald!">
           <div class="resource-level">C1</div>
           <div class="resource-desc">Fortgeschritten & Perfektion</div>
           <span class="resource-badge">Bald verfügbar</span>
-        </a>
+        </button>
       </div>
+      <div id="resourceMessage" class="resource-message" role="status" aria-live="polite"></div>
     </section>
     
     <!-- Kontakt Section -->
@@ -2053,7 +2088,7 @@ Plattform der EU-Kommission zur Online-Streitbeilegung (OS): https://ec.europa.e
       } else {
         header.classList.remove('scrolled');
       }
-    });
+   }, { passive: true });
     
     // Hero headline animation
     const headline = document.getElementById('hero-headline');
@@ -2089,6 +2124,31 @@ Plattform der EU-Kommission zur Online-Streitbeilegung (OS): https://ec.europa.e
     
     cards.forEach(card => {
       cardObserver.observe(card);
+    });
+
+    
+    const resourceMessage = document.getElementById('resourceMessage');
+    let resourceMessageTimeout;
+
+    function showResourceMessage(message) {
+      if (!resourceMessage) return;
+      resourceMessage.textContent = message;
+      resourceMessage.classList.add('visible');
+
+      if (resourceMessageTimeout) {
+        clearTimeout(resourceMessageTimeout);
+      }
+
+      resourceMessageTimeout = setTimeout(() => {
+        resourceMessage.classList.remove('visible');
+      }, 2500);
+    }
+
+    document.querySelectorAll('.resource-card[data-message]').forEach(card => {
+      card.addEventListener('click', () => {
+        const message = card.getAttribute('data-message') || 'Bald verfügbar';
+        showResourceMessage(message);
+      });
     });
     
     // Canvas animation (simplified particle system)
