@@ -1248,12 +1248,12 @@
       0%, 100% { transform: rotate(-45deg) translateY(0); }
       50% { transform: rotate(-45deg) translateY(10px); }
     }
- /* Kontakt – Layout (unverändert, nur minimal verfeinert) */
+  /* Kontakt – Layout (unverändert, nur minimal verfeinert) */
     .contact-layout {
       margin-top: 3em;
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 420px);
-      gap: 48px;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 520px);
+      gap: 56px;
       align-items: center;
     }
 
@@ -1267,8 +1267,8 @@
     @media (hover:hover) and (pointer:fine) {
       .contact-visual {
         position: relative;
-        min-height: 420px;
-        padding: 56px 48px 64px;
+        min-height: 480px;
+        padding: 72px 60px 84px;
         border-radius: 28px;
         background:
           radial-gradient(circle at 30% 30%, rgba(247,217,139,0.18), transparent 55%),
@@ -1278,9 +1278,13 @@
         box-shadow: 0 24px 60px rgba(0,0,0,0.45);
         isolation: isolate;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
+        gap: 20px;
+        max-width: 520px;
+        margin: 0 auto;
       }
 
       .contact-visual::after {
@@ -1306,7 +1310,7 @@
 
       .light-line {
         position: absolute;
-        top: 50%;
+        top: 52%;
         left: 0;
         height: 2px;
         width: 0;
@@ -1321,10 +1325,10 @@
         will-change: transform, opacity;
       }
 
-      .signature { width: clamp(360px, 80%, 520px); height: 180px; display: block; margin: 0 auto; }
+      .signature { width: clamp(400px, 88%, 560px); height: 210px; display: block; margin: 0 auto; position: relative; z-index: 2; }
       .signature text {
         font-family: 'Playfair Display', serif;
-        font-size: clamp(64px, 10vw, 88px);
+        font-size: clamp(72px, 11vw, 104px);
         fill: rgba(247,217,139,0.92);
         fill-opacity: 0;
         stroke: rgba(247,217,139,0.95);
@@ -1340,11 +1344,11 @@
 
       .aura-circle {
         position: absolute;
-        top: 50%;
+        top: 52%;
         left: 50%;
-        width: 280px;
-        height: 280px;
-        transform: translate(-50%, -50%) scale(0.65);
+        width: 320px;
+        height: 320px;
+        transform: translate(-50%, -50%) scale(0.68);
         border-radius: 50%;
         border: 1px solid rgba(247,217,139,0.45);
         box-shadow: 0 0 60px rgba(247,217,139,0.35), inset 0 0 30px rgba(247,217,139,0.18);
@@ -1355,7 +1359,7 @@
 
       .stars {
         position: absolute;
-        top: 24%;
+        top: 28%;
         left: 50%;
         display: flex;
         gap: 22px;
@@ -1393,13 +1397,15 @@
     @media (hover:none), (pointer:coarse), (max-width: 900px) {
       .contact-layout { grid-template-columns: 1fr; }
       .contact-visual {
-        min-height: 320px;
-        padding: 36px 28px 44px;
+        min-height: 340px;
+        padding: 44px 32px 52px;
         border-radius: 24px;
         background:
           radial-gradient(circle at 30% 30%, rgba(247,217,139,0.12), transparent 55%),
           rgba(8,8,10,0.9);
         overflow: hidden;
+        max-width: 520px;
+        margin: 0 auto;
       }
       /* Alle Animationselemente für Mobile ruhig stellen */
       .light-line,
@@ -1471,17 +1477,19 @@
 
     /* Größen-Tweaks wie gehabt */
     @media (max-width: 1080px) {
-      .contact-layout { grid-template-columns: minmax(0, 1fr) minmax(240px, 360px); gap: 36px; }
-      .signature { height: 160px; }
-      .signature text { font-size: clamp(56px, 9vw, 76px); }
-      .aura-circle { width: 240px; height: 240px; }
+      .contact-layout { grid-template-columns: minmax(0, 1fr) minmax(280px, 440px); gap: 44px; }
+      .contact-visual { min-height: 420px; padding: 64px 48px 72px; }
+      .signature { width: clamp(320px, 86%, 500px); height: 190px; }
+      .signature text { font-size: clamp(60px, 10vw, 92px); }
+      .aura-circle { width: 280px; height: 280px; }
     }
 
     @media (max-width: 900px) {
       .contact-layout { grid-template-columns: 1fr; }
-      .contact-visual { order: -1; }
-      .signature { height: 140px; }
-      .aura-circle { top: 48%; width: 200px; height: 200px; }
+      .contact-visual { order: -1; min-height: 360px; padding: 48px 32px 60px; }
+      .signature { width: clamp(260px, 90%, 420px); height: 170px; }
+      .signature text { font-size: clamp(48px, 12vw, 78px); }
+      .aura-circle { top: 50%; width: 220px; height: 220px; }
     }
 
     /* Contact form */
@@ -2373,7 +2381,7 @@ img, video, canvas, svg {
         <div class="contact-visual" aria-hidden="true">
           <div class="light-line"></div>
           <svg class="signature" viewBox="0 0 600 160" role="presentation">
-            <text x="50%" y="60%" text-anchor="middle">Leonic Aura</text>
+            <text x="50%" y="60%" text-anchor="middle">LeonicAura</text>
           </svg>
           <div class="aura-circle"></div>
           <div class="stars">
