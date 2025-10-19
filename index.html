@@ -1373,60 +1373,54 @@
       }
       
       .about-photo {
-        flex: 1 1 100%;
-        max-width: 100%;
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
       }
       
       .logo::after {
         right: -24px;
-      /* === MOBILE WIDTH FIX — REPLACE === */
-html, body {
-  width: 100%;
-  overflow-x: hidden !important;
-}
+      }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+      .benefit-grid,
+      .pricing-grid,
+      .steps-grid,
+      .services-grid,
+      .course-grid,
+      .resources-grid,
+      .testimonials-grid,
+      .hours-grid {
+        overflow-x: hidden !important;
+      }
+    }
+
+    /* === MOBILE WIDTH FIX — REPLACE === */
+    html, body {
+      width: 100%;
+      overflow-x: hidden !important;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
 
 img, video, canvas, svg {
-  max-width: 100% !important;
-  height: auto !important;
-  display: block;
-}
-
-/* clip mögliche Übeltäter */
-.section,
-header,
-footer,
-.mobile-nav,
-.nebula-wrap,
-.nebula-parent,
-.floating-letters,  /* <- Container (wichtig) */
-.floating-letter,   /* einzelne Buchstaben */
-#leonic {
-  overflow-x: hidden !important; /* Fallback für Safari */
-  max-width: 100% !important;
-}
-
-/* kleine Screens */
-@media (max-width: 600px) {
-  .benefit-grid,
-  .pricing-grid,
-  .steps-grid,
-  .services-grid,
-  .course-grid,
-  .resources-grid,
-  .testimonials-grid,
-  .hours-grid {
-    overflow-x: hidden !important;
-  }
-
-  .about-photo {
-    flex: 1 1 100% !important;
-    max-width: 100% !important;
-  }
-}
+      max-width: 100% !important;
+      height: auto !important;
+      display: block;
+    }
+      /* clip mögliche Übeltäter */
+    .section,
+    header,
+    footer,
+    .mobile-nav,
+    .nebula-wrap,
+    .nebula-parent,
+    .floating-letters,  /* <- Container (wichtig) */
+    .floating-letter,   /* einzelne Buchstaben */
+    #leonic {
+      overflow-x: hidden !important; /* Fallback für Safari */
+      max-width: 100% !important;
+    }
+ 
   </style>
 </head>
 <body>
