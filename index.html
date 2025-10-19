@@ -1891,7 +1891,9 @@ img, video, canvas, svg {
       <h2 class="section-title"><span>Kontakt</span>Schreib mir</h2>
       <p class="lead">Hast du Fragen oder möchtest einen Termin vereinbaren? Melde dich gerne!</p>
       
-      <form class="contact-form" id="contactForm">
+       <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/infoleonicaura@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Neue Nachricht über leonicaura.de">
+        <input type="hidden" name="_captcha" value="false">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" required placeholder="Dein Name">
         
@@ -2101,20 +2103,73 @@ img, video, canvas, svg {
     
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+
+      const endpoint = contactForm.getAttribute('action');
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton ? submitButton.textContent : null;
+
+      formStatus.innerHTML = '';
+
+      if (!endpoint) {
+        formStatus.innerHTML = '<div class="alert error">Es ist ein Fehler aufgetreten. Kein Formular-Endpunkt konfiguriert.</div>';
+        return;
+      }
       
       const formData = new FormData(contactForm);
-      const data = Object.fromEntries(formData);
+
       
-      // Simulate form submission (replace with actual backend endpoint)
-      formStatus.innerHTML = '<div class="alert ok">Vielen Dank für deine Nachricht! Ich melde mich bald bei dir.</div>';
-      contactForm.reset();
-      
-      // In production, send to backend:
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data)
-      // });
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Wird gesendet…';
+      }
+
+      formStatus.innerHTML = '<div class="alert info">Deine Nachricht wird gesendet …</div>';
+
+      try {
+        const response = await fetch(endpoint, {
+          method: contactForm.getAttribute('method') || 'POST',
+          headers: {
+            'Accept': 'application/json'
+          },
+          body: formData
+        });
+
+        if (!response.ok) {
+          let errorMessage = 'Bitte versuche es später erneut.';
+          try {
+            const errorData = await response.json();
+            if (errorData && errorData.message) {
+              errorMessage = errorData.message;
+            }
+          } catch (jsonError) {
+            // Keine verwertbare Fehlermeldung im Response-Body
+          }
+          throw new Error(errorMessage);
+        }
+
+        let successMessage = 'Vielen Dank für deine Nachricht! Ich melde mich bald bei dir.';
+        try {
+          const responseData = await response.json();
+          if (responseData && responseData.message) {
+            successMessage = responseData.message;
+          }
+        } catch (jsonError) {
+          // Kein JSON-Body vorhanden, Standardtext verwenden
+        }
+
+        formStatus.innerHTML = `<div class="alert ok">${successMessage}</div>`;
+        contactForm.reset();
+      } catch (error) {
+        console.error('Fehler beim Absenden des Kontaktformulars:', error);
+        const errorText = error instanceof Error ? error.message : 'Bitte versuche es später erneut.';
+        formStatus.innerHTML = `<div class="alert error">Deine Nachricht konnte leider nicht gesendet werden. ${errorText}</div>`;
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
+      }
     });
   </script>
 </body>
