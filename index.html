@@ -395,19 +395,27 @@
       justify-content: center;
       position: relative;
       overflow: hidden;
+      isolation: isolate;
+    }
+
+ button {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
     }
     
     /* Shimmer-Effekt für alle Buttons */
-    .btn::before {
+    .btn::after,
+    button::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.6s ease;
+      inset: -140% 0;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.05) 35%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.05) 65%, transparent 100%);
+      transform: translateX(-130%);
+      transition: transform 0.6s ease;
+      pointer-events: none;
       z-index: 1;
+      mix-blend-mode: screen;
     }
     
     .btn:hover::before {
@@ -2032,7 +2040,7 @@ img, video, canvas, svg {
       <p>Leon E.<br>
       [Straße und Hausnummer – folgt]<br>
       E‑Mail: leon.erdeg1307@gmail.com<br>
-      infoleonicaura@gmail.com</p>
+      E-Mail: infoleonicaura@gmail.com</p>
       
       <h3>2. Zwecke, Kategorien von Daten und Quellen</h3>
       <h4>2.1 Aufruf der Website / Server-Logs</h4>
