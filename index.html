@@ -1263,6 +1263,107 @@
       gap: 28px;
     }
 
+    .contact-playbook {
+      margin-top: 48px;
+      padding: 32px 36px;
+      border-radius: 24px;
+      background: rgba(15, 15, 18, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+      display: grid;
+      gap: 20px;
+    }
+
+    .contact-playbook h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .contact-playbook p {
+      font-size: 16px;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .contact-playbook strong {
+      color: rgba(var(--color-accent), 1);
+      font-weight: 700;
+    }
+
+    .contact-playbook-list {
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-playbook-list li {
+      position: relative;
+      padding-left: 26px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .contact-playbook-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: rgba(var(--color-accent), 1);
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .contact-playbook-template {
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 24px 28px;
+      background: rgba(12, 12, 15, 0.75);
+      display: grid;
+      gap: 16px;
+    }
+
+    .contact-playbook-template p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .contact-playbook-template code {
+      font-family: 'Fira Code', 'Courier New', monospace;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .contact-playbook-note {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 12px;
+    }
+
+    .contact-playbook-note ul {
+      list-style: none;
+      margin-top: 14px;
+      padding-left: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .contact-playbook-note li {
+      position: relative;
+      padding-left: 24px;
+      font-size: 15px;
+    }
+
+    .contact-playbook-note li::before {
+      content: '➜';
+      position: absolute;
+      left: 0;
+      color: rgba(var(--color-accent), 1);
+    }
+
     /* Desktop-Visual nur auf großen Screens UND nur wenn Nutzer Motion erlaubt */
     @media (hover:hover) and (pointer:fine) {
       .contact-visual {
@@ -1396,6 +1497,14 @@
     /* Mobile / Tablets oder wenn kein feiner Pointer: Animation aus, nur ruhiger Block */
     @media (hover:none), (pointer:coarse), (max-width: 900px) {
       .contact-layout { grid-template-columns: 1fr; }
+      .contact-playbook {
+        margin-top: 32px;
+        padding: 24px;
+        gap: 18px;
+      }
+      .contact-playbook-template {
+        padding: 20px 22px;
+      }
       .contact-visual {
         min-height: 340px;
         padding: 44px 32px 52px;
@@ -2346,7 +2455,7 @@ img, video, canvas, svg {
       <h2 class="section-title"><span>Kontakt</span>Schreib mir</h2>
       <p class="lead">Hast du Fragen oder möchtest einen Termin vereinbaren? Melde dich gerne!</p>
       
-<div class="contact-layout">
+   <div class="contact-layout">
         <div class="contact-main">
           <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/infoleonicaura@gmail.com" method="POST">
             <input type="hidden" name="_subject" value="Neue Nachricht über leonicaura.de">
@@ -2391,8 +2500,37 @@ img, video, canvas, svg {
           </div>
         </div>
       </div>
+
+       <div class="contact-playbook" aria-labelledby="contact-playbook-heading">
+        <div>
+          <h3 id="contact-playbook-heading">Kontaktanfrage beantworten (kurz &amp; klar)</h3>
+          <p>Schreibe auf Deutsch eine freundliche Antwort in der Du-Form. Nutze die Angaben aus der Anfrage und halte dich an folgendes Format.</p>
+        </div>
+        <div class="contact-playbook-template">
+          <p><strong>Ausgabe:</strong></p>
+          <p><strong>Antwort an {NAME} in 6–8 Sätzen:</strong></p>
+          <ul class="contact-playbook-list">
+            <li>Beginne mit einem Dank und greife das wichtigste Ziel der Person auf.</li>
+            <li>Biete eine Probestunde (60 Min, 16 €) mit zwei Terminvorschlägen an, die zur angegebenen Verfügbarkeit passen. Fehlt eine Angabe, schlage zwei allgemeine Zeiten vor.</li>
+            <li>Falls das Niveau „weiß nicht“ lautet, erwähne einen kurzen Level-Check zu Beginn der Stunde.</li>
+            <li>Wenn das Ziel eine Prüfung ist, kündige an, dass ihr gemeinsam einen Mini-Plan für die Vorbereitung erstellt.</li>
+            <li>Bei Angaben zum Beruf erwähne, dass Material und Vokabular dazu passen werden.</li>
+            <li>Beende mit einer klaren Frage zur Terminwahl und dem Hinweis: <code>Du kannst mir auch per WhatsApp schreiben.</code></li>
+          </ul>
+        </div>
+        <div class="contact-playbook-note">
+          <p><strong>Interne Notiz für Leon (5 Stichpunkte):</strong></p>
+          <ul>
+            <li>wichtigste Ziele der Person</li>
+            <li>Niveau (inklusive Hinweis, falls unsicher oder „weiß nicht“)</li>
+            <li>Verfügbarkeit bzw. gewünschte Zeiten</li>
+            <li>Erfahrung oder Beruf (falls angegeben)</li>
+            <li>Fokus für die Probestunde (3 kurze Punkte)</li>
+          </ul>
+        </div>
+      </div>
     </section>
-    
+
     <!-- Datenschutz Section -->
     <section id="datenschutz" class="section reveal legal-section" data-title="Datenschutz">
       <h2 class="section-title"><span>Datenschutz</span>Datenschutzerklärung</h2>
