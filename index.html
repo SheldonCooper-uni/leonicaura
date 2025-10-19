@@ -402,7 +402,7 @@
     }
     
     .btn {
-      display: inline-block;
+      display: inline-flex;
       padding: 14px 32px;
       border-radius: 50px;
       font-weight: 700;
@@ -412,39 +412,66 @@
       cursor: pointer;
       border: 2px solid transparent;
       min-height: 48px;
-      display: inline-flex;
       align-items: center;
       justify-content: center;
       position: relative;
       overflow: hidden;
       isolation: isolate;
+      gap: 8px;
     }
 
- button {
+   button {
+      font-family: inherit;
       position: relative;
       overflow: hidden;
       isolation: isolate;
+      cursor: pointer;
     }
-    
+
+     button:disabled {
+      cursor: not-allowed;
+    }
+
     /* Shimmer-Effekt für alle Buttons */
     .btn::after,
     button::after {
       content: '';
       position: absolute;
-      inset: -140% 0;
-      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.05) 35%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.05) 65%, transparent 100%);
-      transform: translateX(-130%);
-      transition: transform 0.6s ease;
+      inset: -140% -40%;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.08) 32%, rgba(255,255,255,0.55) 50%, rgba(255,255,255,0.08) 68%, transparent 100%);
+      transform: translateX(-125%) skewX(-18deg);
+      transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
       pointer-events: none;
       z-index: 1;
       mix-blend-mode: screen;
+      opacity: 0.9;
+      will-change: transform;
     }
     
-    .btn:hover::before {
-      left: 100%;
+    .btn:hover::after,
+    .btn:focus-visible::after,
+    button:hover::after,
+    button:focus-visible::after {
+      transform: translateX(130%) skewX(-18deg);
     }
+    .btn:disabled::after,
+    button:disabled::after {
+      display: none;
+    }
+
+    .btn:focus-visible,
+    button:focus-visible {
+      outline: 2px solid rgba(var(--color-accent), 0.45);
+      outline-offset: 4px;
+    }
+
     
     .btn > * {
+      position: relative;
+      z-index: 2;
+    }
+
+     button > * {
       position: relative;
       z-index: 2;
     }
@@ -1252,9 +1279,10 @@
     .contact-layout {
       margin-top: 3em;
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 520px);
-      gap: 56px;
+       grid-template-columns: minmax(0, 1fr) minmax(380px, 720px);
+      gap: clamp(36px, 5vw, 64px);
       align-items: center;
+      justify-content: center;
     }
 
     .contact-main {
@@ -1263,6 +1291,18 @@
       gap: 28px;
     }
 
+    .contact-visual {
+      position: relative;
+      width: min(90vw, 820px);
+      min-height: clamp(420px, 52vw, 640px);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: visible;
+    }
+    
     .contact-playbook {
       margin-top: 48px;
       padding: 32px 36px;
@@ -1368,35 +1408,30 @@
     @media (hover:hover) and (pointer:fine) {
       .contact-visual {
         position: relative;
-        min-height: 480px;
-        padding: 72px 60px 84px;
-        border-radius: 28px;
-        background:
-          radial-gradient(circle at 30% 30%, rgba(247,217,139,0.18), transparent 55%),
-          radial-gradient(circle at 70% 60%, rgba(168,195,255,0.12), transparent 65%),
-          rgba(8,8,10,0.85);
-        overflow: hidden;
-        box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+        min-height: clamp(520px, 52vw, 720px);
+        padding: clamp(32px, 6vw, 84px) 0;
+        border-radius: 0;
+        background: none;
+        overflow: visible;
+        box-shadow: none;
         isolation: isolate;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
-        gap: 20px;
-        max-width: 520px;
-        margin: 0 auto;
+        width: 100%;
       }
 
-      .contact-visual::after {
+      .contact-visual::before {
         content: '';
         position: absolute;
-        inset: 12px;
-        border-radius: inherit;
-        background: radial-gradient(circle, rgba(247,217,139,0.12) 0%, transparent 60%);
-        opacity: 0.8;
-        filter: blur(32px);
-        z-index: -1;
+         width: clamp(520px, 65vw, 860px);
+        height: clamp(520px, 65vw, 860px);
+        border-radius: 50%;
+        background: radial-gradient(circle at 50% 50%, rgba(247,217,139,0.2) 0%, rgba(168,195,255,0.12) 45%, transparent 70%);
+        filter: blur(46px);
+        opacity: 0.85;
+        z-index: -2;
         pointer-events: none;
       }
 
@@ -1411,7 +1446,7 @@
 
       .light-line {
         position: absolute;
-        top: 52%;
+        top: 50%
         left: 0;
         height: 2px;
         width: 0;
@@ -1426,10 +1461,17 @@
         will-change: transform, opacity;
       }
 
-      .signature { width: clamp(400px, 88%, 560px); height: 210px; display: block; margin: 0 auto; position: relative; z-index: 2; }
+      .signature {
+        width: clamp(520px, 70%, 780px);
+        height: clamp(220px, 24vw, 300px);
+        display: block;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
       .signature text {
         font-family: 'Playfair Display', serif;
-        font-size: clamp(72px, 11vw, 104px);
+        font-size: clamp(96px, 12vw, 150px);
         fill: rgba(247,217,139,0.92);
         fill-opacity: 0;
         stroke: rgba(247,217,139,0.95);
@@ -1438,21 +1480,21 @@
         stroke-linejoin: round;
         stroke-dasharray: 620;
         stroke-dashoffset: 620;
-        filter: drop-shadow(0 0 16px rgba(247,217,139,0.4));
+        filter: drop-shadow(0 0 18px rgba(247,217,139,0.45));
         animation: signature-draw 12s ease-in-out infinite, signature-glow 12s ease-in-out infinite;
         will-change: opacity, filter, transform;
       }
 
       .aura-circle {
         position: absolute;
-        top: 52%;
+        top: 50%;;
         left: 50%;
-        width: 320px;
-        height: 320px;
-        transform: translate(-50%, -50%) scale(0.68);
+        width: clamp(360px, 48vw, 520px);
+        height: clamp(360px, 48vw, 520px);
+        transform: translate(-50%, -50%) scale(0.7);
         border-radius: 50%;
         border: 1px solid rgba(247,217,139,0.45);
-        box-shadow: 0 0 60px rgba(247,217,139,0.35), inset 0 0 30px rgba(247,217,139,0.18);
+        box-shadow: 0 0 80px rgba(247,217,139,0.35), inset 0 0 40px rgba(247,217,139,0.22);
         opacity: 0;
         animation: aura-cycle 12s ease-in-out infinite;
         will-change: transform, opacity;
@@ -1460,10 +1502,10 @@
 
       .stars {
         position: absolute;
-        top: 28%;
+        top: 24%;
         left: 50%;
         display: flex;
-        gap: 22px;
+        gap: 26px;
         transform: translateX(-50%);
         opacity: 0;
         animation: stars-appear 12s ease-in-out infinite;
@@ -1471,31 +1513,33 @@
       }
 
       .star {
-        width: 16px; height: 16px; border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
         background: radial-gradient(circle,
           rgba(255,255,255,0.95) 0%,
           rgba(255,234,167,0.85) 45%,
           rgba(247,217,139,0.4) 70%,
           transparent 100%);
         position: relative;
-        box-shadow: 0 0 24px rgba(255,234,167,0.55);
+        box-shadow: 0 0 32px rgba(255,234,167,0.6);
       }
 
       .star::after {
         content: '';
         position: absolute;
-        inset: -8px;
+        inset: -10px;
         background: radial-gradient(circle, rgba(255,234,167,0.25) 0%, transparent 70%);
-        filter: blur(4px);
+        filter: blur(6px);
         border-radius: 50%;
       }
 
-      .star.star-2 { width: 12px; height: 12px; animation: star-flicker 3.4s ease-in-out infinite; }
-      .star.star-3 { width: 18px; height: 18px; animation: star-flicker 2.8s ease-in-out infinite; }
+      .star.star-2 { width: 14px; height: 12px; animation: star-flicker 3.4s ease-in-out infinite; }
+      .star.star-3 { width: 20px; height: 18px; animation: star-flicker 2.8s ease-in-out infinite; }
     }
 
     /* Mobile / Tablets oder wenn kein feiner Pointer: Animation aus, nur ruhiger Block */
-    @media (hover:none), (pointer:coarse), (max-width: 900px) {
+    @media (hover:none), (pointer:coarse) {
       .contact-layout { grid-template-columns: 1fr; }
       .contact-playbook {
         margin-top: 32px;
@@ -1506,31 +1550,62 @@
         padding: 20px 22px;
       }
       .contact-visual {
-        min-height: 340px;
-        padding: 44px 32px 52px;
-        border-radius: 24px;
-        background:
-          radial-gradient(circle at 30% 30%, rgba(247,217,139,0.12), transparent 55%),
-          rgba(8,8,10,0.9);
-        overflow: hidden;
-        max-width: 520px;
+        order: -1;
+        min-height: clamp(320px, 58vw, 420px);
+        padding: 32px 0 40px;
+        border-radius: 0;
+        background: none;
+        max-width: min(460px, 90vw);
         margin: 0 auto;
       }
-      /* Alle Animationselemente für Mobile ruhig stellen */
-      .light-line,
-      .signature text,
-      .aura-circle,
-      .stars,
-      .star { animation: none !important; opacity: 0 !important; }
+      .signature {
+        width: clamp(280px, 85vw, 460px);
+        height: auto;
+      }
+      .signature text {
+        animation: none !important;
+        stroke-dashoffset: 0 !important;
+        fill-opacity: 1 !important;
+        opacity: 1 !important;
+        filter: drop-shadow(0 0 14px rgba(247,217,139,0.35));
+      }
+      .aura-circle {
+        animation: none !important;
+        opacity: 0.35 !important;
+        transform: translate(-50%, -50%) scale(0.82);
+      }
+      .stars {
+        animation: none !important;
+        opacity: 0.55 !important;
+      }
+      .star {
+        animation: none !important;
+        opacity: 0.9 !important;
+      }
+      .light-line {
+        display: none !important;
+      }
     }
 
     /* Barrierefreiheit: Nutzer wünscht reduzierte Bewegung → Animationen ausschalten */
     @media (prefers-reduced-motion: reduce) {
-      .light-line,
-      .signature text,
-      .aura-circle,
+     .light-line { display: none !important; }
+      .signature text {
+        animation: none !important;
+        stroke-dashoffset: 0 !important;
+        fill-opacity: 1 !important;
+        opacity: 1 !important;
+        filter: drop-shadow(0 0 14px rgba(247,217,139,0.35));
+      }
+      .aura-circle {
+        animation: none !important;
+        opacity: 0.35 !important;
+      }
       .stars,
-      .star { animation: none !important; opacity: 0.0 !important; }
+      .star {
+        animation: none !important;
+        opacity: 0.55 !important;
+      }
     }
 
     /* Keyframes (deine Originale – performanter Einsatz via transform/opacity) */
@@ -1586,19 +1661,46 @@
 
     /* Größen-Tweaks wie gehabt */
     @media (max-width: 1080px) {
-      .contact-layout { grid-template-columns: minmax(0, 1fr) minmax(280px, 440px); gap: 44px; }
-      .contact-visual { min-height: 420px; padding: 64px 48px 72px; }
-      .signature { width: clamp(320px, 86%, 500px); height: 190px; }
-      .signature text { font-size: clamp(60px, 10vw, 92px); }
-      .aura-circle { width: 280px; height: 280px; }
+       .contact-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 560px);
+        gap: clamp(32px, 5vw, 56px);
+      }
+      .contact-visual {
+        min-height: clamp(440px, 58vw, 640px);
+        padding: clamp(24px, 6vw, 72px) 0;
+      }
+      .signature {
+        width: clamp(420px, 82%, 660px);
+        height: clamp(200px, 22vw, 260px);
+      }
+      .signature text {
+        font-size: clamp(84px, 11vw, 132px);
+      }
+      .aura-circle {
+        width: clamp(300px, 42vw, 440px);
+        height: clamp(300px, 42vw, 440px);
+      }
     }
 
     @media (max-width: 900px) {
       .contact-layout { grid-template-columns: 1fr; }
-      .contact-visual { order: -1; min-height: 360px; padding: 48px 32px 60px; }
-      .signature { width: clamp(260px, 90%, 420px); height: 170px; }
-      .signature text { font-size: clamp(48px, 12vw, 78px); }
-      .aura-circle { top: 50%; width: 220px; height: 220px; }
+      .contact-visual {
+        order: -1;
+        min-height: clamp(320px, 64vw, 460px);
+        padding: 36px 0 48px;
+      }
+      .signature {
+        width: clamp(300px, 88vw, 500px);
+        height: auto;
+      }
+      .signature text {
+        font-size: clamp(68px, 14vw, 112px);
+      }
+      .aura-circle {
+        top: 50%;
+        width: clamp(240px, 52vw, 360px);
+        height: clamp(240px, 52vw, 360px);
+      }
     }
 
     /* Contact form */
@@ -1665,21 +1767,6 @@
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
-    }
-    
-    .contact-form button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.6s ease;
-    }
-    
-    .contact-form button:hover::before {
-      left: 100%;
     }
     
     .contact-form button:hover {
