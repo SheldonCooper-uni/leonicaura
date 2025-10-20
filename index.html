@@ -277,14 +277,11 @@
     /* Section styling */
     .section {
       position: relative;
-      padding-block: clamp(60px, 10vw, 120px);
-    }
+      padding: clamp(60px, 10vw, 120px) 5vw;
+       }
 
-    /* Hero bleibt full width */
-    #hero .section-inner {
-      width: 100%;
-      max-width: none;
-      padding-inline: 0;
+    .section-inner {
+      width: min(100%, 1200px);
     }
 
     
@@ -293,12 +290,10 @@
       margin: 0 auto;
     }
 
-     /* Fallback für ältere Browser */
-    @supports not (width: min(100%, 1200px)) {
+     @supports not (width: min(100%, 1200px)) {
       .section-inner {
         width: 100%;
         max-width: 1200px;
-        margin-inline: auto;
       }
     }
     .section:not(:first-child) { border-top: 1px solid rgba(255,255,255,0.05); }
