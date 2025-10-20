@@ -2586,61 +2586,90 @@ img, video, canvas, svg {
       </div>
     </section>
     
-    <!-- Kontakt Section -->
+ <!-- Kontakt Section - VERBESSERTE VERSION -->
     <section id="kontakt" class="section reveal" data-title="Kontakt">
-     <div class="section-inner">
-        <h2 class="section-title"><span>Kontakt</span>Schreib mir</h2>
-        <p class="lead">Hast du Fragen oder möchtest einen Termin vereinbaren? Melde dich gerne!</p>
+      <h2 class="section-title"><span>Kontakt</span>Schreib mir</h2>
+      <p class="lead">Hast du Fragen oder möchtest einen Termin vereinbaren? Melde dich gerne!</p>
 
-        <div class="contact-layout">
-          <div class="contact-main">
-            <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/infoleonicaura@gmail.com" method="POST">
-              <input type="hidden" name="_subject" value="Neue Nachricht über leonicaura.de">
-              <input type="hidden" name="_captcha" value="false">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required placeholder="Dein Name">
+      <div class="contact-layout">
+        <div class="contact-main">
+          <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/infoleonicaura@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Neue Nachricht über leonicaura.de">
+            <input type="hidden" name="_captcha" value="false">
+            
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Dein Name">
 
-              <label for="email">E‑Mail</label>
-              <input type="email" id="email" name="email" required placeholder="deine@email.de">
+            <label for="email">E‑Mail *</label>
+            <input type="email" id="email" name="email" required placeholder="deine@email.de">
 
-              <label for="message">Nachricht</label>
-              <textarea id="message" name="message" required placeholder="Was möchtest du mir mitteilen?"></textarea>
+            <label for="niveau">Deutschniveau *</label>
+            <select id="niveau" name="niveau" required>
+              <option value="">Bitte wählen</option>
+              <option value="A1">A1 – Anfänger</option>
+              <option value="A2">A2 – Grundlegende Kenntnisse</option>
+              <option value="B1">B1 – Mittelstufe</option>
+              <option value="B2">B2 – Fortgeschrittene Mittelstufe</option>
+              <option value="C1">C1 – Fortgeschrittene Kenntnisse</option>
+              <option value="unsicher">Weiß nicht / Unsicher</option>
+            </select>
 
-              <label class="consent">
-                <input type="checkbox" id="consent" name="consent" required>
-                <span>Ich stimme der Verarbeitung meiner Daten gemäß der <a href="#datenschutz">Datenschutzerklärung</a> zu.</span>
-              </label>
+            <label for="selbsteinschaetzung">Selbsteinschätzung (optional)</label>
+            <textarea id="selbsteinschaetzung" name="selbsteinschaetzung" placeholder="Wie gut sprichst du bereits Deutsch? Was fällt dir leicht, was schwer?"></textarea>
 
-              <button type="submit">Nachricht senden</button>
+            <label for="beruf">Beruf / Tätigkeit (optional)</label>
+            <input type="text" id="beruf" name="beruf" placeholder="z.B. Student, Krankenschwester, Ingenieur">
 
-              <div id="formStatus"></div>
-            </form>
+            <label for="stunden_monat">Gewünschte Stunden pro Monat (optional)</label>
+            <select id="stunden_monat" name="stunden_monat">
+              <option value="">Bitte wählen</option>
+              <option value="1-2">1-2 Stunden</option>
+              <option value="3-4">3-4 Stunden</option>
+              <option value="5-8">5-8 Stunden</option>
+              <option value="9-12">9-12 Stunden</option>
+              <option value="mehr">Mehr als 12 Stunden</option>
+            </select>
 
-            <div class="contact-info">
-              <p><strong>Alternative Kontaktmöglichkeiten:</strong></p>
-              <p>📱 WhatsApp: <a href="https://wa.me/4917663005489" target="_blank">+49 176 63005489</a></p>
-              <p>📧 E‑Mail: <a href="mailto:infoleonicaura@gmail.com">infoleonicaura@gmail.com</a></p>
-              <p>📸 Instagram: <a href="https://www.instagram.com/aicreativebitch" target="_blank" rel="noopener">@aicreativebitch</a></p>
-            </div>
-          </div>
+            <label for="wuensche">Was wünschst du dir vom Unterricht? *</label>
+            <textarea id="wuensche" name="wuensche" required placeholder="Beschreibe deine Ziele und Wünsche. Möchtest du dich auf eine Prüfung vorbereiten? Willst du tief in ein Thema einsteigen? Was ist dir wichtig?"></textarea>
 
-        <div class="contact-visual" aria-hidden="true">
-            <div class="light-line"></div>
-            <svg class="signature" viewBox="0 0 600 160" role="presentation">
-              <text x="50%" y="60%" text-anchor="middle">LeonicAura</text>
-            </svg>
-            <div class="aura-circle"></div>
-            <div class="stars">
-              <span class="star star-1"></span>
-              <span class="star star-2"></span>
-              <span class="star star-3"></span>
-            </div>
+            <label for="message">Zusätzliche Nachricht (optional)</label>
+            <textarea id="message" name="message" placeholder="Gibt es noch etwas, das ich wissen sollte?"></textarea>
+
+            <label class="consent">
+              <input type="checkbox" id="consent" name="consent" required>
+              <span>Ich stimme der Verarbeitung meiner Daten gemäß der <a href="#datenschutz">Datenschutzerklärung</a> zu.</span>
+            </label>
+
+            <button type="submit">Nachricht senden</button>
+
+            <div id="formStatus"></div>
+          </form>
+
+          <div class="contact-info">
+            <p><strong>Alternative Kontaktmöglichkeiten:</strong></p>
+            <p>📱 WhatsApp: <a href="https://wa.me/4917663005489" target="_blank">+49 176 63005489</a></p>
+            <p>📧 E‑Mail: <a href="mailto:infoleonicaura@gmail.com">infoleonicaura@gmail.com</a></p>
+            <p>📸 Instagram: <a href="https://www.instagram.com/aicreativebitch" target="_blank" rel="noopener">@aicreativebitch</a></p>
           </div>
         </div>
 
-       <div class="contact-playbook" aria-labelledby="contact-playbook-heading">
+        <div class="contact-visual" aria-hidden="true">
+          <div class="light-line"></div>
+          <svg class="signature" viewBox="0 0 600 160" role="presentation">
+            <text x="50%" y="60%" text-anchor="middle">LeonicAURA</text>
+          </svg>
+          <div class="aura-circle"></div>
+          <div class="stars">
+            <span class="star star-1"></span>
+            <span class="star star-2"></span>
+            <span class="star star-3"></span>
+          </div>
+        </div>
+
+        <div class="contact-playbook" aria-labelledby="contact-playbook-heading">
           <div>
-            <h3 id="contact-playbook-heading">Kontaktanfrage beantworten (kurz &amp; klar)</h3>
+            <h3 id="contact-playbook-heading">Kontaktanfrage beantworten (kurz & klar)</h3>
             <p>Schreibe auf Deutsch eine freundliche Antwort in der Du-Form. Nutze die Angaben aus der Anfrage und halte dich an folgendes Format.</p>
           </div>
           <div class="contact-playbook-template">
@@ -2649,7 +2678,7 @@ img, video, canvas, svg {
             <ul class="contact-playbook-list">
               <li>Beginne mit einem Dank und greife das wichtigste Ziel der Person auf.</li>
               <li>Biete eine Probestunde (60 Min, 16 €) mit zwei Terminvorschlägen an, die zur angegebenen Verfügbarkeit passen. Fehlt eine Angabe, schlage zwei allgemeine Zeiten vor.</li>
-              <li>Falls das Niveau „weiß nicht“ lautet, erwähne einen kurzen Level-Check zu Beginn der Stunde.</li>
+              <li>Falls das Niveau „weiß nicht" lautet, erwähne einen kurzen Level-Check zu Beginn der Stunde.</li>
               <li>Wenn das Ziel eine Prüfung ist, kündige an, dass ihr gemeinsam einen Mini-Plan für die Vorbereitung erstellt.</li>
               <li>Bei Angaben zum Beruf erwähne, dass Material und Vokabular dazu passen werden.</li>
               <li>Beende mit einer klaren Frage zur Terminwahl und dem Hinweis: <code>Du kannst mir auch per WhatsApp schreiben.</code></li>
@@ -2659,22 +2688,12 @@ img, video, canvas, svg {
             <p><strong>Interne Notiz für Leon (5 Stichpunkte):</strong></p>
             <ul>
               <li>wichtigste Ziele der Person</li>
-              <li>Niveau (inklusive Hinweis, falls unsicher oder „weiß nicht“)</li>
+              <li>Niveau (inklusive Hinweis, falls unsicher oder „weiß nicht")</li>
               <li>Verfügbarkeit bzw. gewünschte Zeiten</li>
               <li>Erfahrung oder Beruf (falls angegeben)</li>
               <li>Fokus für die Probestunde (3 kurze Punkte)</li>
             </ul>
           </div>
-        </div>
-        <div class="contact-playbook-note">
-          <p><strong>Interne Notiz für Leon (5 Stichpunkte):</strong></p>
-          <ul>
-            <li>wichtigste Ziele der Person</li>
-            <li>Niveau (inklusive Hinweis, falls unsicher oder „weiß nicht“)</li>
-            <li>Verfügbarkeit bzw. gewünschte Zeiten</li>
-            <li>Erfahrung oder Beruf (falls angegeben)</li>
-            <li>Fokus für die Probestunde (3 kurze Punkte)</li>
-          </ul>
         </div>
       </div>
     </section>
