@@ -278,7 +278,11 @@
     .section {
       position: relative;
       padding: clamp(60px, 10vw, 120px) 5vw;
-      max-width: 1400px;
+       width: 100%;
+    }
+
+    .section:not(#hero) {
+      max-width: 1200px;
       margin: 0 auto;
     }
     
