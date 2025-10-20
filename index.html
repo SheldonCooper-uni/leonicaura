@@ -278,14 +278,24 @@
     .section {
       position: relative;
       padding: clamp(60px, 10vw, 120px) 5vw;
-       width: 100%;
+       }
+
+    .section-inner {
+      width: min(100%, 1200px);
     }
 
+    
     .section:not(#hero) {
       max-width: 1200px;
       margin: 0 auto;
     }
-    
+
+     @supports not (width: min(100%, 1200px)) {
+      .section-inner {
+        width: 100%;
+        max-width: 1200px;
+      }
+    }
     .section:not(:first-child) { border-top: 1px solid rgba(255,255,255,0.05); }
     
     .section-title {
@@ -2102,45 +2112,49 @@ img, video, canvas, svg {
 
     <!-- Intro Section -->
     <section id="intro" class="section reveal" data-title="Einleitung">
-      <h2 id="hero-headline">
-  <span class="static">Deutsch</span><span class="dynamic">, das wirklich bleibt</span>
-</h2>
+        <div class="section-inner">
+        <h2 id="hero-headline">
+          <span class="static">Deutsch</span><span class="dynamic">, das wirklich bleibt</span>
+        </h2>
 
-      <p class="subtitle">Individualisierter Online-Unterricht · Individualni online časovi</p>
-      <div class="cta-buttons">
-        <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Probestunde buchen">Probestunde 16 € buchen</a>
-        <a href="#preise" class="btn btn-secondary lux-trace bubble-hover" aria-label="Preise ansehen">Preise ansehen</a>
-      </div>
-      <div class="mini-info">
-        <span>Online via Zoom/Google Meet</span>·<span>PayPal oder Überweisung</span>·<span>Rechnung per E‑Mail</span>
+        <p class="subtitle">Individualisierter Online-Unterricht · Individualni online časovi</p>
+        <div class="cta-buttons">
+          <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Probestunde buchen">Probestunde 16 € buchen</a>
+          <a href="#preise" class="btn btn-secondary lux-trace bubble-hover" aria-label="Preise ansehen">Preise ansehen</a>
+        </div>
+        <div class="mini-info">
+          <span>Online via Zoom/Google Meet</span>·<span>PayPal oder Überweisung</span>·<span>Rechnung per E‑Mail</span>
+        </div>
       </div>
     </section>
     
     <!-- Nutzen Section -->
     <section id="nutzen" class="section reveal" data-title="Nutzen">
-      <h2 class="section-title"><span>Warum</span>Dein Vorteil</h2>
-      <p class="lead">Entdecke, was LeonicAURA einzigartig macht.</p>
-      <div class="benefit-grid">
-        <div class="benefit-item lux-trace bubble-hover">
-          <span class="benefit-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8" /><path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8" /><path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5" /><path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0" /><path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5" /><path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10" /></svg>
-          </span>
-          <div class="benefit-title">Individuell</div>
-          <div class="benefit-desc">Deine Ziele stehen im Mittelpunkt – ob Beruf, Alltag oder Prüfung.</div>
-        </div>
-        <div class="benefit-item lux-trace bubble-hover">
-          <span class="benefit-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2m0 3a3 3 0 0 1 3 -3h0a3 3 0 0 1 3 3v5a3 3 0 0 1 -3 3h0a3 3 0 0 1 -3 -3z" /><path d="M5 10a7 7 0 0 0 14 0" /><path d="M8 21l8 0" /><path d="M12 17l0 4" /></svg>
-          </span>
-          <div class="benefit-title">Klar & strukturiert</div>
-          <div class="benefit-desc">Grammatik, Sprechen und Schreiben – verständlich und geordnet vermittelt.</div>
-        </div>
-        <div class="benefit-item lux-trace bubble-hover">
-          <span class="benefit-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="9" /></svg>
-          </span>
-          <div class="benefit-title">Motivierend</div>
-          <div class="benefit-desc">Persönliches Feedback, klare Erklärungen und sichtbarer Fortschritt.</div>
+       <div class="section-inner">
+        <h2 class="section-title"><span>Warum</span>Dein Vorteil</h2>
+        <p class="lead">Entdecke, was LeonicAURA einzigartig macht.</p>
+        <div class="benefit-grid">
+          <div class="benefit-item lux-trace bubble-hover">
+            <span class="benefit-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8" /><path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8" /><path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5" /><path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0" /><path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5" /><path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10" /></svg>
+            </span>
+            <div class="benefit-title">Individuell</div>
+            <div class="benefit-desc">Deine Ziele stehen im Mittelpunkt – ob Beruf, Alltag oder Prüfung.</div>
+          </div>
+          <div class="benefit-item lux-trace bubble-hover">
+            <span class="benefit-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2m0 3a3 3 0 0 1 3 -3h0a3 3 0 0 1 3 3v5a3 3 0 0 1 -3 3h0a3 3 0 0 1 -3 -3z" /><path d="M5 10a7 7 0 0 0 14 0" /><path d="M8 21l8 0" /><path d="M12 17l0 4" /></svg>
+            </span>
+            <div class="benefit-title">Klar & strukturiert</div>
+            <div class="benefit-desc">Grammatik, Sprechen und Schreiben – verständlich und geordnet vermittelt.</div>
+          </div>
+          <div class="benefit-item lux-trace bubble-hover">
+            <span class="benefit-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="9" /></svg>
+            </span>
+            <div class="benefit-title">Motivierend</div>
+            <div class="benefit-desc">Persönliches Feedback, klare Erklärungen und sichtbarer Fortschritt.</div>
+          </div>
         </div>
       </div>
     </section>
@@ -2156,458 +2170,492 @@ img, video, canvas, svg {
         <div class="floating-letter" style="top:25%; left:50%;">c</div>
         <div class="floating-letter" style="top:80%; left:45%;">h</div>
       </div>
-      <h2 class="section-title"><span>Bewertungen</span>Was meine Schüler sagen</h2>
-      <p class="lead">Echte Erfahrungen von Lernenden, die ihren Weg mit LeonicAURA gegangen sind.</p>
-      <div class="testimonials-grid">
-        <div class="testimonial-card lux-trace bubble-hover">
-          <p class="testimonial-text">„Leon hat mir geholfen, mein Deutsch für die B2-Prüfung vorzubereiten. Seine Erklärungen sind klar und er ist immer geduldig. Ich habe die Prüfung beim ersten Versuch bestanden!"</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" aria-hidden="true">M</div>
-            <div class="testimonial-info">
-              <div class="testimonial-name">Marija</div>
-              <div class="testimonial-level">B2 Schülerin · Serbien</div>
+      <div class="section-inner">
+        <h2 class="section-title"><span>Bewertungen</span>Was meine Schüler sagen</h2>
+        <p class="lead">Echte Erfahrungen von Lernenden, die ihren Weg mit LeonicAURA gegangen sind.</p>
+        <div class="testimonials-grid">
+          <div class="testimonial-card lux-trace bubble-hover">
+            <p class="testimonial-text">„Leon hat mir geholfen, mein Deutsch für die B2-Prüfung vorzubereiten. Seine Erklärungen sind klar und er ist immer geduldig. Ich habe die Prüfung beim ersten Versuch bestanden!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">M</div>
+              <div class="testimonial-info">
+                <div class="testimonial-name">Marija</div>
+                <div class="testimonial-level">B2 Schülerin · Serbien</div>
+              </div>
             </div>
+            <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
           </div>
-          <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
-        </div>
-        <div class="testimonial-card lux-trace bubble-hover">
-          <p class="testimonial-text">„Der Unterricht ist flexibel und macht Spaß. Leon passt sich meinem Tempo an und ich fühle mich nie unter Druck. Mein Sprechen hat sich deutlich verbessert!"</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" aria-hidden="true">D</div>
-            <div class="testimonial-info">
-              <div class="testimonial-name">Dragan</div>
-              <div class="testimonial-level">A2 Schüler · Bosnien</div>
+          < <div class="testimonial-card lux-trace bubble-hover">
+            <p class="testimonial-text">„Der Unterricht ist flexibel und macht Spaß. Leon passt sich meinem Tempo an und ich fühle mich nie unter Druck. Mein Sprechen hat sich deutlich verbessert!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">D</div>
+              <div class="testimonial-info">
+                <div class="testimonial-name">Dragan</div>
+                <div class="testimonial-level">A2 Schüler · Bosnien</div>
+              </div>
             </div>
+            <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
           </div>
-          <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
-        </div>
-        <div class="testimonial-card lux-trace bubble-hover">
-          <p class="testimonial-text">„Ich lerne seit 3 Monaten bei Leon und sehe große Fortschritte. Die Materialien sind gut strukturiert und die Hausaufgaben helfen mir, alles zu festigen. Sehr empfehlenswert!"</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" aria-hidden="true">A</div>
-            <div class="testimonial-info">
-              <div class="testimonial-name">Ana</div>
-              <div class="testimonial-level">B1 Schülerin · Kroatien</div>
+          <div class="testimonial-card lux-trace bubble-hover">
+            <p class="testimonial-text">„Ich lerne seit 3 Monaten bei Leon und sehe große Fortschritte. Die Materialien sind gut strukturiert und die Hausaufgaben helfen mir, alles zu festigen. Sehr empfehlenswert!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">A</div>
+              <div class="testimonial-info">
+                <div class="testimonial-name">Ana</div>
+                <div class="testimonial-level">B1 Schülerin · Kroatien</div>
+              </div>
             </div>
+            <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
           </div>
-          <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
-        </div>
-        <div class="testimonial-card lux-trace bubble-hover">
-          <p class="testimonial-text">„Ich bereite mich mit Leon auf die C1-Prüfung vor und bin begeistert! Er erklärt komplexe Themen einfach und motiviert mich jeden Tag."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" aria-hidden="true">N</div>
-            <div class="testimonial-info">
-              <div class="testimonial-name">Nikola</div>
-              <div class="testimonial-level">C1 Schüler · Serbien</div>
+          <div class="testimonial-card lux-trace bubble-hover">
+            <p class="testimonial-text">„Ich bereite mich mit Leon auf die C1-Prüfung vor und bin begeistert! Er erklärt komplexe Themen einfach und motiviert mich jeden Tag."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">N</div>
+              <div class="testimonial-info">
+                <div class="testimonial-name">Nikola</div>
+                <div class="testimonial-level">C1 Schüler · Serbien</div>
+              </div>
             </div>
+            <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
           </div>
-          <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
-        </div>
-        <div class="testimonial-card lux-trace bubble-hover">
-          <p class="testimonial-text">„Endlich verstehe ich die deutsche Grammatik! Leon erklärt alles Schritt für Schritt und gibt praktische Beispiele. Der Preis ist auch sehr fair."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" aria-hidden="true">J</div>
-            <div class="testimonial-info">
-              <div class="testimonial-name">Jelena</div>
-              <div class="testimonial-level">A1 Schülerin · Montenegro</div>
+         <div class="testimonial-card lux-trace bubble-hover">
+            <p class="testimonial-text">„Endlich verstehe ich die deutsche Grammatik! Leon erklärt alles Schritt für Schritt und gibt praktische Beispiele. Der Preis ist auch sehr fair."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">J</div>
+              <div class="testimonial-info">
+                <div class="testimonial-name">Jelena</div>
+                <div class="testimonial-level">A1 Schülerin · Montenegro</div>
+              </div>
             </div>
+             <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
           </div>
-          <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
-        </div>
-        <div class="testimonial-card lux-trace bubble-hover">
-          <p class="testimonial-text">„Die Online-Stunden sind super organisiert. Leon ist pünktlich, professionell und macht jeden Unterricht interessant. Ich freue mich jede Woche auf die Stunden!"</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" aria-hidden="true">S</div>
-            <div class="testimonial-info">
-              <div class="testimonial-name">Stefan</div>
-              <div class="testimonial-level">B1 Schüler · Nordmazedonien</div>
+           <div class="testimonial-card lux-trace bubble-hover">
+            <p class="testimonial-text">„Die Online-Stunden sind super organisiert. Leon ist pünktlich, professionell und macht jeden Unterricht interessant. Ich freue mich jede Woche auf die Stunden!"</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">S</div>
+              <div class="testimonial-info">
+                <div class="testimonial-name">Stefan</div>
+                <div class="testimonial-level">B1 Schüler · Nordmazedonien</div>
+              </div>
             </div>
+             <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
           </div>
-          <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
         </div>
       </div>
     </section>
     
     <!-- Preise Section -->
     <section id="preise" class="section reveal" data-title="Preise">
-      <h2 class="section-title"><span>Preise</span>Faire Preise für deinen Erfolg</h2>
-      <p class="lead">Je mehr du lernst, desto günstiger wird der Preis pro Einheit.</p>
-      <div class="pricing-grid">
-        <div class="pricing-card lux-trace bubble-hover">
-          <div class="pricing-title">Probestunde</div>
-          <div class="pricing-price">16 €/60 min</div>
-          <div class="pricing-desc">Einmalig zum Kennenlernen.</div>
-          <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Probestunde buchen">Probestunde buchen</a>
+         <div class="section-inner">
+        <h2 class="section-title"><span>Preise</span>Faire Preise für deinen Erfolg</h2>
+        <p class="lead">Je mehr du lernst, desto günstiger wird der Preis pro Einheit.</p>
+        <div class="pricing-grid">
+          <div class="pricing-card lux-trace bubble-hover">
+            <div class="pricing-title">Probestunde</div>
+            <div class="pricing-price">16 €/60 min</div>
+            <div class="pricing-desc">Einmalig zum Kennenlernen.</div>
+            <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Probestunde buchen">Probestunde buchen</a>
+          </div>
+          <div class="pricing-card lux-trace bubble-hover">
+            <div class="pricing-title">Ab 2 Stunden</div>
+            <div class="pricing-price">15 €/h</div>
+            <div class="pricing-desc">Mehr Sprechpraxis und solide Grundlagen.</div>
+            <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Paket buchen">2+ Stunden buchen</a>
+          </div>
+          <div class="pricing-card lux-trace bubble-hover">
+            <div class="pricing-title">Ab 5 Stunden</div>
+            <div class="pricing-price">13 €/h</div>
+            <div class="pricing-desc">Kontinuierlicher Fortschritt und nachhaltige Ergebnisse.</div>
+            <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Paket buchen">5+ Stunden buchen</a>
+          </div>
+          <div class="pricing-card lux-trace bubble-hover">
+            <div class="pricing-title">Ab 10 Stunden</div>
+            <div class="pricing-price">10 €/h</div>
+            <div class="pricing-desc">Intensivprogramm für maximale Erfolge.</div>
+            <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Paket buchen">10+ Stunden anfragen</a>
+          </div>
         </div>
-        <div class="pricing-card lux-trace bubble-hover">
-          <div class="pricing-title">Ab 2 Stunden</div>
-          <div class="pricing-price">15 €/h</div>
-          <div class="pricing-desc">Mehr Sprechpraxis und solide Grundlagen.</div>
-          <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Paket buchen">2+ Stunden buchen</a>
-        </div>
-        <div class="pricing-card lux-trace bubble-hover">
-          <div class="pricing-title">Ab 5 Stunden</div>
-          <div class="pricing-price">13 €/h</div>
-          <div class="pricing-desc">Kontinuierlicher Fortschritt und nachhaltige Ergebnisse.</div>
-          <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Paket buchen">5+ Stunden buchen</a>
-        </div>
-        <div class="pricing-card lux-trace bubble-hover">
-          <div class="pricing-title">Ab 10 Stunden</div>
-          <div class="pricing-price">10 €/h</div>
-          <div class="pricing-desc">Intensivprogramm für maximale Erfolge.</div>
-          <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Paket buchen">10+ Stunden anfragen</a>
-        </div>
+        <p class="mini-info" style="margin-top:2.5em; opacity:0.75; font-size:14px; line-height:1.6;">Flexible Termine · Materialien inklusive · Hausaufgaben auf Wunsch · Kurze Zusammenfassung nach jeder Stunde · Gruppenunterricht und Online-Kurse (A1–C1) sind bald verfügbar · Kostenlose Übungen & Texte werden bald veröffentlicht</p>
       </div>
-      <p class="mini-info" style="margin-top:2.5em; opacity:0.75; font-size:14px; line-height:1.6;">Flexible Termine · Materialien inklusive · Hausaufgaben auf Wunsch · Kurze Zusammenfassung nach jeder Stunde · Gruppenunterricht und Online-Kurse (A1–C1) sind bald verfügbar · Kostenlose Übungen & Texte werden bald veröffentlicht</p>
-    </section>
+      </section>
     
     <!-- Arbeitszeiten & Buchung Section -->
     <section id="arbeitszeiten" class="section reveal" data-title="Arbeitszeiten">
-      <h2 class="section-title"><span>Wann</span>Arbeitszeiten & Verfügbarkeit</h2>
-      <p class="lead">Ich bin flexibel für dich da – auch spät abends und am Wochenende.</p>
-      <div class="hours-grid">
-        <div class="hours-card">
-          <svg class="hours-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10" />
-            <polyline points="12 6 12 12 16 14" />
-          </svg>
-          <h3 class="hours-title">Regelmäßige Zeiten</h3>
-          <ul class="hours-list">
-            <li><strong>Mo–Do:</strong>  17:00–22:00</li>
-            <li><strong>Fr:</strong>  15:00–22:00</li>
-            <li><strong>Sa–So:</strong>  06:00–22:00</li>
-          </ul>
-          <div class="hours-note">
-            <strong>Letzter Unterrichtsbeginn:</strong> 22:00 Uhr<br>
-            Doppel- und 3-Stunden-Sessions möglich!
+     <div class="section-inner">
+        <h2 class="section-title"><span>Wann</span>Arbeitszeiten & Verfügbarkeit</h2>
+        <p class="lead">Ich bin flexibel für dich da – auch spät abends und am Wochenende.</p>
+        <div class="hours-grid">
+          <div class="hours-card">
+            <svg class="hours-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            <h3 class="hours-title">Regelmäßige Zeiten</h3>
+            <ul class="hours-list">
+              <li><strong>Mo–Do:</strong>  17:00–22:00</li>
+              <li><strong>Fr:</strong>  15:00–22:00</li>
+              <li><strong>Sa–So:</strong>  06:00–22:00</li>
+            </ul>
+            <div class="hours-note">
+              <strong>Letzter Unterrichtsbeginn:</strong> 22:00 Uhr<br>
+              Doppel- und 3-Stunden-Sessions möglich!
+            </div>
+          </div>
+       <div class="hours-card">
+            <svg class="hours-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            <h3 class="hours-title">NRW Schulferien</h3>
+            <ul class="hours-list">
+              <li><strong>Ganztägig verfügbar:</strong> 06:00–22:00</li>
+              <li>Intensive Lernwochen möglich</li>
+              <li>Mehr Flexibilität für Langstunden</li>
+            </ul>
+            <div class="hours-note">
+              Perfekt für Prüfungsvorbereitung oder Intensivkurse!
+            </div>
           </div>
         </div>
-        
-        <div class="hours-card">
-          <svg class="hours-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-            <line x1="16" y1="2" x2="16" y2="6" />
-            <line x1="8" y1="2" x2="8" y2="6" />
-            <line x1="3" y1="10" x2="21" y2="10" />
-          </svg>
-          <h3 class="hours-title">NRW Schulferien</h3>
-          <ul class="hours-list">
-            <li><strong>Ganztägig verfügbar:</strong> 06:00–22:00</li>
-            <li>Intensive Lernwochen möglich</li>
-            <li>Mehr Flexibilität für Langstunden</li>
-          </ul>
-          <div class="hours-note">
-            Perfekt für Prüfungsvorbereitung oder Intensivkurse!
-          </div>
+        <div style="margin-top: 2em; text-align: center;">
+          <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Verfügbarkeiten ansehen">Verfügbarkeiten ansehen & buchen</a>
         </div>
-      </div>
-      <div style="margin-top: 2em; text-align: center;">
-        <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Verfügbarkeiten ansehen">Verfügbarkeiten ansehen & buchen</a>
       </div>
     </section>
     
  <!-- Buchung Section -->
     <section id="buchen" class="section reveal" data-title="Buchen">
-      <h2 class="section-title"><span>Buche</span>Deine nächste Stunde</h2>
-      <p class="lead">Wähle den Weg, der für dich am bequemsten ist – ich melde mich schnellstmöglich bei dir.</p>
+      <div class="section-inner">
+        <h2 class="section-title"><span>Buche</span>Deine nächste Stunde</h2>
+        <p class="lead">Wähle den Weg, der für dich am bequemsten ist – ich melde mich schnellstmöglich bei dir.</p>
 
-      <div class="booking-grid">
-        <div class="booking-option lux-trace bubble-hover">
-          <h3>WhatsApp</h3>
-          <p>Sende mir eine Nachricht mit deinem Wunschtermin und deinem Ziel. Ich bestätige dir den Termin oder schlage Alternativen vor.</p>
-          <a class="btn btn-primary" href="https://wa.me/4917663005489?text=Hallo%20Leon%2C%20ich%20m%C3%B6chte%20eine%20Deutschstunde%20buchen." target="_blank" rel="noopener">Über WhatsApp anfragen</a>
+        <div class="booking-grid">
+          <div class="booking-option lux-trace bubble-hover">
+            <h3>WhatsApp</h3>
+            <p>Sende mir eine Nachricht mit deinem Wunschtermin und deinem Ziel. Ich bestätige dir den Termin oder schlage Alternativen vor.</p>
+            <a class="btn btn-primary" href="https://wa.me/4917663005489?text=Hallo%20Leon%2C%20ich%20m%C3%B6chte%20eine%20Deutschstunde%20buchen." target="_blank" rel="noopener">Über WhatsApp anfragen</a>
+          </div>
+
+          <div class="booking-option lux-trace bubble-hover">
+            <h3>E‑Mail</h3>
+            <p>Teile mir kurz deinen Namen, dein Niveau und deine Wunschzeiten mit. Ich antworte dir mit allen weiteren Schritten.</p>
+            <a class="btn btn-secondary" href="mailto:infoleonicaura@gmail.com?subject=Deutschunterricht%20buchen&body=Hallo%20Leon%2C%20ich%20m%C3%B6chte%20eine%20Stunde%20buchen.%20Mein%20Niveau%20ist...">E‑Mail schreiben</a>
+          </div>
+
+       <div class="booking-option lux-trace bubble-hover">
+            <h3>Kontaktformular</h3>
+            <p>Nutze das Formular für strukturierte Anfragen oder wenn du mehr Details teilen möchtest. Ich melde mich per E‑Mail bei dir.</p>
+            <a class="btn btn-primary" href="#kontakt">Zum Kontaktformular</a>
+          </div>
         </div>
 
-        <div class="booking-option lux-trace bubble-hover">
-          <h3>E‑Mail</h3>
-          <p>Teile mir kurz deinen Namen, dein Niveau und deine Wunschzeiten mit. Ich antworte dir mit allen weiteren Schritten.</p>
-          <a class="btn btn-secondary" href="mailto:infoleonicaura@gmail.com?subject=Deutschunterricht%20buchen&body=Hallo%20Leon%2C%20ich%20m%C3%B6chte%20eine%20Stunde%20buchen.%20Mein%20Niveau%20ist...">E‑Mail schreiben</a>
-        </div>
 
-        <div class="booking-option lux-trace bubble-hover">
-          <h3>Kontaktformular</h3>
-          <p>Nutze das Formular für strukturierte Anfragen oder wenn du mehr Details teilen möchtest. Ich melde mich per E‑Mail bei dir.</p>
-          <a class="btn btn-primary" href="#kontakt">Zum Kontaktformular</a>
-        </div>
+       <p class="booking-note">Du bist dir noch unsicher? Starte mit einer Probestunde oder buche ein Paket, um langfristig zu planen – ich helfe dir bei der Auswahl.</p>
       </div>
-
-      <p class="booking-note">Du bist dir noch unsicher? Starte mit einer Probestunde oder buche ein Paket, um langfristig zu planen – ich helfe dir bei der Auswahl.</p>
     </section>
     
     <!-- Gruppen Section -->
     <section id="gruppen" class="section reveal" data-title="Gruppen">
-      <h2 class="section-title"><span>Gruppenunterricht</span>Lerne gemeinsam</h2>
-      <p class="lead">Für 2–4 Personen zum Preis von 9 €/Person/Stunde. Gemeinsam macht Lernen mehr Spaß und bringt zusätzliche Sprechpraxis.</p>
-      <a href="#kontakt" class="btn btn-primary lux-trace bubble-hover" aria-label="Gruppe anmelden">Gruppe anmelden</a>
+       <div class="section-inner">
+        <h2 class="section-title"><span>Gruppenunterricht</span>Lerne gemeinsam</h2>
+        <p class="lead">Für 2–4 Personen zum Preis von 9 €/Person/Stunde. Gemeinsam macht Lernen mehr Spaß und bringt zusätzliche Sprechpraxis.</p>
+        <a href="#kontakt" class="btn btn-primary lux-trace bubble-hover" aria-label="Gruppe anmelden">Gruppe anmelden</a>
+      </div>
     </section>
     
     <!-- Ablauf Section - MIT NUMMER 5 -->
     <section id="ablauf" class="section reveal" data-title="Ablauf">
-      <h2 class="section-title"><span>Ablauf</span>So läuft's ab</h2>
-      <p class="lead">In fünf Schritten zu deinem Erfolg.</p>
-      <div class="steps-grid">
-        <div class="step-item lux-trace bubble-hover">
-          <div class="step-num">1</div>
-          <h3 class="step-title">Anfrage/Buchung</h3>
-          <div class="step-desc">Kontaktiere mich per WhatsApp oder E‑Mail und erzähle von deinen Zielen.</div>
-        </div>
-        <div class="step-item lux-trace bubble-hover">
-          <div class="step-num">2</div>
-          <h3 class="step-title">Bestätigung</h3>
-          <div class="step-desc">Wir bestätigen den Termin und klären deine Fragen.</div>
-        </div>
-        <div class="step-item lux-trace bubble-hover">
-          <div class="step-num">3</div>
-          <h3 class="step-title">Unterricht</h3>
-          <div class="step-desc">Individuelle, interaktive Stunden via Zoom/Meet – zugeschnitten auf dich.</div>
-        </div>
-        <div class="step-item lux-trace bubble-hover">
-          <div class="step-num">4</div>
-          <h3 class="step-title">Nachbereitung</h3>
-          <div class="step-desc">Materialien, Feedback und optionale Hausaufgaben für nachhaltiges Lernen.</div>
-        </div>
-        <div class="step-item lux-trace bubble-hover">
-          <div class="step-num">5</div>
-          <h3 class="step-title">Weiterlernen</h3>
-          <div class="step-desc">Wir reflektieren deinen Fortschritt und planen die nächsten Schritte.</div>
+       <div class="section-inner">
+        <h2 class="section-title"><span>Ablauf</span>So läuft's ab</h2>
+        <p class="lead">In fünf Schritten zu deinem Erfolg.</p>
+        <div class="steps-grid">
+          <div class="step-item lux-trace bubble-hover">
+            <div class="step-num">1</div>
+            <h3 class="step-title">Anfrage/Buchung</h3>
+            <div class="step-desc">Kontaktiere mich per WhatsApp oder E‑Mail und erzähle von deinen Zielen.</div>
+          </div>
+          <div class="step-item lux-trace bubble-hover">
+            <div class="step-num">2</div>
+            <h3 class="step-title">Bestätigung</h3>
+            <div class="step-desc">Wir bestätigen den Termin und klären deine Fragen.</div>
+          </div>
+          <div class="step-item lux-trace bubble-hover">
+            <div class="step-num">3</div>
+            <h3 class="step-title">Unterricht</h3>
+            <div class="step-desc">Individuelle, interaktive Stunden via Zoom/Meet – zugeschnitten auf dich.</div>
+          </div>
+          <div class="step-item lux-trace bubble-hover">
+            <div class="step-num">4</div>
+            <h3 class="step-title">Nachbereitung</h3>
+            <div class="step-desc">Materialien, Feedback und optionale Hausaufgaben für nachhaltiges Lernen.</div>
+          </div>
+          <div class="step-item lux-trace bubble-hover">
+            <div class="step-num">5</div>
+            <h3 class="step-title">Weiterlernen</h3>
+            <div class="step-desc">Wir reflektieren deinen Fortschritt und planen die nächsten Schritte.</div>
+          </div>
         </div>
       </div>
     </section>
     
     <!-- Über mich Section -->
     <section id="about" class="section reveal" data-title="Über mich">
-      <h2 class="section-title"><span>Über mich</span>Hallo, ich bin Leon</h2>
-      <p class="lead">Deutschlehrer (A1–C1) für Lernende aus dem Balkan.</p>
-      <div class="about-container">
-        <div class="about-photo">
-          <div class="photo-frame">
-            <img src="Leon.jpg" alt="Leon lächelnd" loading="lazy" decoding="async">
+       <div class="section-inner">
+        <h2 class="section-title"><span>Über mich</span>Hallo, ich bin Leon</h2>
+        <p class="lead">Deutschlehrer (A1–C1) für Lernende aus dem Balkan.</p>
+        <div class="about-container">
+          <div class="about-photo">
+            <div class="photo-frame">
+              <img src="Leon.jpg" alt="Leon lächelnd" loading="lazy" decoding="async">
+            </div>
           </div>
-        </div>
-        <div class="about-content">
-          <p><strong>Wer ich bin:</strong> Ich bin Leon aus Duisburg – Deutschlehrer, spezialisiert auf Lernende aus dem Balkanraum.</p>
-          <p><strong>Wofür ich stehe:</strong></p>
-          <ul>
-            <li><strong>Fokus:</strong> Deine Ziele im Alltag, Beruf oder für Prüfungen.</li>
-            <li><strong>Arbeitsweise:</strong> Klare, strukturierte Vermittlung mit Geduld und Herz.</li>
-            <li><strong>Ergebnis:</strong> Spürbare Fortschritte und selbstbewusstes Sprechen.</li>
-          </ul>
-          <p><strong>Wie es sich anfühlt:</strong> Praxisnah, freundlich und individuell – du bestimmst das Tempo und ich begleite dich sicher zum Ziel.</p>
-          <p><strong>Mini‑Beweis:</strong> Klare Strukturen und nachvollziehbare Schritte geben dir jederzeit Orientierung.</p>
+          <div class="about-content">
+            <p><strong>Wer ich bin:</strong> Ich bin Leon aus Duisburg – Deutschlehrer, spezialisiert auf Lernende aus dem Balkanraum.</p>
+            <p><strong>Wofür ich stehe:</strong></p>
+            <ul>
+              <li><strong>Fokus:</strong> Deine Ziele im Alltag, Beruf oder für Prüfungen.</li>
+              <li><strong>Arbeitsweise:</strong> Klare, strukturierte Vermittlung mit Geduld und Herz.</li>
+              <li><strong>Ergebnis:</strong> Spürbare Fortschritte und selbstbewusstes Sprechen.</li>
+            </ul>
+            <p><strong>Wie es sich anfühlt:</strong> Praxisnah, freundlich und individuell – du bestimmst das Tempo und ich begleite dich sicher zum Ziel.</p>
+            <p><strong>Mini‑Beweis:</strong> Klare Strukturen und nachvollziehbare Schritte geben dir jederzeit Orientierung.</p>
+          </div>
         </div>
       </div>
     </section>
     
     <!-- Leistungen Section -->
     <section id="leistungen" class="section reveal" data-title="Leistungen">
-      <h2 class="section-title"><span>Was du bekommst</span>Dein Lernpaket</h2>
-      <p class="lead">Alles, was du brauchst, um erfolgreich Deutsch zu lernen.</p>
-      <div class="services-grid">
-        <div class="service-item lux-trace bubble-hover">
-          <h3 class="service-title">60‑Minuten‑Einheiten</h3>
-          <div class="service-desc">Jede Stunde dauert 60 Minuten – genug Zeit für Übungen, Beispiele und Fragen.</div>
-        </div>
-        <div class="service-item lux-trace bubble-hover">
-          <h3 class="service-title">Materialien inklusive</h3>
-          <div class="service-desc">Digitale Lernmaterialien, Übungsblätter und Aufzeichnungen helfen dir beim Wiederholen.</div>
-        </div>
-        <div class="service-item lux-trace bubble-hover">
-          <h3 class="service-title">Individuelles Feedback</h3>
-          <div class="service-desc">Nach jeder Stunde erhältst du ausführliches Feedback zu Aussprache, Grammatik und Ausdruck.</div>
-        </div>
-        <div class="service-item lux-trace bubble-hover">
-          <h3 class="service-title">Optionale Hausaufgaben</h3>
-          <div class="service-desc">Auf Wunsch bekommst du Aufgaben zur Vertiefung – freiwillig, aber empfehlenswert.</div>
-        </div>
-        <div class="service-item lux-trace bubble-hover">
-          <h3 class="service-title">Kurze Zusammenfassung</h3>
-          <div class="service-desc">Nach jeder Stunde fassen wir die wichtigsten Punkte zusammen und planen den nächsten Schritt.</div>
-        </div>
-        <div class="service-item lux-trace bubble-hover">
-          <h3 class="service-title">Flexible Bezahlung & Storno</h3>
-          <div class="service-desc">Zahlung via PayPal oder Bank. Kostenlose Stornierung bis 24 Stunden vorher.</div>
+       <div class="section-inner">
+        <h2 class="section-title"><span>Was du bekommst</span>Dein Lernpaket</h2>
+        <p class="lead">Alles, was du brauchst, um erfolgreich Deutsch zu lernen.</p>
+        <div class="services-grid">
+          <div class="service-item lux-trace bubble-hover">
+            <h3 class="service-title">60‑Minuten‑Einheiten</h3>
+            <div class="service-desc">Jede Stunde dauert 60 Minuten – genug Zeit für Übungen, Beispiele und Fragen.</div>
+          </div>
+          <div class="service-item lux-trace bubble-hover">
+            <h3 class="service-title">Materialien inklusive</h3>
+            <div class="service-desc">Digitale Lernmaterialien, Übungsblätter und Aufzeichnungen helfen dir beim Wiederholen.</div>
+          </div>
+          <div class="service-item lux-trace bubble-hover">
+            <h3 class="service-title">Individuelles Feedback</h3>
+            <div class="service-desc">Nach jeder Stunde erhältst du ausführliches Feedback zu Aussprache, Grammatik und Ausdruck.</div>
+          </div>
+          <div class="service-item lux-trace bubble-hover">
+            <h3 class="service-title">Optionale Hausaufgaben</h3>
+            <div class="service-desc">Auf Wunsch bekommst du Aufgaben zur Vertiefung – freiwillig, aber empfehlenswert.</div>
+          </div>
+          <div class="service-item lux-trace bubble-hover">
+            <h3 class="service-title">Kurze Zusammenfassung</h3>
+            <div class="service-desc">Nach jeder Stunde fassen wir die wichtigsten Punkte zusammen und planen den nächsten Schritt.</div>
+          </div>
+          <div class="service-item lux-trace bubble-hover">
+            <h3 class="service-title">Flexible Bezahlung & Storno</h3>
+            <div class="service-desc">Zahlung via PayPal oder Bank. Kostenlose Stornierung bis 24 Stunden vorher.</div>
+          </div>
         </div>
       </div>
     </section>
     
     <!-- FAQ Section -->
     <section id="faq" class="section reveal" data-title="FAQ">
-      <h2 class="section-title"><span>FAQ</span>Häufige Fragen</h2>
-      <p class="lead">Hier findest du Antworten auf oft gestellte Fragen.</p>
-      <div class="faq">
-        <details>
-          <summary>Wie lange dauert eine Unterrichtseinheit?</summary>
-          <p>Eine Einheit dauert normalerweise 60 Minuten. Die Dauer kann nach Absprache flexibel angepasst werden.</p>
-        </details>
-        <details>
-          <summary>Wie funktioniert die Bezahlung?</summary>
-          <p>Du kannst nach jeder Stunde per PayPal oder Banküberweisung zahlen – ohne Vertragsbindung.</p>
-        </details>
-        <details>
-          <summary>Was passiert bei kurzfristigen Absagen?</summary>
-          <p>Bis 24 Stunden vor dem Termin kannst du kostenlos stornieren oder verschieben. Bei späteren Absagen wird die Stunde berechnet.</p>
-        </details>
-        <details>
-          <summary>Welche Plattform nutzt du für den Unterricht?</summary>
-          <p>Ich unterrichte über Google Meet oder Zoom. Du erhältst vor der Stunde einen Link per E‑Mail oder WhatsApp.</p>
-        </details>
-        <details>
-          <summary>Sind Hausaufgaben verpflichtend?</summary>
-          <p>Hausaufgaben sind freiwillig, aber sie helfen dir, das Gelernte zu festigen.</p>
-        </details>
-        <details>
-          <summary>Kann ich dir auch spät abends schreiben?</summary>
-          <p>Ja, absolut! Du kannst mir jederzeit schreiben – auch um 22:00 oder 00:00 Uhr. Ich antworte so schnell wie möglich, und oft bin ich zu dieser Zeit sogar online. Keine Sorge, ich finde späte Nachrichten völlig in Ordnung!</p>
-        </details>
-        <details>
-          <summary>Wie sind deine Arbeitszeiten genau?</summary>
-          <p>Montag bis Donnerstag: 17:00–22:00 (letzter Start 22:00), Freitag: 15:00–22:00 (letzter Start 22:00), Samstag und Sonntag: 06:00–22:00. In den NRW-Schulferien bin ich ganztägig von 06:00–22:00 verfügbar.</p>
-        </details>
-        <details>
-          <summary>Gibt es Doppel- oder Dreifachstunden?</summary>
-          <p>Ja, auf jeden Fall! Du kannst 2 oder 3 Stunden am Stück buchen, wenn du intensiver lernen möchtest. Das ist besonders bei Prüfungsvorbereitung oder in den Ferien beliebt.</p>
-        </details>
-        <details>
-          <summary>Wie buche ich 5+ Stunden und wie lange sind sie gültig?</summary>
-          <p>Du kannst mehrere Einheiten auf einmal buchen (z.B. 5 oder 10 Stunden) und flexibel einlösen. Für 5+ Stunden gilt der Preis von 13 €/h, ab 10 Stunden 10 €/h.</p>
-        </details>
+      <div class="section-inner">
+        <h2 class="section-title"><span>FAQ</span>Häufige Fragen</h2>
+        <p class="lead">Hier findest du Antworten auf oft gestellte Fragen.</p>
+        <div class="faq">
+          <details>
+            <summary>Wie lange dauert eine Unterrichtseinheit?</summary>
+            <p>Eine Einheit dauert normalerweise 60 Minuten. Die Dauer kann nach Absprache flexibel angepasst werden.</p>
+          </details>
+          <details>
+            <summary>Wie funktioniert die Bezahlung?</summary>
+            <p>Du kannst nach jeder Stunde per PayPal oder Banküberweisung zahlen – ohne Vertragsbindung.</p>
+          </details>
+          <details>
+            <summary>Was passiert bei kurzfristigen Absagen?</summary>
+            <p>Bis 24 Stunden vor dem Termin kannst du kostenlos stornieren oder verschieben. Bei späteren Absagen wird die Stunde berechnet.</p>
+          </details>
+          <details>
+            <summary>Welche Plattform nutzt du für den Unterricht?</summary>
+            <p>Ich unterrichte über Google Meet oder Zoom. Du erhältst vor der Stunde einen Link per E‑Mail oder WhatsApp.</p>
+          </details>
+          <details>
+            <summary>Sind Hausaufgaben verpflichtend?</summary>
+            <p>Hausaufgaben sind freiwillig, aber sie helfen dir, das Gelernte zu festigen.</p>
+          </details>
+          <details>
+            <summary>Kann ich dir auch spät abends schreiben?</summary>
+            <p>Ja, absolut! Du kannst mir jederzeit schreiben – auch um 22:00 oder 00:00 Uhr. Ich antworte so schnell wie möglich, und oft bin ich zu dieser Zeit sogar online. Keine Sorge, ich finde späte Nachrichten völlig in Ordnung!</p>
+          </details>
+          <details>
+            <summary>Wie sind deine Arbeitszeiten genau?</summary>
+            <p>Montag bis Donnerstag: 17:00–22:00 (letzter Start 22:00), Freitag: 15:00–22:00 (letzter Start 22:00), Samstag und Sonntag: 06:00–22:00. In den NRW-Schulferien bin ich ganztägig von 06:00–22:00 verfügbar.</p>
+          </details>
+          <details>
+            <summary>Gibt es Doppel- oder Dreifachstunden?</summary>
+            <p>Ja, auf jeden Fall! Du kannst 2 oder 3 Stunden am Stück buchen, wenn du intensiver lernen möchtest. Das ist besonders bei Prüfungsvorbereitung oder in den Ferien beliebt.</p>
+          </details>
+          <details>
+            <summary>Wie buche ich 5+ Stunden und wie lange sind sie gültig?</summary>
+            <p>Du kannst mehrere Einheiten auf einmal buchen (z.B. 5 oder 10 Stunden) und flexibel einlösen. Für 5+ Stunden gilt der Preis von 13 €/h, ab 10 Stunden 10 €/h.</p>
+          </details>
+        </div>
       </div>
     </section>
     
     <!-- Kurse Section - MIT HOVER-EFFEKTEN -->
     <section id="kurse" class="section reveal" data-title="Kurse">
-      <h2 class="section-title"><span>Kurse</span>Deutschkurse A1–C1</h2>
-      <p class="lead">Wähle dein Sprachniveau und starte los. Unsere Kurse sind modular aufgebaut.</p>
-      <div class="course-grid">
-        <div class="course-card">
-          <div class="level">A1</div>
-          <p class="description">Grundkenntnisse für Anfänger: Begrüßung, Alltag und erste Grammatik.</p>
-          <span class="badge">Coming soon</span>
-        </div>
-        <div class="course-card">
-          <div class="level">A2</div>
-          <p class="description">Aufbaukurs zur Erweiterung deiner Basis: mehr Wortschatz und Alltagssituationen.</p>
-          <span class="badge">Coming soon</span>
-        </div>
-        <div class="course-card">
-          <div class="level">B1</div>
-          <p class="description">Für Fortgeschrittene: längere Texte, Gespräche und komplexere Grammatik.</p>
-          <span class="badge">Coming soon</span>
-        </div>
-        <div class="course-card">
-          <div class="level">B2</div>
-          <p class="description">Vertiefe dein Deutsch: fließende Unterhaltungen und schriftliche Kompetenz.</p>
-          <span class="badge">Coming soon</span>
-        </div>
-        <div class="course-card">
-          <div class="level">C1</div>
-          <p class="description">Professionelles Niveau: anspruchsvolle Texte verstehen und ausdrücken.</p>
-          <span class="badge">Coming soon</span>
+     <div class="section-inner">
+        <h2 class="section-title"><span>Kurse</span>Deutschkurse A1–C1</h2>
+        <p class="lead">Wähle dein Sprachniveau und starte los. Unsere Kurse sind modular aufgebaut.</p>
+        <div class="course-grid">
+          <div class="course-card">
+            <div class="level">A1</div>
+            <p class="description">Grundkenntnisse für Anfänger: Begrüßung, Alltag und erste Grammatik.</p>
+            <span class="badge">Coming soon</span>
+          </div>
+          <div class="course-card">
+            <div class="level">A2</div>
+            <p class="description">Aufbaukurs zur Erweiterung deiner Basis: mehr Wortschatz und Alltagssituationen.</p>
+            <span class="badge">Coming soon</span>
+          </div>
+          <div class="course-card">
+            <div class="level">B1</div>
+            <p class="description">Für Fortgeschrittene: längere Texte, Gespräche und komplexere Grammatik.</p>
+            <span class="badge">Coming soon</span>
+          </div>
+          <div class="course-card">
+            <div class="level">B2</div>
+            <p class="description">Vertiefe dein Deutsch: fließende Unterhaltungen und schriftliche Kompetenz.</p>
+            <span class="badge">Coming soon</span>
+          </div>
+          <div class="course-card">
+            <div class="level">C1</div>
+            <p class="description">Professionelles Niveau: anspruchsvolle Texte verstehen und ausdrücken.</p>
+            <span class="badge">Coming soon</span>
+          </div>
         </div>
       </div>
     </section>
     
     <!-- Ressourcen Section - MIT HOVER-EFFEKTEN -->
     <section id="ressourcen" class="section reveal" data-title="Ressourcen">
-      <h2 class="section-title"><span>Kostenlos</span>Übungen & Texte</h2>
-      <p class="lead">Ergänzende Materialien für alle Niveaustufen – bald verfügbar!</p>
-      <div class="resources-grid">
-        <button type="button" class="resource-card" data-message="A1-Ressourcen kommen bald!">
-          <div class="resource-level">A1</div>
-          <div class="resource-desc">Grundlagen & erste Schritte</div>
-          <span class="resource-badge">Bald verfügbar</span>
-        </button>
-        <button type="button" class="resource-card" data-message="A2-Ressourcen kommen bald!">
-          <div class="resource-level">A2</div>
-          <div class="resource-desc">Aufbau & Festigung</div>
-          <span class="resource-badge">Bald verfügbar</span>
-        </button>
-        <button type="button" class="resource-card" data-message="B1-Ressourcen kommen bald!">
-          <div class="resource-level">B1</div>
-          <div class="resource-desc">Mittelstufe & Praxis</div>
-          <span class="resource-badge">Bald verfügbar</span>
-       </button>
-        <button type="button" class="resource-card" data-message="B2-Ressourcen kommen bald!">
-          <div class="resource-level">B2</div>
-          <div class="resource-desc">Vertiefung & Prüfung</div>
-          <span class="resource-badge">Bald verfügbar</span>
-        </button>
-        <button type="button" class="resource-card" data-message="C1-Ressourcen kommen bald!">
-          <div class="resource-level">C1</div>
-          <div class="resource-desc">Fortgeschritten & Perfektion</div>
-          <span class="resource-badge">Bald verfügbar</span>
-        </button>
+       <div class="section-inner">
+        <h2 class="section-title"><span>Kostenlos</span>Übungen & Texte</h2>
+        <p class="lead">Ergänzende Materialien für alle Niveaustufen – bald verfügbar!</p>
+        <div class="resources-grid">
+          <button type="button" class="resource-card" data-message="A1-Ressourcen kommen bald!">
+            <div class="resource-level">A1</div>
+            <div class="resource-desc">Grundlagen & erste Schritte</div>
+            <span class="resource-badge">Bald verfügbar</span>
+          </button>
+          <button type="button" class="resource-card" data-message="A2-Ressourcen kommen bald!">
+            <div class="resource-level">A2</div>
+            <div class="resource-desc">Aufbau & Festigung</div>
+            <span class="resource-badge">Bald verfügbar</span>
+          </button>
+          <button type="button" class="resource-card" data-message="B1-Ressourcen kommen bald!">
+            <div class="resource-level">B1</div>
+            <div class="resource-desc">Mittelstufe & Praxis</div>
+            <span class="resource-badge">Bald verfügbar</span>
+          </button>
+          <button type="button" class="resource-card" data-message="B2-Ressourcen kommen bald!">
+            <div class="resource-level">B2</div>
+            <div class="resource-desc">Vertiefung & Prüfung</div>
+            <span class="resource-badge">Bald verfügbar</span>
+          </button>
+          <button type="button" class="resource-card" data-message="C1-Ressourcen kommen bald!">
+            <div class="resource-level">C1</div>
+            <div class="resource-desc">Fortgeschritten & Perfektion</div>
+            <span class="resource-badge">Bald verfügbar</span>
+          </button>
+        </div>
+        <div id="resourceMessage" class="resource-message" role="status" aria-live="polite"></div>
       </div>
-      <div id="resourceMessage" class="resource-message" role="status" aria-live="polite"></div>
     </section>
     
     <!-- Kontakt Section -->
     <section id="kontakt" class="section reveal" data-title="Kontakt">
-      <h2 class="section-title"><span>Kontakt</span>Schreib mir</h2>
-      <p class="lead">Hast du Fragen oder möchtest einen Termin vereinbaren? Melde dich gerne!</p>
-      
-   <div class="contact-layout">
-        <div class="contact-main">
-          <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/infoleonicaura@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Neue Nachricht über leonicaura.de">
-            <input type="hidden" name="_captcha" value="false">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required placeholder="Dein Name">
+     <div class="section-inner">
+        <h2 class="section-title"><span>Kontakt</span>Schreib mir</h2>
+        <p class="lead">Hast du Fragen oder möchtest einen Termin vereinbaren? Melde dich gerne!</p>
 
-            <label for="email">E‑Mail</label>
-            <input type="email" id="email" name="email" required placeholder="deine@email.de">
+        <div class="contact-layout">
+          <div class="contact-main">
+            <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/infoleonicaura@gmail.com" method="POST">
+              <input type="hidden" name="_subject" value="Neue Nachricht über leonicaura.de">
+              <input type="hidden" name="_captcha" value="false">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Dein Name">
 
-            <label for="message">Nachricht</label>
-            <textarea id="message" name="message" required placeholder="Was möchtest du mir mitteilen?"></textarea>
+              <label for="email">E‑Mail</label>
+              <input type="email" id="email" name="email" required placeholder="deine@email.de">
 
-            <label class="consent">
-              <input type="checkbox" id="consent" name="consent" required>
-              <span>Ich stimme der Verarbeitung meiner Daten gemäß der <a href="#datenschutz">Datenschutzerklärung</a> zu.</span>
-            </label>
+              <label for="message">Nachricht</label>
+              <textarea id="message" name="message" required placeholder="Was möchtest du mir mitteilen?"></textarea>
 
-            <button type="submit">Nachricht senden</button>
+              <label class="consent">
+                <input type="checkbox" id="consent" name="consent" required>
+                <span>Ich stimme der Verarbeitung meiner Daten gemäß der <a href="#datenschutz">Datenschutzerklärung</a> zu.</span>
+              </label>
 
-            <div id="formStatus"></div>
-          </form>
+              <button type="submit">Nachricht senden</button>
 
-          <div class="contact-info">
-            <p><strong>Alternative Kontaktmöglichkeiten:</strong></p>
-            <p>📱 WhatsApp: <a href="https://wa.me/4917663005489" target="_blank">+49 176 63005489</a></p>
-            <p>📧 E‑Mail: <a href="mailto:infoleonicaura@gmail.com">infoleonicaura@gmail.com</a></p>
-            <p>📸 Instagram: <a href="https://www.instagram.com/aicreativebitch" target="_blank" rel="noopener">@aicreativebitch</a></p>
+              <div id="formStatus"></div>
+            </form>
+
+            <div class="contact-info">
+              <p><strong>Alternative Kontaktmöglichkeiten:</strong></p>
+              <p>📱 WhatsApp: <a href="https://wa.me/4917663005489" target="_blank">+49 176 63005489</a></p>
+              <p>📧 E‑Mail: <a href="mailto:infoleonicaura@gmail.com">infoleonicaura@gmail.com</a></p>
+              <p>📸 Instagram: <a href="https://www.instagram.com/aicreativebitch" target="_blank" rel="noopener">@aicreativebitch</a></p>
+            </div>
           </div>
-        </div>
 
         <div class="contact-visual" aria-hidden="true">
-          <div class="light-line"></div>
-          <svg class="signature" viewBox="0 0 600 160" role="presentation">
-            <text x="50%" y="60%" text-anchor="middle">LeonicAura</text>
-          </svg>
-          <div class="aura-circle"></div>
-          <div class="stars">
-            <span class="star star-1"></span>
-            <span class="star star-2"></span>
-            <span class="star star-3"></span>
+            <div class="light-line"></div>
+            <svg class="signature" viewBox="0 0 600 160" role="presentation">
+              <text x="50%" y="60%" text-anchor="middle">LeonicAura</text>
+            </svg>
+            <div class="aura-circle"></div>
+            <div class="stars">
+              <span class="star star-1"></span>
+              <span class="star star-2"></span>
+              <span class="star star-3"></span>
+            </div>
           </div>
         </div>
-      </div>
 
        <div class="contact-playbook" aria-labelledby="contact-playbook-heading">
-        <div>
-          <h3 id="contact-playbook-heading">Kontaktanfrage beantworten (kurz &amp; klar)</h3>
-          <p>Schreibe auf Deutsch eine freundliche Antwort in der Du-Form. Nutze die Angaben aus der Anfrage und halte dich an folgendes Format.</p>
-        </div>
-        <div class="contact-playbook-template">
-          <p><strong>Ausgabe:</strong></p>
-          <p><strong>Antwort an {NAME} in 6–8 Sätzen:</strong></p>
-          <ul class="contact-playbook-list">
-            <li>Beginne mit einem Dank und greife das wichtigste Ziel der Person auf.</li>
-            <li>Biete eine Probestunde (60 Min, 16 €) mit zwei Terminvorschlägen an, die zur angegebenen Verfügbarkeit passen. Fehlt eine Angabe, schlage zwei allgemeine Zeiten vor.</li>
-            <li>Falls das Niveau „weiß nicht“ lautet, erwähne einen kurzen Level-Check zu Beginn der Stunde.</li>
-            <li>Wenn das Ziel eine Prüfung ist, kündige an, dass ihr gemeinsam einen Mini-Plan für die Vorbereitung erstellt.</li>
-            <li>Bei Angaben zum Beruf erwähne, dass Material und Vokabular dazu passen werden.</li>
-            <li>Beende mit einer klaren Frage zur Terminwahl und dem Hinweis: <code>Du kannst mir auch per WhatsApp schreiben.</code></li>
-          </ul>
+          <div>
+            <h3 id="contact-playbook-heading">Kontaktanfrage beantworten (kurz &amp; klar)</h3>
+            <p>Schreibe auf Deutsch eine freundliche Antwort in der Du-Form. Nutze die Angaben aus der Anfrage und halte dich an folgendes Format.</p>
+          </div>
+          <div class="contact-playbook-template">
+            <p><strong>Ausgabe:</strong></p>
+            <p><strong>Antwort an {NAME} in 6–8 Sätzen:</strong></p>
+            <ul class="contact-playbook-list">
+              <li>Beginne mit einem Dank und greife das wichtigste Ziel der Person auf.</li>
+              <li>Biete eine Probestunde (60 Min, 16 €) mit zwei Terminvorschlägen an, die zur angegebenen Verfügbarkeit passen. Fehlt eine Angabe, schlage zwei allgemeine Zeiten vor.</li>
+              <li>Falls das Niveau „weiß nicht“ lautet, erwähne einen kurzen Level-Check zu Beginn der Stunde.</li>
+              <li>Wenn das Ziel eine Prüfung ist, kündige an, dass ihr gemeinsam einen Mini-Plan für die Vorbereitung erstellt.</li>
+              <li>Bei Angaben zum Beruf erwähne, dass Material und Vokabular dazu passen werden.</li>
+              <li>Beende mit einer klaren Frage zur Terminwahl und dem Hinweis: <code>Du kannst mir auch per WhatsApp schreiben.</code></li>
+            </ul>
+          </div>
+          <div class="contact-playbook-note">
+            <p><strong>Interne Notiz für Leon (5 Stichpunkte):</strong></p>
+            <ul>
+              <li>wichtigste Ziele der Person</li>
+              <li>Niveau (inklusive Hinweis, falls unsicher oder „weiß nicht“)</li>
+              <li>Verfügbarkeit bzw. gewünschte Zeiten</li>
+              <li>Erfahrung oder Beruf (falls angegeben)</li>
+              <li>Fokus für die Probestunde (3 kurze Punkte)</li>
+            </ul>
+          </div>
         </div>
         <div class="contact-playbook-note">
           <p><strong>Interne Notiz für Leon (5 Stichpunkte):</strong></p>
@@ -2624,95 +2672,99 @@ img, video, canvas, svg {
 
     <!-- Datenschutz Section -->
     <section id="datenschutz" class="section reveal legal-section" data-title="Datenschutz">
-      <h2 class="section-title"><span>Datenschutz</span>Datenschutzerklärung</h2>
+     <div class="section-inner">
+        <h2 class="section-title"><span>Datenschutz</span>Datenschutzerklärung</h2>
 
-      <strong>Stand</strong> <p>Oktober 2025</p>
-      <h3>1. Verantwortlicher</h3>
-      <p>Leon E.<br>
-      [Straße und Hausnummer – folgt]<br>
-      E‑Mail: leon.erdeg1307@gmail.com<br>
-      E-Mail: infoleonicaura@gmail.com</p>
-      
-      <h3>2. Zwecke, Kategorien von Daten und Quellen</h3>
-      <h4>2.1 Aufruf der Website / Server-Logs</h4>
-      <p>Beim Besuch dieser Website werden durch unseren Hosting-Anbieter automatisch sogenannte Server-Logfiles erfasst: IP-Adresse, Datum/Uhrzeit des Zugriffs, aufgerufene URL, Referrer-URL, Browsertyp/-version, Betriebssystem.
+        <strong>Stand</strong> <p>Oktober 2025</p>
+        <h3>1. Verantwortlicher</h3>
+        <p>Leon E.<br>
+        [Straße und Hausnummer – folgt]<br>
+        E‑Mail: leon.erdeg1307@gmail.com<br>
+        E-Mail: infoleonicaura@gmail.com</p>
+
+        <h3>2. Zwecke, Kategorien von Daten und Quellen</h3>
+        <h4>2.1 Aufruf der Website / Server-Logs</h4>
+        <p>Beim Besuch dieser Website werden durch unseren Hosting-Anbieter automatisch sogenannte Server-Logfiles erfasst: IP-Adresse, Datum/Uhrzeit des Zugriffs, aufgerufene URL, Referrer-URL, Browsertyp/-version, Betriebssystem.
 Zweck: technische Bereitstellung, Stabilität, Sicherheit (z. B. Abwehr von Angriffen).
 Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren, funktionsfähigen Website).
 Speicherdauer: max. 7 Tage, danach Löschung/Anonymisierung, sofern keine sicherheitsrelevante Prüfung erforderlich ist.</p>
-      <h4>2.2 Kontaktaufnahme (Formular/E-Mail)</h4>
-      <p>Wenn Sie uns kontaktieren, verarbeiten wir die von Ihnen mitgeteilten Daten (z. B. Name, E-Mail, Inhalt der Nachricht).
+        <h4>2.2 Kontaktaufnahme (Formular/E-Mail)</h4>
+        <p>Wenn Sie uns kontaktieren, verarbeiten wir die von Ihnen mitgeteilten Daten (z. B. Name, E-Mail, Inhalt der Nachricht).
 Zweck: Bearbeitung und Beantwortung Ihrer Anfrage.
 Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche/vertragliche Kommunikation) bzw. Art. 6 Abs. 1 lit. f DSGVO (allgemeine Anfragen).
 Speicherdauer: Anfragen löschen wir in der Regel nach 12 Monaten; abweichend gelten gesetzliche Aufbewahrungsfristen, wenn die Kommunikation zu geschäftlichen Unterlagen gehört.</p>
-      <h4>2.3 Cookies, Tracking, externe Inhalte</h4>
-      <p>Auf dieser Website werden keine nicht erforderlichen Cookies und keine Tracking-/Analyse-Tools eingesetzt.
+       <h4>2.3 Cookies, Tracking, externe Inhalte</h4>
+       <p>Auf dieser Website werden keine nicht erforderlichen Cookies und keine Tracking-/Analyse-Tools eingesetzt.
 Schriftarten (Google Fonts) sind lokal eingebunden; hierbei erfolgt keine Datenübermittlung an Google.
 Sofern künftig externe Inhalte (z. B. YouTube, Karten, CDNs) eingesetzt werden, informieren wir vorab bzw. aktualisieren diese Erklärung.</p>
       
-      <h3>3. Empfänger und Auftragsverarbeitung</h3>
-      <p>Zur Bereitstellung dieser Website nutzen wir einen Hosting-Dienstleister:
+         <h3>3. Empfänger und Auftragsverarbeitung</h3>
+         <p>Zur Bereitstellung dieser Website nutzen wir einen Hosting-Dienstleister:
 [Name des Hosters, Sitzland – einsetzen].
 Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung gemäß Art. 28 DSGVO.
 
 Eine Weitergabe an sonstige Dritte erfolgt nur, soweit dies gesetzlich erlaubt/erforderlich ist (z. B. an Behörden bei Missbrauchsaufklärung).</p>
       
-      <h3>4. Drittlandübermittlungen</h3>
-      <p>Eine Übermittlung personenbezogener Daten in Drittländer außerhalb der EU/des EWR findet nicht statt. Sollte dies künftig notwendig werden, informieren wir vorab und stellen geeignete Garantien (z. B. EU-Standardvertragsklauseln) sicher.</p>
-      
-      <h3>5. Pflicht zur Bereitstellung</h3>
-      <p>Sie sind gesetzlich nicht verpflichtet, personenbezogene Daten bereitzustellen. Für die Bearbeitung von Kontaktanfragen sind jedoch mindestens Ihre Kontaktdaten erforderlich.</p>
-      
-      <h3>6. Sicherheit (TLS/SSL & TOMs)</h3>
-      <p>Die Übertragung Ihrer Daten erfolgt verschlüsselt (TLS/SSL). Wir treffen angemessene technische und organisatorische Maßnahmen, um Ihre Daten gegen Verlust, Manipulation und unbefugten Zugriff zu schützen und passen diese regelmäßig an.</p>
-    
-      <h3>7. Ihre Rechte</h3>
-      <p>Sie haben die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch gegen Verarbeitungen, die auf Art. 6 Abs. 1 lit. e oder f DSGVO beruhen.
+          <h3>4. Drittlandübermittlungen</h3>
+        <p>Eine Übermittlung personenbezogener Daten in Drittländer außerhalb der EU/des EWR findet nicht statt. Sollte dies künftig notwendig werden, informieren wir vorab und stellen geeignete Garantien (z. B. EU-Standardvertragsklauseln) sicher.</p>
+
+        <h3>5. Pflicht zur Bereitstellung</h3>
+        <p>Sie sind gesetzlich nicht verpflichtet, personenbezogene Daten bereitzustellen. Für die Bearbeitung von Kontaktanfragen sind jedoch mindestens Ihre Kontaktdaten erforderlich.</p>
+
+        <h3>6. Sicherheit (TLS/SSL & TOMs)</h3>
+        <p>Die Übertragung Ihrer Daten erfolgt verschlüsselt (TLS/SSL). Wir treffen angemessene technische und organisatorische Maßnahmen, um Ihre Daten gegen Verlust, Manipulation und unbefugten Zugriff zu schützen und passen diese regelmäßig an.</p>
+
+        <h3>7. Ihre Rechte</h3>
+        <p>Sie haben die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch gegen Verarbeitungen, die auf Art. 6 Abs. 1 lit. e oder f DSGVO beruhen.
 Sie haben ferner das Recht, eine erteilte Einwilligung jederzeit zu widerrufen (siehe Nr. 8).
 Zur Ausübung Ihrer Rechte genügt eine Mitteilung an: infoleonicaura@gmail.com.
 Sie haben zudem das Recht auf Beschwerde bei einer Datenschutz-Aufsichtsbehörde, insbesondere in dem Mitgliedstaat Ihres gewöhnlichen Aufenthalts, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes.</p>
       
-      <h3>8. Widerruf von Einwilligungen / Widerspruch</h3>
-      <p>Von Ihnen erteilte Einwilligungen können Sie jederzeit mit Wirkung für die Zukunft widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt unberührt.
+       <h3>8. Widerruf von Einwilligungen / Widerspruch</h3>
+        <p>Von Ihnen erteilte Einwilligungen können Sie jederzeit mit Wirkung für die Zukunft widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt unberührt.
 Sie können ferner der Verarbeitung Ihrer Daten aus berechtigtem Interesse (Art. 6 Abs. 1 lit. f DSGVO) widersprechen, sofern Gründe vorliegen, die sich aus Ihrer besonderen Situation ergeben.</p>
       
-      <h3>9. Automatisierte Entscheidungen/Profiling</h3>
-      <p>Automatisierte Entscheidungsfindung einschließlich Profiling findet nicht statt.</p>
+       <h3>9. Automatisierte Entscheidungen/Profiling</h3>
+        <p>Automatisierte Entscheidungsfindung einschließlich Profiling findet nicht statt.</p>
 
-      <h3>10. Aktualisierungen dieser Datenschutzerklärung</h3>
-      <p>Wir passen diese Erklärung an, wenn dies rechtlich oder technisch erforderlich ist. Die jeweils aktuelle Fassung ist hier abrufbar.
+        <h3>10. Aktualisierungen dieser Datenschutzerklärung</h3>
+        <p>Wir passen diese Erklärung an, wenn dies rechtlich oder technisch erforderlich ist. Die jeweils aktuelle Fassung ist hier abrufbar.
 Stand: Oktober 2025</p>
-      </section>
+       </div>
+    </section>
     
     <!-- Impressum Section -->
     <section id="impressum" class="section reveal legal-section" data-title="Impressum">
-      <h2 class="section-title"><span>Impressum</span>Angaben gemäß § 5 TMG / § 18 Abs. 2 MStV</h2>
-      
+      <div class="section-inner">
+        <h2 class="section-title"><span>Impressum</span>Angaben gemäß § 5 TMG / § 18 Abs. 2 MStV</h2>
+
       <p><strong>Leon E.</strong><br>
-      [Straße und Hausnummer]<br>
-      [PLZ] [Ort]</p>
-      
+        [Straße und Hausnummer]<br>
+        [PLZ] [Ort]</p>
+
       <p><strong>Kontakt:</strong><br>
-      Telefon: +49 176 63005489<br>
-      E‑Mail: infoleonicaura@gmail.com (allgemein)<br>
-      E-Mail: leon.erdeg1307@gmail.com (Datenschutz/Anfragen)
+        Telefon: +49 176 63005489<br>
+        E‑Mail: infoleonicaura@gmail.com (allgemein)<br>
+        E-Mail: leon.erdeg1307@gmail.com (Datenschutz/Anfragen)
 
-      <strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</strong>
-      Leon E., [Adresse wie oben]</p>
-      
-      <h3>Haftungsausschluss</h3>
-      
-      <h3>Haftung für Inhalte</h3>
-      <p>Die Inhalte dieser Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir keine Gewähr. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.</p>
-      
-      <h3>Haftung für Links</h3>
-      <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese Inhalte ist stets der jeweilige Anbieter oder Betreiber verantwortlich. Bei Bekanntwerden von Rechtsverletzungen werden derartige Links umgehend entfernt.</p>
-    
-      <h3>Urheberrecht</h3>
-      <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors/Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten Gebrauch gestattet.</p>
+        <strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</strong>
+        Leon E., [Adresse wie oben]</p>
 
-      <h3>Verbraucherstreitbeilegung (Hinweis)</h3>
-      <p>Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+        <h3>Haftungsausschluss</h3>
+
+        <h3>Haftung für Inhalte</h3>
+        <p>Die Inhalte dieser Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir keine Gewähr. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.</p>
+
+        <h3>Haftung für Links</h3>
+        <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese Inhalte ist stets der jeweilige Anbieter oder Betreiber verantwortlich. Bei Bekanntwerden von Rechtsverletzungen werden derartige Links umgehend entfernt.</p>
+
+        <h3>Urheberrecht</h3>
+        <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors/Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten Gebrauch gestattet.</p>
+
+        <h3>Verbraucherstreitbeilegung (Hinweis)</h3>
+        <p>Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
 Plattform der EU-Kommission zur Online-Streitbeilegung (OS): https://ec.europa.eu/consumers/odr</p>
+        </div>
     </section>
   </main>
   
