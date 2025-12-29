@@ -1288,10 +1288,13 @@
     .contact-layout {
       margin-top: 3em;
       display: grid;
-       grid-template-columns: minmax(0, 1fr) minmax(380px, 720px);
+      grid-template-columns: minmax(0, 1fr) minmax(380px, 720px);
       gap: clamp(36px, 5vw, 64px);
       align-items: center;
       justify-content: center;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .contact-layout > * {
@@ -1302,6 +1305,8 @@
       display: flex;
       flex-direction: column;
       gap: 28px;
+      margin: 0 auto;
+      width: 100%;
     }
 
     .contact-visual {
@@ -1475,24 +1480,25 @@
       }
 
       .signature {
-        width: clamp(520px, 70%, 780px);
-        height: clamp(220px, 24vw, 300px);
+        width: clamp(520px, 80%, 900px);
+        height: clamp(180px, 22vw, 280px);
         display: block;
         margin: 0 auto;
         position: relative;
         z-index: 2;
+        overflow: visible;
       }
       .signature text {
         font-family: 'Playfair Display', serif;
-        font-size: clamp(96px, 12vw, 150px);
+        font-size: clamp(72px, 10vw, 120px);
         fill: rgba(247,217,139,0.92);
         fill-opacity: 0;
         stroke: rgba(247,217,139,0.95);
-        stroke-width: 1.6;
+        stroke-width: 1.4;
         stroke-linecap: round;
         stroke-linejoin: round;
-        stroke-dasharray: 620;
-        stroke-dashoffset: 620;
+        stroke-dasharray: 800;
+        stroke-dashoffset: 800;
         filter: drop-shadow(0 0 18px rgba(247,217,139,0.45));
         animation: signature-draw 12s ease-in-out infinite, signature-glow 12s ease-in-out infinite;
         will-change: opacity, filter, transform;
@@ -1632,12 +1638,12 @@
     }
 
     @keyframes signature-draw {
-      0% { stroke-dashoffset: 620; fill-opacity: 0; }
+      0% { stroke-dashoffset: 800; fill-opacity: 0; }
       20% { stroke-dashoffset: 0; fill-opacity: 0; }
       28% { stroke-dashoffset: 0; fill-opacity: 1; }
       70% { stroke-dashoffset: 0; fill-opacity: 1; }
       88% { stroke-dashoffset: 0; fill-opacity: 0.18; }
-      100% { stroke-dashoffset: 620; fill-opacity: 0; }
+      100% { stroke-dashoffset: 800; fill-opacity: 0; }
     }
 
     @keyframes signature-glow {
@@ -1724,7 +1730,7 @@
     .contact-form {
       max-width: 700px;
       width: 100%;
-      margin: 0;
+      margin: 0 auto;
       padding: 32px;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
@@ -2724,8 +2730,8 @@ img, video, canvas, svg {
 
         <div class="contact-visual" aria-hidden="true">
           <div class="light-line"></div>
-          <svg class="signature" viewBox="0 0 600 160" role="presentation">
-            <text x="50%" y="60%" text-anchor="middle">LeonicAURA</text>
+          <svg class="signature" viewBox="0 0 800 200" role="presentation">
+            <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle">LeonicAURA</text>
           </svg>
           <div class="aura-circle"></div>
           <div class="stars">
