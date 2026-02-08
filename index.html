@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LeonicAURA – Online Deutsch lernen</title>
-  <meta name="description" content="LeonicAURA bietet individuellen Deutschunterricht für Lernende vom Balkan (Niveaus A1–C1). Erlebe eine immersive Sprachreise mit persönlichem Coaching, flexiblen Terminen und fairen Preisen.">
+  <title>LeonicAURA – Global German Learning & Education Platform</title>
+  <meta name="description" content="LeonicAURA is a global education and knowledge platform offering personalized online German lessons (A1–C1), clear coaching, flexible scheduling, and easy contact for learners worldwide.">
+  <meta name="keywords" content="global German lessons, online German teacher, German tutor A1 C1, international language learning, education platform, knowledge platform, online coaching">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://leonicaura.de/">
+  <link rel="alternate" hreflang="en" href="https://leonicaura.de/">
+  <link rel="alternate" hreflang="x-default" href="https://leonicaura.de/">
+  <meta property="og:title" content="LeonicAURA – Global German Learning & Education Platform">
+  <meta property="og:description" content="Personalized online German lessons (A1–C1) with clear structure, global accessibility, and simple contact options.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://leonicaura.de/">
+  <meta property="og:image" content="https://leonicaura.de/android-chrome-512x512.png">
+  <meta property="og:site_name" content="LeonicAURA">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LeonicAURA – Global German Learning & Education Platform">
+  <meta name="twitter:description" content="Learn German online with a global education platform built for learners everywhere.">
+  <meta name="twitter:image" content="https://leonicaura.de/android-chrome-512x512.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -17,6 +33,26 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#0f0f12">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "LeonicAURA",
+      "url": "https://leonicaura.de/",
+      "logo": "https://leonicaura.de/android-chrome-512x512.png",
+      "description": "Global education and knowledge platform offering personalized online German lessons (A1–C1).",
+      "email": "infoleonicaura@gmail.com",
+      "founder": {
+        "@type": "Person",
+        "name": "Leon E."
+      },
+      "areaServed": "Worldwide",
+      "sameAs": [
+        "https://www.instagram.com/aicreativebitch"
+      ]
+    }
+  </script>
   
   <style>
     :root {
@@ -141,6 +177,44 @@
       outline-offset: 4px;
       border-radius: 4px;
     }
+
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 16px;
+    }
+
+    .lang-switch select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(15,15,18,0.65);
+      color: #f5f5f7;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .lang-switch select:focus-visible {
+      outline: 2px solid rgba(var(--color-accent),0.5);
+      outline-offset: 4px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
     
     /* Burger Menu */
     .burger {
@@ -205,9 +279,20 @@
       border-color: rgba(var(--color-accent),0.4);
       transform: translateX(8px);
     }
+
+    .mobile-lang {
+      display: flex;
+      justify-content: flex-start;
+      padding: 4px 6px 12px;
+    }
+
+    .mobile-lang select {
+      width: 100%;
+    }
     
     @media (max-width: 768px) {
       nav { display: none; }
+      .lang-switch { display: none; }
       .burger { display: flex; }
     }
     
@@ -2130,21 +2215,29 @@ img, video, canvas, svg {
   <header id="site-header">
     <div class="logo">LeonicAURA</div>
     <nav>
-    <a href="#hero">Startseite</a>
-    <a href="#about">Über mich</a>
-    <a href="#testimonials">Bewertungen</a>
-    <a href="#preise">Preise (Einzelunterricht)</a>
-    <a href="#arbeitszeiten">Zeiten</a>
-    <a href="#buchen">Buchen</a>
-    <a href="#ablauf">Ablauf</a>
-    <a href="#kurse">Kurse</a>
-    <a href="#ressourcen">Übungen</a>
-    <a href="#faq">FAQ</a>
-    <a href="#kontakt">Kontakt</a>
-    <a href="#datenschutz">Datenschutz</a>
-    <a href="#impressum">Impressum</a>
+    <a href="#hero" data-i18n="nav.home">Home</a>
+    <a href="#about" data-i18n="nav.about">About</a>
+    <a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a>
+    <a href="#preise" data-i18n="nav.pricing">Pricing (1:1)</a>
+    <a href="#arbeitszeiten" data-i18n="nav.availability">Availability</a>
+    <a href="#buchen" data-i18n="nav.book">Book</a>
+    <a href="#ablauf" data-i18n="nav.process">How it works</a>
+    <a href="#kurse" data-i18n="nav.courses">Courses</a>
+    <a href="#ressourcen" data-i18n="nav.practice">Practice</a>
+    <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    <a href="#kontakt" data-i18n="nav.contact">Contact</a>
+    <a href="#datenschutz" data-i18n="nav.privacy">Privacy</a>
+    <a href="#impressum" data-i18n="nav.legal">Legal</a>
     </nav>
-    <button class="burger" id="burgerBtn" aria-label="Menü öffnen" aria-expanded="false">
+    <div class="lang-switch">
+      <label class="sr-only" for="langSelect" data-i18n="lang.label">Language</label>
+      <select id="langSelect" aria-label="Language" data-i18n-aria="lang.aria">
+        <option value="en">EN</option>
+        <option value="de">DE</option>
+        <option value="sr">SR</option>
+      </select>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false" data-i18n-aria="nav.openMenu">
       <span></span>
       <span></span>
       <span></span>
@@ -2152,20 +2245,28 @@ img, video, canvas, svg {
   </header>
   
   <!-- Mobile nav -->
-  <div class="mobile-nav" id="mobileNav" aria-label="Mobiles Menü">
-    <a href="#hero">Startseite</a>
-    <a href="#about">Über mich</a>
-    <a href="#testimonials">Bewertungen</a>
-    <a href="#preise">Preise (Einzelunterricht)</a>
-    <a href="#arbeitszeiten">Zeiten</a>
-    <a href="#buchen">Buchen</a>
-    <a href="#ablauf">Ablauf</a>
-    <a href="#kurse">Kurse</a>
-    <a href="#ressourcen">Übungen</a>
-    <a href="#faq">FAQ</a>
-    <a href="#kontakt">Kontakt</a>
-    <a href="#datenschutz">Datenschutz</a>
-    <a href="#impressum">Impressum</a>
+  <div class="mobile-nav" id="mobileNav" aria-label="Mobile menu" data-i18n-aria="nav.mobileMenu">
+    <div class="mobile-lang">
+      <label class="sr-only" for="langSelectMobile" data-i18n="lang.label">Language</label>
+      <select id="langSelectMobile" aria-label="Language" data-i18n-aria="lang.aria">
+        <option value="en">EN</option>
+        <option value="de">DE</option>
+        <option value="sr">SR</option>
+      </select>
+    </div>
+    <a href="#hero" data-i18n="nav.home">Home</a>
+    <a href="#about" data-i18n="nav.about">About</a>
+    <a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a>
+    <a href="#preise" data-i18n="nav.pricing">Pricing (1:1)</a>
+    <a href="#arbeitszeiten" data-i18n="nav.availability">Availability</a>
+    <a href="#buchen" data-i18n="nav.book">Book</a>
+    <a href="#ablauf" data-i18n="nav.process">How it works</a>
+    <a href="#kurse" data-i18n="nav.courses">Courses</a>
+    <a href="#ressourcen" data-i18n="nav.practice">Practice</a>
+    <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    <a href="#kontakt" data-i18n="nav.contact">Contact</a>
+    <a href="#datenschutz" data-i18n="nav.privacy">Privacy</a>
+    <a href="#impressum" data-i18n="nav.legal">Legal</a>
   </div>
   
   <main>
@@ -2177,211 +2278,210 @@ img, video, canvas, svg {
       <canvas id="leonic" aria-hidden="true"></canvas>
       
       <div class="explosion-center">
-        <h1 class="explosion-title" style="margin-bottom: 20px;">LeoniCAURA</h1>
+        <h1 class="explosion-title" style="margin-bottom: 20px;">LeonicAURA</h1>
         <h2 id="hero-headline">
-          <span class="static">Dein individueller</span>
-          <span class="dynamic"> Deutschlehrer</span>
+          <span class="static" data-i18n="hero.headlineStatic">Your personal</span>
+          <span class="dynamic" data-i18n="hero.headlineDynamic"> German coach</span>
         </h2>
-        <p class="subtitle">Lerne Deutsch mit persönlichem Coaching, klarer Struktur und einem Lehrer, der deine Sprache spricht.</p>
+        <p class="subtitle" data-i18n="hero.subtitle">Learn German with personal coaching, clear structure, and a global education platform built for learners everywhere.</p>
         <div class="cta-buttons">
-          <a href="#kontakt" class="btn btn-primary lux-trace bubble-hover" aria-label="Probestunde buchen">Probestunde buchen</a>
-          <a href="#about" class="btn btn-secondary lux-trace bubble-hover" aria-label="Mehr erfahren">Mehr erfahren</a>
+          <a href="#kontakt" class="btn btn-primary lux-trace bubble-hover" aria-label="Book a trial lesson" data-i18n="hero.ctaPrimary" data-i18n-aria="hero.ctaPrimaryAria">Book a trial lesson</a>
+          <a href="#about" class="btn btn-secondary lux-trace bubble-hover" aria-label="Learn more" data-i18n="hero.ctaSecondary" data-i18n-aria="hero.ctaSecondaryAria">Learn more</a>
         </div>
         <div class="mini-info">
-          <span>Online via Zoom/Google Meet</span>·<span>PayPal oder Überweisung</span>·<span>Rechnung per E‑Mail</span>
+          <span data-i18n="hero.infoOnline">Online via Zoom/Google Meet</span>·<span data-i18n="hero.infoPayment">PayPal or bank transfer</span>·<span data-i18n="hero.infoInvoice">Invoice by email</span>
         </div>
       </div>
     </section>
 
     <!-- Intro Section -->
-    <section id="intro" class="section reveal" data-title="Einleitung">
+    <section id="intro" class="section reveal" data-title="Introduction">
         <div class="section-inner">
         <h2 id="hero-headline">
-          <span class="static">Deutsch</span><span class="dynamic">, das wirklich bleibt</span>
+          <span class="static" data-i18n="intro.headlineStatic">German</span><span class="dynamic" data-i18n="intro.headlineDynamic"> that truly sticks</span>
         </h2>
 
-        <p class="subtitle">Individualisierter Online-Unterricht · Individualni online časovi</p>
+        <p class="subtitle" data-i18n="intro.subtitle">Personalized online lessons for learners worldwide.</p>
         <div class="cta-buttons">
-          <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Probestunde buchen">Probestunde 16 € buchen</a>
-          <a href="#preise" class="btn btn-secondary lux-trace bubble-hover" aria-label="Preise ansehen">Preise ansehen</a>
+          <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Book a €16 trial lesson" data-i18n="intro.ctaPrimary" data-i18n-aria="intro.ctaPrimaryAria">Book a €16 trial lesson</a>
+          <a href="#preise" class="btn btn-secondary lux-trace bubble-hover" aria-label="View pricing" data-i18n="intro.ctaSecondary" data-i18n-aria="intro.ctaSecondaryAria">View pricing</a>
         </div>
         <div class="mini-info">
-          <span>Online via Zoom/Google Meet</span>·<span>PayPal oder Überweisung</span>·<span>Rechnung per E‑Mail</span>
+          <span data-i18n="intro.infoOnline">Online via Zoom/Google Meet</span>·<span data-i18n="intro.infoPayment">PayPal or bank transfer</span>·<span data-i18n="intro.infoInvoice">Invoice by email</span>
         </div>
       </div>
     </section>
     
     <!-- Nutzen Section -->
-    <section id="nutzen" class="section reveal" data-title="Nutzen">
+    <section id="nutzen" class="section reveal" data-title="Benefits">
        <div class="section-inner">
-        <h2 class="section-title"><span>Warum</span>Dein Vorteil</h2>
-        <p class="lead">Entdecke, was LeonicAURA einzigartig macht.</p>
+        <h2 class="section-title"><span data-i18n="benefits.kicker">Why</span><span class="section-title-main" data-i18n="benefits.title">Your advantage</span></h2>
+        <p class="lead" data-i18n="benefits.lead">Discover what makes LeonicAURA unique for global learners.</p>
         <div class="benefit-grid">
           <div class="benefit-item lux-trace bubble-hover">
             <span class="benefit-icon" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8" /><path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8" /><path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5" /><path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0" /><path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5" /><path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10" /></svg>
             </span>
-            <div class="benefit-title">Individuell</div>
-            <div class="benefit-desc">Deine Ziele stehen im Mittelpunkt – ob Beruf, Alltag oder Prüfung.</div>
+            <div class="benefit-title" data-i18n="benefits.items.personal.title">Personalized</div>
+            <div class="benefit-desc" data-i18n="benefits.items.personal.desc">Your goals are the focus — for work, everyday life, or exams.</div>
           </div>
           <div class="benefit-item lux-trace bubble-hover">
             <span class="benefit-icon" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2m0 3a3 3 0 0 1 3 -3h0a3 3 0 0 1 3 3v5a3 3 0 0 1 -3 3h0a3 3 0 0 1 -3 -3z" /><path d="M5 10a7 7 0 0 0 14 0" /><path d="M8 21l8 0" /><path d="M12 17l0 4" /></svg>
             </span>
-            <div class="benefit-title">Klar & strukturiert</div>
-            <div class="benefit-desc">Grammatik, Sprechen und Schreiben – verständlich und geordnet vermittelt.</div>
+            <div class="benefit-title" data-i18n="benefits.items.clear.title">Clear & structured</div>
+            <div class="benefit-desc" data-i18n="benefits.items.clear.desc">Grammar, speaking, and writing — delivered in a simple, organized way.</div>
           </div>
           <div class="benefit-item lux-trace bubble-hover">
             <span class="benefit-icon" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="9" /></svg>
             </span>
-            <div class="benefit-title">Motivierend</div>
-            <div class="benefit-desc">Persönliches Feedback, klare Erklärungen und sichtbarer Fortschritt.</div>
+            <div class="benefit-title" data-i18n="benefits.items.motivating.title">Motivating</div>
+            <div class="benefit-desc" data-i18n="benefits.items.motivating.desc">Personal feedback, clear explanations, and visible progress.</div>
           </div>
         </div>
       </div>
     </section>
     
     <!-- Testimonials Section -->
-    <section id="testimonials" class="section reveal" data-title="Bewertungen" style="position:relative; overflow:hidden;">
+    <section id="testimonials" class="section reveal" data-title="Testimonials" style="position:relative; overflow:hidden;">
       <div class="floating-letters" aria-hidden="true">
-        <div class="floating-letter" style="top:10%; left:5%;">D</div>
-        <div class="floating-letter" style="top:15%; right:8%;">e</div>
-        <div class="floating-letter" style="top:60%; left:12%;">u</div>
-        <div class="floating-letter" style="top:70%; right:15%;">t</div>
-        <div class="floating-letter" style="top:40%; left:85%;">s</div>
-        <div class="floating-letter" style="top:25%; left:50%;">c</div>
-        <div class="floating-letter" style="top:80%; left:45%;">h</div>
+        <div class="floating-letter" style="top:10%; left:5%;">G</div>
+        <div class="floating-letter" style="top:15%; right:8%;">l</div>
+        <div class="floating-letter" style="top:60%; left:12%;">o</div>
+        <div class="floating-letter" style="top:70%; right:15%;">b</div>
+        <div class="floating-letter" style="top:40%; left:85%;">a</div>
+        <div class="floating-letter" style="top:25%; left:50%;">l</div>
+        <div class="floating-letter" style="top:80%; left:45%;">L</div>
       </div>
       <div class="section-inner">
-        <h2 class="section-title"><span>Bewertungen</span>Was meine Schüler sagen</h2>
-        <p class="lead">Echte Erfahrungen von Lernenden, die ihren Weg mit LeonicAURA gegangen sind.</p>
+        <h2 class="section-title"><span data-i18n="testimonials.kicker">Testimonials</span><span class="section-title-main" data-i18n="testimonials.title">What learners say</span></h2>
+        <p class="lead" data-i18n="testimonials.lead">Real experiences from students worldwide who learned with LeonicAURA.</p>
         <div class="testimonials-grid">
           <div class="testimonial-card lux-trace bubble-hover">
-            <p class="testimonial-text">„Leon hat mir geholfen, mein Deutsch für die B2-Prüfung vorzubereiten. Seine Erklärungen sind klar und er ist immer geduldig. Ich habe die Prüfung beim ersten Versuch bestanden!"</p>
+            <p class="testimonial-text" data-i18n="testimonials.items.marija.quote">“Leon helped me prepare for the B2 exam. His explanations are clear and he is always patient. I passed on my first try!”</p>
             <div class="testimonial-author">
               <div class="testimonial-avatar" aria-hidden="true">M</div>
               <div class="testimonial-info">
                 <div class="testimonial-name">Marija</div>
-                <div class="testimonial-level">B2 Schülerin · Serbien</div>
+                <div class="testimonial-level" data-i18n="testimonials.items.marija.level">B2 student · Serbia</div>
               </div>
             </div>
-            <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+            <div class="testimonial-stars" aria-label="5 out of 5 stars" data-i18n-aria="testimonials.stars">★★★★★</div>
           </div>
            <div class="testimonial-card lux-trace bubble-hover">
-            <p class="testimonial-text">„Der Unterricht ist flexibel und macht Spaß. Leon passt sich meinem Tempo an und ich fühle mich nie unter Druck. Mein Sprechen hat sich deutlich verbessert!"</p>
+            <p class="testimonial-text" data-i18n="testimonials.items.dragan.quote">“The lessons are flexible and fun. Leon adapts to my pace and I never feel pressured. My speaking has improved a lot!”</p>
             <div class="testimonial-author">
               <div class="testimonial-avatar" aria-hidden="true">D</div>
               <div class="testimonial-info">
                 <div class="testimonial-name">Dragan</div>
-                <div class="testimonial-level">A2 Schüler · Bosnien</div>
+                <div class="testimonial-level" data-i18n="testimonials.items.dragan.level">A2 student · Bosnia</div>
               </div>
             </div>
-            <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+            <div class="testimonial-stars" aria-label="5 out of 5 stars" data-i18n-aria="testimonials.stars">★★★★★</div>
           </div>
           <div class="testimonial-card lux-trace bubble-hover">
-            <p class="testimonial-text">„Ich lerne seit 3 Monaten bei Leon und sehe große Fortschritte. Die Materialien sind gut strukturiert und die Hausaufgaben helfen mir, alles zu festigen. Sehr empfehlenswert!"</p>
+            <p class="testimonial-text" data-i18n="testimonials.items.ana.quote">“I’ve been learning with Leon for three months and see major progress. The materials are well structured and the homework helps me reinforce everything. Highly recommended!”</p>
             <div class="testimonial-author">
               <div class="testimonial-avatar" aria-hidden="true">A</div>
               <div class="testimonial-info">
                 <div class="testimonial-name">Ana</div>
-                <div class="testimonial-level">B1 Schülerin · Kroatien</div>
+                <div class="testimonial-level" data-i18n="testimonials.items.ana.level">B1 student · Croatia</div>
               </div>
             </div>
-            <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+            <div class="testimonial-stars" aria-label="5 out of 5 stars" data-i18n-aria="testimonials.stars">★★★★★</div>
           </div>
           <div class="testimonial-card lux-trace bubble-hover">
-            <p class="testimonial-text">„Ich bereite mich mit Leon auf die C1-Prüfung vor und bin begeistert! Er erklärt komplexe Themen einfach und motiviert mich jeden Tag."</p>
+            <p class="testimonial-text" data-i18n="testimonials.items.nikola.quote">“I’m preparing for the C1 exam with Leon and I’m thrilled! He explains complex topics simply and keeps me motivated every day.”</p>
             <div class="testimonial-author">
               <div class="testimonial-avatar" aria-hidden="true">N</div>
               <div class="testimonial-info">
                 <div class="testimonial-name">Nikola</div>
-                <div class="testimonial-level">C1 Schüler · Serbien</div>
+                <div class="testimonial-level" data-i18n="testimonials.items.nikola.level">C1 student · Serbia</div>
               </div>
             </div>
-            <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+            <div class="testimonial-stars" aria-label="5 out of 5 stars" data-i18n-aria="testimonials.stars">★★★★★</div>
           </div>
          <div class="testimonial-card lux-trace bubble-hover">
-            <p class="testimonial-text">„Endlich verstehe ich die deutsche Grammatik! Leon erklärt alles Schritt für Schritt und gibt praktische Beispiele. Der Preis ist auch sehr fair."</p>
+            <p class="testimonial-text" data-i18n="testimonials.items.jelena.quote">“I finally understand German grammar! Leon explains everything step by step and gives practical examples. The price is very fair too.”</p>
             <div class="testimonial-author">
               <div class="testimonial-avatar" aria-hidden="true">J</div>
               <div class="testimonial-info">
                 <div class="testimonial-name">Jelena</div>
-                <div class="testimonial-level">A1 Schülerin · Montenegro</div>
+                <div class="testimonial-level" data-i18n="testimonials.items.jelena.level">A1 student · Montenegro</div>
               </div>
             </div>
-             <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+             <div class="testimonial-stars" aria-label="5 out of 5 stars" data-i18n-aria="testimonials.stars">★★★★★</div>
           </div>
            <div class="testimonial-card lux-trace bubble-hover">
-            <p class="testimonial-text">„Die Online-Stunden sind super organisiert. Leon ist pünktlich, professionell und macht jeden Unterricht interessant. Ich freue mich jede Woche auf die Stunden!"</p>
+            <p class="testimonial-text" data-i18n="testimonials.items.stefan.quote">“The online classes are very well organized. Leon is punctual, professional, and makes every lesson interesting. I look forward to it every week!”</p>
             <div class="testimonial-author">
               <div class="testimonial-avatar" aria-hidden="true">S</div>
               <div class="testimonial-info">
                 <div class="testimonial-name">Stefan</div>
-                <div class="testimonial-level">B1 Schüler · Nordmazedonien</div>
+                <div class="testimonial-level" data-i18n="testimonials.items.stefan.level">B1 student · North Macedonia</div>
               </div>
             </div>
-             <div class="testimonial-stars" aria-label="5 von 5 Sternen">★★★★★</div>
+             <div class="testimonial-stars" aria-label="5 out of 5 stars" data-i18n-aria="testimonials.stars">★★★★★</div>
           </div>
         </div>
       </div>
     </section>
     
     <!-- Preise Section -->
-    <section id="preise" class="section reveal" data-title="Preise">
+    <section id="preise" class="section reveal" data-title="Pricing">
          <div class="section-inner">
-        <h2 class="section-title"><span>Preise</span>Faire Preise für deinen Erfolg</h2>
-        <p class="lead">Je mehr du lernst, desto günstiger wird der Preis pro Einheit.</p>
+        <h2 class="section-title"><span data-i18n="pricing.kicker">Pricing</span><span class="section-title-main" data-i18n="pricing.title">Fair prices for your progress</span></h2>
+        <p class="lead" data-i18n="pricing.lead">The more you learn, the lower the price per lesson.</p>
         <div class="pricing-grid">
           <div class="pricing-card lux-trace bubble-hover">
-            <div class="pricing-title">Probestunde</div>
+            <div class="pricing-title" data-i18n="pricing.cards.trial.title">Trial lesson</div>
             <div class="pricing-price">16 €/60 min</div>
-            <div class="pricing-desc">Einmalig zum Kennenlernen.</div>
-            <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Probestunde buchen">Probestunde buchen</a>
+            <div class="pricing-desc" data-i18n="pricing.cards.trial.desc">One-time session to get to know each other.</div>
+            <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Book a trial lesson" data-i18n="pricing.cards.trial.cta" data-i18n-aria="pricing.cards.trial.ctaAria">Book a trial lesson</a>
           </div>
           <div class="pricing-card lux-trace bubble-hover">
-            <div class="pricing-title">Ab 2 Stunden</div>
+            <div class="pricing-title" data-i18n="pricing.cards.two.title">From 2 hours</div>
             <div class="pricing-price">15 €/h</div>
-            <div class="pricing-desc">Mehr Sprechpraxis und solide Grundlagen.</div>
-            <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Paket buchen">2+ Stunden buchen</a>
+            <div class="pricing-desc" data-i18n="pricing.cards.two.desc">More speaking practice and solid foundations.</div>
+            <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Book a package" data-i18n="pricing.cards.two.cta" data-i18n-aria="pricing.cards.two.ctaAria">Book 2+ hours</a>
           </div>
           <div class="pricing-card lux-trace bubble-hover">
-            <div class="pricing-title">Ab 5 Stunden</div>
+            <div class="pricing-title" data-i18n="pricing.cards.five.title">From 5 hours</div>
             <div class="pricing-price">13 €/h</div>
-            <div class="pricing-desc">Kontinuierlicher Fortschritt und nachhaltige Ergebnisse.</div>
-            <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Paket buchen">5+ Stunden buchen</a>
+            <div class="pricing-desc" data-i18n="pricing.cards.five.desc">Consistent progress and lasting results.</div>
+            <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Book a package" data-i18n="pricing.cards.five.cta" data-i18n-aria="pricing.cards.five.ctaAria">Book 5+ hours</a>
           </div>
           <div class="pricing-card lux-trace bubble-hover">
-            <div class="pricing-title">Ab 10 Stunden</div>
+            <div class="pricing-title" data-i18n="pricing.cards.ten.title">From 10 hours</div>
             <div class="pricing-price">10 €/h</div>
-            <div class="pricing-desc">Intensivprogramm für maximale Erfolge.</div>
-            <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Paket buchen">10+ Stunden anfragen</a>
+            <div class="pricing-desc" data-i18n="pricing.cards.ten.desc">Intensive program for maximum results.</div>
+            <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Request a package" data-i18n="pricing.cards.ten.cta" data-i18n-aria="pricing.cards.ten.ctaAria">Request 10+ hours</a>
           </div>
         </div>
-        <p class="mini-info" style="margin-top:2.5em; opacity:0.75; font-size:14px; line-height:1.6;">Flexible Termine · Materialien inklusive · Hausaufgaben auf Wunsch · Kurze Zusammenfassung nach jeder Stunde · Gruppenunterricht und Online-Kurse (A1–C1) sind bald verfügbar · Kostenlose Übungen & Texte werden bald veröffentlicht</p>
+        <p class="mini-info" style="margin-top:2.5em; opacity:0.75; font-size:14px; line-height:1.6;" data-i18n="pricing.note">Flexible scheduling · Materials included · Homework on request · Short recap after every lesson · Group classes and online courses (A1–C1) coming soon · Free exercises & texts coming soon</p>
       </div>
       </section>
     
     <!-- Arbeitszeiten & Buchung Section -->
-    <section id="arbeitszeiten" class="section reveal" data-title="Arbeitszeiten">
+    <section id="arbeitszeiten" class="section reveal" data-title="Availability">
      <div class="section-inner">
-        <h2 class="section-title"><span>Wann</span>Arbeitszeiten & Verfügbarkeit</h2>
-        <p class="lead">Ich bin flexibel für dich da – auch spät abends und am Wochenende.</p>
+        <h2 class="section-title"><span data-i18n="availability.kicker">When</span><span class="section-title-main" data-i18n="availability.title">Availability & hours</span></h2>
+        <p class="lead" data-i18n="availability.lead">I’m flexible — including late evenings and weekends.</p>
         <div class="hours-grid">
           <div class="hours-card">
             <svg class="hours-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10" />
               <polyline points="12 6 12 12 16 14" />
             </svg>
-            <h3 class="hours-title">Regelmäßige Zeiten</h3>
+            <h3 class="hours-title" data-i18n="availability.cards.regular.title">Regular hours</h3>
             <ul class="hours-list">
-              <li><strong>Mo–Do:</strong>  17:00–22:00</li>
-              <li><strong>Fr:</strong>  15:00–22:00</li>
-              <li><strong>Sa–So:</strong>  06:00–22:00</li>
+              <li data-i18n-html="availability.cards.regular.monThu"><strong>Mon–Thu:</strong>  17:00–22:00</li>
+              <li data-i18n-html="availability.cards.regular.fri"><strong>Fri:</strong>  15:00–22:00</li>
+              <li data-i18n-html="availability.cards.regular.satSun"><strong>Sat–Sun:</strong>  06:00–22:00</li>
             </ul>
             <div class="hours-note">
-              <strong>Letzter Unterrichtsbeginn:</strong> 22:00 Uhr<br>
-              Doppel- und 3-Stunden-Sessions möglich!
+              <span data-i18n-html="availability.cards.regular.note"><strong>Latest lesson start:</strong> 22:00<br>Double and 3-hour sessions available!</span>
             </div>
           </div>
        <div class="hours-card">
@@ -2391,153 +2491,153 @@ img, video, canvas, svg {
               <line x1="8" y1="2" x2="8" y2="6" />
               <line x1="3" y1="10" x2="21" y2="10" />
             </svg>
-            <h3 class="hours-title">NRW Schulferien</h3>
+            <h3 class="hours-title" data-i18n="availability.cards.holidays.title">NRW school holidays</h3>
             <ul class="hours-list">
-              <li><strong>Ganztägig verfügbar:</strong> 06:00–22:00</li>
-              <li>Intensive Lernwochen möglich</li>
-              <li>Mehr Flexibilität für Langstunden</li>
+              <li data-i18n-html="availability.cards.holidays.allDay"><strong>Available all day:</strong> 06:00–22:00</li>
+              <li data-i18n="availability.cards.holidays.point1">Intensive study weeks possible</li>
+              <li data-i18n="availability.cards.holidays.point2">More flexibility for longer sessions</li>
             </ul>
             <div class="hours-note">
-              Perfekt für Prüfungsvorbereitung oder Intensivkurse!
+              <span data-i18n="availability.cards.holidays.note">Perfect for exam prep or intensive courses!</span>
             </div>
           </div>
         </div>
         <div style="margin-top: 2em; text-align: center;">
-          <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="Verfügbarkeiten ansehen">Verfügbarkeiten ansehen & buchen</a>
+          <a href="#buchen" class="btn btn-primary lux-trace bubble-hover" aria-label="View availability" data-i18n="availability.cta" data-i18n-aria="availability.ctaAria">View availability & book</a>
         </div>
       </div>
     </section>
     
  <!-- Buchung Section -->
-    <section id="buchen" class="section reveal" data-title="Buchen">
+    <section id="buchen" class="section reveal" data-title="Book">
       <div class="section-inner">
-        <h2 class="section-title"><span>Buche</span>Deine nächste Stunde</h2>
-        <p class="lead">Wähle den Weg, der für dich am bequemsten ist – ich melde mich schnellstmöglich bei dir.</p>
+        <h2 class="section-title"><span data-i18n="booking.kicker">Book</span><span class="section-title-main" data-i18n="booking.title">Your next lesson</span></h2>
+        <p class="lead" data-i18n="booking.lead">Choose the easiest way for you — I’ll get back to you quickly.</p>
 
         <div class="booking-grid">
           <div class="booking-option lux-trace bubble-hover">
             <h3>WhatsApp</h3>
-            <p>Sende mir eine Nachricht mit deinem Wunschtermin und deinem Ziel. Ich bestätige dir den Termin oder schlage Alternativen vor.</p>
-            <a class="btn btn-primary" href="https://wa.me/4917663005489?text=Hallo%20Leon%2C%20ich%20m%C3%B6chte%20eine%20Deutschstunde%20buchen." target="_blank" rel="noopener">Über WhatsApp anfragen</a>
+            <p data-i18n="booking.whatsapp.desc">Send me your preferred time and goal. I’ll confirm or suggest alternatives.</p>
+            <a class="btn btn-primary" href="https://wa.me/4917663005489?text=Hi%20Leon%2C%20I%20would%20like%20to%20book%20a%20German%20lesson." target="_blank" rel="noopener" data-i18n="booking.whatsapp.cta">Request via WhatsApp</a>
           </div>
 
           <div class="booking-option lux-trace bubble-hover">
-            <h3>E‑Mail</h3>
-            <p>Teile mir kurz deinen Namen, dein Niveau und deine Wunschzeiten mit. Ich antworte dir mit allen weiteren Schritten.</p>
-            <a class="btn btn-secondary" href="mailto:infoleonicaura@gmail.com?subject=Deutschunterricht%20buchen&body=Hallo%20Leon%2C%20ich%20m%C3%B6chte%20eine%20Stunde%20buchen.%20Mein%20Niveau%20ist...">E‑Mail schreiben</a>
+            <h3 data-i18n="booking.email.title">Email</h3>
+            <p data-i18n="booking.email.desc">Share your name, level, and preferred times. I’ll reply with next steps.</p>
+            <a class="btn btn-secondary" href="mailto:infoleonicaura@gmail.com?subject=Book%20German%20lessons&body=Hi%20Leon%2C%20I%20would%20like%20to%20book%20a%20lesson.%20My%20level%20is..." data-i18n="booking.email.cta">Send an email</a>
           </div>
 
        <div class="booking-option lux-trace bubble-hover">
-            <h3>Kontaktformular</h3>
-            <p>Nutze das Formular für strukturierte Anfragen oder wenn du mehr Details teilen möchtest. Ich melde mich per E‑Mail bei dir.</p>
-            <a class="btn btn-primary" href="#kontakt">Zum Kontaktformular</a>
+            <h3 data-i18n="booking.form.title">Contact form</h3>
+            <p data-i18n="booking.form.desc">Use the form for structured requests or if you want to share more details. I’ll reply by email.</p>
+            <a class="btn btn-primary" href="#kontakt" data-i18n="booking.form.cta">Go to the contact form</a>
           </div>
         </div>
 
 
-       <p class="booking-note">Du bist dir noch unsicher? Starte mit einer Probestunde oder buche ein Paket, um langfristig zu planen – ich helfe dir bei der Auswahl.</p>
+       <p class="booking-note" data-i18n="booking.note">Not sure yet? Start with a trial lesson or book a package for long-term progress — I’ll help you choose.</p>
       </div>
     </section>
     
     <!-- Gruppen Section -->
-    <section id="gruppen" class="section reveal" data-title="Gruppen">
+    <section id="gruppen" class="section reveal" data-title="Groups">
        <div class="section-inner">
-        <h2 class="section-title"><span>Gruppenunterricht</span>Lerne gemeinsam</h2>
-        <p class="lead">Für 2–4 Personen zum Preis von 9 €/Person/Stunde. Gemeinsam macht Lernen mehr Spaß und bringt zusätzliche Sprechpraxis.</p>
-        <a href="#kontakt" class="btn btn-primary lux-trace bubble-hover" aria-label="Gruppe anmelden">Gruppe anmelden</a>
+        <h2 class="section-title"><span data-i18n="groups.kicker">Group lessons</span><span class="section-title-main" data-i18n="groups.title">Learn together</span></h2>
+        <p class="lead" data-i18n="groups.lead">For 2–4 people at 9 €/person/hour. Learning together is more fun and adds extra speaking practice.</p>
+        <a href="#kontakt" class="btn btn-primary lux-trace bubble-hover" aria-label="Register a group" data-i18n="groups.cta" data-i18n-aria="groups.ctaAria">Register a group</a>
       </div>
     </section>
     
     <!-- Ablauf Section - MIT NUMMER 5 -->
-    <section id="ablauf" class="section reveal" data-title="Ablauf">
+    <section id="ablauf" class="section reveal" data-title="Process">
        <div class="section-inner">
-        <h2 class="section-title"><span>Ablauf</span>So läuft's ab</h2>
-        <p class="lead">In fünf Schritten zu deinem Erfolg.</p>
+        <h2 class="section-title"><span data-i18n="process.kicker">Process</span><span class="section-title-main" data-i18n="process.title">How it works</span></h2>
+        <p class="lead" data-i18n="process.lead">Five steps to your success.</p>
         <div class="steps-grid">
           <div class="step-item lux-trace bubble-hover">
             <div class="step-num">1</div>
-            <h3 class="step-title">Anfrage/Buchung</h3>
-            <div class="step-desc">Kontaktiere mich per WhatsApp oder E‑Mail und erzähle von deinen Zielen.</div>
+            <h3 class="step-title" data-i18n="process.steps.request.title">Request/booking</h3>
+            <div class="step-desc" data-i18n="process.steps.request.desc">Contact me via WhatsApp or email and share your goals.</div>
           </div>
           <div class="step-item lux-trace bubble-hover">
             <div class="step-num">2</div>
-            <h3 class="step-title">Bestätigung</h3>
-            <div class="step-desc">Wir bestätigen den Termin und klären deine Fragen.</div>
+            <h3 class="step-title" data-i18n="process.steps.confirmation.title">Confirmation</h3>
+            <div class="step-desc" data-i18n="process.steps.confirmation.desc">We confirm the time and answer your questions.</div>
           </div>
           <div class="step-item lux-trace bubble-hover">
             <div class="step-num">3</div>
-            <h3 class="step-title">Unterricht</h3>
-            <div class="step-desc">Individuelle, interaktive Stunden via Zoom/Meet – zugeschnitten auf dich.</div>
+            <h3 class="step-title" data-i18n="process.steps.lessons.title">Lessons</h3>
+            <div class="step-desc" data-i18n="process.steps.lessons.desc">Interactive lessons via Zoom/Meet — tailored to you.</div>
           </div>
           <div class="step-item lux-trace bubble-hover">
             <div class="step-num">4</div>
-            <h3 class="step-title">Nachbereitung</h3>
-            <div class="step-desc">Materialien, Feedback und optionale Hausaufgaben für nachhaltiges Lernen.</div>
+            <h3 class="step-title" data-i18n="process.steps.followup.title">Follow-up</h3>
+            <div class="step-desc" data-i18n="process.steps.followup.desc">Materials, feedback, and optional homework for lasting learning.</div>
           </div>
           <div class="step-item lux-trace bubble-hover">
             <div class="step-num">5</div>
-            <h3 class="step-title">Weiterlernen</h3>
-            <div class="step-desc">Wir reflektieren deinen Fortschritt und planen die nächsten Schritte.</div>
+            <h3 class="step-title" data-i18n="process.steps.growth.title">Keep growing</h3>
+            <div class="step-desc" data-i18n="process.steps.growth.desc">We review your progress and plan the next steps.</div>
           </div>
         </div>
       </div>
     </section>
     
     <!-- Über mich Section -->
-    <section id="about" class="section reveal" data-title="Über mich">
+    <section id="about" class="section reveal" data-title="About">
        <div class="section-inner">
-        <h2 class="section-title"><span>Über mich</span>Hallo, ich bin Leon</h2>
-        <p class="lead">Deutschlehrer (A1–C1) für Lernende aus dem Balkan.</p>
+        <h2 class="section-title"><span data-i18n="about.kicker">About</span><span class="section-title-main" data-i18n="about.title">Hi, I’m Leon</span></h2>
+        <p class="lead" data-i18n="about.lead">German teacher (A1–C1) supporting learners worldwide.</p>
         <div class="about-container">
           <div class="about-photo">
             <div class="photo-frame">
-              <img src="Leon.jpg" alt="Leon lächelnd" loading="lazy" decoding="async">
+              <img src="Leon.jpg" alt="Leon smiling" loading="lazy" decoding="async" data-i18n-alt="about.photoAlt">
             </div>
           </div>
           <div class="about-content">
-            <p><strong>Wer ich bin:</strong> Ich bin Leon aus Duisburg – Deutschlehrer, spezialisiert auf Lernende aus dem Balkanraum.</p>
-            <p><strong>Wofür ich stehe:</strong></p>
+            <p data-i18n-html="about.paragraphs.who"><strong>Who I am:</strong> I’m Leon from Duisburg — a German teacher focused on building a global education and knowledge platform.</p>
+            <p data-i18n-html="about.paragraphs.standFor"><strong>What I stand for:</strong></p>
             <ul>
-              <li><strong>Fokus:</strong> Deine Ziele im Alltag, Beruf oder für Prüfungen.</li>
-              <li><strong>Arbeitsweise:</strong> Klare, strukturierte Vermittlung mit Geduld und Herz.</li>
-              <li><strong>Ergebnis:</strong> Spürbare Fortschritte und selbstbewusstes Sprechen.</li>
+              <li data-i18n-html="about.bullets.focus"><strong>Focus:</strong> Your goals in daily life, career, or exams.</li>
+              <li data-i18n-html="about.bullets.approach"><strong>Approach:</strong> Clear, structured teaching with patience and care.</li>
+              <li data-i18n-html="about.bullets.outcome"><strong>Outcome:</strong> Visible progress and confident speaking.</li>
             </ul>
-            <p><strong>Wie es sich anfühlt:</strong> Praxisnah, freundlich und individuell – du bestimmst das Tempo und ich begleite dich sicher zum Ziel.</p>
-            <p><strong>Mini‑Beweis:</strong> Klare Strukturen und nachvollziehbare Schritte geben dir jederzeit Orientierung.</p>
+            <p data-i18n-html="about.paragraphs.feels"><strong>How it feels:</strong> Practical, friendly, and personal — you set the pace and I guide you to your goal.</p>
+            <p data-i18n-html="about.paragraphs.proof"><strong>Proof point:</strong> Clear structure and transparent steps keep you oriented at every stage.</p>
           </div>
         </div>
       </div>
     </section>
     
     <!-- Leistungen Section -->
-    <section id="leistungen" class="section reveal" data-title="Leistungen">
+    <section id="leistungen" class="section reveal" data-title="Services">
        <div class="section-inner">
-        <h2 class="section-title"><span>Was du bekommst</span>Dein Lernpaket</h2>
-        <p class="lead">Alles, was du brauchst, um erfolgreich Deutsch zu lernen.</p>
+        <h2 class="section-title"><span data-i18n="services.kicker">What you get</span><span class="section-title-main" data-i18n="services.title">Your learning package</span></h2>
+        <p class="lead" data-i18n="services.lead">Everything you need to learn German successfully.</p>
         <div class="services-grid">
           <div class="service-item lux-trace bubble-hover">
-            <h3 class="service-title">60‑Minuten‑Einheiten</h3>
-            <div class="service-desc">Jede Stunde dauert 60 Minuten – genug Zeit für Übungen, Beispiele und Fragen.</div>
+            <h3 class="service-title" data-i18n="services.items.sessions.title">60-minute sessions</h3>
+            <div class="service-desc" data-i18n="services.items.sessions.desc">Each lesson lasts 60 minutes — enough time for practice, examples, and questions.</div>
           </div>
           <div class="service-item lux-trace bubble-hover">
-            <h3 class="service-title">Materialien inklusive</h3>
-            <div class="service-desc">Digitale Lernmaterialien, Übungsblätter und Aufzeichnungen helfen dir beim Wiederholen.</div>
+            <h3 class="service-title" data-i18n="services.items.materials.title">Materials included</h3>
+            <div class="service-desc" data-i18n="services.items.materials.desc">Digital resources, worksheets, and notes help you review.</div>
           </div>
           <div class="service-item lux-trace bubble-hover">
-            <h3 class="service-title">Individuelles Feedback</h3>
-            <div class="service-desc">Nach jeder Stunde erhältst du ausführliches Feedback zu Aussprache, Grammatik und Ausdruck.</div>
+            <h3 class="service-title" data-i18n="services.items.feedback.title">Personal feedback</h3>
+            <div class="service-desc" data-i18n="services.items.feedback.desc">After each lesson you receive detailed feedback on pronunciation, grammar, and expression.</div>
           </div>
           <div class="service-item lux-trace bubble-hover">
-            <h3 class="service-title">Optionale Hausaufgaben</h3>
-            <div class="service-desc">Auf Wunsch bekommst du Aufgaben zur Vertiefung – freiwillig, aber empfehlenswert.</div>
+            <h3 class="service-title" data-i18n="services.items.homework.title">Optional homework</h3>
+            <div class="service-desc" data-i18n="services.items.homework.desc">On request you’ll receive tasks to deepen learning — optional but recommended.</div>
           </div>
           <div class="service-item lux-trace bubble-hover">
-            <h3 class="service-title">Kurze Zusammenfassung</h3>
-            <div class="service-desc">Nach jeder Stunde fassen wir die wichtigsten Punkte zusammen und planen den nächsten Schritt.</div>
+            <h3 class="service-title" data-i18n="services.items.recap.title">Short recap</h3>
+            <div class="service-desc" data-i18n="services.items.recap.desc">After each lesson we recap the key points and plan the next step.</div>
           </div>
           <div class="service-item lux-trace bubble-hover">
-            <h3 class="service-title">Flexible Bezahlung & Storno</h3>
-            <div class="service-desc">Zahlung via PayPal oder Bank. Kostenlose Stornierung bis 24 Stunden vorher.</div>
+            <h3 class="service-title" data-i18n="services.items.payment.title">Flexible payment & cancellation</h3>
+            <div class="service-desc" data-i18n="services.items.payment.desc">Pay via PayPal or bank transfer. Free cancellation up to 24 hours in advance.</div>
           </div>
         </div>
       </div>
@@ -2546,114 +2646,114 @@ img, video, canvas, svg {
     <!-- FAQ Section -->
     <section id="faq" class="section reveal" data-title="FAQ">
       <div class="section-inner">
-        <h2 class="section-title"><span>FAQ</span>Häufige Fragen</h2>
-        <p class="lead">Hier findest du Antworten auf oft gestellte Fragen.</p>
+        <h2 class="section-title"><span data-i18n="faq.kicker">FAQ</span><span class="section-title-main" data-i18n="faq.title">Frequently asked questions</span></h2>
+        <p class="lead" data-i18n="faq.lead">Here are answers to common questions.</p>
         <div class="faq">
           <details>
-            <summary>Wie lange dauert eine Unterrichtseinheit?</summary>
-            <p>Eine Einheit dauert normalerweise 60 Minuten. Die Dauer kann nach Absprache flexibel angepasst werden.</p>
+            <summary data-i18n="faq.items.duration.question">How long is a lesson?</summary>
+            <p data-i18n="faq.items.duration.answer">A lesson usually lasts 60 minutes. The duration can be adjusted by agreement.</p>
           </details>
           <details>
-            <summary>Wie funktioniert die Bezahlung?</summary>
-            <p>Du kannst nach jeder Stunde per PayPal oder Banküberweisung zahlen – ohne Vertragsbindung.</p>
+            <summary data-i18n="faq.items.payment.question">How does payment work?</summary>
+            <p data-i18n="faq.items.payment.answer">You can pay after each lesson via PayPal or bank transfer — no contract required.</p>
           </details>
           <details>
-            <summary>Was passiert bei kurzfristigen Absagen?</summary>
-            <p>Bis 24 Stunden vor dem Termin kannst du kostenlos stornieren oder verschieben. Bei späteren Absagen wird die Stunde berechnet.</p>
+            <summary data-i18n="faq.items.cancel.question">What happens with short-notice cancellations?</summary>
+            <p data-i18n="faq.items.cancel.answer">You can cancel or reschedule for free up to 24 hours before the appointment. Later cancellations are charged.</p>
           </details>
           <details>
-            <summary>Welche Plattform nutzt du für den Unterricht?</summary>
-            <p>Ich unterrichte über Google Meet oder Zoom. Du erhältst vor der Stunde einen Link per E‑Mail oder WhatsApp.</p>
+            <summary data-i18n="faq.items.platform.question">Which platform do you use for lessons?</summary>
+            <p data-i18n="faq.items.platform.answer">I teach via Google Meet or Zoom. You’ll receive a link before the lesson by email or WhatsApp.</p>
           </details>
           <details>
-            <summary>Sind Hausaufgaben verpflichtend?</summary>
-            <p>Hausaufgaben sind freiwillig, aber sie helfen dir, das Gelernte zu festigen.</p>
+            <summary data-i18n="faq.items.homework.question">Are homework assignments required?</summary>
+            <p data-i18n="faq.items.homework.answer">Homework is optional, but it helps you reinforce what you’ve learned.</p>
           </details>
           <details>
-            <summary>Kann ich dir auch spät abends schreiben?</summary>
-            <p>Ja, absolut! Du kannst mir jederzeit schreiben – auch um 22:00 oder 00:00 Uhr. Ich antworte so schnell wie möglich, und oft bin ich zu dieser Zeit sogar online. Keine Sorge, ich finde späte Nachrichten völlig in Ordnung!</p>
+            <summary data-i18n="faq.items.late.question">Can I message you late at night?</summary>
+            <p data-i18n="faq.items.late.answer">Yes! You can message me anytime — even at 22:00 or 00:00. I reply as quickly as possible, and I’m often online at those times. Late messages are totally fine.</p>
           </details>
           <details>
-            <summary>Wie sind deine Arbeitszeiten genau?</summary>
-            <p>Montag bis Donnerstag: 17:00–22:00 (letzter Start 22:00), Freitag: 15:00–22:00 (letzter Start 22:00), Samstag und Sonntag: 06:00–22:00. In den NRW-Schulferien bin ich ganztägig von 06:00–22:00 verfügbar.</p>
+            <summary data-i18n="faq.items.hours.question">What exactly are your working hours?</summary>
+            <p data-i18n="faq.items.hours.answer">Monday to Thursday: 17:00–22:00 (latest start 22:00), Friday: 15:00–22:00 (latest start 22:00), Saturday and Sunday: 06:00–22:00. During NRW school holidays I’m available 06:00–22:00.</p>
           </details>
           <details>
-            <summary>Gibt es Doppel- oder Dreifachstunden?</summary>
-            <p>Ja, auf jeden Fall! Du kannst 2 oder 3 Stunden am Stück buchen, wenn du intensiver lernen möchtest. Das ist besonders bei Prüfungsvorbereitung oder in den Ferien beliebt.</p>
+            <summary data-i18n="faq.items.multi.question">Do you offer double or triple sessions?</summary>
+            <p data-i18n="faq.items.multi.answer">Yes! You can book 2 or 3 hours in a row if you want to learn more intensively. This is popular for exam prep or during holidays.</p>
           </details>
           <details>
-            <summary>Wie buche ich 5+ Stunden und wie lange sind sie gültig?</summary>
-            <p>Du kannst mehrere Einheiten auf einmal buchen (z.B. 5 oder 10 Stunden) und flexibel einlösen. Für 5+ Stunden gilt der Preis von 13 €/h, ab 10 Stunden 10 €/h.</p>
+            <summary data-i18n="faq.items.packages.question">How do I book 5+ hours and how long are they valid?</summary>
+            <p data-i18n="faq.items.packages.answer">You can book multiple lessons at once (e.g., 5 or 10 hours) and use them flexibly. For 5+ hours the price is 13 €/h, for 10+ hours it’s 10 €/h.</p>
           </details>
         </div>
       </div>
     </section>
     
     <!-- Kurse Section - MIT HOVER-EFFEKTEN -->
-    <section id="kurse" class="section reveal" data-title="Kurse">
+    <section id="kurse" class="section reveal" data-title="Courses">
      <div class="section-inner">
-        <h2 class="section-title"><span>Kurse</span>Deutschkurse A1–C1</h2>
-        <p class="lead">Wähle dein Sprachniveau und starte los. Unsere Kurse sind modular aufgebaut.</p>
+        <h2 class="section-title"><span data-i18n="courses.kicker">Courses</span><span class="section-title-main" data-i18n="courses.title">German courses A1–C1</span></h2>
+        <p class="lead" data-i18n="courses.lead">Choose your level and get started. Our courses are modular.</p>
         <div class="course-grid">
           <div class="course-card">
             <div class="level">A1</div>
-            <p class="description">Grundkenntnisse für Anfänger: Begrüßung, Alltag und erste Grammatik.</p>
-            <span class="badge">Coming soon</span>
+            <p class="description" data-i18n="courses.levels.a1.desc">Beginner basics: greetings, daily life, and first grammar.</p>
+            <span class="badge" data-i18n="courses.badge">Coming soon</span>
           </div>
           <div class="course-card">
             <div class="level">A2</div>
-            <p class="description">Aufbaukurs zur Erweiterung deiner Basis: mehr Wortschatz und Alltagssituationen.</p>
-            <span class="badge">Coming soon</span>
+            <p class="description" data-i18n="courses.levels.a2.desc">Build on your basics: more vocabulary and everyday situations.</p>
+            <span class="badge" data-i18n="courses.badge">Coming soon</span>
           </div>
           <div class="course-card">
             <div class="level">B1</div>
-            <p class="description">Für Fortgeschrittene: längere Texte, Gespräche und komplexere Grammatik.</p>
-            <span class="badge">Coming soon</span>
+            <p class="description" data-i18n="courses.levels.b1.desc">Intermediate: longer texts, conversations, and more complex grammar.</p>
+            <span class="badge" data-i18n="courses.badge">Coming soon</span>
           </div>
           <div class="course-card">
             <div class="level">B2</div>
-            <p class="description">Vertiefe dein Deutsch: fließende Unterhaltungen und schriftliche Kompetenz.</p>
-            <span class="badge">Coming soon</span>
+            <p class="description" data-i18n="courses.levels.b2.desc">Deepen your German: fluent conversations and writing skills.</p>
+            <span class="badge" data-i18n="courses.badge">Coming soon</span>
           </div>
           <div class="course-card">
             <div class="level">C1</div>
-            <p class="description">Professionelles Niveau: anspruchsvolle Texte verstehen und ausdrücken.</p>
-            <span class="badge">Coming soon</span>
+            <p class="description" data-i18n="courses.levels.c1.desc">Professional level: understand and express complex texts.</p>
+            <span class="badge" data-i18n="courses.badge">Coming soon</span>
           </div>
         </div>
       </div>
     </section>
     
     <!-- Ressourcen Section - MIT HOVER-EFFEKTEN -->
-    <section id="ressourcen" class="section reveal" data-title="Ressourcen">
+    <section id="ressourcen" class="section reveal" data-title="Resources">
        <div class="section-inner">
-        <h2 class="section-title"><span>Kostenlos</span>Übungen & Texte</h2>
-        <p class="lead">Ergänzende Materialien für alle Niveaustufen – bald verfügbar!</p>
+        <h2 class="section-title"><span data-i18n="resources.kicker">Free</span><span class="section-title-main" data-i18n="resources.title">Exercises & texts</span></h2>
+        <p class="lead" data-i18n="resources.lead">Extra resources for all levels — coming soon!</p>
         <div class="resources-grid">
-          <button type="button" class="resource-card" data-message="A1-Ressourcen kommen bald!">
+          <button type="button" class="resource-card" data-message="A1 resources are coming soon!" data-i18n-message="resources.messages.a1">
             <div class="resource-level">A1</div>
-            <div class="resource-desc">Grundlagen & erste Schritte</div>
-            <span class="resource-badge">Bald verfügbar</span>
+            <div class="resource-desc" data-i18n="resources.levels.a1.desc">Basics & first steps</div>
+            <span class="resource-badge" data-i18n="resources.badge">Coming soon</span>
           </button>
-          <button type="button" class="resource-card" data-message="A2-Ressourcen kommen bald!">
+          <button type="button" class="resource-card" data-message="A2 resources are coming soon!" data-i18n-message="resources.messages.a2">
             <div class="resource-level">A2</div>
-            <div class="resource-desc">Aufbau & Festigung</div>
-            <span class="resource-badge">Bald verfügbar</span>
+            <div class="resource-desc" data-i18n="resources.levels.a2.desc">Build & reinforce</div>
+            <span class="resource-badge" data-i18n="resources.badge">Coming soon</span>
           </button>
-          <button type="button" class="resource-card" data-message="B1-Ressourcen kommen bald!">
+          <button type="button" class="resource-card" data-message="B1 resources are coming soon!" data-i18n-message="resources.messages.b1">
             <div class="resource-level">B1</div>
-            <div class="resource-desc">Mittelstufe & Praxis</div>
-            <span class="resource-badge">Bald verfügbar</span>
+            <div class="resource-desc" data-i18n="resources.levels.b1.desc">Intermediate & practice</div>
+            <span class="resource-badge" data-i18n="resources.badge">Coming soon</span>
           </button>
-          <button type="button" class="resource-card" data-message="B2-Ressourcen kommen bald!">
+          <button type="button" class="resource-card" data-message="B2 resources are coming soon!" data-i18n-message="resources.messages.b2">
             <div class="resource-level">B2</div>
-            <div class="resource-desc">Vertiefung & Prüfung</div>
-            <span class="resource-badge">Bald verfügbar</span>
+            <div class="resource-desc" data-i18n="resources.levels.b2.desc">Advanced & exam prep</div>
+            <span class="resource-badge" data-i18n="resources.badge">Coming soon</span>
           </button>
-          <button type="button" class="resource-card" data-message="C1-Ressourcen kommen bald!">
+          <button type="button" class="resource-card" data-message="C1 resources are coming soon!" data-i18n-message="resources.messages.c1">
             <div class="resource-level">C1</div>
-            <div class="resource-desc">Fortgeschritten & Perfektion</div>
-            <span class="resource-badge">Bald verfügbar</span>
+            <div class="resource-desc" data-i18n="resources.levels.c1.desc">Advanced & mastery</div>
+            <span class="resource-badge" data-i18n="resources.badge">Coming soon</span>
           </button>
         </div>
         <div id="resourceMessage" class="resource-message" role="status" aria-live="polite"></div>
@@ -2661,69 +2761,69 @@ img, video, canvas, svg {
     </section>
     
  <!-- Kontakt Section - VERBESSERTE VERSION -->
-    <section id="kontakt" class="section reveal" data-title="Kontakt">
+    <section id="kontakt" class="section reveal" data-title="Contact">
       <div class="contact-layout">
         <div class="contact-main">
-          <h2 class="section-title"><span>Kontakt</span>Schreib mir</h2>
-          <p class="lead">Hast du Fragen oder möchtest einen Termin vereinbaren? Melde dich gerne!</p>
+          <h2 class="section-title"><span data-i18n="contact.kicker">Contact</span><span class="section-title-main" data-i18n="contact.title">Send a message</span></h2>
+          <p class="lead" data-i18n="contact.lead">Have questions or want to book a time? Reach out anytime.</p>
           <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/infoleonicaura@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Neue Nachricht über leonicaura.de">
+            <input type="hidden" name="_subject" value="New message via leonicaura.de" data-i18n-value="contact.form.subject">
             <input type="hidden" name="_captcha" value="false">
             
-            <label for="name">Name *</label>
-            <input type="text" id="name" name="name" required placeholder="Dein Name">
+            <label for="name" data-i18n="contact.form.nameLabel">Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Your name" data-i18n-placeholder="contact.form.namePlaceholder">
 
-            <label for="email">E‑Mail *</label>
-            <input type="email" id="email" name="email" required placeholder="deine@email.de">
+            <label for="email" data-i18n="contact.form.emailLabel">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="you@example.com" data-i18n-placeholder="contact.form.emailPlaceholder">
 
-            <label for="niveau">Deutschniveau *</label>
+            <label for="niveau" data-i18n="contact.form.levelLabel">German level *</label>
             <select id="niveau" name="niveau" required>
-              <option value="">Bitte wählen</option>
-              <option value="A1">A1 – Anfänger</option>
-              <option value="A2">A2 – Grundlegende Kenntnisse</option>
-              <option value="B1">B1 – Mittelstufe</option>
-              <option value="B2">B2 – Fortgeschrittene Mittelstufe</option>
-              <option value="C1">C1 – Fortgeschrittene Kenntnisse</option>
-              <option value="unsicher">Weiß nicht / Unsicher</option>
+              <option value="" data-i18n="contact.form.levelPlaceholder">Please choose</option>
+              <option value="A1" data-i18n="contact.form.levelA1">A1 – Beginner</option>
+              <option value="A2" data-i18n="contact.form.levelA2">A2 – Basic knowledge</option>
+              <option value="B1" data-i18n="contact.form.levelB1">B1 – Intermediate</option>
+              <option value="B2" data-i18n="contact.form.levelB2">B2 – Upper intermediate</option>
+              <option value="C1" data-i18n="contact.form.levelC1">C1 – Advanced</option>
+              <option value="unsicher" data-i18n="contact.form.levelUnsure">Not sure</option>
             </select>
 
-            <label for="selbsteinschaetzung">Selbsteinschätzung (optional)</label>
-            <textarea id="selbsteinschaetzung" name="selbsteinschaetzung" placeholder="Wie gut sprichst du bereits Deutsch? Was fällt dir leicht, was schwer?"></textarea>
+            <label for="selbsteinschaetzung" data-i18n="contact.form.selfLabel">Self-assessment (optional)</label>
+            <textarea id="selbsteinschaetzung" name="selbsteinschaetzung" placeholder="How well do you speak German already? What feels easy or difficult?" data-i18n-placeholder="contact.form.selfPlaceholder"></textarea>
 
-            <label for="beruf">Beruf / Tätigkeit (optional)</label>
-            <input type="text" id="beruf" name="beruf" placeholder="z.B. Student, Krankenschwester, Ingenieur">
+            <label for="beruf" data-i18n="contact.form.jobLabel">Profession / occupation (optional)</label>
+            <input type="text" id="beruf" name="beruf" placeholder="e.g., student, nurse, engineer" data-i18n-placeholder="contact.form.jobPlaceholder">
 
-            <label for="stunden_monat">Gewünschte Stunden pro Monat (optional)</label>
+            <label for="stunden_monat" data-i18n="contact.form.hoursLabel">Desired hours per month (optional)</label>
             <select id="stunden_monat" name="stunden_monat">
-              <option value="">Bitte wählen</option>
-              <option value="1-2">1 Stunde</option>
-              <option value="3-4">2-4 Stunden</option>
-              <option value="5-8">5-9 Stunden</option>
-              <option value="9-12">10-15 Stunden</option>
-              <option value="mehr">Mehr als 15 Stunden</option>
+              <option value="" data-i18n="contact.form.hoursPlaceholder">Please choose</option>
+              <option value="1-2" data-i18n="contact.form.hours1">1 hour</option>
+              <option value="3-4" data-i18n="contact.form.hours2">2–4 hours</option>
+              <option value="5-8" data-i18n="contact.form.hours3">5–9 hours</option>
+              <option value="9-12" data-i18n="contact.form.hours4">10–15 hours</option>
+              <option value="mehr" data-i18n="contact.form.hours5">More than 15 hours</option>
             </select>
 
-            <label for="wuensche">Was wünschst du dir vom Unterricht? *</label>
-            <textarea id="wuensche" name="wuensche" required placeholder="Beschreibe deine Ziele und Wünsche. Möchtest du dich auf eine Prüfung vorbereiten? Willst du tief in ein Thema einsteigen? Was ist dir wichtig?"></textarea>
+            <label for="wuensche" data-i18n="contact.form.goalsLabel">What do you want from the lessons? *</label>
+            <textarea id="wuensche" name="wuensche" required placeholder="Describe your goals. Do you want exam prep? Deep dives into a topic? What matters most to you?" data-i18n-placeholder="contact.form.goalsPlaceholder"></textarea>
 
-            <label for="message">Zusätzliche Nachricht (optional)</label>
-            <textarea id="message" name="message" placeholder="Gibt es noch etwas, das ich wissen sollte?"></textarea>
+            <label for="message" data-i18n="contact.form.messageLabel">Additional message (optional)</label>
+            <textarea id="message" name="message" placeholder="Anything else I should know?" data-i18n-placeholder="contact.form.messagePlaceholder"></textarea>
 
             <label class="consent">
               <input type="checkbox" id="consent" name="consent" required>
-              <span>Ich stimme der Verarbeitung meiner Daten gemäß der <a href="#datenschutz">Datenschutzerklärung</a> zu.</span>
+              <span data-i18n-html="contact.form.consent">I agree to the processing of my data according to the <a href="#datenschutz">privacy policy</a>.</span>
             </label>
 
-            <button type="submit">Nachricht senden</button>
+            <button type="submit" data-i18n="contact.form.submit">Send message</button>
 
             <div id="formStatus"></div>
           </form>
 
           <div class="contact-info">
-            <p><strong>Alternative Kontaktmöglichkeiten:</strong></p>
-            <p>📱 WhatsApp: <a href="https://wa.me/4917663005489" target="_blank">+49 176 63005489</a></p>
-            <p>📧 E‑Mail: <a href="mailto:infoleonicaura@gmail.com">infoleonicaura@gmail.com</a></p>
-            <p>📸 Instagram: <a href="https://www.instagram.com/aicreativebitch" target="_blank" rel="noopener">@aicreativebitch</a></p>
+            <p><strong data-i18n="contact.altTitle">Alternative ways to reach me:</strong></p>
+            <p data-i18n-html="contact.altWhatsApp">📱 WhatsApp: <a href="https://wa.me/4917663005489" target="_blank">+49 176 63005489</a></p>
+            <p data-i18n-html="contact.altEmail">📧 Email: <a href="mailto:infoleonicaura@gmail.com">infoleonicaura@gmail.com</a></p>
+            <p data-i18n-html="contact.altInstagram">📸 Instagram: <a href="https://www.instagram.com/aicreativebitch" target="_blank" rel="noopener">@aicreativebitch</a></p>
           </div>
         </div>
 
@@ -2742,112 +2842,1635 @@ img, video, canvas, svg {
     </section>
 
     <!-- Datenschutz Section -->
-    <section id="datenschutz" class="section reveal legal-section" data-title="Datenschutz">
+    <section id="datenschutz" class="section reveal legal-section" data-title="Privacy">
      <div class="section-inner">
-        <h2 class="section-title"><span>Datenschutz</span>Datenschutzerklärung</h2>
+        <h2 class="section-title"><span data-i18n="privacy.kicker">Privacy</span><span class="section-title-main" data-i18n="privacy.title">Privacy policy</span></h2>
 
-        <strong>Stand</strong> <p>Oktober 2025</p>
-        <h3>1. Verantwortlicher</h3>
-        <p>Leon E.<br>
-        [Straße und Hausnummer – folgt]<br>
-        E‑Mail: leon.erdeg1307@gmail.com<br>
-        E-Mail: infoleonicaura@gmail.com</p>
+        <strong data-i18n="privacy.updatedLabel">Last updated</strong> <p data-i18n="privacy.updatedDate">October 2025</p>
+        <h3 data-i18n="privacy.controller.title">1. Controller</h3>
+        <p data-i18n-html="privacy.controller.body">Leon E.<br>
+        [Street and house number – pending]<br>
+        Email: leon.erdeg1307@gmail.com<br>
+        Email: infoleonicaura@gmail.com</p>
 
-        <h3>2. Zwecke, Kategorien von Daten und Quellen</h3>
-        <h4>2.1 Aufruf der Website / Server-Logs</h4>
-        <p>Beim Besuch dieser Website werden durch unseren Hosting-Anbieter automatisch sogenannte Server-Logfiles erfasst: IP-Adresse, Datum/Uhrzeit des Zugriffs, aufgerufene URL, Referrer-URL, Browsertyp/-version, Betriebssystem.
-Zweck: technische Bereitstellung, Stabilität, Sicherheit (z. B. Abwehr von Angriffen).
-Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren, funktionsfähigen Website).
-Speicherdauer: max. 7 Tage, danach Löschung/Anonymisierung, sofern keine sicherheitsrelevante Prüfung erforderlich ist.</p>
-        <h4>2.2 Kontaktaufnahme (Formular/E-Mail)</h4>
-        <p>Wenn Sie uns kontaktieren, verarbeiten wir die von Ihnen mitgeteilten Daten (z. B. Name, E-Mail, Inhalt der Nachricht).
-Zweck: Bearbeitung und Beantwortung Ihrer Anfrage.
-Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche/vertragliche Kommunikation) bzw. Art. 6 Abs. 1 lit. f DSGVO (allgemeine Anfragen).
-Speicherdauer: Anfragen löschen wir in der Regel nach 12 Monaten; abweichend gelten gesetzliche Aufbewahrungsfristen, wenn die Kommunikation zu geschäftlichen Unterlagen gehört.</p>
-       <h4>2.3 Cookies, Tracking, externe Inhalte</h4>
-       <p>Auf dieser Website werden keine nicht erforderlichen Cookies und keine Tracking-/Analyse-Tools eingesetzt.
-Schriftarten (Google Fonts) sind lokal eingebunden; hierbei erfolgt keine Datenübermittlung an Google.
-Sofern künftig externe Inhalte (z. B. YouTube, Karten, CDNs) eingesetzt werden, informieren wir vorab bzw. aktualisieren diese Erklärung.</p>
+        <h3 data-i18n="privacy.purposes.title">2. Purposes, data categories, and sources</h3>
+        <h4 data-i18n="privacy.purposes.logs.title">2.1 Website access / server logs</h4>
+        <p data-i18n="privacy.purposes.logs.body">When you visit this website, our hosting provider automatically collects so-called server log files: IP address, date/time of access, accessed URL, referrer URL, browser type/version, and operating system.
+Purpose: technical delivery, stability, and security (e.g., protection against attacks).
+Legal basis: Art. 6(1)(f) GDPR (legitimate interest in a secure, functional website).
+Retention: max. 7 days, then deletion/anonymization unless a security review is required.</p>
+        <h4 data-i18n="privacy.purposes.contact.title">2.2 Contact (form/email)</h4>
+        <p data-i18n="privacy.purposes.contact.body">If you contact us, we process the data you provide (e.g., name, email, message content).
+Purpose: processing and responding to your request.
+Legal basis: Art. 6(1)(b) GDPR (pre-contractual/contractual communication) or Art. 6(1)(f) GDPR (general inquiries).
+Retention: inquiries are generally deleted after 12 months; statutory retention obligations apply if the communication is part of business records.</p>
+       <h4 data-i18n="privacy.purposes.cookies.title">2.3 Cookies, tracking, external content</h4>
+       <p data-i18n="privacy.purposes.cookies.body">This website does not use non-essential cookies or tracking/analytics tools.
+Fonts (Google Fonts) are hosted locally; no data is transmitted to Google.
+If external content (e.g., YouTube, maps, CDNs) is used in the future, we will inform you in advance or update this policy.</p>
       
-         <h3>3. Empfänger und Auftragsverarbeitung</h3>
-         <p>Zur Bereitstellung dieser Website nutzen wir einen Hosting-Dienstleister:
-[Name des Hosters, Sitzland – einsetzen].
-Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung gemäß Art. 28 DSGVO.
+         <h3 data-i18n="privacy.recipients.title">3. Recipients and processing</h3>
+         <p data-i18n="privacy.recipients.body">We use a hosting service provider to deliver this website:
+[Hosting provider name, country – insert].
+We have a data processing agreement with the provider in accordance with Art. 28 GDPR.
 
-Eine Weitergabe an sonstige Dritte erfolgt nur, soweit dies gesetzlich erlaubt/erforderlich ist (z. B. an Behörden bei Missbrauchsaufklärung).</p>
+Data is shared with third parties only where legally permitted/required (e.g., authorities in cases of abuse).</p>
       
-          <h3>4. Drittlandübermittlungen</h3>
-        <p>Eine Übermittlung personenbezogener Daten in Drittländer außerhalb der EU/des EWR findet nicht statt. Sollte dies künftig notwendig werden, informieren wir vorab und stellen geeignete Garantien (z. B. EU-Standardvertragsklauseln) sicher.</p>
+          <h3 data-i18n="privacy.transfers.title">4. Transfers to third countries</h3>
+        <p data-i18n="privacy.transfers.body">No personal data is transferred to third countries outside the EU/EEA. If this becomes necessary in the future, we will inform you in advance and provide appropriate safeguards (e.g., EU Standard Contractual Clauses).</p>
 
-        <h3>5. Pflicht zur Bereitstellung</h3>
-        <p>Sie sind gesetzlich nicht verpflichtet, personenbezogene Daten bereitzustellen. Für die Bearbeitung von Kontaktanfragen sind jedoch mindestens Ihre Kontaktdaten erforderlich.</p>
+        <h3 data-i18n="privacy.obligation.title">5. Obligation to provide data</h3>
+        <p data-i18n="privacy.obligation.body">You are not legally required to provide personal data. However, at least your contact details are necessary to process inquiries.</p>
 
-        <h3>6. Sicherheit (TLS/SSL & TOMs)</h3>
-        <p>Die Übertragung Ihrer Daten erfolgt verschlüsselt (TLS/SSL). Wir treffen angemessene technische und organisatorische Maßnahmen, um Ihre Daten gegen Verlust, Manipulation und unbefugten Zugriff zu schützen und passen diese regelmäßig an.</p>
+        <h3 data-i18n="privacy.security.title">6. Security (TLS/SSL & TOMs)</h3>
+        <p data-i18n="privacy.security.body">Your data is transmitted in encrypted form (TLS/SSL). We implement appropriate technical and organizational measures to protect your data against loss, manipulation, and unauthorized access, and review them regularly.</p>
 
-        <h3>7. Ihre Rechte</h3>
-        <p>Sie haben die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch gegen Verarbeitungen, die auf Art. 6 Abs. 1 lit. e oder f DSGVO beruhen.
-Sie haben ferner das Recht, eine erteilte Einwilligung jederzeit zu widerrufen (siehe Nr. 8).
-Zur Ausübung Ihrer Rechte genügt eine Mitteilung an: infoleonicaura@gmail.com.
-Sie haben zudem das Recht auf Beschwerde bei einer Datenschutz-Aufsichtsbehörde, insbesondere in dem Mitgliedstaat Ihres gewöhnlichen Aufenthalts, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes.</p>
+        <h3 data-i18n="privacy.rights.title">7. Your rights</h3>
+        <p data-i18n="privacy.rights.body">You have the rights to access, rectification, deletion, restriction of processing, data portability, and objection to processing based on Art. 6(1)(e) or (f) GDPR.
+You also have the right to withdraw any consent at any time (see No. 8).
+To exercise your rights, contact: infoleonicaura@gmail.com.
+You also have the right to lodge a complaint with a data protection supervisory authority, especially in the EU member state of your habitual residence, workplace, or the place of the alleged infringement.</p>
       
-       <h3>8. Widerruf von Einwilligungen / Widerspruch</h3>
-        <p>Von Ihnen erteilte Einwilligungen können Sie jederzeit mit Wirkung für die Zukunft widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt unberührt.
-Sie können ferner der Verarbeitung Ihrer Daten aus berechtigtem Interesse (Art. 6 Abs. 1 lit. f DSGVO) widersprechen, sofern Gründe vorliegen, die sich aus Ihrer besonderen Situation ergeben.</p>
+       <h3 data-i18n="privacy.withdrawal.title">8. Withdrawal of consent / objection</h3>
+        <p data-i18n="privacy.withdrawal.body">Any consent you have given can be withdrawn at any time with effect for the future. The lawfulness of processing prior to withdrawal remains unaffected.
+You may also object to processing based on legitimate interests (Art. 6(1)(f) GDPR) if reasons arise from your particular situation.</p>
       
-       <h3>9. Automatisierte Entscheidungen/Profiling</h3>
-        <p>Automatisierte Entscheidungsfindung einschließlich Profiling findet nicht statt.</p>
+       <h3 data-i18n="privacy.automated.title">9. Automated decisions/profiling</h3>
+        <p data-i18n="privacy.automated.body">No automated decision-making, including profiling, takes place.</p>
 
-        <h3>10. Aktualisierungen dieser Datenschutzerklärung</h3>
-        <p>Wir passen diese Erklärung an, wenn dies rechtlich oder technisch erforderlich ist. Die jeweils aktuelle Fassung ist hier abrufbar.
-Stand: Oktober 2025</p>
+        <h3 data-i18n="privacy.updates.title">10. Updates to this privacy policy</h3>
+        <p data-i18n="privacy.updates.body">We update this policy when required by law or technical changes. The current version is always available here.
+Last updated: October 2025</p>
        </div>
     </section>
     
     <!-- Impressum Section -->
-    <section id="impressum" class="section reveal legal-section" data-title="Impressum">
+    <section id="impressum" class="section reveal legal-section" data-title="Legal">
       <div class="section-inner">
-        <h2 class="section-title"><span>Impressum</span>Angaben gemäß § 5 TMG / § 18 Abs. 2 MStV</h2>
+        <h2 class="section-title"><span data-i18n="legal.kicker">Legal</span><span class="section-title-main" data-i18n="legal.title">Information pursuant to § 5 TMG / § 18(2) MStV</span></h2>
 
-      <p><strong>Leon E.</strong><br>
-        [Straße und Hausnummer]<br>
-        [PLZ] [Ort]</p>
+      <p data-i18n-html="legal.identity"><strong>Leon E.</strong><br>
+        [Street and house number]<br>
+        [Postal code] [City]</p>
 
-      <p><strong>Kontakt:</strong><br>
-        Telefon: +49 176 63005489<br>
-        E‑Mail: infoleonicaura@gmail.com (allgemein)<br>
-        E-Mail: leon.erdeg1307@gmail.com (Datenschutz/Anfragen)
+      <p data-i18n-html="legal.contact"><strong>Contact:</strong><br>
+        Phone: +49 176 63005489<br>
+        Email: infoleonicaura@gmail.com (general)<br>
+        Email: leon.erdeg1307@gmail.com (privacy/inquiries)
 
-        <strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</strong>
-        Leon E., [Adresse wie oben]</p>
+        <strong>Responsible for content under § 18(2) MStV</strong>
+        Leon E., [address as above]</p>
 
-        <h3>Haftungsausschluss</h3>
+        <h3 data-i18n="legal.disclaimer.title">Disclaimer</h3>
 
-        <h3>Haftung für Inhalte</h3>
-        <p>Die Inhalte dieser Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir keine Gewähr. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.</p>
+        <h3 data-i18n="legal.content.title">Liability for content</h3>
+        <p data-i18n="legal.content.body">The contents of these pages were created with the utmost care. We do not assume any liability for the correctness, completeness, or timeliness of the content. Obligations to remove or block the use of information under general laws remain unaffected.</p>
 
-        <h3>Haftung für Links</h3>
-        <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese Inhalte ist stets der jeweilige Anbieter oder Betreiber verantwortlich. Bei Bekanntwerden von Rechtsverletzungen werden derartige Links umgehend entfernt.</p>
+        <h3 data-i18n="legal.links.title">Liability for links</h3>
+        <p data-i18n="legal.links.body">Our site contains links to external websites of third parties, over whose content we have no control. The respective provider or operator is always responsible for the contents of the linked pages. If we become aware of legal violations, such links will be removed immediately.</p>
 
-        <h3>Urheberrecht</h3>
-        <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors/Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten Gebrauch gestattet.</p>
+        <h3 data-i18n="legal.copyright.title">Copyright</h3>
+        <p data-i18n="legal.copyright.body">The content and works created by the site operators are subject to German copyright law. Duplication, processing, distribution, or any form of exploitation outside the limits of copyright law require the written consent of the respective author/creator. Downloads and copies of this site are only permitted for private use.</p>
 
-        <h3>Verbraucherstreitbeilegung (Hinweis)</h3>
-        <p>Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
-Plattform der EU-Kommission zur Online-Streitbeilegung (OS): https://ec.europa.eu/consumers/odr</p>
+        <h3 data-i18n="legal.dispute.title">Consumer dispute resolution (notice)</h3>
+        <p data-i18n="legal.dispute.body">We are not obliged or willing to participate in dispute resolution proceedings before a consumer arbitration board.
+EU Commission platform for online dispute resolution (ODR): https://ec.europa.eu/consumers/odr</p>
         </div>
     </section>
   </main>
   
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 LeonicAURA. Alle Rechte vorbehalten. · <a href="#datenschutz">Datenschutz</a> · <a href="#impressum">Impressum</a></p>
+    <p data-i18n-html="footer.text">&copy; 2025 LeonicAURA. All rights reserved. · <a href="#datenschutz">Privacy</a> · <a href="#impressum">Legal</a></p>
   </footer>
 
   <script>
     // Burger menu toggle
     const burger = document.getElementById('burgerBtn');
     const mobileNav = document.getElementById('mobileNav');
+    const langSelect = document.getElementById('langSelect');
+    const langSelectMobile = document.getElementById('langSelectMobile');
+    const languageSelectors = [langSelect, langSelectMobile].filter(Boolean);
+
+    const translations = {
+      en: {
+        meta: {
+          title: 'LeonicAURA – Global German Learning & Education Platform',
+          description: 'LeonicAURA is a global education and knowledge platform offering personalized online German lessons (A1–C1), clear coaching, flexible scheduling, and easy contact for learners worldwide.',
+          ogTitle: 'LeonicAURA – Global German Learning & Education Platform',
+          ogDescription: 'Personalized online German lessons (A1–C1) with clear structure, global accessibility, and simple contact options.',
+          twitterTitle: 'LeonicAURA – Global German Learning & Education Platform',
+          twitterDescription: 'Learn German online with a global education platform built for learners everywhere.',
+          ogLocale: 'en_US'
+        },
+        lang: {
+          label: 'Language',
+          aria: 'Select language'
+        },
+        nav: {
+          home: 'Home',
+          about: 'About',
+          testimonials: 'Testimonials',
+          pricing: 'Pricing (1:1)',
+          availability: 'Availability',
+          book: 'Book',
+          process: 'How it works',
+          courses: 'Courses',
+          practice: 'Practice',
+          faq: 'FAQ',
+          contact: 'Contact',
+          privacy: 'Privacy',
+          legal: 'Legal',
+          openMenu: 'Open menu',
+          mobileMenu: 'Mobile menu'
+        },
+        hero: {
+          headlineStatic: 'Your personal',
+          headlineDynamic: ' German coach',
+          subtitle: 'Learn German with personal coaching, clear structure, and a global education platform built for learners everywhere.',
+          ctaPrimary: 'Book a trial lesson',
+          ctaPrimaryAria: 'Book a trial lesson',
+          ctaSecondary: 'Learn more',
+          ctaSecondaryAria: 'Learn more',
+          infoOnline: 'Online via Zoom/Google Meet',
+          infoPayment: 'PayPal or bank transfer',
+          infoInvoice: 'Invoice by email'
+        },
+        intro: {
+          headlineStatic: 'German',
+          headlineDynamic: ' that truly sticks',
+          subtitle: 'Personalized online lessons for learners worldwide.',
+          ctaPrimary: 'Book a €16 trial lesson',
+          ctaPrimaryAria: 'Book a €16 trial lesson',
+          ctaSecondary: 'View pricing',
+          ctaSecondaryAria: 'View pricing',
+          infoOnline: 'Online via Zoom/Google Meet',
+          infoPayment: 'PayPal or bank transfer',
+          infoInvoice: 'Invoice by email'
+        },
+        benefits: {
+          kicker: 'Why',
+          title: 'Your advantage',
+          lead: 'Discover what makes LeonicAURA unique for global learners.',
+          items: {
+            personal: {
+              title: 'Personalized',
+              desc: 'Your goals are the focus — for work, everyday life, or exams.'
+            },
+            clear: {
+              title: 'Clear & structured',
+              desc: 'Grammar, speaking, and writing — delivered in a simple, organized way.'
+            },
+            motivating: {
+              title: 'Motivating',
+              desc: 'Personal feedback, clear explanations, and visible progress.'
+            }
+          }
+        },
+        testimonials: {
+          kicker: 'Testimonials',
+          title: 'What learners say',
+          lead: 'Real experiences from students worldwide who learned with LeonicAURA.',
+          stars: '5 out of 5 stars',
+          items: {
+            marija: {
+              quote: '“Leon helped me prepare for the B2 exam. His explanations are clear and he is always patient. I passed on my first try!”',
+              level: 'B2 student · Serbia'
+            },
+            dragan: {
+              quote: '“The lessons are flexible and fun. Leon adapts to my pace and I never feel pressured. My speaking has improved a lot!”',
+              level: 'A2 student · Bosnia'
+            },
+            ana: {
+              quote: '“I’ve been learning with Leon for three months and see major progress. The materials are well structured and the homework helps me reinforce everything. Highly recommended!”',
+              level: 'B1 student · Croatia'
+            },
+            nikola: {
+              quote: '“I’m preparing for the C1 exam with Leon and I’m thrilled! He explains complex topics simply and keeps me motivated every day.”',
+              level: 'C1 student · Serbia'
+            },
+            jelena: {
+              quote: '“I finally understand German grammar! Leon explains everything step by step and gives practical examples. The price is very fair too.”',
+              level: 'A1 student · Montenegro'
+            },
+            stefan: {
+              quote: '“The online classes are very well organized. Leon is punctual, professional, and makes every lesson interesting. I look forward to it every week!”',
+              level: 'B1 student · North Macedonia'
+            }
+          }
+        },
+        pricing: {
+          kicker: 'Pricing',
+          title: 'Fair prices for your progress',
+          lead: 'The more you learn, the lower the price per lesson.',
+          note: 'Flexible scheduling · Materials included · Homework on request · Short recap after every lesson · Group classes and online courses (A1–C1) coming soon · Free exercises & texts coming soon',
+          cards: {
+            trial: {
+              title: 'Trial lesson',
+              desc: 'One-time session to get to know each other.',
+              cta: 'Book a trial lesson',
+              ctaAria: 'Book a trial lesson'
+            },
+            two: {
+              title: 'From 2 hours',
+              desc: 'More speaking practice and solid foundations.',
+              cta: 'Book 2+ hours',
+              ctaAria: 'Book a package'
+            },
+            five: {
+              title: 'From 5 hours',
+              desc: 'Consistent progress and lasting results.',
+              cta: 'Book 5+ hours',
+              ctaAria: 'Book a package'
+            },
+            ten: {
+              title: 'From 10 hours',
+              desc: 'Intensive program for maximum results.',
+              cta: 'Request 10+ hours',
+              ctaAria: 'Request a package'
+            }
+          }
+        },
+        availability: {
+          kicker: 'When',
+          title: 'Availability & hours',
+          lead: 'I’m flexible — including late evenings and weekends.',
+          cta: 'View availability & book',
+          ctaAria: 'View availability',
+          cards: {
+            regular: {
+              title: 'Regular hours',
+              monThu: '<strong>Mon–Thu:</strong>  17:00–22:00',
+              fri: '<strong>Fri:</strong>  15:00–22:00',
+              satSun: '<strong>Sat–Sun:</strong>  06:00–22:00',
+              note: '<strong>Latest lesson start:</strong> 22:00<br>Double and 3-hour sessions available!'
+            },
+            holidays: {
+              title: 'NRW school holidays',
+              allDay: '<strong>Available all day:</strong> 06:00–22:00',
+              point1: 'Intensive study weeks possible',
+              point2: 'More flexibility for longer sessions',
+              note: 'Perfect for exam prep or intensive courses!'
+            }
+          }
+        },
+        booking: {
+          kicker: 'Book',
+          title: 'Your next lesson',
+          lead: 'Choose the easiest way for you — I’ll get back to you quickly.',
+          whatsapp: {
+            desc: 'Send me your preferred time and goal. I’ll confirm or suggest alternatives.',
+            cta: 'Request via WhatsApp'
+          },
+          email: {
+            title: 'Email',
+            desc: 'Share your name, level, and preferred times. I’ll reply with next steps.',
+            cta: 'Send an email'
+          },
+          form: {
+            title: 'Contact form',
+            desc: 'Use the form for structured requests or if you want to share more details. I’ll reply by email.',
+            cta: 'Go to the contact form'
+          },
+          note: 'Not sure yet? Start with a trial lesson or book a package for long-term progress — I’ll help you choose.'
+        },
+        groups: {
+          kicker: 'Group lessons',
+          title: 'Learn together',
+          lead: 'For 2–4 people at 9 €/person/hour. Learning together is more fun and adds extra speaking practice.',
+          cta: 'Register a group',
+          ctaAria: 'Register a group'
+        },
+        process: {
+          kicker: 'Process',
+          title: 'How it works',
+          lead: 'Five steps to your success.',
+          steps: {
+            request: {
+              title: 'Request/booking',
+              desc: 'Contact me via WhatsApp or email and share your goals.'
+            },
+            confirmation: {
+              title: 'Confirmation',
+              desc: 'We confirm the time and answer your questions.'
+            },
+            lessons: {
+              title: 'Lessons',
+              desc: 'Interactive lessons via Zoom/Meet — tailored to you.'
+            },
+            followup: {
+              title: 'Follow-up',
+              desc: 'Materials, feedback, and optional homework for lasting learning.'
+            },
+            growth: {
+              title: 'Keep growing',
+              desc: 'We review your progress and plan the next steps.'
+            }
+          }
+        },
+        about: {
+          kicker: 'About',
+          title: 'Hi, I’m Leon',
+          lead: 'German teacher (A1–C1) supporting learners worldwide.',
+          photoAlt: 'Leon smiling',
+          paragraphs: {
+            who: '<strong>Who I am:</strong> I’m Leon from Duisburg — a German teacher focused on building a global education and knowledge platform.',
+            standFor: '<strong>What I stand for:</strong>',
+            feels: '<strong>How it feels:</strong> Practical, friendly, and personal — you set the pace and I guide you to your goal.',
+            proof: '<strong>Proof point:</strong> Clear structure and transparent steps keep you oriented at every stage.'
+          },
+          bullets: {
+            focus: '<strong>Focus:</strong> Your goals in daily life, career, or exams.',
+            approach: '<strong>Approach:</strong> Clear, structured teaching with patience and care.',
+            outcome: '<strong>Outcome:</strong> Visible progress and confident speaking.'
+          }
+        },
+        services: {
+          kicker: 'What you get',
+          title: 'Your learning package',
+          lead: 'Everything you need to learn German successfully.',
+          items: {
+            sessions: {
+              title: '60-minute sessions',
+              desc: 'Each lesson lasts 60 minutes — enough time for practice, examples, and questions.'
+            },
+            materials: {
+              title: 'Materials included',
+              desc: 'Digital resources, worksheets, and notes help you review.'
+            },
+            feedback: {
+              title: 'Personal feedback',
+              desc: 'After each lesson you receive detailed feedback on pronunciation, grammar, and expression.'
+            },
+            homework: {
+              title: 'Optional homework',
+              desc: 'On request you’ll receive tasks to deepen learning — optional but recommended.'
+            },
+            recap: {
+              title: 'Short recap',
+              desc: 'After each lesson we recap the key points and plan the next step.'
+            },
+            payment: {
+              title: 'Flexible payment & cancellation',
+              desc: 'Pay via PayPal or bank transfer. Free cancellation up to 24 hours in advance.'
+            }
+          }
+        },
+        faq: {
+          kicker: 'FAQ',
+          title: 'Frequently asked questions',
+          lead: 'Here are answers to common questions.',
+          items: {
+            duration: {
+              question: 'How long is a lesson?',
+              answer: 'A lesson usually lasts 60 minutes. The duration can be adjusted by agreement.'
+            },
+            payment: {
+              question: 'How does payment work?',
+              answer: 'You can pay after each lesson via PayPal or bank transfer — no contract required.'
+            },
+            cancel: {
+              question: 'What happens with short-notice cancellations?',
+              answer: 'You can cancel or reschedule for free up to 24 hours before the appointment. Later cancellations are charged.'
+            },
+            platform: {
+              question: 'Which platform do you use for lessons?',
+              answer: 'I teach via Google Meet or Zoom. You’ll receive a link before the lesson by email or WhatsApp.'
+            },
+            homework: {
+              question: 'Are homework assignments required?',
+              answer: 'Homework is optional, but it helps you reinforce what you’ve learned.'
+            },
+            late: {
+              question: 'Can I message you late at night?',
+              answer: 'Yes! You can message me anytime — even at 22:00 or 00:00. I reply as quickly as possible, and I’m often online at those times. Late messages are totally fine.'
+            },
+            hours: {
+              question: 'What exactly are your working hours?',
+              answer: 'Monday to Thursday: 17:00–22:00 (latest start 22:00), Friday: 15:00–22:00 (latest start 22:00), Saturday and Sunday: 06:00–22:00. During NRW school holidays I’m available 06:00–22:00.'
+            },
+            multi: {
+              question: 'Do you offer double or triple sessions?',
+              answer: 'Yes! You can book 2 or 3 hours in a row if you want to learn more intensively. This is popular for exam prep or during holidays.'
+            },
+            packages: {
+              question: 'How do I book 5+ hours and how long are they valid?',
+              answer: 'You can book multiple lessons at once (e.g., 5 or 10 hours) and use them flexibly. For 5+ hours the price is 13 €/h, for 10+ hours it’s 10 €/h.'
+            }
+          }
+        },
+        courses: {
+          kicker: 'Courses',
+          title: 'German courses A1–C1',
+          lead: 'Choose your level and get started. Our courses are modular.',
+          badge: 'Coming soon',
+          levels: {
+            a1: { desc: 'Beginner basics: greetings, daily life, and first grammar.' },
+            a2: { desc: 'Build on your basics: more vocabulary and everyday situations.' },
+            b1: { desc: 'Intermediate: longer texts, conversations, and more complex grammar.' },
+            b2: { desc: 'Deepen your German: fluent conversations and writing skills.' },
+            c1: { desc: 'Professional level: understand and express complex texts.' }
+          }
+        },
+        resources: {
+          kicker: 'Free',
+          title: 'Exercises & texts',
+          lead: 'Extra resources for all levels — coming soon!',
+          badge: 'Coming soon',
+          defaultMessage: 'Coming soon',
+          levels: {
+            a1: { desc: 'Basics & first steps' },
+            a2: { desc: 'Build & reinforce' },
+            b1: { desc: 'Intermediate & practice' },
+            b2: { desc: 'Advanced & exam prep' },
+            c1: { desc: 'Advanced & mastery' }
+          },
+          messages: {
+            a1: 'A1 resources are coming soon!',
+            a2: 'A2 resources are coming soon!',
+            b1: 'B1 resources are coming soon!',
+            b2: 'B2 resources are coming soon!',
+            c1: 'C1 resources are coming soon!'
+          }
+        },
+        contact: {
+          kicker: 'Contact',
+          title: 'Send a message',
+          lead: 'Have questions or want to book a time? Reach out anytime.',
+          form: {
+            subject: 'New message via leonicaura.de',
+            nameLabel: 'Name *',
+            namePlaceholder: 'Your name',
+            emailLabel: 'Email *',
+            emailPlaceholder: 'you@example.com',
+            levelLabel: 'German level *',
+            levelPlaceholder: 'Please choose',
+            levelA1: 'A1 – Beginner',
+            levelA2: 'A2 – Basic knowledge',
+            levelB1: 'B1 – Intermediate',
+            levelB2: 'B2 – Upper intermediate',
+            levelC1: 'C1 – Advanced',
+            levelUnsure: 'Not sure',
+            selfLabel: 'Self-assessment (optional)',
+            selfPlaceholder: 'How well do you speak German already? What feels easy or difficult?',
+            jobLabel: 'Profession / occupation (optional)',
+            jobPlaceholder: 'e.g., student, nurse, engineer',
+            hoursLabel: 'Desired hours per month (optional)',
+            hoursPlaceholder: 'Please choose',
+            hours1: '1 hour',
+            hours2: '2–4 hours',
+            hours3: '5–9 hours',
+            hours4: '10–15 hours',
+            hours5: 'More than 15 hours',
+            goalsLabel: 'What do you want from the lessons? *',
+            goalsPlaceholder: 'Describe your goals. Do you want exam prep? Deep dives into a topic? What matters most to you?',
+            messageLabel: 'Additional message (optional)',
+            messagePlaceholder: 'Anything else I should know?',
+            consent: 'I agree to the processing of my data according to the <a href="#datenschutz">privacy policy</a>.',
+            submit: 'Send message'
+          },
+          altTitle: 'Alternative ways to reach me:',
+          altWhatsApp: '📱 WhatsApp: <a href="https://wa.me/4917663005489" target="_blank">+49 176 63005489</a>',
+          altEmail: '📧 Email: <a href="mailto:infoleonicaura@gmail.com">infoleonicaura@gmail.com</a>',
+          altInstagram: '📸 Instagram: <a href="https://www.instagram.com/aicreativebitch" target="_blank" rel="noopener">@aicreativebitch</a>'
+        },
+        privacy: {
+          kicker: 'Privacy',
+          title: 'Privacy policy',
+          updatedLabel: 'Last updated',
+          updatedDate: 'October 2025',
+          controller: {
+            title: '1. Controller',
+            body: 'Leon E.<br>[Street and house number – pending]<br>Email: leon.erdeg1307@gmail.com<br>Email: infoleonicaura@gmail.com'
+          },
+          purposes: {
+            title: '2. Purposes, data categories, and sources',
+            logs: {
+              title: '2.1 Website access / server logs',
+              body: 'When you visit this website, our hosting provider automatically collects so-called server log files: IP address, date/time of access, accessed URL, referrer URL, browser type/version, and operating system.\nPurpose: technical delivery, stability, and security (e.g., protection against attacks).\nLegal basis: Art. 6(1)(f) GDPR (legitimate interest in a secure, functional website).\nRetention: max. 7 days, then deletion/anonymization unless a security review is required.'
+            },
+            contact: {
+              title: '2.2 Contact (form/email)',
+              body: 'If you contact us, we process the data you provide (e.g., name, email, message content).\nPurpose: processing and responding to your request.\nLegal basis: Art. 6(1)(b) GDPR (pre-contractual/contractual communication) or Art. 6(1)(f) GDPR (general inquiries).\nRetention: inquiries are generally deleted after 12 months; statutory retention obligations apply if the communication is part of business records.'
+            },
+            cookies: {
+              title: '2.3 Cookies, tracking, external content',
+              body: 'This website does not use non-essential cookies or tracking/analytics tools.\nFonts (Google Fonts) are hosted locally; no data is transmitted to Google.\nIf external content (e.g., YouTube, maps, CDNs) is used in the future, we will inform you in advance or update this policy.'
+            }
+          },
+          recipients: {
+            title: '3. Recipients and processing',
+            body: 'We use a hosting service provider to deliver this website:\n[Hosting provider name, country – insert].\nWe have a data processing agreement with the provider in accordance with Art. 28 GDPR.\n\nData is shared with third parties only where legally permitted/required (e.g., authorities in cases of abuse).'
+          },
+          transfers: {
+            title: '4. Transfers to third countries',
+            body: 'No personal data is transferred to third countries outside the EU/EEA. If this becomes necessary in the future, we will inform you in advance and provide appropriate safeguards (e.g., EU Standard Contractual Clauses).'
+          },
+          obligation: {
+            title: '5. Obligation to provide data',
+            body: 'You are not legally required to provide personal data. However, at least your contact details are necessary to process inquiries.'
+          },
+          security: {
+            title: '6. Security (TLS/SSL & TOMs)',
+            body: 'Your data is transmitted in encrypted form (TLS/SSL). We implement appropriate technical and organizational measures to protect your data against loss, manipulation, and unauthorized access, and review them regularly.'
+          },
+          rights: {
+            title: '7. Your rights',
+            body: 'You have the rights to access, rectification, deletion, restriction of processing, data portability, and objection to processing based on Art. 6(1)(e) or (f) GDPR.\nYou also have the right to withdraw any consent at any time (see No. 8).\nTo exercise your rights, contact: infoleonicaura@gmail.com.\nYou also have the right to lodge a complaint with a data protection supervisory authority, especially in the EU member state of your habitual residence, workplace, or the place of the alleged infringement.'
+          },
+          withdrawal: {
+            title: '8. Withdrawal of consent / objection',
+            body: 'Any consent you have given can be withdrawn at any time with effect for the future. The lawfulness of processing prior to withdrawal remains unaffected.\nYou may also object to processing based on legitimate interests (Art. 6(1)(f) GDPR) if reasons arise from your particular situation.'
+          },
+          automated: {
+            title: '9. Automated decisions/profiling',
+            body: 'No automated decision-making, including profiling, takes place.'
+          },
+          updates: {
+            title: '10. Updates to this privacy policy',
+            body: 'We update this policy when required by law or technical changes. The current version is always available here.\nLast updated: October 2025'
+          }
+        },
+        legal: {
+          kicker: 'Legal',
+          title: 'Information pursuant to § 5 TMG / § 18(2) MStV',
+          identity: '<strong>Leon E.</strong><br>[Street and house number]<br>[Postal code] [City]',
+          contact: '<strong>Contact:</strong><br>Phone: +49 176 63005489<br>Email: infoleonicaura@gmail.com (general)<br>Email: leon.erdeg1307@gmail.com (privacy/inquiries)\n\n<strong>Responsible for content under § 18(2) MStV</strong>\nLeon E., [address as above]',
+          disclaimer: {
+            title: 'Disclaimer'
+          },
+          content: {
+            title: 'Liability for content',
+            body: 'The contents of these pages were created with the utmost care. We do not assume any liability for the correctness, completeness, or timeliness of the content. Obligations to remove or block the use of information under general laws remain unaffected.'
+          },
+          links: {
+            title: 'Liability for links',
+            body: 'Our site contains links to external websites of third parties, over whose content we have no control. The respective provider or operator is always responsible for the contents of the linked pages. If we become aware of legal violations, such links will be removed immediately.'
+          },
+          copyright: {
+            title: 'Copyright',
+            body: 'The content and works created by the site operators are subject to German copyright law. Duplication, processing, distribution, or any form of exploitation outside the limits of copyright law require the written consent of the respective author/creator. Downloads and copies of this site are only permitted for private use.'
+          },
+          dispute: {
+            title: 'Consumer dispute resolution (notice)',
+            body: 'We are not obliged or willing to participate in dispute resolution proceedings before a consumer arbitration board.\nEU Commission platform for online dispute resolution (ODR): https://ec.europa.eu/consumers/odr'
+          }
+        },
+        footer: {
+          text: '&copy; 2025 LeonicAURA. All rights reserved. · <a href="#datenschutz">Privacy</a> · <a href="#impressum">Legal</a>'
+        },
+        formStatus: {
+          noEndpoint: 'An error occurred. No form endpoint configured.',
+          sending: 'Your message is being sent…',
+          success: 'Thank you for your message! I will get back to you soon.',
+          errorFallback: 'Please try again later.',
+          errorPrefix: 'Your message could not be sent.'
+        }
+      },
+      de: {
+        meta: {
+          title: 'LeonicAURA – Globale Deutschlern- & Bildungsplattform',
+          description: 'LeonicAURA ist eine globale Bildungs- und Wissensplattform mit personalisiertem Online-Deutschunterricht (A1–C1), klarem Coaching, flexiblen Zeiten und einfachem Kontakt weltweit.',
+          ogTitle: 'LeonicAURA – Globale Deutschlern- & Bildungsplattform',
+          ogDescription: 'Personalisierter Online-Deutschunterricht (A1–C1) mit klarer Struktur, globaler Erreichbarkeit und einfachen Kontaktmöglichkeiten.',
+          twitterTitle: 'LeonicAURA – Globale Deutschlern- & Bildungsplattform',
+          twitterDescription: 'Lerne Deutsch online – mit einer globalen Bildungsplattform für Lernende weltweit.',
+          ogLocale: 'de_DE'
+        },
+        lang: {
+          label: 'Sprache',
+          aria: 'Sprache auswählen'
+        },
+        nav: {
+          home: 'Startseite',
+          about: 'Über mich',
+          testimonials: 'Bewertungen',
+          pricing: 'Preise (Einzelunterricht)',
+          availability: 'Zeiten',
+          book: 'Buchen',
+          process: 'Ablauf',
+          courses: 'Kurse',
+          practice: 'Übungen',
+          faq: 'FAQ',
+          contact: 'Kontakt',
+          privacy: 'Datenschutz',
+          legal: 'Impressum',
+          openMenu: 'Menü öffnen',
+          mobileMenu: 'Mobiles Menü'
+        },
+        hero: {
+          headlineStatic: 'Dein persönlicher',
+          headlineDynamic: ' Deutschcoach',
+          subtitle: 'Lerne Deutsch mit persönlichem Coaching, klarer Struktur und einer globalen Bildungsplattform für Lernende weltweit.',
+          ctaPrimary: 'Probestunde buchen',
+          ctaPrimaryAria: 'Probestunde buchen',
+          ctaSecondary: 'Mehr erfahren',
+          ctaSecondaryAria: 'Mehr erfahren',
+          infoOnline: 'Online via Zoom/Google Meet',
+          infoPayment: 'PayPal oder Überweisung',
+          infoInvoice: 'Rechnung per E‑Mail'
+        },
+        intro: {
+          headlineStatic: 'Deutsch',
+          headlineDynamic: ' das wirklich bleibt',
+          subtitle: 'Personalisierter Online-Unterricht für Lernende weltweit.',
+          ctaPrimary: 'Probestunde für 16 € buchen',
+          ctaPrimaryAria: 'Probestunde für 16 € buchen',
+          ctaSecondary: 'Preise ansehen',
+          ctaSecondaryAria: 'Preise ansehen',
+          infoOnline: 'Online via Zoom/Google Meet',
+          infoPayment: 'PayPal oder Überweisung',
+          infoInvoice: 'Rechnung per E‑Mail'
+        },
+        benefits: {
+          kicker: 'Warum',
+          title: 'Dein Vorteil',
+          lead: 'Entdecke, was LeonicAURA für globale Lernende einzigartig macht.',
+          items: {
+            personal: {
+              title: 'Individuell',
+              desc: 'Deine Ziele stehen im Mittelpunkt – ob Beruf, Alltag oder Prüfung.'
+            },
+            clear: {
+              title: 'Klar & strukturiert',
+              desc: 'Grammatik, Sprechen und Schreiben – verständlich und geordnet vermittelt.'
+            },
+            motivating: {
+              title: 'Motivierend',
+              desc: 'Persönliches Feedback, klare Erklärungen und sichtbarer Fortschritt.'
+            }
+          }
+        },
+        testimonials: {
+          kicker: 'Bewertungen',
+          title: 'Was Lernende sagen',
+          lead: 'Echte Erfahrungen von Lernenden weltweit, die mit LeonicAURA gelernt haben.',
+          stars: '5 von 5 Sternen',
+          items: {
+            marija: {
+              quote: '„Leon hat mir geholfen, mein Deutsch für die B2-Prüfung vorzubereiten. Seine Erklärungen sind klar und er ist immer geduldig. Ich habe die Prüfung beim ersten Versuch bestanden!“',
+              level: 'B2 Schülerin · Serbien'
+            },
+            dragan: {
+              quote: '„Der Unterricht ist flexibel und macht Spaß. Leon passt sich meinem Tempo an und ich fühle mich nie unter Druck. Mein Sprechen hat sich deutlich verbessert!“',
+              level: 'A2 Schüler · Bosnien'
+            },
+            ana: {
+              quote: '„Ich lerne seit 3 Monaten bei Leon und sehe große Fortschritte. Die Materialien sind gut strukturiert und die Hausaufgaben helfen mir, alles zu festigen. Sehr empfehlenswert!“',
+              level: 'B1 Schülerin · Kroatien'
+            },
+            nikola: {
+              quote: '„Ich bereite mich mit Leon auf die C1-Prüfung vor und bin begeistert! Er erklärt komplexe Themen einfach und motiviert mich jeden Tag.“',
+              level: 'C1 Schüler · Serbien'
+            },
+            jelena: {
+              quote: '„Endlich verstehe ich die deutsche Grammatik! Leon erklärt alles Schritt für Schritt und gibt praktische Beispiele. Der Preis ist auch sehr fair.“',
+              level: 'A1 Schülerin · Montenegro'
+            },
+            stefan: {
+              quote: '„Die Online-Stunden sind super organisiert. Leon ist pünktlich, professionell und macht jeden Unterricht interessant. Ich freue mich jede Woche auf die Stunden!“',
+              level: 'B1 Schüler · Nordmazedonien'
+            }
+          }
+        },
+        pricing: {
+          kicker: 'Preise',
+          title: 'Faire Preise für deinen Erfolg',
+          lead: 'Je mehr du lernst, desto günstiger wird der Preis pro Einheit.',
+          note: 'Flexible Termine · Materialien inklusive · Hausaufgaben auf Wunsch · Kurze Zusammenfassung nach jeder Stunde · Gruppenunterricht und Online-Kurse (A1–C1) sind bald verfügbar · Kostenlose Übungen & Texte werden bald veröffentlicht',
+          cards: {
+            trial: {
+              title: 'Probestunde',
+              desc: 'Einmalig zum Kennenlernen.',
+              cta: 'Probestunde buchen',
+              ctaAria: 'Probestunde buchen'
+            },
+            two: {
+              title: 'Ab 2 Stunden',
+              desc: 'Mehr Sprechpraxis und solide Grundlagen.',
+              cta: '2+ Stunden buchen',
+              ctaAria: 'Paket buchen'
+            },
+            five: {
+              title: 'Ab 5 Stunden',
+              desc: 'Kontinuierlicher Fortschritt und nachhaltige Ergebnisse.',
+              cta: '5+ Stunden buchen',
+              ctaAria: 'Paket buchen'
+            },
+            ten: {
+              title: 'Ab 10 Stunden',
+              desc: 'Intensivprogramm für maximale Erfolge.',
+              cta: '10+ Stunden anfragen',
+              ctaAria: 'Paket anfragen'
+            }
+          }
+        },
+        availability: {
+          kicker: 'Wann',
+          title: 'Arbeitszeiten & Verfügbarkeit',
+          lead: 'Ich bin flexibel für dich da – auch spät abends und am Wochenende.',
+          cta: 'Verfügbarkeiten ansehen & buchen',
+          ctaAria: 'Verfügbarkeiten ansehen',
+          cards: {
+            regular: {
+              title: 'Regelmäßige Zeiten',
+              monThu: '<strong>Mo–Do:</strong>  17:00–22:00',
+              fri: '<strong>Fr:</strong>  15:00–22:00',
+              satSun: '<strong>Sa–So:</strong>  06:00–22:00',
+              note: '<strong>Letzter Unterrichtsbeginn:</strong> 22:00 Uhr<br>Doppel- und 3-Stunden-Sessions möglich!'
+            },
+            holidays: {
+              title: 'NRW Schulferien',
+              allDay: '<strong>Ganztägig verfügbar:</strong> 06:00–22:00',
+              point1: 'Intensive Lernwochen möglich',
+              point2: 'Mehr Flexibilität für Langstunden',
+              note: 'Perfekt für Prüfungsvorbereitung oder Intensivkurse!'
+            }
+          }
+        },
+        booking: {
+          kicker: 'Buche',
+          title: 'Deine nächste Stunde',
+          lead: 'Wähle den Weg, der für dich am bequemsten ist – ich melde mich schnellstmöglich bei dir.',
+          whatsapp: {
+            desc: 'Sende mir eine Nachricht mit deinem Wunschtermin und deinem Ziel. Ich bestätige dir den Termin oder schlage Alternativen vor.',
+            cta: 'Über WhatsApp anfragen'
+          },
+          email: {
+            title: 'E‑Mail',
+            desc: 'Teile mir kurz deinen Namen, dein Niveau und deine Wunschzeiten mit. Ich antworte dir mit allen weiteren Schritten.',
+            cta: 'E‑Mail schreiben'
+          },
+          form: {
+            title: 'Kontaktformular',
+            desc: 'Nutze das Formular für strukturierte Anfragen oder wenn du mehr Details teilen möchtest. Ich melde mich per E‑Mail bei dir.',
+            cta: 'Zum Kontaktformular'
+          },
+          note: 'Du bist dir noch unsicher? Starte mit einer Probestunde oder buche ein Paket, um langfristig zu planen – ich helfe dir bei der Auswahl.'
+        },
+        groups: {
+          kicker: 'Gruppenunterricht',
+          title: 'Lerne gemeinsam',
+          lead: 'Für 2–4 Personen zum Preis von 9 €/Person/Stunde. Gemeinsam macht Lernen mehr Spaß und bringt zusätzliche Sprechpraxis.',
+          cta: 'Gruppe anmelden',
+          ctaAria: 'Gruppe anmelden'
+        },
+        process: {
+          kicker: 'Ablauf',
+          title: 'So läuft’s ab',
+          lead: 'In fünf Schritten zu deinem Erfolg.',
+          steps: {
+            request: {
+              title: 'Anfrage/Buchung',
+              desc: 'Kontaktiere mich per WhatsApp oder E‑Mail und erzähle von deinen Zielen.'
+            },
+            confirmation: {
+              title: 'Bestätigung',
+              desc: 'Wir bestätigen den Termin und klären deine Fragen.'
+            },
+            lessons: {
+              title: 'Unterricht',
+              desc: 'Individuelle, interaktive Stunden via Zoom/Meet – zugeschnitten auf dich.'
+            },
+            followup: {
+              title: 'Nachbereitung',
+              desc: 'Materialien, Feedback und optionale Hausaufgaben für nachhaltiges Lernen.'
+            },
+            growth: {
+              title: 'Weiterlernen',
+              desc: 'Wir reflektieren deinen Fortschritt und planen die nächsten Schritte.'
+            }
+          }
+        },
+        about: {
+          kicker: 'Über mich',
+          title: 'Hallo, ich bin Leon',
+          lead: 'Deutschlehrer (A1–C1) für Lernende weltweit.',
+          photoAlt: 'Leon lächelnd',
+          paragraphs: {
+            who: '<strong>Wer ich bin:</strong> Ich bin Leon aus Duisburg – Deutschlehrer, spezialisiert auf eine globale Bildungs- und Wissensplattform.',
+            standFor: '<strong>Wofür ich stehe:</strong>',
+            feels: '<strong>Wie es sich anfühlt:</strong> Praxisnah, freundlich und individuell – du bestimmst das Tempo und ich begleite dich sicher zum Ziel.',
+            proof: '<strong>Mini‑Beweis:</strong> Klare Strukturen und nachvollziehbare Schritte geben dir jederzeit Orientierung.'
+          },
+          bullets: {
+            focus: '<strong>Fokus:</strong> Deine Ziele im Alltag, Beruf oder für Prüfungen.',
+            approach: '<strong>Arbeitsweise:</strong> Klare, strukturierte Vermittlung mit Geduld und Herz.',
+            outcome: '<strong>Ergebnis:</strong> Spürbare Fortschritte und selbstbewusstes Sprechen.'
+          }
+        },
+        services: {
+          kicker: 'Was du bekommst',
+          title: 'Dein Lernpaket',
+          lead: 'Alles, was du brauchst, um erfolgreich Deutsch zu lernen.',
+          items: {
+            sessions: {
+              title: '60‑Minuten‑Einheiten',
+              desc: 'Jede Stunde dauert 60 Minuten – genug Zeit für Übungen, Beispiele und Fragen.'
+            },
+            materials: {
+              title: 'Materialien inklusive',
+              desc: 'Digitale Lernmaterialien, Übungsblätter und Aufzeichnungen helfen dir beim Wiederholen.'
+            },
+            feedback: {
+              title: 'Individuelles Feedback',
+              desc: 'Nach jeder Stunde erhältst du ausführliches Feedback zu Aussprache, Grammatik und Ausdruck.'
+            },
+            homework: {
+              title: 'Optionale Hausaufgaben',
+              desc: 'Auf Wunsch bekommst du Aufgaben zur Vertiefung – freiwillig, aber empfehlenswert.'
+            },
+            recap: {
+              title: 'Kurze Zusammenfassung',
+              desc: 'Nach jeder Stunde fassen wir die wichtigsten Punkte zusammen und planen den nächsten Schritt.'
+            },
+            payment: {
+              title: 'Flexible Bezahlung & Storno',
+              desc: 'Zahlung via PayPal oder Bank. Kostenlose Stornierung bis 24 Stunden vorher.'
+            }
+          }
+        },
+        faq: {
+          kicker: 'FAQ',
+          title: 'Häufige Fragen',
+          lead: 'Hier findest du Antworten auf oft gestellte Fragen.',
+          items: {
+            duration: {
+              question: 'Wie lange dauert eine Unterrichtseinheit?',
+              answer: 'Eine Einheit dauert normalerweise 60 Minuten. Die Dauer kann nach Absprache flexibel angepasst werden.'
+            },
+            payment: {
+              question: 'Wie funktioniert die Bezahlung?',
+              answer: 'Du kannst nach jeder Stunde per PayPal oder Banküberweisung zahlen – ohne Vertragsbindung.'
+            },
+            cancel: {
+              question: 'Was passiert bei kurzfristigen Absagen?',
+              answer: 'Bis 24 Stunden vor dem Termin kannst du kostenlos stornieren oder verschieben. Bei späteren Absagen wird die Stunde berechnet.'
+            },
+            platform: {
+              question: 'Welche Plattform nutzt du für den Unterricht?',
+              answer: 'Ich unterrichte über Google Meet oder Zoom. Du erhältst vor der Stunde einen Link per E‑Mail oder WhatsApp.'
+            },
+            homework: {
+              question: 'Sind Hausaufgaben verpflichtend?',
+              answer: 'Hausaufgaben sind freiwillig, aber sie helfen dir, das Gelernte zu festigen.'
+            },
+            late: {
+              question: 'Kann ich dir auch spät abends schreiben?',
+              answer: 'Ja, absolut! Du kannst mir jederzeit schreiben – auch um 22:00 oder 00:00 Uhr. Ich antworte so schnell wie möglich, und oft bin ich zu dieser Zeit sogar online. Keine Sorge, ich finde späte Nachrichten völlig in Ordnung!'
+            },
+            hours: {
+              question: 'Wie sind deine Arbeitszeiten genau?',
+              answer: 'Montag bis Donnerstag: 17:00–22:00 (letzter Start 22:00), Freitag: 15:00–22:00 (letzter Start 22:00), Samstag und Sonntag: 06:00–22:00. In den NRW-Schulferien bin ich ganztägig von 06:00–22:00 verfügbar.'
+            },
+            multi: {
+              question: 'Gibt es Doppel- oder Dreifachstunden?',
+              answer: 'Ja, auf jeden Fall! Du kannst 2 oder 3 Stunden am Stück buchen, wenn du intensiver lernen möchtest. Das ist besonders bei Prüfungsvorbereitung oder in den Ferien beliebt.'
+            },
+            packages: {
+              question: 'Wie buche ich 5+ Stunden und wie lange sind sie gültig?',
+              answer: 'Du kannst mehrere Einheiten auf einmal buchen (z.B. 5 oder 10 Stunden) und flexibel einlösen. Für 5+ Stunden gilt der Preis von 13 €/h, ab 10 Stunden 10 €/h.'
+            }
+          }
+        },
+        courses: {
+          kicker: 'Kurse',
+          title: 'Deutschkurse A1–C1',
+          lead: 'Wähle dein Sprachniveau und starte los. Unsere Kurse sind modular aufgebaut.',
+          badge: 'Bald verfügbar',
+          levels: {
+            a1: { desc: 'Grundkenntnisse für Anfänger: Begrüßung, Alltag und erste Grammatik.' },
+            a2: { desc: 'Aufbaukurs zur Erweiterung deiner Basis: mehr Wortschatz und Alltagssituationen.' },
+            b1: { desc: 'Für Fortgeschrittene: längere Texte, Gespräche und komplexere Grammatik.' },
+            b2: { desc: 'Vertiefe dein Deutsch: fließende Unterhaltungen und schriftliche Kompetenz.' },
+            c1: { desc: 'Professionelles Niveau: anspruchsvolle Texte verstehen und ausdrücken.' }
+          }
+        },
+        resources: {
+          kicker: 'Kostenlos',
+          title: 'Übungen & Texte',
+          lead: 'Ergänzende Materialien für alle Niveaustufen – bald verfügbar!',
+          badge: 'Bald verfügbar',
+          defaultMessage: 'Bald verfügbar',
+          levels: {
+            a1: { desc: 'Grundlagen & erste Schritte' },
+            a2: { desc: 'Aufbau & Festigung' },
+            b1: { desc: 'Mittelstufe & Praxis' },
+            b2: { desc: 'Vertiefung & Prüfung' },
+            c1: { desc: 'Fortgeschritten & Perfektion' }
+          },
+          messages: {
+            a1: 'A1-Ressourcen kommen bald!',
+            a2: 'A2-Ressourcen kommen bald!',
+            b1: 'B1-Ressourcen kommen bald!',
+            b2: 'B2-Ressourcen kommen bald!',
+            c1: 'C1-Ressourcen kommen bald!'
+          }
+        },
+        contact: {
+          kicker: 'Kontakt',
+          title: 'Schreib mir',
+          lead: 'Hast du Fragen oder möchtest einen Termin vereinbaren? Melde dich gerne!',
+          form: {
+            subject: 'Neue Nachricht über leonicaura.de',
+            nameLabel: 'Name *',
+            namePlaceholder: 'Dein Name',
+            emailLabel: 'E‑Mail *',
+            emailPlaceholder: 'deine@email.de',
+            levelLabel: 'Deutschniveau *',
+            levelPlaceholder: 'Bitte wählen',
+            levelA1: 'A1 – Anfänger',
+            levelA2: 'A2 – Grundlegende Kenntnisse',
+            levelB1: 'B1 – Mittelstufe',
+            levelB2: 'B2 – Fortgeschrittene Mittelstufe',
+            levelC1: 'C1 – Fortgeschrittene Kenntnisse',
+            levelUnsure: 'Weiß nicht / Unsicher',
+            selfLabel: 'Selbsteinschätzung (optional)',
+            selfPlaceholder: 'Wie gut sprichst du bereits Deutsch? Was fällt dir leicht, was schwer?',
+            jobLabel: 'Beruf / Tätigkeit (optional)',
+            jobPlaceholder: 'z.B. Student, Krankenschwester, Ingenieur',
+            hoursLabel: 'Gewünschte Stunden pro Monat (optional)',
+            hoursPlaceholder: 'Bitte wählen',
+            hours1: '1 Stunde',
+            hours2: '2–4 Stunden',
+            hours3: '5–9 Stunden',
+            hours4: '10–15 Stunden',
+            hours5: 'Mehr als 15 Stunden',
+            goalsLabel: 'Was wünschst du dir vom Unterricht? *',
+            goalsPlaceholder: 'Beschreibe deine Ziele und Wünsche. Möchtest du dich auf eine Prüfung vorbereiten? Willst du tief in ein Thema einsteigen? Was ist dir wichtig?',
+            messageLabel: 'Zusätzliche Nachricht (optional)',
+            messagePlaceholder: 'Gibt es noch etwas, das ich wissen sollte?',
+            consent: 'Ich stimme der Verarbeitung meiner Daten gemäß der <a href="#datenschutz">Datenschutzerklärung</a> zu.',
+            submit: 'Nachricht senden'
+          },
+          altTitle: 'Alternative Kontaktmöglichkeiten:',
+          altWhatsApp: '📱 WhatsApp: <a href="https://wa.me/4917663005489" target="_blank">+49 176 63005489</a>',
+          altEmail: '📧 E‑Mail: <a href="mailto:infoleonicaura@gmail.com">infoleonicaura@gmail.com</a>',
+          altInstagram: '📸 Instagram: <a href="https://www.instagram.com/aicreativebitch" target="_blank" rel="noopener">@aicreativebitch</a>'
+        },
+        privacy: {
+          kicker: 'Datenschutz',
+          title: 'Datenschutzerklärung',
+          updatedLabel: 'Stand',
+          updatedDate: 'Oktober 2025',
+          controller: {
+            title: '1. Verantwortlicher',
+            body: 'Leon E.<br>[Straße und Hausnummer – folgt]<br>E‑Mail: leon.erdeg1307@gmail.com<br>E‑Mail: infoleonicaura@gmail.com'
+          },
+          purposes: {
+            title: '2. Zwecke, Kategorien von Daten und Quellen',
+            logs: {
+              title: '2.1 Aufruf der Website / Server-Logs',
+              body: 'Beim Besuch dieser Website werden durch unseren Hosting-Anbieter automatisch sogenannte Server-Logfiles erfasst: IP-Adresse, Datum/Uhrzeit des Zugriffs, aufgerufene URL, Referrer-URL, Browsertyp/-version, Betriebssystem.\nZweck: technische Bereitstellung, Stabilität, Sicherheit (z. B. Abwehr von Angriffen).\nRechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren, funktionsfähigen Website).\nSpeicherdauer: max. 7 Tage, danach Löschung/Anonymisierung, sofern keine sicherheitsrelevante Prüfung erforderlich ist.'
+            },
+            contact: {
+              title: '2.2 Kontaktaufnahme (Formular/E-Mail)',
+              body: 'Wenn Sie uns kontaktieren, verarbeiten wir die von Ihnen mitgeteilten Daten (z. B. Name, E-Mail, Inhalt der Nachricht).\nZweck: Bearbeitung und Beantwortung Ihrer Anfrage.\nRechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche/vertragliche Kommunikation) bzw. Art. 6 Abs. 1 lit. f DSGVO (allgemeine Anfragen).\nSpeicherdauer: Anfragen löschen wir in der Regel nach 12 Monaten; abweichend gelten gesetzliche Aufbewahrungsfristen, wenn die Kommunikation zu geschäftlichen Unterlagen gehört.'
+            },
+            cookies: {
+              title: '2.3 Cookies, Tracking, externe Inhalte',
+              body: 'Auf dieser Website werden keine nicht erforderlichen Cookies und keine Tracking-/Analyse-Tools eingesetzt.\nSchriftarten (Google Fonts) sind lokal eingebunden; hierbei erfolgt keine Datenübermittlung an Google.\nSofern künftig externe Inhalte (z. B. YouTube, Karten, CDNs) eingesetzt werden, informieren wir vorab bzw. aktualisieren diese Erklärung.'
+            }
+          },
+          recipients: {
+            title: '3. Empfänger und Auftragsverarbeitung',
+            body: 'Zur Bereitstellung dieser Website nutzen wir einen Hosting-Dienstleister:\n[Name des Hosters, Sitzland – einsetzen].\nMit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung gemäß Art. 28 DSGVO.\n\nEine Weitergabe an sonstige Dritte erfolgt nur, soweit dies gesetzlich erlaubt/erforderlich ist (z. B. an Behörden bei Missbrauchsaufklärung).'
+          },
+          transfers: {
+            title: '4. Drittlandübermittlungen',
+            body: 'Eine Übermittlung personenbezogener Daten in Drittländer außerhalb der EU/des EWR findet nicht statt. Sollte dies künftig notwendig werden, informieren wir vorab und stellen geeignete Garantien (z. B. EU-Standardvertragsklauseln) sicher.'
+          },
+          obligation: {
+            title: '5. Pflicht zur Bereitstellung',
+            body: 'Sie sind gesetzlich nicht verpflichtet, personenbezogene Daten bereitzustellen. Für die Bearbeitung von Kontaktanfragen sind jedoch mindestens Ihre Kontaktdaten erforderlich.'
+          },
+          security: {
+            title: '6. Sicherheit (TLS/SSL & TOMs)',
+            body: 'Die Übertragung Ihrer Daten erfolgt verschlüsselt (TLS/SSL). Wir treffen angemessene technische und organisatorische Maßnahmen, um Ihre Daten gegen Verlust, Manipulation und unbefugten Zugriff zu schützen und passen diese regelmäßig an.'
+          },
+          rights: {
+            title: '7. Ihre Rechte',
+            body: 'Sie haben die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch gegen Verarbeitungen, die auf Art. 6 Abs. 1 lit. e oder f DSGVO beruhen.\nSie haben ferner das Recht, eine erteilte Einwilligung jederzeit zu widerrufen (siehe Nr. 8).\nZur Ausübung Ihrer Rechte genügt eine Mitteilung an: infoleonicaura@gmail.com.\nSie haben zudem das Recht auf Beschwerde bei einer Datenschutz-Aufsichtsbehörde, insbesondere in dem Mitgliedstaat Ihres gewöhnlichen Aufenthalts, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes.'
+          },
+          withdrawal: {
+            title: '8. Widerruf von Einwilligungen / Widerspruch',
+            body: 'Von Ihnen erteilte Einwilligungen können Sie jederzeit mit Wirkung für die Zukunft widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung bleibt unberührt.\nSie können ferner der Verarbeitung Ihrer Daten aus berechtigtem Interesse (Art. 6 Abs. 1 lit. f DSGVO) widersprechen, sofern Gründe vorliegen, die sich aus Ihrer besonderen Situation ergeben.'
+          },
+          automated: {
+            title: '9. Automatisierte Entscheidungen/Profiling',
+            body: 'Automatisierte Entscheidungsfindung einschließlich Profiling findet nicht statt.'
+          },
+          updates: {
+            title: '10. Aktualisierungen dieser Datenschutzerklärung',
+            body: 'Wir passen diese Erklärung an, wenn dies rechtlich oder technisch erforderlich ist. Die jeweils aktuelle Fassung ist hier abrufbar.\nStand: Oktober 2025'
+          }
+        },
+        legal: {
+          kicker: 'Impressum',
+          title: 'Angaben gemäß § 5 TMG / § 18 Abs. 2 MStV',
+          identity: '<strong>Leon E.</strong><br>[Straße und Hausnummer]<br>[PLZ] [Ort]',
+          contact: '<strong>Kontakt:</strong><br>Telefon: +49 176 63005489<br>E‑Mail: infoleonicaura@gmail.com (allgemein)<br>E‑Mail: leon.erdeg1307@gmail.com (Datenschutz/Anfragen)\n\n<strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</strong>\nLeon E., [Adresse wie oben]',
+          disclaimer: {
+            title: 'Haftungsausschluss'
+          },
+          content: {
+            title: 'Haftung für Inhalte',
+            body: 'Die Inhalte dieser Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir keine Gewähr. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.'
+          },
+          links: {
+            title: 'Haftung für Links',
+            body: 'Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese Inhalte ist stets der jeweilige Anbieter oder Betreiber verantwortlich. Bei Bekanntwerden von Rechtsverletzungen werden derartige Links umgehend entfernt.'
+          },
+          copyright: {
+            title: 'Urheberrecht',
+            body: 'Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors/Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten Gebrauch gestattet.'
+          },
+          dispute: {
+            title: 'Verbraucherstreitbeilegung (Hinweis)',
+            body: 'Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.\nPlattform der EU-Kommission zur Online-Streitbeilegung (OS): https://ec.europa.eu/consumers/odr'
+          }
+        },
+        footer: {
+          text: '&copy; 2025 LeonicAURA. Alle Rechte vorbehalten. · <a href="#datenschutz">Datenschutz</a> · <a href="#impressum">Impressum</a>'
+        },
+        formStatus: {
+          noEndpoint: 'Es ist ein Fehler aufgetreten. Kein Formular-Endpunkt konfiguriert.',
+          sending: 'Deine Nachricht wird gesendet …',
+          success: 'Vielen Dank für deine Nachricht! Ich melde mich bald bei dir.',
+          errorFallback: 'Bitte versuche es später erneut.',
+          errorPrefix: 'Deine Nachricht konnte leider nicht gesendet werden.'
+        }
+      },
+      sr: {
+        meta: {
+          title: 'LeonicAURA – Globalna platforma za nemački i obrazovanje',
+          description: 'LeonicAURA je globalna platforma za obrazovanje i znanje sa personalizovanim online časovima nemačkog (A1–C1), jasnim coachingom, fleksibilnim terminima i lakim kontaktom širom sveta.',
+          ogTitle: 'LeonicAURA – Globalna platforma za nemački i obrazovanje',
+          ogDescription: 'Personalizovani online časovi nemačkog (A1–C1) uz jasnu strukturu, globalnu dostupnost i jednostavan kontakt.',
+          twitterTitle: 'LeonicAURA – Globalna platforma za nemački i obrazovanje',
+          twitterDescription: 'Uči nemački online uz globalnu obrazovnu platformu dostupnu svima.',
+          ogLocale: 'sr_RS'
+        },
+        lang: {
+          label: 'Jezik',
+          aria: 'Izaberi jezik'
+        },
+        nav: {
+          home: 'Početna',
+          about: 'O meni',
+          testimonials: 'Utisci',
+          pricing: 'Cene (1 na 1)',
+          availability: 'Dostupnost',
+          book: 'Zakaži',
+          process: 'Kako funkcioniše',
+          courses: 'Kursevi',
+          practice: 'Vežbe',
+          faq: 'FAQ',
+          contact: 'Kontakt',
+          privacy: 'Privatnost',
+          legal: 'Impresum',
+          openMenu: 'Otvori meni',
+          mobileMenu: 'Mobilni meni'
+        },
+        hero: {
+          headlineStatic: 'Tvoj lični',
+          headlineDynamic: ' nemački trener',
+          subtitle: 'Uči nemački uz lični coaching, jasnu strukturu i globalnu obrazovnu platformu dostupnu svima.',
+          ctaPrimary: 'Zakaži probni čas',
+          ctaPrimaryAria: 'Zakaži probni čas',
+          ctaSecondary: 'Saznaj više',
+          ctaSecondaryAria: 'Saznaj više',
+          infoOnline: 'Online preko Zoom/Google Meet',
+          infoPayment: 'PayPal ili bankovni transfer',
+          infoInvoice: 'Račun putem e‑pošte'
+        },
+        intro: {
+          headlineStatic: 'Nemački',
+          headlineDynamic: ' koji ostaje',
+          subtitle: 'Personalizovani online časovi za učenike širom sveta.',
+          ctaPrimary: 'Zakaži probni čas (16 €)',
+          ctaPrimaryAria: 'Zakaži probni čas (16 €)',
+          ctaSecondary: 'Pogledaj cene',
+          ctaSecondaryAria: 'Pogledaj cene',
+          infoOnline: 'Online preko Zoom/Google Meet',
+          infoPayment: 'PayPal ili bankovni transfer',
+          infoInvoice: 'Račun putem e‑pošte'
+        },
+        benefits: {
+          kicker: 'Zašto',
+          title: 'Tvoja prednost',
+          lead: 'Otkrij šta LeonicAURA čini jedinstvenom za učenike širom sveta.',
+          items: {
+            personal: {
+              title: 'Personalizovano',
+              desc: 'Tvoji ciljevi su u fokusu — posao, svakodnevica ili ispiti.'
+            },
+            clear: {
+              title: 'Jasno i strukturirano',
+              desc: 'Gramatika, govor i pisanje — objašnjeno jednostavno i pregledno.'
+            },
+            motivating: {
+              title: 'Motivišuće',
+              desc: 'Lični feedback, jasna objašnjenja i vidljiv napredak.'
+            }
+          }
+        },
+        testimonials: {
+          kicker: 'Utisci',
+          title: 'Šta učenici kažu',
+          lead: 'Iskustva učenika širom sveta koji su učili uz LeonicAURA.',
+          stars: '5 od 5 zvezdica',
+          items: {
+            marija: {
+              quote: '„Leon mi je pomogao da se pripremim za B2 ispit. Njegova objašnjenja su jasna i uvek je strpljiv. Položila sam iz prvog puta!“',
+              level: 'B2 učenica · Srbija'
+            },
+            dragan: {
+              quote: '„Časovi su fleksibilni i zanimljivi. Leon se prilagođava mom tempu i nikad ne osećam pritisak. Moj govor se mnogo popravio!“',
+              level: 'A2 učenik · Bosna'
+            },
+            ana: {
+              quote: '„Učim kod Leona već 3 meseca i vidim veliki napredak. Materijali su dobro organizovani, a domaći mi pomaže da učvrstim znanje. Preporuka!“',
+              level: 'B1 učenica · Hrvatska'
+            },
+            nikola: {
+              quote: '„Pripremam se za C1 ispit sa Leonom i oduševljen sam! Komplikovane teme objašnjava jednostavno i svakog dana me motiviše.“',
+              level: 'C1 učenik · Srbija'
+            },
+            jelena: {
+              quote: '„Konačno razumem nemačku gramatiku! Leon sve objašnjava korak po korak i daje praktične primere. Cena je takođe veoma fer.“',
+              level: 'A1 učenica · Crna Gora'
+            },
+            stefan: {
+              quote: '„Online časovi su odlično organizovani. Leon je tačan, profesionalan i čini svaki čas zanimljivim. Radujem se svakom času!“',
+              level: 'B1 učenik · Severna Makedonija'
+            }
+          }
+        },
+        pricing: {
+          kicker: 'Cene',
+          title: 'Fer cene za tvoj uspeh',
+          lead: 'Što više učiš, to je cena po času niža.',
+          note: 'Fleksibilni termini · Materijali uključeni · Domaći po želji · Kratak rezime posle svakog časa · Grupni časovi i online kursevi (A1–C1) uskoro · Besplatne vežbe i tekstovi uskoro',
+          cards: {
+            trial: {
+              title: 'Probni čas',
+              desc: 'Jednokratno upoznavanje.',
+              cta: 'Zakaži probni čas',
+              ctaAria: 'Zakaži probni čas'
+            },
+            two: {
+              title: 'Od 2 časa',
+              desc: 'Više govorne prakse i čvrsta osnova.',
+              cta: 'Zakaži 2+ časa',
+              ctaAria: 'Zakaži paket'
+            },
+            five: {
+              title: 'Od 5 časova',
+              desc: 'Kontinuiran napredak i trajni rezultati.',
+              cta: 'Zakaži 5+ časova',
+              ctaAria: 'Zakaži paket'
+            },
+            ten: {
+              title: 'Od 10 časova',
+              desc: 'Intenzivan program za maksimalne rezultate.',
+              cta: 'Zatraži 10+ časova',
+              ctaAria: 'Zatraži paket'
+            }
+          }
+        },
+        availability: {
+          kicker: 'Kada',
+          title: 'Dostupnost i termini',
+          lead: 'Fleksibilan sam – i kasno uveče i vikendom.',
+          cta: 'Pogledaj dostupnost i zakaži',
+          ctaAria: 'Pogledaj dostupnost',
+          cards: {
+            regular: {
+              title: 'Redovni termini',
+              monThu: '<strong>Pon–Čet:</strong>  17:00–22:00',
+              fri: '<strong>Pet:</strong>  15:00–22:00',
+              satSun: '<strong>Sub–Ned:</strong>  06:00–22:00',
+              note: '<strong>Poslednji početak časa:</strong> 22:00<br>Mogući su dvočasovni i tročasovni termini!'
+            },
+            holidays: {
+              title: 'NRW školski raspust',
+              allDay: '<strong>Dostupno celog dana:</strong> 06:00–22:00',
+              point1: 'Moguće intenzivne nedelje',
+              point2: 'Veća fleksibilnost za duže termine',
+              note: 'Idealno za pripremu ispita ili intenzivne kurseve!'
+            }
+          }
+        },
+        booking: {
+          kicker: 'Zakaži',
+          title: 'Sledeći čas',
+          lead: 'Izaberi najlakši način — javim se brzo.',
+          whatsapp: {
+            desc: 'Pošalji mi željeni termin i cilj. Potvrdiću ili predložiti alternative.',
+            cta: 'Pošalji preko WhatsApp‑a'
+          },
+          email: {
+            title: 'E‑pošta',
+            desc: 'Pošalji ime, nivo i željene termine. Javiću ti sledeće korake.',
+            cta: 'Pošalji e‑poštu'
+          },
+          form: {
+            title: 'Kontakt forma',
+            desc: 'Koristi formu za strukturisan upit ili više detalja. Odgovaram e‑poštom.',
+            cta: 'Idi na kontakt formu'
+          },
+          note: 'Nisi siguran? Počni probnim časom ili zakaži paket za dugoročni napredak — pomoći ću ti da izabereš.'
+        },
+        groups: {
+          kicker: 'Grupni časovi',
+          title: 'Uči zajedno',
+          lead: 'Za 2–4 osobe po ceni od 9 €/osoba/sat. Zajedničko učenje je zabavnije i donosi više govorne prakse.',
+          cta: 'Prijavi grupu',
+          ctaAria: 'Prijavi grupu'
+        },
+        process: {
+          kicker: 'Proces',
+          title: 'Kako funkcioniše',
+          lead: 'Pet koraka do tvog uspeha.',
+          steps: {
+            request: {
+              title: 'Upit/Zakazivanje',
+              desc: 'Kontaktiraj me putem WhatsApp‑a ili e‑pošte i reci svoje ciljeve.'
+            },
+            confirmation: {
+              title: 'Potvrda',
+              desc: 'Potvrđujemo termin i odgovaramo na pitanja.'
+            },
+            lessons: {
+              title: 'Časovi',
+              desc: 'Interaktivni časovi preko Zoom/Meet — prilagođeni tebi.'
+            },
+            followup: {
+              title: 'Nakon časa',
+              desc: 'Materijali, feedback i opcioni domaći za trajno učenje.'
+            },
+            growth: {
+              title: 'Dalji napredak',
+              desc: 'Pratimo napredak i planiramo sledeće korake.'
+            }
+          }
+        },
+        about: {
+          kicker: 'O meni',
+          title: 'Zdravo, ja sam Leon',
+          lead: 'Nastavnik nemačkog (A1–C1) za učenike širom sveta.',
+          photoAlt: 'Leon se osmehuje',
+          paragraphs: {
+            who: '<strong>Ko sam:</strong> Ja sam Leon iz Duisburga — nastavnik nemačkog koji gradi globalnu platformu za obrazovanje i znanje.',
+            standFor: '<strong>Za šta se zalažem:</strong>',
+            feels: '<strong>Kako izgleda rad:</strong> Praktično, prijateljski i personalizovano — ti biraš tempo, ja te vodim do cilja.',
+            proof: '<strong>Dokaz:</strong> Jasna struktura i transparentni koraci daju ti sigurnost na svakom koraku.'
+          },
+          bullets: {
+            focus: '<strong>Fokus:</strong> Tvoji ciljevi u svakodnevici, karijeri ili za ispite.',
+            approach: '<strong>Pristup:</strong> Jasno, strukturisano i strpljivo objašnjavanje.',
+            outcome: '<strong>Rezultat:</strong> Vidljiv napredak i samopouzdano govorenje.'
+          }
+        },
+        services: {
+          kicker: 'Šta dobijaš',
+          title: 'Tvoj paket učenja',
+          lead: 'Sve što ti je potrebno da uspešno učiš nemački.',
+          items: {
+            sessions: {
+              title: 'Časovi od 60 minuta',
+              desc: 'Svaki čas traje 60 minuta — dovoljno vremena za vežbe, primere i pitanja.'
+            },
+            materials: {
+              title: 'Materijali uključeni',
+              desc: 'Digitalni materijali, vežbe i beleške pomažu ti da ponoviš gradivo.'
+            },
+            feedback: {
+              title: 'Lični feedback',
+              desc: 'Posle svakog časa dobijaš detaljan feedback o izgovoru, gramatici i izražavanju.'
+            },
+            homework: {
+              title: 'Opcioni domaći',
+              desc: 'Po želji dobijaš zadatke za produbljivanje — opciono, ali preporučeno.'
+            },
+            recap: {
+              title: 'Kratak rezime',
+              desc: 'Posle časa sumiramo najvažnije i planiramo sledeći korak.'
+            },
+            payment: {
+              title: 'Fleksibilno plaćanje i otkaz',
+              desc: 'Plaćanje PayPal‑om ili bankom. Besplatno otkazivanje do 24 sata unapred.'
+            }
+          }
+        },
+        faq: {
+          kicker: 'FAQ',
+          title: 'Najčešća pitanja',
+          lead: 'Odgovori na pitanja koja se često postavljaju.',
+          items: {
+            duration: {
+              question: 'Koliko traje jedan čas?',
+              answer: 'Čas obično traje 60 minuta. Trajanje se može prilagoditi po dogovoru.'
+            },
+            payment: {
+              question: 'Kako funkcioniše plaćanje?',
+              answer: 'Možeš platiti nakon svakog časa putem PayPal‑a ili bankovnog transfera — bez ugovorne obaveze.'
+            },
+            cancel: {
+              question: 'Šta se dešava kod kasnog otkazivanja?',
+              answer: 'Do 24 sata pre termina možeš besplatno otkazati ili pomeriti. Kasnija otkazivanja se naplaćuju.'
+            },
+            platform: {
+              question: 'Koju platformu koristiš za časove?',
+              answer: 'Časove držim preko Google Meet‑a ili Zoom‑a. Link dobijaš pre časa e‑poštom ili WhatsApp‑om.'
+            },
+            homework: {
+              question: 'Da li su domaći zadaci obavezni?',
+              answer: 'Domaći je opcioni, ali pomaže da učvrstiš gradivo.'
+            },
+            late: {
+              question: 'Mogu li da ti pišem kasno uveče?',
+              answer: 'Da! Možeš mi pisati u bilo koje vreme — čak i u 22:00 ili 00:00. Odgovaram što brže mogu i često sam tada online.'
+            },
+            hours: {
+              question: 'Koje su tačno tvoje radno vreme?',
+              answer: 'Ponedeljak–četvrtak: 17:00–22:00 (poslednji početak 22:00), petak: 15:00–22:00 (poslednji početak 22:00), subota i nedelja: 06:00–22:00. Tokom NRW školskog raspusta dostupnost je 06:00–22:00.'
+            },
+            multi: {
+              question: 'Da li nudiš dvočasovne ili tročasovne termine?',
+              answer: 'Da! Možeš rezervisati 2 ili 3 sata u nizu ako želiš intenzivnije učenje. To je posebno popularno za pripremu ispita ili tokom raspusta.'
+            },
+            packages: {
+              question: 'Kako da rezervišem 5+ časova i koliko važe?',
+              answer: 'Možeš rezervisati više časova odjednom (npr. 5 ili 10) i koristiti ih fleksibilno. Za 5+ časova cena je 13 €/h, za 10+ časova 10 €/h.'
+            }
+          }
+        },
+        courses: {
+          kicker: 'Kursevi',
+          title: 'Kursevi nemačkog A1–C1',
+          lead: 'Izaberi nivo i kreni. Naši kursevi su modularni.',
+          badge: 'Uskoro',
+          levels: {
+            a1: { desc: 'Osnove za početnike: pozdravi, svakodnevica i prva gramatika.' },
+            a2: { desc: 'Nadogradnja osnova: više rečnika i svakodnevne situacije.' },
+            b1: { desc: 'Srednji nivo: duži tekstovi, razgovori i složenija gramatika.' },
+            b2: { desc: 'Produbi nemački: tečniji razgovori i pisanje.' },
+            c1: { desc: 'Profesionalni nivo: razumevanje i izražavanje složenih tekstova.' }
+          }
+        },
+        resources: {
+          kicker: 'Besplatno',
+          title: 'Vežbe i tekstovi',
+          lead: 'Dodatni materijali za sve nivoe — uskoro!',
+          badge: 'Uskoro',
+          defaultMessage: 'Uskoro',
+          levels: {
+            a1: { desc: 'Osnove i prvi koraci' },
+            a2: { desc: 'Nadogradnja i učvršćivanje' },
+            b1: { desc: 'Srednji nivo i praksa' },
+            b2: { desc: 'Napredno i priprema ispita' },
+            c1: { desc: 'Napredno i usavršavanje' }
+          },
+          messages: {
+            a1: 'A1 resursi uskoro!',
+            a2: 'A2 resursi uskoro!',
+            b1: 'B1 resursi uskoro!',
+            b2: 'B2 resursi uskoro!',
+            c1: 'C1 resursi uskoro!'
+          }
+        },
+        contact: {
+          kicker: 'Kontakt',
+          title: 'Pošalji poruku',
+          lead: 'Imaš pitanja ili želiš termin? Javi se!',
+          form: {
+            subject: 'Nova poruka preko leonicaura.de',
+            nameLabel: 'Ime *',
+            namePlaceholder: 'Tvoje ime',
+            emailLabel: 'E‑pošta *',
+            emailPlaceholder: 'ti@primer.com',
+            levelLabel: 'Nivo nemačkog *',
+            levelPlaceholder: 'Izaberi',
+            levelA1: 'A1 – Početnik',
+            levelA2: 'A2 – Osnovno znanje',
+            levelB1: 'B1 – Srednji nivo',
+            levelB2: 'B2 – Viši srednji',
+            levelC1: 'C1 – Napredni',
+            levelUnsure: 'Nisam siguran',
+            selfLabel: 'Samoprocena (opciono)',
+            selfPlaceholder: 'Koliko dobro govoriš nemački? Šta ti je lako, a šta teško?',
+            jobLabel: 'Zanimanje (opciono)',
+            jobPlaceholder: 'npr. student, medicinska sestra, inženjer',
+            hoursLabel: 'Željeni broj sati mesečno (opciono)',
+            hoursPlaceholder: 'Izaberi',
+            hours1: '1 čas',
+            hours2: '2–4 časa',
+            hours3: '5–9 časova',
+            hours4: '10–15 časova',
+            hours5: 'Više od 15 časova',
+            goalsLabel: 'Šta želiš od časova? *',
+            goalsPlaceholder: 'Opiši svoje ciljeve. Da li želiš pripremu ispita? Dubinski rad na temi? Šta ti je najvažnije?',
+            messageLabel: 'Dodatna poruka (opciono)',
+            messagePlaceholder: 'Da li postoji još nešto što treba da znam?',
+            consent: 'Slažem se sa obradom mojih podataka u skladu sa <a href="#datenschutz">politikom privatnosti</a>.',
+            submit: 'Pošalji poruku'
+          },
+          altTitle: 'Alternativni načini kontakta:',
+          altWhatsApp: '📱 WhatsApp: <a href="https://wa.me/4917663005489" target="_blank">+49 176 63005489</a>',
+          altEmail: '📧 E‑pošta: <a href="mailto:infoleonicaura@gmail.com">infoleonicaura@gmail.com</a>',
+          altInstagram: '📸 Instagram: <a href="https://www.instagram.com/aicreativebitch" target="_blank" rel="noopener">@aicreativebitch</a>'
+        },
+        privacy: {
+          kicker: 'Privatnost',
+          title: 'Politika privatnosti',
+          updatedLabel: 'Ažurirano',
+          updatedDate: 'Oktobar 2025',
+          controller: {
+            title: '1. Rukovalac',
+            body: 'Leon E.<br>[Ulica i broj – uskoro]<br>E‑pošta: leon.erdeg1307@gmail.com<br>E‑pošta: infoleonicaura@gmail.com'
+          },
+          purposes: {
+            title: '2. Svrhe, kategorije podataka i izvori',
+            logs: {
+              title: '2.1 Poseta sajtu / server logovi',
+              body: 'Prilikom posete sajtu, hosting provajder automatski prikuplja server logove: IP adresa, datum/vreme pristupa, posećena URL adresa, referrer URL, tip/verzija pregledača i operativni sistem.\nSvrha: tehnička dostupnost, stabilnost i bezbednost (npr. zaštita od napada).\nPravni osnov: čl. 6(1)(f) GDPR (legitimni interes za bezbedan i funkcionalan sajt).\nČuvanje: max. 7 dana, zatim brisanje/anonymizacija osim ako je potreban bezbednosni pregled.'
+            },
+            contact: {
+              title: '2.2 Kontakt (forma/e‑pošta)',
+              body: 'Ako nas kontaktirate, obrađujemo podatke koje dostavite (npr. ime, e‑pošta, sadržaj poruke).\nSvrha: obrada i odgovor na vaš upit.\nPravni osnov: čl. 6(1)(b) GDPR (predugovorna/ugovorna komunikacija) ili čl. 6(1)(f) GDPR (opšti upiti).\nČuvanje: upiti se obično brišu nakon 12 meseci; zakonske obaveze čuvanja važe ako je komunikacija deo poslovne dokumentacije.'
+            },
+            cookies: {
+              title: '2.3 Kolačići, praćenje, eksterni sadržaji',
+              body: 'Ovaj sajt ne koristi neobavezne kolačiće niti analitiku/praćenje.\nFontovi (Google Fonts) su hostovani lokalno; podaci se ne šalju Google‑u.\nAko se ubuduće koriste eksterni sadržaji (npr. YouTube, mape, CDN), unapred ćemo obavestiti ili ažurirati politiku.'
+            }
+          },
+          recipients: {
+            title: '3. Primaoci i obrada',
+            body: 'Za pružanje ovog sajta koristimo hosting provajdera:\n[ naziv provajdera, država – uneti].\nSa provajderom imamo ugovor o obradi podataka prema čl. 28 GDPR.\n\nPodaci se prosleđuju trećim stranama samo kada je to zakonski dozvoljeno/obavezno (npr. organima u slučaju zloupotrebe).'
+          },
+          transfers: {
+            title: '4. Prenos u treće zemlje',
+            body: 'Ne vrši se prenos podataka u treće zemlje van EU/EEA. Ako to postane potrebno, unapred ćemo obavestiti i obezbediti odgovarajuće garancije (npr. EU Standardne ugovorne klauzule).'
+          },
+          obligation: {
+            title: '5. Obaveza davanja podataka',
+            body: 'Niste zakonski obavezni da date lične podatke. Međutim, minimalno kontakt podaci su potrebni za obradu upita.'
+          },
+          security: {
+            title: '6. Bezbednost (TLS/SSL & TOMs)',
+            body: 'Prenos podataka je šifrovan (TLS/SSL). Preduzimamo odgovarajuće tehničke i organizacione mere zaštite od gubitka, manipulacije i neovlašćenog pristupa.'
+          },
+          rights: {
+            title: '7. Vaša prava',
+            body: 'Imate pravo na pristup, ispravku, brisanje, ograničenje obrade, prenosivost i prigovor na obradu zasnovanu na čl. 6(1)(e) ili (f) GDPR.\nTakođe imate pravo da povučete saglasnost u bilo kom trenutku (vidi tačku 8).\nZa ostvarivanje prava kontakt: infoleonicaura@gmail.com.\nImate i pravo na pritužbu nadležnom organu za zaštitu podataka.'
+          },
+          withdrawal: {
+            title: '8. Povlačenje saglasnosti / prigovor',
+            body: 'Saglasnost možete povući u bilo kom trenutku sa dejstvom za ubuduće. Zakonitost obrade pre povlačenja ostaje neizmenjena.\nTakođe možete uložiti prigovor na obradu zasnovanu na legitimnom interesu (čl. 6(1)(f) GDPR) ako postoje razlozi koji se odnose na vašu posebnu situaciju.'
+          },
+          automated: {
+            title: '9. Automatizovane odluke/profilisanje',
+            body: 'Ne vrši se automatizovano donošenje odluka, uključujući profilisanje.'
+          },
+          updates: {
+            title: '10. Ažuriranja politike privatnosti',
+            body: 'Politiku ažuriramo kada je to pravno ili tehnički potrebno. Aktuelna verzija je dostupna ovde.\nAžurirano: Oktobar 2025'
+          }
+        },
+        legal: {
+          kicker: 'Impresum',
+          title: 'Podaci prema § 5 TMG / § 18 st. 2 MStV',
+          identity: '<strong>Leon E.</strong><br>[Ulica i broj]<br>[Poštanski broj] [Grad]',
+          contact: '<strong>Kontakt:</strong><br>Telefon: +49 176 63005489<br>E‑pošta: infoleonicaura@gmail.com (opšte)<br>E‑pošta: leon.erdeg1307@gmail.com (privatnost/upiti)\n\n<strong>Odgovoran za sadržaj prema § 18 st. 2 MStV</strong>\nLeon E., [adresa kao gore]',
+          disclaimer: {
+            title: 'Odricanje od odgovornosti'
+          },
+          content: {
+            title: 'Odgovornost za sadržaj',
+            body: 'Sadržaj ovih stranica je pripremljen sa najvećom pažnjom. Ne preuzimamo odgovornost za tačnost, potpunost ili ažurnost sadržaja. Obaveze uklanjanja ili blokiranja korišćenja informacija prema opštim zakonima ostaju neizmenjene.'
+          },
+          links: {
+            title: 'Odgovornost za linkove',
+            body: 'Sajt sadrži linkove ka eksternim sajtovima trećih strana, na čiji sadržaj nemamo uticaj. Za sadržaj je odgovoran odgovarajući provajder ili operator. Ako saznamo za pravne povrede, linkovi će biti uklonjeni.'
+          },
+          copyright: {
+            title: 'Autorsko pravo',
+            body: 'Sadržaji i dela koje je kreirao vlasnik sajta podložni su nemačkom autorskom pravu. Umnožavanje, obrada, distribucija ili bilo kakva upotreba van granica autorskog prava zahteva pisanu saglasnost autora/tvorca. Preuzimanja i kopije su dozvoljene samo za privatnu upotrebu.'
+          },
+          dispute: {
+            title: 'Rešavanje sporova potrošača (napomena)',
+            body: 'Nismo obavezni niti spremni da učestvujemo u postupcima rešavanja sporova pred potrošačkom arbitražom.\nPlatforma Evropske komisije za online rešavanje sporova (ODR): https://ec.europa.eu/consumers/odr'
+          }
+        },
+        footer: {
+          text: '&copy; 2025 LeonicAURA. Sva prava zadržana. · <a href="#datenschutz">Privatnost</a> · <a href="#impressum">Impresum</a>'
+        },
+        formStatus: {
+          noEndpoint: 'Došlo je do greške. Nije podešen endpoint.',
+          sending: 'Poruka se šalje…',
+          success: 'Hvala na poruci! Javiću se uskoro.',
+          errorFallback: 'Molimo pokušaj ponovo kasnije.',
+          errorPrefix: 'Poruka nije poslata.'
+        }
+      }
+    };
+
+    const fallbackLanguage = 'en';
+    let currentLanguage = fallbackLanguage;
+
+    const resolveTranslation = (lang, key) => {
+      const find = (obj) => key.split('.').reduce((acc, part) => (acc && acc[part] !== undefined ? acc[part] : undefined), obj);
+      return find(translations[lang]) ?? find(translations[fallbackLanguage]) ?? '';
+    };
+
+    const applyTranslations = (lang) => {
+      const meta = translations[lang]?.meta || translations[fallbackLanguage].meta;
+      document.title = meta.title;
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) metaDescription.setAttribute('content', meta.description);
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) ogTitle.setAttribute('content', meta.ogTitle);
+      const ogDescription = document.querySelector('meta[property="og:description"]');
+      if (ogDescription) ogDescription.setAttribute('content', meta.ogDescription);
+      const ogLocale = document.querySelector('meta[property="og:locale"]');
+      if (ogLocale) ogLocale.setAttribute('content', meta.ogLocale);
+      const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+      if (twitterTitle) twitterTitle.setAttribute('content', meta.twitterTitle);
+      const twitterDescription = document.querySelector('meta[name="twitter:description"]');
+      if (twitterDescription) twitterDescription.setAttribute('content', meta.twitterDescription);
+
+      document.documentElement.lang = lang === 'sr' ? 'sr-Latn' : lang;
+
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const key = element.getAttribute('data-i18n');
+        element.textContent = resolveTranslation(lang, key);
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach((element) => {
+        const key = element.getAttribute('data-i18n-html');
+        element.innerHTML = resolveTranslation(lang, key);
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        element.setAttribute('placeholder', resolveTranslation(lang, key));
+      });
+
+      document.querySelectorAll('[data-i18n-aria]').forEach((element) => {
+        const key = element.getAttribute('data-i18n-aria');
+        element.setAttribute('aria-label', resolveTranslation(lang, key));
+      });
+
+      document.querySelectorAll('[data-i18n-alt]').forEach((element) => {
+        const key = element.getAttribute('data-i18n-alt');
+        element.setAttribute('alt', resolveTranslation(lang, key));
+      });
+
+      document.querySelectorAll('[data-i18n-value]').forEach((element) => {
+        const key = element.getAttribute('data-i18n-value');
+        element.setAttribute('value', resolveTranslation(lang, key));
+      });
+
+      document.querySelectorAll('[data-i18n-message]').forEach((element) => {
+        const key = element.getAttribute('data-i18n-message');
+        element.setAttribute('data-message', resolveTranslation(lang, key));
+      });
+
+      languageSelectors.forEach((select) => {
+        if (select) select.value = lang;
+      });
+    };
+
+    const setLanguage = (lang) => {
+      if (!translations[lang]) {
+        currentLanguage = fallbackLanguage;
+      } else {
+        currentLanguage = lang;
+      }
+      localStorage.setItem('siteLanguage', currentLanguage);
+      applyTranslations(currentLanguage);
+    };
+
+    const detectLanguage = () => {
+      const saved = localStorage.getItem('siteLanguage');
+      if (saved && translations[saved]) {
+        return saved;
+      }
+      const browserLang = navigator.language?.toLowerCase() || '';
+      if (browserLang.startsWith('de')) return 'de';
+      if (browserLang.startsWith('sr')) return 'sr';
+      return fallbackLanguage;
+    };
+
+    setLanguage(detectLanguage());
+
+    languageSelectors.forEach((select) => {
+      select.addEventListener('change', (event) => {
+        setLanguage(event.target.value);
+      });
+    });
     
     burger.addEventListener('click', () => {
       mobileNav.classList.toggle('open');
@@ -2929,7 +4552,7 @@ Plattform der EU-Kommission zur Online-Streitbeilegung (OS): https://ec.europa.e
 
     document.querySelectorAll('.resource-card[data-message]').forEach(card => {
       card.addEventListener('click', () => {
-        const message = card.getAttribute('data-message') || 'Bald verfügbar';
+        const message = card.getAttribute('data-message') || translations[currentLanguage]?.resources?.defaultMessage || translations[fallbackLanguage].resources.defaultMessage;
         showResourceMessage(message);
       });
     });
@@ -3008,7 +4631,7 @@ Plattform der EU-Kommission zur Online-Streitbeilegung (OS): https://ec.europa.e
       formStatus.innerHTML = '';
 
       if (!endpoint) {
-        formStatus.innerHTML = '<div class="alert error">Es ist ein Fehler aufgetreten. Kein Formular-Endpunkt konfiguriert.</div>';
+        formStatus.innerHTML = `<div class="alert error">${translations[currentLanguage].formStatus.noEndpoint}</div>`;
         return;
       }
       
@@ -3017,10 +4640,10 @@ Plattform der EU-Kommission zur Online-Streitbeilegung (OS): https://ec.europa.e
       
       if (submitButton) {
         submitButton.disabled = true;
-        submitButton.textContent = 'Wird gesendet…';
+        submitButton.textContent = translations[currentLanguage].formStatus.sending;
       }
 
-      formStatus.innerHTML = '<div class="alert info">Deine Nachricht wird gesendet …</div>';
+      formStatus.innerHTML = `<div class="alert info">${translations[currentLanguage].formStatus.sending}</div>`;
 
       try {
         const response = await fetch(endpoint, {
@@ -3032,7 +4655,7 @@ Plattform der EU-Kommission zur Online-Streitbeilegung (OS): https://ec.europa.e
         });
 
         if (!response.ok) {
-          let errorMessage = 'Bitte versuche es später erneut.';
+          let errorMessage = translations[currentLanguage].formStatus.errorFallback;
           try {
             const errorData = await response.json();
             if (errorData && errorData.message) {
@@ -3044,7 +4667,7 @@ Plattform der EU-Kommission zur Online-Streitbeilegung (OS): https://ec.europa.e
           throw new Error(errorMessage);
         }
 
-        let successMessage = 'Vielen Dank für deine Nachricht! Ich melde mich bald bei dir.';
+        let successMessage = translations[currentLanguage].formStatus.success;
         try {
           const responseData = await response.json();
           if (responseData && responseData.message) {
@@ -3057,9 +4680,9 @@ Plattform der EU-Kommission zur Online-Streitbeilegung (OS): https://ec.europa.e
         formStatus.innerHTML = `<div class="alert ok">${successMessage}</div>`;
         contactForm.reset();
       } catch (error) {
-        console.error('Fehler beim Absenden des Kontaktformulars:', error);
-        const errorText = error instanceof Error ? error.message : 'Bitte versuche es später erneut.';
-        formStatus.innerHTML = `<div class="alert error">Deine Nachricht konnte leider nicht gesendet werden. ${errorText}</div>`;
+        console.error('Error sending the contact form:', error);
+        const errorText = error instanceof Error ? error.message : translations[currentLanguage].formStatus.errorFallback;
+        formStatus.innerHTML = `<div class="alert error">${translations[currentLanguage].formStatus.errorPrefix} ${errorText}</div>`;
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
