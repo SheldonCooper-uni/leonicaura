@@ -1203,6 +1203,16 @@
       font-weight: 600;
     }
 
+    .resource-badge-active {
+      background: rgba(var(--color-accent),0.25);
+      color: rgba(var(--color-accent),1);
+    }
+
+    a.resource-card-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
      .resource-message {
       margin-top: 16px;
       text-align: center;
@@ -2721,11 +2731,11 @@ img, video, canvas, svg {
         <h2 class="section-title"><span data-i18n="resources.kicker">Free</span><span data-i18n="resources.title">Exercises & texts</span></h2>
         <p class="lead" data-i18n="resources.lead">Extra resources for all levels — coming soon!</p>
         <div class="resources-grid">
-          <button type="button" class="resource-card" data-message="A1 resources are coming soon!" data-i18n-message="resources.a1.message">
+          <a href="/a1.html" class="resource-card resource-card-link">
             <div class="resource-level">A1</div>
             <div class="resource-desc" data-i18n="resources.a1.desc">Basics & first steps</div>
-            <span class="resource-badge" data-i18n="resources.badge">Coming soon</span>
-          </button>
+            <span class="resource-badge resource-badge-active" data-i18n="resources.a1.badge">Available</span>
+          </a>
           <button type="button" class="resource-card" data-message="A2 resources are coming soon!" data-i18n-message="resources.a2.message">
             <div class="resource-level">A2</div>
             <div class="resource-desc" data-i18n="resources.a2.desc">Build & reinforce</div>
@@ -3113,6 +3123,7 @@ img, video, canvas, svg {
         'resources.title': 'Exercises & texts',
         'resources.lead': 'Extra resources for all levels — coming soon!',
         'resources.a1.desc': 'Basics & first steps',
+        'resources.a1.badge': 'Available',
         'resources.a2.desc': 'Build & reinforce',
         'resources.b1.desc': 'Intermediate & practice',
         'resources.b2.desc': 'Advanced & exam prep',
@@ -3348,6 +3359,7 @@ img, video, canvas, svg {
         'resources.title': 'Übungen & Texte',
         'resources.lead': 'Zusätzliche Ressourcen für alle Levels — bald verfügbar!',
         'resources.a1.desc': 'Grundlagen & erste Schritte',
+        'resources.a1.badge': 'Verfügbar',
         'resources.a2.desc': 'Aufbauen & festigen',
         'resources.b1.desc': 'Mittelstufe & Üben',
         'resources.b2.desc': 'Fortgeschritten & Prüfung',
@@ -3666,6 +3678,7 @@ img, video, canvas, svg {
         'resources.title': 'Vežbe & tekstovi',
         'resources.lead': 'Dodatni resursi za sve nivoe — uskoro!',
         'resources.a1.desc': 'Osnove & prvi koraci',
+        'resources.a1.badge': 'Dostupno',
         'resources.a2.desc': 'Izgradnja & utvrđivanje',
         'resources.b1.desc': 'Srednji nivo & vežba',
         'resources.b2.desc': 'Napredno & priprema ispita',
