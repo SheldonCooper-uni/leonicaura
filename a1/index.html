@@ -205,6 +205,13 @@
       cursor: default;
     }
 
+    .qs-card-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      cursor: pointer;
+    }
+
     .qs-card:hover {
       transform: translateY(-3px);
       border-color: rgba(var(--color-warm),0.2);
@@ -267,6 +274,11 @@
       background: rgba(var(--color-warm),0.14);
       border-color: rgba(var(--color-warm),0.25);
       transform: translateY(-2px);
+    }
+
+    .topic-chip-link:hover {
+      border-color: rgba(var(--color-accent),0.45);
+      color: rgba(var(--color-accent),1);
     }
 
     /* ── Wortschatz Grid ── */
@@ -499,10 +511,10 @@
     <section class="quickstart reveal">
       <h2 class="section-heading">Startklar (A1) – diese Themen brauchst du als Basis</h2>
       <div class="quickstart-grid">
-        <div class="qs-card">
+        <a class="qs-card qs-card-link" href="personalpronomen.html">
           <div class="qs-title">Ich heiße…, ich komme aus…</div>
           <div class="qs-detail">sein + Personalpronomen</div>
-        </div>
+        </a>
         <div class="qs-card">
           <div class="qs-title">W-Fragen stellen und verstehen</div>
           <div class="qs-detail">wie? wo? woher?</div>
@@ -529,7 +541,7 @@
       <div class="topic-group">
         <h3 class="topic-group-title">Startklar</h3>
         <ul class="topic-list">
-          <li><span class="topic-chip">Personalpronomen</span></li>
+          <li><a class="topic-chip topic-chip-link" href="personalpronomen.html">Personalpronomen</a></li>
           <li><span class="topic-chip">sein & haben</span></li>
           <li><span class="topic-chip">Regelmäßige Verben</span></li>
           <li><span class="topic-chip">Ja/Nein-Fragen</span></li>
