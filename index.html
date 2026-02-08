@@ -454,7 +454,7 @@
     }
     
     /* Hero headline */
-    #hero-headline {
+    .hero-headline {
       font-family: 'Lora', serif;
       font-size: clamp(32px, 6vw, 72px);
       font-weight: 700;
@@ -463,18 +463,18 @@
       margin-bottom: 0.3em;
     }
     
-    #hero-headline .static {
+    .hero-headline .static {
       display: inline;
     }
     
-    #hero-headline .dynamic {
+    .hero-headline .dynamic {
       display: inline;
       opacity: 0;
       transform: translateX(-30px);
       transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
     }
     
-    #hero-headline.active .dynamic {
+    .hero-headline.active .dynamic {
       opacity: 1;
       transform: translateX(0);
     }
@@ -2279,7 +2279,7 @@ img, video, canvas, svg {
       
       <div class="explosion-center">
         <h1 class="explosion-title" style="margin-bottom: 20px;">LeonicAURA</h1>
-        <h2 id="hero-headline">
+        <h2 id="hero-headline" class="hero-headline">
           <span class="static" data-i18n="hero.headlineStatic">Your personal</span>
           <span class="dynamic" data-i18n="hero.headlineDynamic"> German coach</span>
         </h2>
@@ -2297,7 +2297,7 @@ img, video, canvas, svg {
     <!-- Intro Section -->
     <section id="intro" class="section reveal" data-title="Introduction">
         <div class="section-inner">
-        <h2 id="hero-headline">
+        <h2 class="hero-headline">
           <span class="static" data-i18n="intro.headlineStatic">German</span><span class="dynamic" data-i18n="intro.headlineDynamic"> that truly sticks</span>
         </h2>
 
