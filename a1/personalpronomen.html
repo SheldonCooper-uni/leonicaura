@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personalpronomen (A1) – Deutsch von Anfang an</title>
+  <meta name="description" content="Personalpronomen einfach erklärt: klare Regeln, viele Beispiele und sehr leichte Aufgaben für A1-Anfänger.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f0f12;
+      --card: #17171c;
+      --text: #f5f5f7;
+      --muted: rgba(255,255,255,0.65);
+      --accent: #f0b567;
+      --accent2: #a8c3ff;
+      --accent3: #ff8cb4;
+      --border: rgba(255,255,255,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(15,15,18,0.9);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+    }
+    header a {
+      color: var(--accent2);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+    h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+    h2 {
+      font-size: 22px;
+      margin: 32px 0 12px;
+      color: var(--accent2);
+    }
+    h3 {
+      font-size: 18px;
+      margin: 22px 0 10px;
+      color: var(--accent3);
+    }
+    p { margin-bottom: 12px; color: var(--muted); }
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 18px 0;
+    }
+    ul, ol { margin-left: 18px; }
+    li { margin: 6px 0; }
+    .rule {
+      background: rgba(240,181,103,0.12);
+      border: 1px solid rgba(240,181,103,0.3);
+      padding: 12px;
+      border-radius: 12px;
+      color: #fce9c6;
+    }
+    .error-box {
+      background: rgba(255,140,180,0.12);
+      border: 1px solid rgba(255,140,180,0.3);
+      padding: 12px;
+      border-radius: 12px;
+    }
+    .solutions {
+      background: rgba(168,195,255,0.1);
+      border: 1px solid rgba(168,195,255,0.3);
+      padding: 16px;
+      border-radius: 12px;
+    }
+    .json-block {
+      background: #0b0b10;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 12px;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      color: #e6e6f0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Personalpronomen (A1)</strong>
+    <a href="/a1/">← Zurück zur A1-Übersicht</a>
+  </header>
+
+  <main>
+    <section>
+      <h1>Personalpronomen – kurz & klar</h1>
+      <p>Du lernst, wie du über dich, andere und Dinge sprichst.</p>
+      <h2>Teilpunkte zu Personalpronomen</h2>
+      <ul>
+        <li>Ich, du, er, sie, es – Grundformen</li>
+        <li>Wir, ihr, sie – Pluralformen</li>
+        <li>Höflichkeitsform: Sie</li>
+        <li>Pronomen im Satz: Subjekt steht vorn</li>
+        <li>Verb-Endungen mit Pronomen</li>
+        <li>Fragen mit Pronomen</li>
+        <li>Verneinung mit nicht</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Mini-Regel</h2>
+      <div class="rule">
+        <p>Personalpronomen ersetzen Namen oder Dinge.</p>
+        <p>Sie stehen oft vor dem Verb.</p>
+        <p>Ich/du/er/sie/es = Singular, wir/ihr/sie = Plural.</p>
+        <p><strong>Merke:</strong> Das Verb passt immer zum Pronomen.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Beispiele</h2>
+      <ul>
+        <li>Ich bin neu hier.</li>
+        <li>Du wohnst in Berlin.</li>
+        <li>Er lernt Deutsch.</li>
+        <li>Sie arbeitet heute.</li>
+        <li>Es regnet draußen.</li>
+        <li>Wir trinken Kaffee.</li>
+        <li>Ihr seid früh da.</li>
+        <li>Sie kommen aus Polen.</li>
+        <li>Ich esse ein Brötchen.</li>
+        <li>Du hast ein Heft.</li>
+        <li>Er liest die Karte.</li>
+        <li>Sie hört Musik.</li>
+        <li>Wir gehen zur Schule.</li>
+        <li>Ihr spielt im Park.</li>
+      </ul>
+    </section>
+
+    <section class="error-box">
+      <h2>Mini-Fehlerbox: typische Fehler</h2>
+      <ol>
+        <li>Falsch: <em>Ich bist müde.</em> → Richtig: <strong>Ich bin müde.</strong></li>
+        <li>Falsch: <em>Du ist hier.</em> → Richtig: <strong>Du bist hier.</strong></li>
+        <li>Falsch: <em>Er kommen aus Wien.</em> → Richtig: <strong>Er kommt aus Wien.</strong></li>
+        <li>Falsch: <em>Wir ist spät.</em> → Richtig: <strong>Wir sind spät.</strong></li>
+        <li>Falsch: <em>Ihr hat Zeit.</em> → Richtig: <strong>Ihr habt Zeit.</strong></li>
+        <li>Falsch: <em>Sie (Plural) geht nach Hause.</em> → Richtig: <strong>Sie gehen nach Hause.</strong></li>
+        <li>Falsch: <em>Es bin kalt.</em> → Richtig: <strong>Es ist kalt.</strong></li>
+        <li>Falsch: <em>Ich haben ein Ticket.</em> → Richtig: <strong>Ich habe ein Ticket.</strong></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Aufgabenblock A (sehr leicht)</h2>
+      <p>Setze das richtige Personalpronomen ein.</p>
+      <ol>
+        <li>___ bin Anna.</li>
+        <li>___ bist du?</li>
+        <li>___ ist Herr Yilmaz.</li>
+        <li>___ ist meine Tasche.</li>
+        <li>___ sind müde.</li>
+        <li>___ seid pünktlich.</li>
+        <li>___ kommen aus Chile.</li>
+        <li>___ gehe zur Arbeit.</li>
+        <li>___ lernst heute.</li>
+        <li>___ kocht gern.</li>
+        <li>___ ist warm.</li>
+        <li>___ spielen Karten.</li>
+        <li>___ seid im Kurs.</li>
+        <li>___ trinken Tee.</li>
+        <li>___ esse eine Banane.</li>
+        <li>___ hast ein Handy.</li>
+        <li>___ schreibt eine Mail.</li>
+        <li>___ hört ein Lied.</li>
+        <li>___ sind Freunde.</li>
+        <li>___ seid neu.</li>
+        <li>___ gehen ins Kino.</li>
+        <li>___ komme aus Syrien.</li>
+        <li>___ wohnst in Hamburg.</li>
+        <li>___ arbeitet im Café.</li>
+        <li>___ ist mein Hund.</li>
+        <li>___ fahren nach Hause.</li>
+        <li>___ seid heute frei.</li>
+        <li>___ kaufen Brot.</li>
+        <li>___ trinke Wasser.</li>
+        <li>___ hast ein Buch.</li>
+        <li>___ spielt Fußball.</li>
+        <li>___ ist kalt draußen.</li>
+        <li>___ sind im Park.</li>
+        <li>___ seid sehr nett.</li>
+        <li>___ kommen morgen.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Aufgabenblock B (leicht-mittel)</h2>
+      <p>Setze das richtige Verb in der passenden Form ein.</p>
+      <ol>
+        <li>Ich ___ (kommen) aus Mexiko.</li>
+        <li>Du ___ (wohnen) in der Nähe.</li>
+        <li>Er ___ (sein) im Kurs.</li>
+        <li>Sie ___ (lernen) Deutsch.</li>
+        <li>Es ___ (regnen) heute.</li>
+        <li>Wir ___ (gehen) zur Bank.</li>
+        <li>Ihr ___ (haben) Zeit.</li>
+        <li>Sie ___ (arbeiten) im Hotel.</li>
+        <li>Ich ___ (trinken) Wasser.</li>
+        <li>Du ___ (lesen) das Schild.</li>
+        <li>Er ___ (hören) Musik.</li>
+        <li>Sie ___ (kochen) Suppe.</li>
+        <li>Es ___ (sein) spät.</li>
+        <li>Wir ___ (fahren) mit dem Bus.</li>
+        <li>Ihr ___ (lernen) schnell.</li>
+        <li>Sie ___ (kommen) gleich.</li>
+        <li>Ich ___ (haben) ein Problem.</li>
+        <li>Du ___ (sein) freundlich.</li>
+        <li>Er ___ (arbeiten) am Montag.</li>
+        <li>Sie ___ (gehen) ins Büro.</li>
+        <li>Es ___ (sein) ruhig hier.</li>
+        <li>Wir ___ (machen) eine Pause.</li>
+        <li>Ihr ___ (trinken) Kaffee.</li>
+        <li>Sie ___ (kaufen) Obst.</li>
+        <li>Ich ___ (schreiben) eine Karte.</li>
+        <li>Du ___ (spielen) gern.</li>
+        <li>Er ___ (haben) ein Auto.</li>
+        <li>Sie ___ (sein) meine Nachbarin.</li>
+        <li>Es ___ (schneien) im Winter.</li>
+        <li>Wir ___ (lernen) zusammen.</li>
+        <li>Ihr ___ (gehen) nach Hause.</li>
+        <li>Sie ___ (sein) spät dran.</li>
+        <li>Ich ___ (finden) den Weg.</li>
+        <li>Du ___ (sehen) die Nummer.</li>
+        <li>Er ___ (sprechen) langsam.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Aufgabenblock C (Mix/Challenge)</h2>
+      <p>Wähle das passende Pronomen und die richtige Verbform.</p>
+      <ol>
+        <li>___ (wir) ___ (sein) heute im Park.</li>
+        <li>___ (ich) ___ (gehen) jetzt.</li>
+        <li>___ (du) ___ (haben) Hunger?</li>
+        <li>___ (sie, Singular) ___ (kommen) aus Prag.</li>
+        <li>___ (er) ___ (lesen) die SMS.</li>
+        <li>___ (ihr) ___ (sein) im Kurs?</li>
+        <li>___ (es) ___ (regnen) stark.</li>
+        <li>___ (sie, Plural) ___ (arbeiten) heute.</li>
+        <li>___ (wir) ___ (trinken) Tee.</li>
+        <li>___ (ich) ___ (sein) neu hier.</li>
+        <li>___ (du) ___ (lesen) das Wort.</li>
+        <li>___ (er) ___ (haben) keinen Stift.</li>
+        <li>___ (sie, Singular) ___ (sein) müde.</li>
+        <li>___ (ihr) ___ (lernen) Deutsch?</li>
+        <li>___ (es) ___ (sein) warm.</li>
+        <li>___ (sie, Plural) ___ (kommen) morgen.</li>
+        <li>___ (wir) ___ (gehen) zur Post.</li>
+        <li>___ (ich) ___ (machen) eine Pause.</li>
+        <li>___ (du) ___ (haben) ein Problem.</li>
+        <li>___ (er) ___ (sein) krank.</li>
+        <li>___ (sie, Singular) ___ (arbeiten) im Laden.</li>
+        <li>___ (ihr) ___ (sein) freundlich.</li>
+        <li>___ (es) ___ (schneien) im Januar.</li>
+        <li>___ (sie, Plural) ___ (spielen) Karten.</li>
+        <li>___ (wir) ___ (haben) Zeit.</li>
+        <li>___ (ich) ___ (trinken) Wasser.</li>
+        <li>___ (du) ___ (kommen) aus Peru.</li>
+        <li>___ (er) ___ (gehen) nach Hause.</li>
+        <li>___ (sie, Singular) ___ (lesen) ein Buch.</li>
+        <li>___ (ihr) ___ (haben) eine Frage.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Mini-Dialoge</h2>
+      <ol>
+        <li>
+          A: Hi! Ich bin Tarek. Und du?
+          <br>B: Ich bin Mia. Ich komme aus Graz.
+          <br><strong>Fragen:</strong> Wer ist Mia? Woher kommt sie?
+        </li>
+        <li>
+          A: Bist du neu im Kurs?
+          <br>B: Ja, ich bin neu. Wir lernen heute Personalpronomen.
+          <br><strong>Fragen:</strong> Ist B neu? Was lernen sie?
+        </li>
+        <li>
+          A: Ist er dein Bruder?
+          <br>B: Nein, er ist mein Freund. Er heißt Omar.
+          <br><strong>Fragen:</strong> Wer ist er? Wie heißt er?
+        </li>
+        <li>
+          A: Habt ihr Zeit für Kaffee?
+          <br>B: Ja, wir haben Zeit. Wir trinken gern Latte.
+          <br><strong>Fragen:</strong> Haben sie Zeit? Was trinken sie gern?
+        </li>
+        <li>
+          A: Ist sie deine Lehrerin?
+          <br>B: Ja, sie ist unsere Lehrerin. Sie spricht langsam.
+          <br><strong>Fragen:</strong> Wer ist sie? Wie spricht sie?
+        </li>
+        <li>
+          A: Wo seid ihr?
+          <br>B: Wir sind im Park. Es ist sonnig.
+          <br><strong>Fragen:</strong> Wo sind sie? Wie ist das Wetter?
+        </li>
+        <li>
+          A: Bist du müde?
+          <br>B: Nein, ich bin wach. Ich trinke Wasser.
+          <br><strong>Fragen:</strong> Ist B müde? Was trinkt B?
+        </li>
+        <li>
+          A: Sind Sie Frau Roth?
+          <br>B: Ja, ich bin Frau Roth. Ich arbeite hier.
+          <br><strong>Fragen:</strong> Wie heißt sie? Wo arbeitet sie?
+        </li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Mini-Text (90–120 Wörter)</h2>
+      <p><strong>Text 1:</strong> Heute ist mein erster Tag im Deutschkurs. Ich bin nervös, aber freundlich. Neben mir sitzt Lina. Sie kommt aus Italien und spricht leise. Wir lernen die Personalpronomen und üben kurze Sätze. Der Lehrer heißt Ben. Er erklärt langsam und lächelt viel. Nach der Pause trinken wir Wasser und schreiben drei Sätze. Am Ende sagt er: „Ihr seid super.“ Ich gehe nach Hause und bin froh. Morgen komme ich wieder.</p>
+      <h3>Aufgaben zum Text</h3>
+      <ol>
+        <li>Lücke: Ich bin ___ (nervös / ruhig).</li>
+        <li>Lücke: Lina kommt aus ___.</li>
+        <li>Richtig/Falsch: Der Lehrer heißt Ben.</li>
+        <li>Richtig/Falsch: Sie lernen Zahlen.</li>
+        <li>Frage: Wer sitzt neben mir?</li>
+        <li>Frage: Wie erklärt der Lehrer?</li>
+        <li>Lücke: Nach der Pause ___ wir Wasser.</li>
+        <li>Lücke: Am Ende sagt er: „Ihr seid ___.“</li>
+        <li>Frage: Wohin gehe ich am Ende?</li>
+        <li>Richtig/Falsch: Ich bin am Ende traurig.</li>
+        <li>Frage: Was schreiben wir?</li>
+        <li>Lücke: Morgen ___ ich wieder.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Sprechtraining</h2>
+      <p>Sprich die Sätze laut nach.</p>
+      <ol>
+        <li>Ich bin heute hier.</li>
+        <li>Du bist sehr freundlich.</li>
+        <li>Er ist mein Nachbar.</li>
+        <li>Sie ist meine Kollegin.</li>
+        <li>Es ist warm.</li>
+        <li>Wir sind im Kurs.</li>
+        <li>Ihr seid pünktlich.</li>
+        <li>Sie sind sehr nett.</li>
+        <li>Ich habe Zeit.</li>
+        <li>Du hast einen Stift.</li>
+        <li>Er hat ein Auto.</li>
+        <li>Sie hat eine Tasche.</li>
+        <li>Wir haben eine Frage.</li>
+        <li>Ihr habt Hunger.</li>
+        <li>Sie haben einen Termin.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Abschluss: Mini-Check</h2>
+      <ol>
+        <li>Wie heißt das Pronomen für „Anna und ich“?</li>
+        <li>Wie heißt das Pronomen für „du und Tom“?</li>
+        <li>Wie heißt das Pronomen für „der Tisch“?</li>
+        <li>Wie heißt das Pronomen für „Frau Klein“?</li>
+        <li>Wie heißt das Pronomen für „Herr Klein“?</li>
+        <li>Welche Form ist höflich: du oder Sie?</li>
+        <li>Welches Pronomen passt zu „wir gehen“?</li>
+        <li>Welches Pronomen passt zu „ihr habt“?</li>
+        <li>Was ist richtig: „Ich bin“ oder „Ich bist“?</li>
+        <li>Was ist richtig: „Er kommt“ oder „Er kommen“?</li>
+      </ol>
+      <p><strong>Wenn du das kannst, bist du bereit für einfache Dialoge im Alltag.</strong></p>
+    </section>
+
+    <section>
+      <h2>Zusätzliche Aufgaben (neue Inhalte)</h2>
+
+      <h3>1) 40 neue Lückensätze</h3>
+      <ol>
+        <li>___ bin im Supermarkt.</li>
+        <li>___ bist heute früh.</li>
+        <li>___ ist mein Bruder.</li>
+        <li>___ ist die Uhr.</li>
+        <li>___ sind im Unterricht.</li>
+        <li>___ seid sehr leise.</li>
+        <li>___ gehen jetzt.</li>
+        <li>___ lerne Deutsch.</li>
+        <li>___ lernst auch Deutsch.</li>
+        <li>___ liest die Zeitung.</li>
+        <li>___ hört das Radio.</li>
+        <li>___ ist kalt.</li>
+        <li>___ spielen im Hof.</li>
+        <li>___ seid in der Küche.</li>
+        <li>___ kommen aus Indien.</li>
+        <li>___ esse Reis.</li>
+        <li>___ hast einen Plan.</li>
+        <li>___ hat eine Katze.</li>
+        <li>___ hat zwei Kinder.</li>
+        <li>___ haben einen Termin.</li>
+        <li>___ seid im Bus.</li>
+        <li>___ gehen in die Stadt.</li>
+        <li>___ trinke Tee.</li>
+        <li>___ trinkst Kaffee.</li>
+        <li>___ kocht heute.</li>
+        <li>___ backt Brot.</li>
+        <li>___ ist leise hier.</li>
+        <li>___ sind im Museum.</li>
+        <li>___ seid sehr nett.</li>
+        <li>___ fahren morgen.</li>
+        <li>___ komme zu spät.</li>
+        <li>___ wohnst im Zentrum.</li>
+        <li>___ arbeitet im Büro.</li>
+        <li>___ ist mein Zimmer.</li>
+        <li>___ sind im Park.</li>
+        <li>___ seid am Fenster.</li>
+        <li>___ kaufen Gemüse.</li>
+        <li>___ sehe das Schild.</li>
+        <li>___ sieht den Bus.</li>
+        <li>___ sehen den Zug.</li>
+      </ol>
+
+      <h3>2) 25 Umformungen</h3>
+      <ol>
+        <li>Du bist müde. → Frage</li>
+        <li>Ist er im Kurs? → Aussage</li>
+        <li>Wir sind hier. → Negativ</li>
+        <li>Sie kommen heute. → Frage</li>
+        <li>Bist du aus Spanien? → Aussage</li>
+        <li>Ich habe Zeit. → Negativ</li>
+        <li>Ihr seid im Park. → Frage</li>
+        <li>Ist sie Lehrerin? → Aussage</li>
+        <li>Er hat ein Auto. → Frage</li>
+        <li>Wir trinken Tee. → Negativ</li>
+        <li>Du gehst nach Hause. → Frage</li>
+        <li>Ist es warm? → Aussage</li>
+        <li>Sie (Plural) lernen Deutsch. → Frage</li>
+        <li>Ich komme aus Peru. → Frage</li>
+        <li>Hast du einen Stift? → Aussage</li>
+        <li>Wir haben eine Pause. → Frage</li>
+        <li>Sie (Singular) ist pünktlich. → Negativ</li>
+        <li>Ihr habt Hunger. → Frage</li>
+        <li>Er ist freundlich. → Negativ</li>
+        <li>Sie (Plural) sind laut. → Frage</li>
+        <li>Du bist im Büro. → Negativ</li>
+        <li>Ist er müde? → Aussage</li>
+        <li>Wir arbeiten heute. → Frage</li>
+        <li>Sie (Singular) geht nach Hause. → Frage</li>
+        <li>Ich bin neu. → Frage</li>
+      </ol>
+
+      <h3>3) 20 Zuordnungsaufgaben (Frage ↔ Antwort)</h3>
+      <ol>
+        <li>Woher kommst du? ↔ A) Ich komme aus Sofia.</li>
+        <li>Wie heißt er? ↔ B) Er heißt Jonas.</li>
+        <li>Seid ihr neu? ↔ C) Ja, wir sind neu.</li>
+        <li>Bist du im Kurs? ↔ D) Ja, ich bin im Kurs.</li>
+        <li>Ist sie deine Lehrerin? ↔ E) Ja, sie ist meine Lehrerin.</li>
+        <li>Habt ihr Zeit? ↔ F) Nein, wir haben keine Zeit.</li>
+        <li>Wo bist du? ↔ G) Ich bin in der Bibliothek.</li>
+        <li>Ist es kalt? ↔ H) Ja, es ist kalt.</li>
+        <li>Kommst du heute? ↔ I) Ja, ich komme heute.</li>
+        <li>Wer seid ihr? ↔ J) Wir sind die neuen Schüler.</li>
+        <li>Ist er dein Bruder? ↔ K) Nein, er ist mein Freund.</li>
+        <li>Habt ihr einen Stift? ↔ L) Ja, wir haben einen Stift.</li>
+        <li>Bist du müde? ↔ M) Nein, ich bin wach.</li>
+        <li>Arbeitet sie hier? ↔ N) Ja, sie arbeitet hier.</li>
+        <li>Sind Sie Frau Park? ↔ O) Ja, ich bin Frau Park.</li>
+        <li>Wie heißt du? ↔ P) Ich heiße Sara.</li>
+        <li>Sind sie im Park? ↔ Q) Ja, sie sind im Park.</li>
+        <li>Habt ihr Hunger? ↔ R) Ja, wir haben Hunger.</li>
+        <li>Ist er freundlich? ↔ S) Ja, er ist freundlich.</li>
+        <li>Seid ihr in der Stadt? ↔ T) Ja, wir sind in der Stadt.</li>
+      </ol>
+
+      <h3>4) 15 Fehler finden</h3>
+      <ol>
+        <li>Ich bist im Kurs.</li>
+        <li>Du ist sehr nett.</li>
+        <li>Er haben eine Tasche.</li>
+        <li>Wir ist spät.</li>
+        <li>Ihr hat Hunger.</li>
+        <li>Sie (Plural) geht nach Hause.</li>
+        <li>Es bin warm.</li>
+        <li>Ich habe ein Stift.</li>
+        <li>Du hast eine Auto.</li>
+        <li>Er gehen jetzt.</li>
+        <li>Sie (Singular) seid müde.</li>
+        <li>Wir geht zur Schule.</li>
+        <li>Ihr sind hier.</li>
+        <li>Sie (Plural) ist freundlich.</li>
+        <li>Es sind kalt.</li>
+      </ol>
+
+      <h3>5) 10 Mini-Situationen (je 3 Sätze)</h3>
+      <ol>
+        <li><strong>Im Café:</strong> Ich bin neu hier. Du bist schnell. Wir trinken Tee.</li>
+        <li><strong>Im Kurs:</strong> Sie ist die Lehrerin. Wir sind ruhig. Ihr schreibt heute.</li>
+        <li><strong>Am Bahnhof:</strong> Ich bin am Gleis. Du hast ein Ticket. Wir warten.</li>
+        <li><strong>Im Park:</strong> Es ist sonnig. Wir spielen. Ihr seid fröhlich.</li>
+        <li><strong>Zu Hause:</strong> Ich bin müde. Du kochst Suppe. Er hört Musik.</li>
+        <li><strong>Im Büro:</strong> Sie arbeitet am Computer. Wir sind pünktlich. Ihr habt Fragen.</li>
+        <li><strong>Im Supermarkt:</strong> Ich kaufe Brot. Du hast eine Liste. Wir zahlen jetzt.</li>
+        <li><strong>Beim Arzt:</strong> Ich bin krank. Du bist freundlich. Sie erklärt langsam.</li>
+        <li><strong>In der Schule:</strong> Er ist der Lehrer. Wir lernen. Ihr seid leise.</li>
+        <li><strong>Im Bus:</strong> Es ist voll. Wir stehen. Ihr seid hinten.</li>
+      </ol>
+
+      <h3>6) Zweiter Mini-Text (80–110 Wörter)</h3>
+      <p><strong>Text 2:</strong> Am Samstag treffe ich meine Nachbarin Eva. Sie ist freundlich und bringt Kuchen. Wir sitzen im Hof und trinken Saft. Ihr Sohn Tom kommt auch. Er spielt mit einem Ball und lacht laut. Ich erzähle von meinem Kurs. Eva sagt: „Du lernst schnell.“ Wir bleiben eine Stunde und gehen dann nach Hause. Es ist ein schöner Tag.</p>
+      <h3>Aufgaben zum zweiten Text (10)</h3>
+      <ol>
+        <li>Richtig/Falsch: Eva bringt Kuchen.</li>
+        <li>Lücke: Wir trinken ___.</li>
+        <li>Frage: Wer kommt auch?</li>
+        <li>Richtig/Falsch: Tom ist leise.</li>
+        <li>Lücke: Ich erzähle von meinem ___.</li>
+        <li>Frage: Was sagt Eva?</li>
+        <li>Richtig/Falsch: Wir bleiben zwei Stunden.</li>
+        <li>Lücke: Es ist ein ___ Tag.</li>
+        <li>Frage: Wo sitzen wir?</li>
+        <li>Richtig/Falsch: Wir gehen dann nach Hause.</li>
+      </ol>
+
+      <h3>7) Startklar-Kacheln: Teaser (je 1 Satz)</h3>
+      <ul>
+        <li><strong>Personalpronomen:</strong> Lern schnell „ich, du, er“ und sprich sicher.</li>
+        <li><strong>sein &amp; haben:</strong> Zwei kleine Verben, große Wirkung im Alltag.</li>
+        <li><strong>regelmäßige Verben:</strong> Klare Muster, die du sofort nutzen kannst.</li>
+        <li><strong>Ja/Nein-Fragen:</strong> Frag kurz und versteh die Antwort sofort.</li>
+        <li><strong>W-Fragen:</strong> Wer? Wo? Wie? So findest du Infos.</li>
+      </ul>
+    </section>
+
+    <section class="solutions">
+      <h2>Lösungen</h2>
+
+      <h3>Aufgabenblock A</h3>
+      <ol>
+        <li>Ich</li>
+        <li>Du</li>
+        <li>Er</li>
+        <li>Sie</li>
+        <li>Wir</li>
+        <li>Ihr</li>
+        <li>Sie (Plural)</li>
+        <li>Ich</li>
+        <li>Du</li>
+        <li>Er</li>
+        <li>Es</li>
+        <li>Wir</li>
+        <li>Ihr</li>
+        <li>Sie (Plural)</li>
+        <li>Ich</li>
+        <li>Du</li>
+        <li>Er</li>
+        <li>Sie (Singular)</li>
+        <li>Wir</li>
+        <li>Ihr</li>
+        <li>Sie (Plural)</li>
+        <li>Ich</li>
+        <li>Du</li>
+        <li>Sie (Singular)</li>
+        <li>Er</li>
+        <li>Wir</li>
+        <li>Ihr</li>
+        <li>Sie (Plural)</li>
+        <li>Ich</li>
+        <li>Du</li>
+        <li>Er</li>
+        <li>Es</li>
+        <li>Wir</li>
+        <li>Ihr</li>
+        <li>Sie (Plural)</li>
+      </ol>
+
+      <h3>Aufgabenblock B</h3>
+      <ol>
+        <li>komme</li>
+        <li>wohnst</li>
+        <li>ist</li>
+        <li>lernt</li>
+        <li>regnet</li>
+        <li>gehen</li>
+        <li>habt</li>
+        <li>arbeiten</li>
+        <li>trinke</li>
+        <li>liest</li>
+        <li>hört</li>
+        <li>kocht</li>
+        <li>ist</li>
+        <li>fahren</li>
+        <li>lernt</li>
+        <li>kommen</li>
+        <li>habe</li>
+        <li>bist</li>
+        <li>arbeitet</li>
+        <li>geht</li>
+        <li>ist</li>
+        <li>machen</li>
+        <li>trinkt</li>
+        <li>kaufen</li>
+        <li>schreibe</li>
+        <li>spielst</li>
+        <li>hat</li>
+        <li>ist</li>
+        <li>schneit</li>
+        <li>lernen</li>
+        <li>geht</li>
+        <li>sind</li>
+        <li>finde</li>
+        <li>siehst</li>
+        <li>spricht</li>
+      </ol>
+
+      <h3>Aufgabenblock C</h3>
+      <ol>
+        <li>Wir sind</li>
+        <li>Ich gehe</li>
+        <li>Du hast</li>
+        <li>Sie kommt</li>
+        <li>Er liest</li>
+        <li>Ihr seid</li>
+        <li>Es regnet</li>
+        <li>Sie arbeiten</li>
+        <li>Wir trinken</li>
+        <li>Ich bin</li>
+        <li>Du liest</li>
+        <li>Er hat</li>
+        <li>Sie ist</li>
+        <li>Ihr lernt</li>
+        <li>Es ist</li>
+        <li>Sie kommen</li>
+        <li>Wir gehen</li>
+        <li>Ich mache</li>
+        <li>Du hast</li>
+        <li>Er ist</li>
+        <li>Sie arbeitet</li>
+        <li>Ihr seid</li>
+        <li>Es schneit</li>
+        <li>Sie spielen</li>
+        <li>Wir haben</li>
+        <li>Ich trinke</li>
+        <li>Du kommst</li>
+        <li>Er geht</li>
+        <li>Sie liest</li>
+        <li>Ihr habt</li>
+      </ol>
+
+      <h3>Mini-Text 1</h3>
+      <ol>
+        <li>nervös</li>
+        <li>Italien</li>
+        <li>Richtig</li>
+        <li>Falsch</li>
+        <li>Lina</li>
+        <li>Langsam</li>
+        <li>trinken</li>
+        <li>super</li>
+        <li>nach Hause</li>
+        <li>Falsch</li>
+        <li>drei Sätze</li>
+        <li>komme</li>
+      </ol>
+
+      <h3>Zusätzliche Aufgaben – Lückensätze (40)</h3>
+      <ol>
+        <li>Ich</li>
+        <li>Du</li>
+        <li>Er</li>
+        <li>Sie</li>
+        <li>Wir</li>
+        <li>Ihr</li>
+        <li>Sie (Plural)</li>
+        <li>Ich</li>
+        <li>Du</li>
+        <li>Er</li>
+        <li>Sie (Singular)</li>
+        <li>Es</li>
+        <li>Wir</li>
+        <li>Ihr</li>
+        <li>Sie (Plural)</li>
+        <li>Ich</li>
+        <li>Du</li>
+        <li>Er</li>
+        <li>Sie (Singular)</li>
+        <li>Wir</li>
+        <li>Ihr</li>
+        <li>Sie (Plural)</li>
+        <li>Ich</li>
+        <li>Du</li>
+        <li>Er</li>
+        <li>Sie (Singular)</li>
+        <li>Es</li>
+        <li>Wir</li>
+        <li>Ihr</li>
+        <li>Sie (Plural)</li>
+        <li>Ich</li>
+        <li>Du</li>
+        <li>Er</li>
+        <li>Es</li>
+        <li>Wir</li>
+        <li>Ihr</li>
+        <li>Sie (Plural)</li>
+        <li>Ich</li>
+        <li>Er</li>
+        <li>Sie (Plural)</li>
+      </ol>
+
+      <h3>Zusätzliche Aufgaben – Umformungen (25)</h3>
+      <ol>
+        <li>Bist du müde?</li>
+        <li>Er ist im Kurs.</li>
+        <li>Wir sind nicht hier.</li>
+        <li>Kommen sie heute?</li>
+        <li>Du bist aus Spanien.</li>
+        <li>Ich habe keine Zeit.</li>
+        <li>Seid ihr im Park?</li>
+        <li>Sie ist Lehrerin.</li>
+        <li>Hat er ein Auto?</li>
+        <li>Wir trinken keinen Tee.</li>
+        <li>Gehst du nach Hause?</li>
+        <li>Es ist warm.</li>
+        <li>Lernen sie Deutsch?</li>
+        <li>Komme ich aus Peru?</li>
+        <li>Du hast einen Stift.</li>
+        <li>Haben wir eine Pause?</li>
+        <li>Sie ist nicht pünktlich.</li>
+        <li>Habt ihr Hunger?</li>
+        <li>Er ist nicht freundlich.</li>
+        <li>Sind sie laut?</li>
+        <li>Du bist nicht im Büro.</li>
+        <li>Er ist müde.</li>
+        <li>Arbeiten wir heute?</li>
+        <li>Geht sie nach Hause?</li>
+        <li>Bin ich neu?</li>
+      </ol>
+
+      <h3>Zusätzliche Aufgaben – Zuordnung</h3>
+      <p>1-A, 2-B, 3-C, 4-D, 5-E, 6-F, 7-G, 8-H, 9-I, 10-J, 11-K, 12-L, 13-M, 14-N, 15-O, 16-P, 17-Q, 18-R, 19-S, 20-T.</p>
+
+      <h3>Zusätzliche Aufgaben – Fehler finden (15)</h3>
+      <ol>
+        <li>Ich bin im Kurs.</li>
+        <li>Du bist sehr nett.</li>
+        <li>Er hat eine Tasche.</li>
+        <li>Wir sind spät.</li>
+        <li>Ihr habt Hunger.</li>
+        <li>Sie (Plural) gehen nach Hause.</li>
+        <li>Es ist warm.</li>
+        <li>Ich habe einen Stift.</li>
+        <li>Du hast ein Auto.</li>
+        <li>Er geht jetzt.</li>
+        <li>Sie (Singular) ist müde.</li>
+        <li>Wir gehen zur Schule.</li>
+        <li>Ihr seid hier.</li>
+        <li>Sie (Plural) sind freundlich.</li>
+        <li>Es ist kalt.</li>
+      </ol>
+
+      <h3>Zusätzliche Aufgaben – Mini-Situationen</h3>
+      <p>Die Sätze sind korrekt. (Keine extra Lösungen nötig.)</p>
+
+      <h3>Mini-Text 2</h3>
+      <ol>
+        <li>Richtig</li>
+        <li>Saft</li>
+        <li>Tom</li>
+        <li>Falsch</li>
+        <li>Kurs</li>
+        <li>„Du lernst schnell.“</li>
+        <li>Falsch</li>
+        <li>schöner</li>
+        <li>im Hof</li>
+        <li>Richtig</li>
+      </ol>
+
+      <h3>Mini-Check</h3>
+      <ol>
+        <li>wir</li>
+        <li>ihr</li>
+        <li>es</li>
+        <li>sie</li>
+        <li>er</li>
+        <li>Sie</li>
+        <li>wir</li>
+        <li>ihr</li>
+        <li>Ich bin</li>
+        <li>Er kommt</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Hover-Wörter (JSON)</h2>
+      <div class="json-block">
+<pre>{
+  "hover_woerter": [
+    {"surface": "Ich", "lemma": "ich", "wortart": "Pronomen", "artikel": "", "plural": "", "uebersetzung_sr": "ja", "uebersetzung_en": "I", "mini_notiz": "1. Person Singular"},
+    {"surface": "Du", "lemma": "du", "wortart": "Pronomen", "artikel": "", "plural": "", "uebersetzung_sr": "ti", "uebersetzung_en": "you (sg)", "mini_notiz": "2. Person Singular"},
+    {"surface": "Er", "lemma": "er", "wortart": "Pronomen", "artikel": "", "plural": "", "uebersetzung_sr": "on", "uebersetzung_en": "he", "mini_notiz": "3. Person maskulin"},
+    {"surface": "Sie", "lemma": "sie", "wortart": "Pronomen", "artikel": "", "plural": "", "uebersetzung_sr": "ona / oni", "uebersetzung_en": "she/they", "mini_notiz": "Singular oder Plural"},
+    {"surface": "Es", "lemma": "es", "wortart": "Pronomen", "artikel": "", "plural": "", "uebersetzung_sr": "ono", "uebersetzung_en": "it", "mini_notiz": "3. Person neutral"},
+    {"surface": "Wir", "lemma": "wir", "wortart": "Pronomen", "artikel": "", "plural": "", "uebersetzung_sr": "mi", "uebersetzung_en": "we", "mini_notiz": "1. Person Plural"},
+    {"surface": "Ihr", "lemma": "ihr", "wortart": "Pronomen", "artikel": "", "plural": "", "uebersetzung_sr": "vi", "uebersetzung_en": "you (pl)", "mini_notiz": "2. Person Plural"},
+    {"surface": "Sie", "lemma": "Sie", "wortart": "Pronomen", "artikel": "", "plural": "", "uebersetzung_sr": "Vi", "uebersetzung_en": "you (formal)", "mini_notiz": "Höflichkeitsform"},
+    {"surface": "Kurs", "lemma": "Kurs", "wortart": "Nomen", "artikel": "der", "plural": "Kurse", "uebersetzung_sr": "kurs", "uebersetzung_en": "course", "mini_notiz": "der Kurs"},
+    {"surface": "Lehrer", "lemma": "Lehrer", "wortart": "Nomen", "artikel": "der", "plural": "Lehrer", "uebersetzung_sr": "nastavnik", "uebersetzung_en": "teacher", "mini_notiz": "männlich"},
+    {"surface": "Lehrerin", "lemma": "Lehrerin", "wortart": "Nomen", "artikel": "die", "plural": "Lehrerinnen", "uebersetzung_sr": "nastavnica", "uebersetzung_en": "female teacher", "mini_notiz": "Endung -in"},
+    {"surface": "Freund", "lemma": "Freund", "wortart": "Nomen", "artikel": "der", "plural": "Freunde", "uebersetzung_sr": "prijatelj", "uebersetzung_en": "friend", "mini_notiz": "männlich"},
+    {"surface": "Freundin", "lemma": "Freundin", "wortart": "Nomen", "artikel": "die", "plural": "Freundinnen", "uebersetzung_sr": "prijateljica", "uebersetzung_en": "female friend", "mini_notiz": "Endung -in"},
+    {"surface": "Stift", "lemma": "Stift", "wortart": "Nomen", "artikel": "der", "plural": "Stifte", "uebersetzung_sr": "olovka", "uebersetzung_en": "pen", "mini_notiz": "der Stift"},
+    {"surface": "Buch", "lemma": "Buch", "wortart": "Nomen", "artikel": "das", "plural": "Bücher", "uebersetzung_sr": "knjiga", "uebersetzung_en": "book", "mini_notiz": "das Buch"},
+    {"surface": "Tee", "lemma": "Tee", "wortart": "Nomen", "artikel": "der", "plural": "Tees", "uebersetzung_sr": "čaj", "uebersetzung_en": "tea", "mini_notiz": "der Tee"},
+    {"surface": "Wasser", "lemma": "Wasser", "wortart": "Nomen", "artikel": "das", "plural": "Wasser", "uebersetzung_sr": "voda", "uebersetzung_en": "water", "mini_notiz": "meist ohne Plural"},
+    {"surface": "Park", "lemma": "Park", "wortart": "Nomen", "artikel": "der", "plural": "Parks", "uebersetzung_sr": "park", "uebersetzung_en": "park", "mini_notiz": "der Park"},
+    {"surface": "Schule", "lemma": "Schule", "wortart": "Nomen", "artikel": "die", "plural": "Schulen", "uebersetzung_sr": "škola", "uebersetzung_en": "school", "mini_notiz": "die Schule"},
+    {"surface": "Büro", "lemma": "Büro", "wortart": "Nomen", "artikel": "das", "plural": "Büros", "uebersetzung_sr": "kancelarija", "uebersetzung_en": "office", "mini_notiz": "das Büro"},
+    {"surface": "Haus", "lemma": "Haus", "wortart": "Nomen", "artikel": "das", "plural": "Häuser", "uebersetzung_sr": "kuća", "uebersetzung_en": "house", "mini_notiz": "das Haus"},
+    {"surface": "Auto", "lemma": "Auto", "wortart": "Nomen", "artikel": "das", "plural": "Autos", "uebersetzung_sr": "auto", "uebersetzung_en": "car", "mini_notiz": "das Auto"},
+    {"surface": "Ticket", "lemma": "Ticket", "wortart": "Nomen", "artikel": "das", "plural": "Tickets", "uebersetzung_sr": "karta", "uebersetzung_en": "ticket", "mini_notiz": "das Ticket"},
+    {"surface": "Zeit", "lemma": "Zeit", "wortart": "Nomen", "artikel": "die", "plural": "Zeiten", "uebersetzung_sr": "vreme", "uebersetzung_en": "time", "mini_notiz": "die Zeit"},
+    {"surface": "Hunger", "lemma": "Hunger", "wortart": "Nomen", "artikel": "der", "plural": "Hunger", "uebersetzung_sr": "glad", "uebersetzung_en": "hunger", "mini_notiz": "meist ohne Plural"},
+    {"surface": "Müde", "lemma": "müde", "wortart": "Adjektiv", "artikel": "", "plural": "", "uebersetzung_sr": "umoran", "uebersetzung_en": "tired", "mini_notiz": "nach sein"},
+    {"surface": "Neu", "lemma": "neu", "wortart": "Adjektiv", "artikel": "", "plural": "", "uebersetzung_sr": "nov", "uebersetzung_en": "new", "mini_notiz": "nach sein"},
+    {"surface": "Freundlich", "lemma": "freundlich", "wortart": "Adjektiv", "artikel": "", "plural": "", "uebersetzung_sr": "ljubazan", "uebersetzung_en": "friendly", "mini_notiz": "positive Beschreibung"},
+    {"surface": "Schnell", "lemma": "schnell", "wortart": "Adjektiv", "artikel": "", "plural": "", "uebersetzung_sr": "brzo", "uebersetzung_en": "fast", "mini_notiz": "nach sein"},
+    {"surface": "Kommen", "lemma": "kommen", "wortart": "Verb", "artikel": "", "plural": "", "uebersetzung_sr": "doći", "uebersetzung_en": "to come", "mini_notiz": "ich komme"},
+    {"surface": "Gehen", "lemma": "gehen", "wortart": "Verb", "artikel": "", "plural": "", "uebersetzung_sr": "ići", "uebersetzung_en": "to go", "mini_notiz": "ich gehe"},
+    {"surface": "Lernen", "lemma": "lernen", "wortart": "Verb", "artikel": "", "plural": "", "uebersetzung_sr": "učiti", "uebersetzung_en": "to learn", "mini_notiz": "du lernst"},
+    {"surface": "Sprechen", "lemma": "sprechen", "wortart": "Verb", "artikel": "", "plural": "", "uebersetzung_sr": "govoriti", "uebersetzung_en": "to speak", "mini_notiz": "er spricht"},
+    {"surface": "Trinken", "lemma": "trinken", "wortart": "Verb", "artikel": "", "plural": "", "uebersetzung_sr": "piti", "uebersetzung_en": "to drink", "mini_notiz": "wir trinken"},
+    {"surface": "Essen", "lemma": "essen", "wortart": "Verb", "artikel": "", "plural": "", "uebersetzung_sr": "jesti", "uebersetzung_en": "to eat", "mini_notiz": "ich esse"},
+    {"surface": "Arbeiten", "lemma": "arbeiten", "wortart": "Verb", "artikel": "", "plural": "", "uebersetzung_sr": "raditi", "uebersetzung_en": "to work", "mini_notiz": "sie arbeitet"},
+    {"surface": "Frage", "lemma": "Frage", "wortart": "Nomen", "artikel": "die", "plural": "Fragen", "uebersetzung_sr": "pitanje", "uebersetzung_en": "question", "mini_notiz": "die Frage"},
+    {"surface": "Pause", "lemma": "Pause", "wortart": "Nomen", "artikel": "die", "plural": "Pausen", "uebersetzung_sr": "pauza", "uebersetzung_en": "break", "mini_notiz": "die Pause"},
+    {"surface": "Tag", "lemma": "Tag", "wortart": "Nomen", "artikel": "der", "plural": "Tage", "uebersetzung_sr": "dan", "uebersetzung_en": "day", "mini_notiz": "der Tag"}
+  ]
+}</pre>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
