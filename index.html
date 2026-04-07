@@ -1555,7 +1555,7 @@
 
       .light-line {
         position: absolute;
-        top: 50%
+        top: 50%;
         left: 0;
         height: 2px;
         width: 0;
@@ -1597,7 +1597,7 @@
 
       .aura-circle {
         position: absolute;
-        top: 50%;;
+        top: 50%;
         left: 50%;
         width: clamp(360px, 48vw, 520px);
         height: clamp(360px, 48vw, 520px);
@@ -2207,11 +2207,130 @@ img, video, canvas, svg {
     .mobile-nav,
     .nebula-wrap,
     .nebula-parent,
-    .floating-letters,  /* <- Container (wichtig) */
+  .floating-letters,  /* <- Container (wichtig) */
     .floating-letter,   /* einzelne Buchstaben */
     #leonic {
       overflow-x: hidden !important; /* Fallback für Safari */
       max-width: 100% !important;
+    }
+
+    /* === Minimal / cleaner redesign === */
+    :root {
+      --bg: #0b0908;
+      --surface: #14100d;
+      --border-soft: rgba(247, 217, 139, 0.16);
+      --text-soft: rgba(255, 255, 255, 0.8);
+    }
+
+    body {
+      background: radial-gradient(900px 600px at 50% -10%, rgba(247, 217, 139, 0.12), transparent 60%), var(--bg);
+    }
+
+    .logo::after,
+    .nebula-parent,
+    #leonic,
+    .floating-letters,
+    .scroll-indicator {
+      display: none !important;
+    }
+
+    header,
+    nav,
+    .mobile-nav {
+      background: rgba(11, 9, 8, 0.9);
+      border-color: var(--border-soft);
+      box-shadow: none;
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+
+    .explosion-title {
+      text-shadow: none;
+      font-size: clamp(36px, 8vw, 80px);
+    }
+
+    .explosion-title::after,
+    .btn::after,
+    button::after,
+    .course-card::before,
+    .resource-card::before {
+      display: none !important;
+    }
+
+    .subtitle,
+    .lead,
+    .description,
+    .service-desc,
+    .benefit-desc,
+    .testimonial-text,
+    .contact-info,
+    .contact-playbook p {
+      color: var(--text-soft);
+      opacity: 1;
+    }
+
+    .btn,
+    .contact-form button {
+      border-radius: 999px;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    .btn-primary,
+    .contact-form button {
+      background: linear-gradient(135deg, rgba(247, 217, 139, 0.25), rgba(240, 181, 103, 0.2));
+      border: 1px solid rgba(247, 217, 139, 0.45);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .benefit-item,
+    .pricing-card,
+    .booking-option,
+    .step-item,
+    .service-item,
+    .testimonial-card,
+    .about-container,
+    .course-card,
+    .resource-card,
+    .hours-card,
+    details,
+    .contact-form,
+    .contact-playbook,
+    .contact-playbook-template {
+      background: var(--surface) !important;
+      border: 1px solid var(--border-soft) !important;
+      box-shadow: none !important;
+      transform: none !important;
+    }
+
+    .benefit-item:hover,
+    .pricing-card:hover,
+    .booking-option:hover,
+    .step-item:hover,
+    .service-item:hover,
+    .testimonial-card:hover,
+    .course-card:hover,
+    .resource-card:hover {
+      transform: none !important;
+      border-color: rgba(247, 217, 139, 0.36) !important;
+    }
+
+    .reveal,
+    .benefit-item,
+    .pricing-card,
+    .step-item,
+    .service-item,
+    .testimonial-card,
+    .course-card,
+    .resource-card {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: border-color 0.2s ease, background 0.2s ease !important;
     }
  
   </style>
