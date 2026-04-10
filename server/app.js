@@ -88,7 +88,9 @@ app.post("/api/paypal/create-order", async (req, res) => {
 
     store.attachPayPalOrderId(referenceId, paypalOrder.id);
 
-    const approvalLink = (paypalOrder.links || []).find((link) => link.rel === "approve");
+    const approvalLink = (paypalOrder.links || []).find(
+      (link) => link.rel === "approve" || link.rel === "payer-action"
+    );
     if (!approvalLink) {
       return res.status(502).json({ ok: false, message: "Kein PayPal-Freigabelink erhalten." });
     }
