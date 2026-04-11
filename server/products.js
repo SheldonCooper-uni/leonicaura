@@ -12,7 +12,8 @@ const PRODUCTS = {
     level: "Mehrsprachiges Komplettset",
     priceCents: 1290,
     currency: "EUR",
-    fileName: "essenskarten-komplett.pdf"
+    fileName: "LeonicAURA_Essen_v2.pdf",
+    fileRelativePath: path.join(".private-assets", "LeonicAURA_Essen_v2.pdf")
   }
 };
 
@@ -44,7 +45,9 @@ function getProduct(productId) {
 
   return {
     ...product,
-    filePath: path.join(PRIVATE_PDF_DIR, product.fileName)
+    filePath: product.fileRelativePath
+      ? path.join(ROOT_DIR, product.fileRelativePath)
+      : path.join(PRIVATE_PDF_DIR, product.fileName)
   };
 }
 
