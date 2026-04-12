@@ -62,6 +62,8 @@ async function createPayPalOrder({ amountCents, currencyCode, description, custo
         paypal: {
           experience_context: {
             brand_name: "LeonicAURA",
+            landing_page: "LOGIN",
+            locale: "de-DE",
             shipping_preference: "NO_SHIPPING",
             user_action: "PAY_NOW",
             return_url: returnUrl,

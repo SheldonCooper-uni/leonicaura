@@ -1993,7 +1993,7 @@
       function syncCheckoutButtons() {
         const requiresNoticeAck = Boolean(downloadNoticeCheckbox) && !downloadNoticeCheckbox.checked;
         buyProductButton.disabled = checkoutPending || !paymentEnabled || requiresNoticeAck;
-        sendTipButton.disabled = checkoutPending || !paymentEnabled || requiresNoticeAck;
+        sendTipButton.disabled = checkoutPending || !paymentEnabled;
       }
 
       function setCheckoutPending(isPending) {
@@ -2377,7 +2377,7 @@
           return;
         }
 
-        if (downloadNoticeCheckbox && !downloadNoticeCheckbox.checked) {
+        if (kind === "product" && downloadNoticeCheckbox && !downloadNoticeCheckbox.checked) {
           setStatus("Bitte bestätige zuerst den roten Hinweis zur lokalen Speicherung der PDF.", "error");
           return;
         }
