@@ -73,7 +73,7 @@ app.get("/api/products", (_req, res) => {
 });
 
 app.get("/api/public-config", (_req, res) => {
-  const paymentEnabled = isPayPalConfigured();
+  const paymentEnabled = isSiteCheckoutEnabled();
 
   res.json({
     ok: true,
@@ -160,7 +160,7 @@ app.post(
   }),
   async (req, res) => {
     try {
-      if (!isPayPalConfigured()) {
+      if (!isSiteCheckoutEnabled()) {
         return res.status(503).json({ ok: false, message: "PayPal ist noch nicht live eingerichtet." });
       }
 
@@ -253,7 +253,7 @@ app.post(
   }),
   async (req, res) => {
     try {
-      if (!isPayPalConfigured()) {
+      if (!isSiteCheckoutEnabled()) {
         return res.status(503).json({ ok: false, message: "PayPal ist noch nicht live eingerichtet." });
       }
 
@@ -825,6 +825,10 @@ function isPayPalConfigured() {
   return hasConfiguredEnv("PAYPAL_CLIENT_ID") && hasConfiguredEnv("PAYPAL_CLIENT_SECRET");
 }
 
+function isSiteCheckoutEnabled() {
+  return readBooleanEnv("SITE_CHECKOUT_ENABLED") && isPayPalConfigured();
+}
+
 function hasConfiguredEnv(name) {
   const value = String(process.env[name] || "").trim();
   if (!value) {
@@ -832,6 +836,10 @@ function hasConfiguredEnv(name) {
   }
 
   return !/^(PASTE_|YOUR_|CHANGE_THIS|CHANGE_ME)/i.test(value);
+}
+
+function readBooleanEnv(name) {
+  return String(process.env[name] || "").trim().toLowerCase() === "true";
 }
 
 function isTrustedPayPalApprovalUrl(value) {
