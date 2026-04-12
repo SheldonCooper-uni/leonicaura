@@ -2,6 +2,7 @@ const PAYPAL_MODE = (process.env.PAYPAL_MODE || "sandbox").toLowerCase();
 const PAYPAL_BASE_URL = PAYPAL_MODE === "live"
   ? "https://api-m.paypal.com"
   : "https://api-m.sandbox.paypal.com";
+const PAYPAL_REQUEST_TIMEOUT_MS = 15000;
 
 function requireEnv(name) {
   const value = process.env[name];
@@ -22,7 +23,8 @@ async function getAccessToken() {
       Authorization: `Basic ${basicAuth}`,
       "Content-Type": "application/x-www-form-urlencoded"
     },
-    body: "grant_type=client_credentials"
+    body: "grant_type=client_credentials",
+    signal: AbortSignal.timeout(PAYPAL_REQUEST_TIMEOUT_MS)
   });
 
   if (!response.ok) {
@@ -42,6 +44,7 @@ async function createPayPalOrder({ amountCents, currencyCode, description, custo
       Authorization: `Bearer ${accessToken}`,
       "Content-Type": "application/json"
     },
+    signal: AbortSignal.timeout(PAYPAL_REQUEST_TIMEOUT_MS),
     body: JSON.stringify({
       intent: "CAPTURE",
       purchase_units: [
@@ -84,7 +87,8 @@ async function capturePayPalOrder(orderId) {
     headers: {
       Authorization: `Bearer ${accessToken}`,
       "Content-Type": "application/json"
-    }
+    },
+    signal: AbortSignal.timeout(PAYPAL_REQUEST_TIMEOUT_MS)
   });
 
   if (!response.ok) {
@@ -105,6 +109,7 @@ async function verifyWebhookSignature({ headers, eventBody }) {
       Authorization: `Bearer ${accessToken}`,
       "Content-Type": "application/json"
     },
+    signal: AbortSignal.timeout(PAYPAL_REQUEST_TIMEOUT_MS),
     body: JSON.stringify({
       auth_algo: headers["paypal-auth-algo"],
       cert_url: headers["paypal-cert-url"],

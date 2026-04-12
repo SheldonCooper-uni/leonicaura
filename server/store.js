@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT_DIR = path.resolve(__dirname, "..");
-const DATA_DIR = path.join(ROOT_DIR, ".payment-data");
+const DATA_DIR = resolveStoragePath(process.env.DATA_DIR, path.join(ROOT_DIR, ".payment-data"));
 const STATE_FILE = path.join(DATA_DIR, "state.json");
 
 let cachedState = null;
@@ -124,6 +124,16 @@ function incrementDownloadCount(token) {
   tokenRecord.lastDownloadedAt = new Date().toISOString();
   saveState(state);
   return tokenRecord;
+}
+
+function resolveStoragePath(configuredPath, fallbackPath) {
+  if (!configuredPath) {
+    return fallbackPath;
+  }
+
+  return path.isAbsolute(configuredPath)
+    ? configuredPath
+    : path.join(ROOT_DIR, configuredPath);
 }
 
 module.exports = {

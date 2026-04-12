@@ -1,0 +1,54 @@
+services:
+  - type: web
+    name: leonicaura
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    healthCheckPath: /health
+    disk:
+      name: leonicaura-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: NODE_ENV
+        value: production
+      - key: DATA_DIR
+        value: /var/data/payment-data
+      - key: PRIVATE_PDF_DIR
+        value: /var/data/pdfs
+      - key: BASE_URL
+        sync: false
+      - key: REQUEST_TOKEN_SECRET
+        sync: false
+      - key: DOWNLOAD_TOKEN_SECRET
+        sync: false
+      - key: PAYPAL_MODE
+        value: live
+      - key: PAYPAL_CLIENT_ID
+        sync: false
+      - key: PAYPAL_CLIENT_SECRET
+        sync: false
+      - key: PAYPAL_WEBHOOK_ID
+        sync: false
+      - key: HCAPTCHA_SITE_KEY
+        sync: false
+      - key: HCAPTCHA_SECRET_KEY
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: SMTP_SECURE
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: CONTACT_TO_EMAIL
+        sync: false
+      - key: CONTACT_FROM_EMAIL
+        sync: false

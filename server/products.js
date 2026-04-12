@@ -1,7 +1,7 @@
 const path = require("path");
 
 const ROOT_DIR = path.resolve(__dirname, "..");
-const PRIVATE_PDF_DIR = path.join(ROOT_DIR, ".private-assets", "pdfs");
+const PRIVATE_PDF_DIR = resolveStoragePath(process.env.PRIVATE_PDF_DIR, path.join(ROOT_DIR, ".private-assets"));
 
 const PRODUCTS = {
   "essenskarten-komplett": {
@@ -45,10 +45,20 @@ function getProduct(productId) {
 
   return {
     ...product,
-    filePath: product.fileRelativePath
-      ? path.join(ROOT_DIR, product.fileRelativePath)
-      : path.join(PRIVATE_PDF_DIR, product.fileName)
+    filePath: PRIVATE_PDF_DIR
+      ? path.join(PRIVATE_PDF_DIR, product.fileName)
+      : path.join(ROOT_DIR, product.fileRelativePath)
   };
+}
+
+function resolveStoragePath(configuredPath, fallbackPath) {
+  if (!configuredPath) {
+    return fallbackPath;
+  }
+
+  return path.isAbsolute(configuredPath)
+    ? configuredPath
+    : path.join(ROOT_DIR, configuredPath);
 }
 
 function listProducts() {

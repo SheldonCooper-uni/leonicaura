@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum | LeonicAURA</title>
+  <meta name="robots" content="noindex, follow">
+  <style>
+    :root {
+      --bg: #f4efe7;
+      --surface: rgba(255, 252, 248, 0.92);
+      --text: #1f1914;
+      --muted: #6a5e54;
+      --line: rgba(31, 25, 20, 0.1);
+      --accent: #1f7b72;
+      --shadow: 0 24px 50px rgba(66, 49, 34, 0.12);
+      --radius: 28px;
+      --container: min(920px, calc(100% - 2rem));
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Source Sans 3", sans-serif;
+      line-height: 1.65;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 14% 10%, rgba(180, 127, 72, 0.14), transparent 24%),
+        radial-gradient(circle at 84% 0%, rgba(31, 123, 114, 0.12), transparent 26%),
+        var(--bg);
+      padding: 2.5rem 0 4rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: var(--container);
+      margin: 0 auto;
+    }
+
+    .page-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+      font-size: 0.95rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(1.4rem, 3vw, 2.4rem);
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3rem, 7vw, 4.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: 1.05rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    p,
+    li,
+    dd,
+    dt {
+      font-size: 1rem;
+    }
+
+    .lead {
+      color: var(--muted);
+      max-width: 60ch;
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .info-block {
+      padding: 1rem 1.1rem;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .info-block strong {
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .legal-note {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="page-links">
+      <a href="/">Zurück zur Startseite</a>
+      <a href="/datenschutz">Datenschutz</a>
+    </div>
+
+    <main class="card">
+      <header>
+        <h1>Impressum</h1>
+        <p class="lead">Angaben gemäß § 5 DDG.</p>
+      </header>
+
+      <section>
+        <h2>Anbieter</h2>
+        <div class="info-grid">
+          <div class="info-block">
+            <strong>Name</strong>
+            <p>Leon Erdeg</p>
+          </div>
+          <div class="info-block">
+            <strong>Adresse</strong>
+            <p>Margarethenstraße 31<br>47226 Duisburg</p>
+          </div>
+          <div class="info-block">
+            <strong>E-Mail</strong>
+            <p><a href="mailto:infoleonicaura@gmail.com">infoleonicaura@gmail.com</a></p>
+          </div>
+          <div class="info-block">
+            <strong>Telefon</strong>
+            <p><a href="tel:+4917663005489">+49 017663005489</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Verantwortlich für den Inhalt</h2>
+        <p>Leon Erdeg, Margarethenstraße 31, 47226 Duisburg.</p>
+      </section>
+
+      <p class="legal-note">Die Datenschutzerklärung findest du unter <a href="/datenschutz">/datenschutz</a>.</p>
+    </main>
+  </div>
+</body>
+</html>
