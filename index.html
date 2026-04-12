@@ -1756,6 +1756,8 @@
       const hCaptchaSiteKey = document.querySelector('meta[name="hcaptcha-site-key"]')?.content || "";
       let contactCaptchaWidgetId = null;
       let contactCaptchaRetryTimer = null;
+      let paymentEnabled = true;
+      let paymentUnavailableMessage = "Zahlungen sind noch nicht live geschaltet.";
 
       const productCatalog = [
         {
@@ -1941,8 +1943,8 @@
       }
 
       function setCheckoutPending(isPending) {
-        buyProductButton.disabled = isPending;
-        sendTipButton.disabled = isPending;
+        buyProductButton.disabled = isPending || !paymentEnabled;
+        sendTipButton.disabled = isPending || !paymentEnabled;
       }
 
       function setContactPending(isPending) {
@@ -1955,6 +1957,19 @@
           "X-Request-Token": requestToken,
           "X-Requested-With": "fetch"
         };
+      }
+
+      function applyPublicConfig(config) {
+        paymentEnabled = Boolean(config?.paymentEnabled);
+        paymentUnavailableMessage = config?.paymentStatusMessage || paymentUnavailableMessage;
+
+        if (!paymentEnabled) {
+          setCheckoutPending(false);
+          setStatus(paymentUnavailableMessage, "error");
+          return;
+        }
+
+        setStatus(paymentUnavailableMessage);
       }
 
       function initializeContactCaptcha() {
@@ -2271,9 +2286,32 @@
         }
       }
 
+      async function hydratePublicConfig() {
+        if (!hasApi) {
+          return;
+        }
+
+        try {
+          const response = await fetch("/api/public-config");
+          const data = await response.json();
+          if (!response.ok || !data.ok) {
+            return;
+          }
+
+          applyPublicConfig(data);
+        } catch (_error) {
+          return;
+        }
+      }
+
       async function beginCheckout(kind) {
         const activeProduct = getActiveProduct();
         if (!activeProduct.available) {
+          return;
+        }
+
+        if (!paymentEnabled) {
+          setStatus(paymentUnavailableMessage, "error");
           return;
         }
 
@@ -2514,12 +2552,13 @@
       updateParallax();
       renderProductCards();
       setActiveProduct(defaultProductKey, { resetImage: true });
+      hydratePublicConfig();
       hydrateProductDetails();
       captureReturnFlow();
       initializeContactCaptcha();
 
       if (hasApi) {
-        setStatus("Das Produkt ist bereit. Du kannst direkt bezahlen oder optional ein Trinkgeld hinzufügen.");
+        setStatus("Das Produkt wird geladen ...");
       } else {
         setStatus("Zahlungen laufen nicht über file://. Starte für Tests den Node-Server mit npm start.");
       }

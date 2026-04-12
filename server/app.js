@@ -72,6 +72,18 @@ app.get("/api/products", (_req, res) => {
   });
 });
 
+app.get("/api/public-config", (_req, res) => {
+  const paymentEnabled = isPayPalConfigured();
+
+  res.json({
+    ok: true,
+    paymentEnabled,
+    paymentStatusMessage: paymentEnabled
+      ? "Das Produkt ist bereit. Du kannst direkt bezahlen oder optional ein Trinkgeld hinzufügen."
+      : "Zahlungen sind noch nicht live geschaltet. Die Seite ist online, aber PayPal wird erst nach vollständiger Einrichtung freigegeben."
+  });
+});
+
 app.post(
   "/api/contact",
   requireTrustedBrowserRequest,
@@ -148,6 +160,10 @@ app.post(
   }),
   async (req, res) => {
     try {
+      if (!isPayPalConfigured()) {
+        return res.status(503).json({ ok: false, message: "PayPal ist noch nicht live eingerichtet." });
+      }
+
       const body = req.body && typeof req.body === "object" ? req.body : {};
       const hasProductSelection = body.productId !== undefined && body.productId !== null && body.productId !== "";
       const normalizedProductId = normalizeProductId(body.productId);
@@ -237,6 +253,10 @@ app.post(
   }),
   async (req, res) => {
     try {
+      if (!isPayPalConfigured()) {
+        return res.status(503).json({ ok: false, message: "PayPal ist noch nicht live eingerichtet." });
+      }
+
       const normalizedOrderId = normalizePayPalOrderId(req.body?.orderId);
       if (!normalizedOrderId) {
         return res.status(400).json({ ok: false, message: "Die Bestell-ID ist ungültig." });
@@ -799,6 +819,19 @@ function normalizeHCaptchaToken(value) {
   }
 
   return normalized;
+}
+
+function isPayPalConfigured() {
+  return hasConfiguredEnv("PAYPAL_CLIENT_ID") && hasConfiguredEnv("PAYPAL_CLIENT_SECRET");
+}
+
+function hasConfiguredEnv(name) {
+  const value = String(process.env[name] || "").trim();
+  if (!value) {
+    return false;
+  }
+
+  return !/^(PASTE_|YOUR_|CHANGE_THIS|CHANGE_ME)/i.test(value);
 }
 
 function isTrustedPayPalApprovalUrl(value) {
