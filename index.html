@@ -1873,6 +1873,14 @@
       let activeImageIndex = 0;
       let viewerRotationTimer = null;
 
+      function resetInitialScrollPosition() {
+        if (window.location.hash) {
+          return;
+        }
+
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      }
+
       function setHeaderState() {
         header.classList.toggle("is-scrolled", window.scrollY > 16);
       }
@@ -1978,11 +1986,13 @@
         }
 
         if (!hCaptchaSiteKey) {
-          setContactStatus("Das Kontaktformular ist noch nicht vollständig freigeschaltet. Es fehlt der hCaptcha-Site-Key auf dem Server.", "error");
+          contactSubmitButton.disabled = true;
+          setContactStatus("Das Kontaktformular wird gerade freigeschaltet. Schreib bis dahin bitte per WhatsApp oder an infoleonicaura@gmail.com.", "error");
           return;
         }
 
         if (contactCaptchaWidgetId !== null) {
+          contactSubmitButton.disabled = false;
           return;
         }
 
@@ -2000,6 +2010,8 @@
           sitekey: hCaptchaSiteKey,
           theme: "light"
         });
+
+        contactSubmitButton.disabled = false;
       }
 
       function stopViewerRotation() {
@@ -2536,6 +2548,13 @@
       });
 
       window.addEventListener("beforeunload", stopViewerRotation);
+
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+      }
+
+      resetInitialScrollPosition();
+      window.addEventListener("load", resetInitialScrollPosition, { once: true });
 
       productCatalog.forEach((product) => {
         if (!product.available || !product.gallery) {

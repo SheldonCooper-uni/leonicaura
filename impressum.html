@@ -34,6 +34,7 @@
         radial-gradient(circle at 84% 0%, rgba(31, 123, 114, 0.12), transparent 26%),
         var(--bg);
       padding: 2.5rem 0 4rem;
+      overflow-x: hidden;
     }
 
     a {
@@ -87,6 +88,13 @@
     dd,
     dt {
       font-size: 1rem;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    a {
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .lead {
@@ -105,6 +113,7 @@
       border-radius: 20px;
       border: 1px solid var(--line);
       background: rgba(255, 255, 255, 0.45);
+      min-width: 0;
     }
 
     .info-block strong {
@@ -115,6 +124,20 @@
     .legal-note {
       color: var(--muted);
       font-size: 0.94rem;
+    }
+
+    @media (max-width: 680px) {
+      body {
+        padding: 1.25rem 0 2.5rem;
+      }
+
+      .page-links {
+        gap: 0.7rem;
+      }
+
+      .card {
+        border-radius: 22px;
+      }
     }
   </style>
 </head>
