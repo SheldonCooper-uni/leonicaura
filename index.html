@@ -950,6 +950,35 @@
       gap: 1rem;
     }
 
+    .purchase-ack {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.8rem;
+      align-items: start;
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      border: 1px solid rgba(170, 46, 46, 0.22);
+      background: rgba(170, 46, 46, 0.08);
+    }
+
+    .purchase-ack input {
+      width: 1.05rem;
+      height: 1.05rem;
+      margin-top: 0.22rem;
+      accent-color: #aa2e2e;
+    }
+
+    .purchase-ack label {
+      color: #8f2222;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .purchase-ack strong {
+      display: block;
+      font-size: 1rem;
+    }
+
     .captcha-shell {
       min-height: 84px;
       display: grid;
@@ -963,11 +992,6 @@
 
     .contact-status {
       min-height: 4.25rem;
-    }
-
-    .contact-footnote {
-      font-size: 0.95rem;
-      color: var(--muted);
     }
 
     .bot-field {
@@ -1554,6 +1578,14 @@
                   <input id="tip-amount" name="tipAmount" type="text" inputmode="decimal" placeholder="z. B. 3,50">
                 </div>
 
+                <div class="purchase-ack">
+                  <input id="download-notice-checkbox" name="downloadNoticeAccepted" type="checkbox">
+                  <label for="download-notice-checkbox">
+                    <strong>Bitte speichere die Datei direkt nach dem Kauf lokal.</strong>
+                    Ich habe den Hinweis gelesen und bestätige, dass ich die PDF sofort nach dem Kauf lokal speichere.
+                  </label>
+                </div>
+
                 <div class="payment-actions">
                   <button class="button primary" id="buy-product-button" type="submit">PDF kaufen</button>
                   <button class="button secondary" id="send-tip-button" type="button">Nur Trinkgeld senden</button>
@@ -1679,10 +1711,8 @@
                   <a class="button secondary" href="https://wa.me/4917663005489?text=Hallo%20Leon%2C%20ich%20möchte%20wegen%20Unterricht%20oder%20Material%20anfragen." target="_blank" rel="noopener">WhatsApp</a>
                 </div>
 
-                <div class="payment-status contact-status" id="contact-status">Schreib mir kurz dein Thema und bestätige danach das hCaptcha-Feld. Direkte E-Mail bleibt alternativ unter infoleonicaura@gmail.com möglich.</div>
+                <div class="payment-status contact-status hidden" id="contact-status"></div>
               </div>
-
-              <p class="contact-footnote">Das Formular wird serverseitig geprüft, per hCaptcha gegen Bots abgesichert und als E-Mail weitergeleitet.</p>
             </form>
 
             <div class="contact-meta">
@@ -1740,12 +1770,14 @@
       const productIdInput = document.getElementById("product-id");
       const paymentForm = document.getElementById("payment-form");
       const tipAmountInput = document.getElementById("tip-amount");
+      const downloadNoticeCheckbox = document.getElementById("download-notice-checkbox");
       const paymentStatus = document.getElementById("payment-status");
       const buyProductButton = document.getElementById("buy-product-button");
       const sendTipButton = document.getElementById("send-tip-button");
       const contactForm = document.getElementById("contact-form");
       const contactSubmitButton = document.getElementById("contact-submit");
       const contactStatus = document.getElementById("contact-status");
+      const contactCaptchaShell = document.querySelector(".captcha-shell");
       const contactCaptcha = document.getElementById("contact-captcha");
       const contactNameInput = document.getElementById("contact-name");
       const contactEmailInput = document.getElementById("contact-email");
@@ -1758,6 +1790,7 @@
       let contactCaptchaRetryTimer = null;
       let paymentEnabled = true;
       let paymentUnavailableMessage = "Zahlungen sind noch nicht live geschaltet.";
+      let checkoutPending = false;
 
       const productCatalog = [
         {
@@ -1940,6 +1973,13 @@
 
       function setContactStatus(message, tone = "default") {
         contactStatus.classList.remove("is-success", "is-error");
+        if (!message) {
+          contactStatus.textContent = "";
+          contactStatus.classList.add("hidden");
+          return;
+        }
+
+        contactStatus.classList.remove("hidden");
         if (tone === "success") {
           contactStatus.classList.add("is-success");
         }
@@ -1950,9 +1990,15 @@
         contactStatus.textContent = message;
       }
 
+      function syncCheckoutButtons() {
+        const requiresNoticeAck = Boolean(downloadNoticeCheckbox) && !downloadNoticeCheckbox.checked;
+        buyProductButton.disabled = checkoutPending || !paymentEnabled || requiresNoticeAck;
+        sendTipButton.disabled = checkoutPending || !paymentEnabled || requiresNoticeAck;
+      }
+
       function setCheckoutPending(isPending) {
-        buyProductButton.disabled = isPending || !paymentEnabled;
-        sendTipButton.disabled = isPending || !paymentEnabled;
+        checkoutPending = isPending;
+        syncCheckoutButtons();
       }
 
       function setContactPending(isPending) {
@@ -1977,6 +2023,7 @@
           return;
         }
 
+        syncCheckoutButtons();
         setStatus(paymentUnavailableMessage);
       }
 
@@ -1986,13 +2033,17 @@
         }
 
         if (!hCaptchaSiteKey) {
-          contactSubmitButton.disabled = true;
-          setContactStatus("Das Kontaktformular wird gerade freigeschaltet. Schreib bis dahin bitte per WhatsApp oder an infoleonicaura@gmail.com.", "error");
+          if (contactCaptchaShell) {
+            contactCaptchaShell.classList.add("hidden");
+          }
           return;
         }
 
+        if (contactCaptchaShell) {
+          contactCaptchaShell.classList.remove("hidden");
+        }
+
         if (contactCaptchaWidgetId !== null) {
-          contactSubmitButton.disabled = false;
           return;
         }
 
@@ -2010,8 +2061,6 @@
           sitekey: hCaptchaSiteKey,
           theme: "light"
         });
-
-        contactSubmitButton.disabled = false;
       }
 
       function stopViewerRotation() {
@@ -2215,6 +2264,7 @@
           placeholderShell.classList.add("hidden");
           productPrice.textContent = product.price;
           productIdInput.value = product.productId;
+          syncCheckoutButtons();
         } else {
           purchaseShell.classList.add("hidden");
           placeholderShell.classList.remove("hidden");
@@ -2327,6 +2377,11 @@
           return;
         }
 
+        if (downloadNoticeCheckbox && !downloadNoticeCheckbox.checked) {
+          setStatus("Bitte bestätige zuerst den roten Hinweis zur lokalen Speicherung der PDF.", "error");
+          return;
+        }
+
         if (!hasApi) {
           setStatus("Zahlungen laufen nicht über file://. Starte für Tests den Node-Server mit npm start.", "error");
           return;
@@ -2378,6 +2433,11 @@
 
         if (!requestToken) {
           setContactStatus("Die Sicherheitsfreigabe fehlt. Lade die Seite bitte neu.", "error");
+          return;
+        }
+
+        if (!hCaptchaSiteKey) {
+          setContactStatus("Das Kontaktformular ist im Moment nicht verfügbar. Bitte nutze WhatsApp oder schreibe an infoleonicaura@gmail.com.", "error");
           return;
         }
 
@@ -2526,6 +2586,12 @@
         event.preventDefault();
         beginCheckout("product");
       });
+
+      if (downloadNoticeCheckbox) {
+        downloadNoticeCheckbox.addEventListener("change", () => {
+          syncCheckoutButtons();
+        });
+      }
 
       contactForm.addEventListener("submit", submitContactForm);
 
