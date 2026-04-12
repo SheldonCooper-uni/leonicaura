@@ -1573,12 +1573,12 @@
               <form class="payment-form" id="payment-form">
                 <input type="hidden" id="product-id" name="productId" value="essenskarten-komplett">
 
-                <div class="field">
+                <div class="field" id="tip-field">
                   <label for="tip-amount">Optionales Trinkgeld in Euro</label>
                   <input id="tip-amount" name="tipAmount" type="text" inputmode="decimal" placeholder="z. B. 3,50">
                 </div>
 
-                <div class="purchase-ack">
+                <div class="purchase-ack" id="purchase-ack">
                   <input id="download-notice-checkbox" name="downloadNoticeAccepted" type="checkbox">
                   <label for="download-notice-checkbox">
                     <strong>Bitte speichere die Datei direkt nach dem Kauf lokal.</strong>
@@ -1586,16 +1586,16 @@
                   </label>
                 </div>
 
-                <div class="payment-actions">
+                <div class="payment-actions" id="payment-actions">
                   <button class="button primary" id="buy-product-button" type="submit">PDF kaufen</button>
                   <button class="button secondary" id="send-tip-button" type="button">Nur Trinkgeld senden</button>
                 </div>
 
-                <div class="payment-status" id="payment-status">Der Download wird nach erfolgreicher PayPal-Zahlung freigeschaltet. Bitte sichere die PDF danach direkt lokal, weil der Link zeitlich begrenzt ist. Für echte Zahlungen muss die Seite über den Node-Server laufen.</div>
+                <div class="payment-status" id="payment-status">Diese Zahlungsart kommt bald. Bis dahin kannst du das Material weiterhin über Etsy kaufen.</div>
               </form>
 
-              <a class="button tertiary" href="https://www.etsy.com/de/listing/4486631562/deutsch-vokabeln-essen-einkaufen" target="_blank" rel="noopener">Lieber über Etsy kaufen</a>
-              <p class="purchase-footnote">Der Download wird erst nach erfolgreicher Zahlung freigeschaltet und nicht offen auf der Seite verlinkt. Bitte speichere die Datei direkt nach dem Kauf lokal; eine spätere Bereitstellung über denselben Link kann nicht garantiert werden.</p>
+              <a class="button tertiary" href="https://www.etsy.com/de/listing/4486631562/deutsch-vokabeln-essen-einkaufen" target="_blank" rel="noopener">Bis dahin über Etsy kaufen</a>
+              <p class="purchase-footnote" id="purchase-footnote">Der Download wird erst nach erfolgreicher Zahlung freigeschaltet und nicht offen auf der Seite verlinkt. Bitte speichere die Datei direkt nach dem Kauf lokal; eine spätere Bereitstellung über denselben Link kann nicht garantiert werden.</p>
             </div>
 
             <div class="placeholder-shell hidden" id="placeholder-shell">
@@ -1769,11 +1769,15 @@
       const productPrice = document.getElementById("product-price");
       const productIdInput = document.getElementById("product-id");
       const paymentForm = document.getElementById("payment-form");
+      const tipField = document.getElementById("tip-field");
       const tipAmountInput = document.getElementById("tip-amount");
       const downloadNoticeCheckbox = document.getElementById("download-notice-checkbox");
+      const purchaseAck = document.getElementById("purchase-ack");
       const paymentStatus = document.getElementById("payment-status");
+      const paymentActions = document.getElementById("payment-actions");
       const buyProductButton = document.getElementById("buy-product-button");
       const sendTipButton = document.getElementById("send-tip-button");
+      const purchaseFootnote = document.getElementById("purchase-footnote");
       const contactForm = document.getElementById("contact-form");
       const contactSubmitButton = document.getElementById("contact-submit");
       const contactStatus = document.getElementById("contact-status");
@@ -2013,9 +2017,32 @@
         };
       }
 
+      function setPaymentAvailabilityUI() {
+        const showOnSitePayment = paymentEnabled;
+
+        if (tipField) {
+          tipField.classList.toggle("hidden", !showOnSitePayment);
+        }
+
+        if (purchaseAck) {
+          purchaseAck.classList.toggle("hidden", !showOnSitePayment);
+        }
+
+        if (paymentActions) {
+          paymentActions.classList.toggle("hidden", !showOnSitePayment);
+        }
+
+        if (purchaseFootnote) {
+          purchaseFootnote.textContent = showOnSitePayment
+            ? "Der Download wird erst nach erfolgreicher Zahlung freigeschaltet und nicht offen auf der Seite verlinkt. Bitte speichere die Datei direkt nach dem Kauf lokal; eine spätere Bereitstellung über denselben Link kann nicht garantiert werden."
+            : "Diese Zahlungsart wird auf der Website vorbereitet. Bis dahin kannst du das Material direkt über Etsy kaufen.";
+        }
+      }
+
       function applyPublicConfig(config) {
         paymentEnabled = Boolean(config?.paymentEnabled);
         paymentUnavailableMessage = config?.paymentStatusMessage || paymentUnavailableMessage;
+        setPaymentAvailabilityUI();
 
         if (!paymentEnabled) {
           setCheckoutPending(false);
@@ -2264,6 +2291,7 @@
           placeholderShell.classList.add("hidden");
           productPrice.textContent = product.price;
           productIdInput.value = product.productId;
+          setPaymentAvailabilityUI();
           syncCheckoutButtons();
         } else {
           purchaseShell.classList.add("hidden");

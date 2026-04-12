@@ -80,7 +80,7 @@ app.get("/api/public-config", (_req, res) => {
     paymentEnabled,
     paymentStatusMessage: paymentEnabled
       ? "Das Produkt ist bereit. Du kannst direkt bezahlen oder optional ein Trinkgeld hinzufügen."
-      : "Zahlungen sind noch nicht live geschaltet. Die Seite ist online, aber PayPal wird erst nach vollständiger Einrichtung freigegeben."
+      : "Diese Zahlungsart kommt bald. Bis dahin kannst du das Material weiterhin über Etsy kaufen."
   });
 });
 
